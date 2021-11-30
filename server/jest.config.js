@@ -1,5 +1,5 @@
 module.exports = {
-  roots: ["src/", "__tests__/"],
+  roots: ["<rootDir>/src/", "<rootDir>/__tests__/"],
   moduleNameMapper: {
     "^jose/(.*)$": "<rootDir>/node_modules/jose/dist/node/cjs/$1",
   },
