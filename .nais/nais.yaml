@@ -1,0 +1,35 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: "aap-soknad-behandling"
+  namespace: "aap"
+  labels:
+    "team": "aap"
+spec:
+  image: {{image}}
+  port: 3000
+  liveness:
+    path: "/aap-behandling/internal/isAlive"
+    initialDelay: 20
+    timeout: 60
+  readiness:
+    path: "/aap-behandling/internal/isready"
+    initialDelay: 20
+    timeout: 60
+  replicas:
+    min: 2
+    max: 2
+  prometheus:
+    enabled: true
+    path: "/aap-behandling/internal/metrics"
+  ingresses:
+  {{#each ingresses as |url|}}
+    - {{url}}
+  {{/each}}
+  env:
+  {{#each env}}
+    - name: {{this.name }}
+      value: {{this.value}}
+  {{/each}}
+  tokenx:
+    enabled: true

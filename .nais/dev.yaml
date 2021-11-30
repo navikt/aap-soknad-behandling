@@ -1,0 +1,5 @@
+ingresses:
+- "https://aap-soknad-behandling.dev.intern.nav.no"
+env:
+- name: APP_URL
+  value: "https://aap-soknad.dev.nav.no"
