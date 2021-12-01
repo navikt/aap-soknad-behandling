@@ -17,3 +17,6 @@
 
 # parcel
 .parcel-cache
+
+yarn-error.log
+server/yarn-error.log
