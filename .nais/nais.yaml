@@ -33,3 +33,7 @@ spec:
   {{/each}}
   tokenx:
     enabled: true
+  azure:
+    enabled: true
+    sidecar:
+      enabled: true

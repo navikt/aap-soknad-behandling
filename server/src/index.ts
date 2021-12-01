@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import client from 'prom-client';
 import config from './config';
 import {LogInfo} from "./logger";
+import { enforceAzureADMiddleware } from "./auth/middleware";
 
 
 const BUILD_PATH = path.join(__dirname, "../dist");
@@ -31,6 +32,9 @@ const startServer = () => {
   server.get([`${config.BASE_PATH}/internal/isAlive`, `${config.BASE_PATH}/internal/isReady`], (req: any, res: any) =>
     res.sendStatus(200)
   );
+
+  // Enforce Azure AD authentication
+  server.use(`${config.BASE_PATH}/*`, enforceAzureADMiddleware);
 
   // Render app
   server.get(`${config.BASE_PATH}/*`, (req: any, res: any) =>
