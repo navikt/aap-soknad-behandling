@@ -6,7 +6,7 @@ import config from './config';
 import {LogInfo} from "./logger";
 
 
-const BUILD_PATH = path.join(__dirname, "../build");
+const BUILD_PATH = path.join(__dirname, "../dist");
 const PORT = process.env.PORT || 3000;
 const server = express();
 
