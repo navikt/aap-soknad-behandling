@@ -34,6 +34,7 @@ spec:
   tokenx:
     enabled: true
   azure:
-    enabled: true
+    application:
+      enabled: true
     sidecar:
       enabled: true
