@@ -5,6 +5,7 @@ import client from 'prom-client';
 import config from './config';
 import {LogInfo} from "./logger";
 import { enforceAzureADMiddleware } from "./auth/middleware";
+import { tokenXProxy } from "./apiProxy";
 
 
 const BUILD_PATH = path.join(__dirname, "../dist");
@@ -35,6 +36,9 @@ const startServer = () => {
 
   // Enforce Azure AD authentication
   server.use(`${config.BASE_PATH}/*`, enforceAzureADMiddleware);
+
+  // Reverse proxy to add tokenx header for api calls
+  tokenXProxy(`${config.BASE_PATH}/api`, server);
 
   // Render app
   server.get(`${config.BASE_PATH}/*`, (req: any, res: any) =>
