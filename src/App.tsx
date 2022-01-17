@@ -1,6 +1,7 @@
 import React from "react";
 import { Heading } from "@navikt/ds-react";
+import Oppgave from "./Oppgave";
 
 export function App() {
-    return (<Heading size={"2xlarge"} level={"1"} >Hello world!</Heading>);
+    return (<Oppgave />);
 }
