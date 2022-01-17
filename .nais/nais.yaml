@@ -38,3 +38,7 @@ spec:
       enabled: true
     sidecar:
       enabled: true
+  accessPolicy:
+    outbound:
+      rules:
+        - application: apparat
