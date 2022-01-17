@@ -6,30 +6,30 @@ import config from "./config";
 
 const options = (targetAudience: string) => ({
   parseReqBody: true,
-  // proxyReqOptDecorator: (options: any, req: Request) => {
-  //   const { authorization } = req.headers;
-  //   const token = authorization.split(" ")[1];
-  //   return new Promise((resolve, reject) => {
-  //     return getToken(token, targetAudience).then(
-  //       apiToken => {
-  //         resolve({
-  //           ...options,
-  //           headers: {
-  //             ...options.headers,
-  //             Authorization: `Bearer ${apiToken}`
-  //           }
-  //         })
-  //       },
-  //       error => {
-  //         LogError('TokenX error:', error)
-  //         reject(error)
-  //       })
-  //   });
-  // },
+  proxyReqOptDecorator: (options: any, req: Request) => {
+    const { authorization } = req.headers;
+    const token = authorization.split(" ")[1];
+    return new Promise((resolve, reject) => {
+      return getToken(token, targetAudience).then(
+          apiToken => {
+            resolve({
+              ...options,
+              headers: {
+                ...options.headers,
+                Authorization: `Bearer ${apiToken}`
+              }
+            })
+          },
+          error => {
+            LogError('TokenX error:', error)
+            reject(error)
+          })
+    });
+  },
   proxyReqPathResolver: (req: Request) => {
     return (req.originalUrl.startsWith('/aap-behandling/api'))
-      ? req.originalUrl.slice(15)
-      : req.originalUrl;
+        ? req.originalUrl.slice(15)
+        : req.originalUrl;
   },
   // Mutate request body
   // proxyReqBodyDecorator: function(bodyContent, srcReq) {}
