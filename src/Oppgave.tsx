@@ -9,7 +9,7 @@ const Oppgave = () => {
     useEffect(() => {
         const getOppgaver = async () => {
             try {
-                const oppgaveResponse = await fetch('/api/oppgaver').then(res => res.json());
+                const oppgaveResponse = await fetch('/aap-behandling/api/oppgaver').then(res => res.json());
                 setOppgaver(oppgaveResponse);
             } catch (err) {
                 console.error(err);
