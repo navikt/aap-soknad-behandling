@@ -26,6 +26,9 @@ const Oppgave = () => {
         await fetch('/aap-behandling/api/vurderAlder', {
             method: 'POST',
             body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json',
+            }
         }).then(res => console.log(res.status));
     }
     return (<>
