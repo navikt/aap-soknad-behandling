@@ -57,9 +57,7 @@ export async function getOnBehalfOfToken(subject_token: string) {
   };
 
   const grantBody: GrantBody = {
-    grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer.",
-    client_assertion_type:
-      "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+    grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
     assertion: subject_token,
     requested_token_use: 'on_behalf_of',
     scope: process.env.API_SCOPE,
