@@ -7,3 +7,5 @@ env:
   value: "https://apparat"
 - name: SOKNAD_API_AUDIENCE
   value: "dev-gcp:aap:apparat"
+- name: API_SCOPE
+  value: "api://dev-gcp.aap.apparat/.default"
