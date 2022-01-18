@@ -1,5 +1,6 @@
 import { Client, errors, GrantBody, Issuer, TokenSet } from "openid-client";
 import { RequestError } from "got";
+import {LogInfo} from "../logger";
 const OPError = errors.OPError;
 
 let _issuer: Issuer<Client>;
@@ -45,16 +46,9 @@ async function client() {
 
 export async function getOnBehalfOfToken(subject_token: string) {
   const _client = await client();
+  console.log('client', _client);
   if (!process.env.API_SCOPE)
     throw new TypeError(`Miljøvariabelen API_SCOPE må være satt`);
-
-  const now = Math.floor(Date.now() / 1000);
-  const additionalClaims = {
-    clientAssertionPayload: {
-      nbf: now,
-      aud: _client.issuer.metadata.token_endpoint,
-    },
-  };
 
   const grantBody: GrantBody = {
     grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
@@ -64,8 +58,11 @@ export async function getOnBehalfOfToken(subject_token: string) {
   };
 
   return _client
-    .grant(grantBody, additionalClaims)
-    .then((tokenSet: TokenSet) => tokenSet.access_token)
+    .grant(grantBody)
+    .then((tokenSet: TokenSet) => {
+      console.log('tokenSet', tokenSet);
+      return tokenSet.access_token;
+    })
     .catch((err) => {
       switch (err.constructor) {
       case RequestError:
