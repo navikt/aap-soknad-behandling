@@ -4,7 +4,7 @@ env:
 - name: APP_URL
   value: "https://aap-soknad.dev.nav.no"
 - name: SOKNAD_API_URL
-  value: "https://apparat"
+  value: "http://apparat"
 - name: SOKNAD_API_AUDIENCE
   value: "dev-gcp:aap:apparat"
 - name: API_SCOPE
