@@ -4,7 +4,7 @@ import { App } from "./App";
 describe('my tests', () => {
     test("helloworld", () => {
         render(<App />);
-        const linkElement = screen.getByText(/Oppgaver/i);
+        const linkElement = screen.getByText(/AAP App/i);
         expect(true).toBe(true);
     });
 });
