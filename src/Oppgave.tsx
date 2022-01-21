@@ -11,7 +11,7 @@ const Oppgave = () => {
         const getOppgaver = async () => {
             try {
                 const oppgaveResponse = await fetch('/aap-behandling/api/oppgaver').then(res => res.json());
-                oppgaveResponse.oppgaver && setOppgaver(oppgaveResponse.oppgaver);
+                oppgaveResponse && setOppgaver(oppgaveResponse.oppgaver);
             } catch (err) {
                 console.error(err);
             }
@@ -32,13 +32,15 @@ const Oppgave = () => {
         }).then(res => console.log(res.status));
     }
     return (<>
-        <Heading size={"2xlarge"} level={"1"} >Oppgaver</Heading>
+      <Heading size={"2xlarge"} level={"1"} >Oppgaver</Heading>
+      <main>
         {oppgaver.map( oppgave => <>
-            <BodyShort>{`Personident: ${oppgave.personident}, Alder: ${oppgave.alder}`}</BodyShort>
-            <Button variant="primary" type="button" onClick={() => onAgeConfirm(true, oppgave.oppgaveId)}>Ja</Button>
-            <Button variant="tertiary" onClick={() => onAgeConfirm(false, oppgave.oppgaveId)}>Nei</Button>
-            </>)}
-        </>);
+          <BodyShort>{`Personident: ${oppgave.personident}, Alder: ${oppgave.alder}`}</BodyShort>
+          <Button variant="primary" type="button" onClick={() => onAgeConfirm(true, oppgave.oppgaveId)}>Ja</Button>
+          <Button variant="tertiary" onClick={() => onAgeConfirm(false, oppgave.oppgaveId)}>Nei</Button>
+        </>)}
+      </main>
+    </>);
 }
 
 export default Oppgave;

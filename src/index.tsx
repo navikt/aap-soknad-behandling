@@ -10,4 +10,6 @@ if (process.env.USE_MOCK) {
 }
 
 const app = document.getElementById("app");
-render(<App />, app);
+render(<div className="app-container">
+  <App />
+</div>, app);
