@@ -437,6 +437,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.7.6":
+  version "7.16.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.7.tgz#03ff99f64106588c9c403c6ecb8c3bafbbdff1fa"
+  integrity sha512-9E9FJowqAsytyOY6LG+1KuueckRL+aQW+mKvXRXnuFGyRAyepJPmEo9vgMfXUA6O9u3IeEdv9MAkppFcaQwogQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.16.0", "@babel/template@^7.3.3":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.16.0.tgz#d16a35ebf4cd74e202083356fab21dd89363ddd6"
@@ -791,20 +798,20 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.11.4.tgz#ed3ee6afe420ba7a5b7b1aad0b8d3ab4dbb72885"
   integrity sha512-Q3B0jf0TqXShegUsxqm3obwwaPOD/1mrsWpsCnyY2Mj5ULfmA3AqhF/fl5SZvgu0k+zPKbZ8gSC2K6MuMAQqjw==
 
-"@navikt/ds-icons@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.6.3.tgz#95dd8b7568ce770736859014cffa1571739323b7"
-  integrity sha512-sNmgP8a/V8PLccewcEc7+fy+HfA6vDf1zDbgbQ0ypW/OMf6rGsg43EoCnU/txuuh5cRWbmzbbTQnoNHHmUT58w==
+"@navikt/ds-icons@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.7.2.tgz#cc3608d5cb0771c9f82bbfea6379b3c19c1ef86a"
+  integrity sha512-uacrYlNo5nVfu+D1ZhTnTpiYCrOIDVk792OdnrUqDSV5fyMF6HFeBi4BenmnoUjRhmQjUl0nth7G4TI+ZfwrGw==
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.13.1.tgz#f2ec1c76115377a6c2a07deef075053366d7ece3"
-  integrity sha512-9GzseA2xROppYLqdvQQJ8wEz9LKs3KKdaYlvfHnKEXEEmtF5sJxdKzGwHhRJk+zAsb1Y/90qJSLpenF25CA0mQ==
+"@navikt/ds-react@^0.14.11":
+  version "0.14.11"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.14.11.tgz#1567555fb1f6ebe4f008371c9248f00cdf286ccb"
+  integrity sha512-9TcFJB8KpWHjAuuOx6STPJT1YRfYLclIIk8Dp48kS/e3ZHx7iNfJVB+TMgtjPjoc+vfX5I9Gy3aTsL1fckD90w==
   dependencies:
     "@material-ui/core" "^4.12.3"
-    "@navikt/ds-icons" "^0.6.3"
+    "@navikt/ds-icons" "^0.7.2"
     "@popperjs/core" "^2.10.1"
     classnames "^2.2.6"
     react-collapse "^5.1.0"
@@ -3576,6 +3583,13 @@ highlight.js@~10.4.0:
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.4.1.tgz#d48fbcf4a9971c4361b3f95f302747afe19dbad0"
   integrity sha512-yR5lWvNz7c85OhVAEAeFhVCc/GV4C30Fjzc/rCP0aCWzc1UUOPUk55dK/qdwTZHBvMZo+eZ2jpk62ndX/xMFlg==
 
+history@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/history/-/history-5.2.0.tgz#7cdd31cf9bac3c5d31f09c231c9928fad0007b7c"
+  integrity sha512-uPSF6lAJb3nSePJ43hN3eKj1dTWpN9gMod0ZssbFTIsen+WehTmEadgL+kg78xLJFdRfrrC//SavDzmRVdE+Ig==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -5996,6 +6010,21 @@ react-refresh@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.9.0.tgz#71863337adc3e5c2f8a6bfddd12ae3bfe32aafbf"
   integrity sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==
+
+react-router-dom@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.2.1.tgz#32ec81829152fbb8a7b045bf593a22eadf019bec"
+  integrity sha512-I6Zax+/TH/cZMDpj3/4Fl2eaNdcvoxxHoH1tYOREsQ22OKDYofGebrNm6CTPUcvLvZm63NL/vzCYdjf9CUhqmA==
+  dependencies:
+    history "^5.2.0"
+    react-router "6.2.1"
+
+react-router@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.2.1.tgz#be2a97a6006ce1d9123c28934e604faef51448a3"
+  integrity sha512-2fG0udBtxou9lXtK97eJeET2ki5//UWfQSl1rlJ7quwe6jrktK9FCCc8dQb5QY6jAv3jua8bBQRhhDOM/kVRsg==
+  dependencies:
+    history "^5.2.0"
 
 react-transition-group@^4.4.0:
   version "4.4.2"
