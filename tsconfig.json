@@ -29,6 +29,7 @@
     "esModuleInterop": true,
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "./setupTests.ts"
   ]
 }
