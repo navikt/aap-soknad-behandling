@@ -1,0 +1,14 @@
+.link-card-table-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--navds-spacing-3);
+}
+.link-card-table-row {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--navds-spacing-8);
+  align-items: center;
+}
+.navds-link-panel__content {
+  flex: 100;
+}
