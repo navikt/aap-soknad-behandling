@@ -7,7 +7,7 @@ export function App() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/soknad-behandling/" element={<Saksoversikt />} />
+          <Route path="/aap-behandling/saksoversikt" element={<Saksoversikt />} />
           <Route
             path="*"
             element={

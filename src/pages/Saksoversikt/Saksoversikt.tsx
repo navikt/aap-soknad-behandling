@@ -35,7 +35,7 @@ const Saksoversikt = () => {
       <main>
         <LinkCardTable headingLabels={['Personident', 'Fødselsdato', 'Dato opprettet']} >
           {oppgaver.map((oppgave: Sak) =>
-            <LinkCardTable.Row href={`/soknad-behandling/sak/${oppgave.personident}`}>
+            <LinkCardTable.Row href={`/aap-behandling/sak/${oppgave.personident}`}>
               <BodyShort>{oppgave.personident}</BodyShort>
               <BodyShort>{oppgave.fødselsdato}</BodyShort>
               <BodyShort>{'today'}</BodyShort>
