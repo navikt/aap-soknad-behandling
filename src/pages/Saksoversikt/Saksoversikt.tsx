@@ -21,7 +21,7 @@ const Saksoversikt = () => {
     useEffect(() => {
         const getOppgaver = async () => {
             try {
-                const oppgaveResponse = await fetch('/aap-behandling/api/oppgaver').then(res => res.json());
+                const oppgaveResponse = await fetch('/aap-behandling/api/saker').then(res => res.json());
                 oppgaveResponse && setOppgaver(oppgaveResponse);
             } catch (err) {
                 console.error(err);
