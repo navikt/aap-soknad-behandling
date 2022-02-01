@@ -2,39 +2,39 @@ const testdataliste = [
   {
     personident: "11068812345",
     fødselsdato: "1988-06-11",
-    vilkårsvurdering: [
+    tilstand: "meh",
+    vilkårsvurderinger: [
       {
-        vilkår: {
-          paragraf: "11-4",
-          ledd: "1",
-        },
+        paragraf: "11-4",
+        ledd: "1",
         tilstand: "OPPFYLT",
+        harÅpenOppgave: false
       },
     ],
   },
   {
     personident: "27109500123",
     fødselsdato: "1995-10-27",
-    vilkårsvurdering: [
+    tilstand: "meh",
+    vilkårsvurderinger: [
       {
-        vilkår: {
-          paragraf: "11-4",
-          ledd: "1",
-        },
+        paragraf: "11-4",
+        ledd: "1",
         tilstand: "IKKE_OPPFYLT",
+        harÅpenOppgave: false
       },
     ],
   },
   {
     personident: "01090200432",
     fødselsdato: "2002-09-01",
-    vilkårsvurdering: [
+    tilstand: "meh",
+    vilkårsvurderinger: [
       {
-        vilkår: {
-          paragraf: "11-4",
-          ledd: "1",
-        },
+        paragraf: "11-4",
+        ledd: "1",
         tilstand: "OPPFYLT",
+        harÅpenOppgave: true
       },
     ],
   },
