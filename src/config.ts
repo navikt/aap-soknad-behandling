@@ -1,1 +1,1 @@
-export const APP_URL = process.env.APP_URL || 'https://localhost:3000'
+export const APP_URL = 'undefined' === typeof window ? 'http://localhost:3000' : window.location.protocol + "//" + window.location.host
