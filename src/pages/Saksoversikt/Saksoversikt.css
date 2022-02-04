@@ -6,14 +6,13 @@
  }
 
  .saksliste__container {
-   width: 100%;
+   flex: 1 1 20vw;
    display: flex;
    flex-direction: row;
  }
 
  .saksliste__innhold {
-   /*min-width: 62rem;*/
-   max-width: 50vw;
+  min-width: 20vw;
  }
 
  .actions {
@@ -34,4 +33,9 @@
    max-width: 72rem;
    width: 100%;
    align-items: center;
+ }
+
+ .vedtaksflate {
+   display: flex;
+   flex-direction: row;
  }

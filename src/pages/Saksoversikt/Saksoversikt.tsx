@@ -29,36 +29,39 @@ const Saksoversikt = () => {
           Saksoversikt
         </Heading>
       </div>
-      <div className="saksliste__container">
-        <main className="saksliste__innhold">
-          <RenderWhen when={loading}>
-            <Loader />
-          </RenderWhen>
-          <RenderWhen when={!loading && !!data}>
-            <LinkCardTable
-              headingLabels={["Personident", "Fødselsdato", "Dato opprettet"]}
-            >
-              {data &&
+      <section className="vedtaksflate">
+        <div className="saksliste__container">
+          <main className="saksliste__innhold">
+            <RenderWhen when={loading}>
+              <Loader />
+            </RenderWhen>
+            <RenderWhen when={!loading && !!data}>
+              <LinkCardTable
+                headingLabels={["Personident", "Fødselsdato", "Dato opprettet"]}
+              >
+                {data &&
                 data.map((oppgave: Sak) => (
                   <LinkCardTable.Row
                     // href={`/aap-behandling/sak/${oppgave.personident}`}
                     onClick={()=> settValgtSak(oppgave)}
                     key={oppgave.personident}
+                    selected={valgtSak && valgtSak.personident === oppgave.personident}
                   >
                     <BodyShort>{oppgave.personident}</BodyShort>
                     <BodyShort>{oppgave.fødselsdato}</BodyShort>
                     <BodyShort>{"today"}</BodyShort>
                   </LinkCardTable.Row>
                 ))}
-            </LinkCardTable>
-          </RenderWhen>
-        </main>
+              </LinkCardTable>
+            </RenderWhen>
+          </main>
+        </div>
         <RenderWhen when={valgtSak !== undefined}>
           <>
             {valgtSak !== undefined && <Oppgavevisning sak={valgtSak} onClose={() => settValgtSak(undefined)}/>}
           </>
         </RenderWhen>
-      </div>
+      </section>
     </div>
   );
 };

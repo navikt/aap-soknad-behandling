@@ -12,3 +12,11 @@
 .navds-link-panel__content {
   flex: 100;
 }
+
+.navds-link-panel.selected__row {
+  border: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: -1rem;
+  padding-right: 2rem;
+}
