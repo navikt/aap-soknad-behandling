@@ -10,6 +10,12 @@ const testdataliste = [
         tilstand: "OPPFYLT",
         harÅpenOppgave: false
       },
+      {
+        paragraf: "11-5",
+        ledd: "1",
+        tilstand: "IKKE_OPPFYLT",
+        harÅpenOppgave: true
+      },
     ],
   },
   {

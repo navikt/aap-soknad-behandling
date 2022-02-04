@@ -1,3 +1,7 @@
+body {
+  background-color: #f1f1f1;
+}
+
 #app {
   width: 100vw;
   height: 100vh;

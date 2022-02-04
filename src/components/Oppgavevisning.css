@@ -1,0 +1,38 @@
+.oppgavevisning__container {
+  width: 100%;
+  min-width: 48rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  margin-left: .5rem;
+}
+
+.oppgavevisning__oppgave {
+  background: hsl(0 0% 100%);
+  padding: 2rem;
+  max-width: 40rem;
+  width: 100%;
+}
+
+dd {
+  font-weight: 900;
+}
+
+dt {
+  font-weight: 400;
+}
+
+.oppgavevisning__oppgave > h1 {
+  margin: 0;
+}
+
+.oppgavevisning__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rad {
+  display: flex;
+  flex-direction: row;
+}

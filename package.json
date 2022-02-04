@@ -1,11 +1,13 @@
 {
   "name": "aap-soknad-behandling",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "scripts": {
     "start": "cross-env USE_MOCK='true' parcel src/index.html --open",
     "test": "jest",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "lint": "yarn eslint --ext .tsx,.ts src/"
   },
   "author": "",
   "license": "MIT",

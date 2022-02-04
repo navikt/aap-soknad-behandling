@@ -6,5 +6,6 @@ module.exports = {
   transform: {
     ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform"
   },
-  setupFilesAfterEnv:['./setupTests.ts']
+  setupFilesAfterEnv:['./setupTests.ts'],
+  testURL: 'http://localhost:3000'
 };

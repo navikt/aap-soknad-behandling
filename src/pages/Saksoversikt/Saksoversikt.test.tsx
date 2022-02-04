@@ -1,10 +1,17 @@
 import React from "react";
 import {render, screen, waitFor} from "@testing-library/react";
 import Saksoversikt from "./Saksoversikt";
+import {BrowserRouter} from "react-router-dom";
 
 describe('Saksoversikt',  () => {
   it('viser liste med oppgaver', async () => {
-    render(<Saksoversikt/>);
+    const renderWithRouter = (component:JSX.Element, {route = '/'} = {}) => {
+      window.history.pushState({}, '', route)
+
+      return render(component, {wrapper: BrowserRouter})
+    };
+
+    renderWithRouter(<Saksoversikt />);
     expect(screen.getByText("venter...")).toBeInTheDocument();
 
     await waitFor(() => expect(screen.getByRole('heading', {name: /Saksoversikt/})).toBeVisible());

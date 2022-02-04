@@ -2,4 +2,36 @@
    width: 100%;
    display: flex;
    flex-direction: column;
+   justify-content: center;
+ }
+
+ .saksliste__container {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+ }
+
+ .saksliste__innhold {
+   /*min-width: 62rem;*/
+   max-width: 50vw;
+ }
+
+ .actions {
+   background: hsl(0 0% 100%);
+   max-width: 24rem;
+   margin: 0 1rem;
+   padding: 1rem;
+ }
+
+ .banner {
+   display: flex;
+ }
+
+ .banner > h1 {
+   height: 5rem;
+   display: flex;
+   justify-content: space-between;
+   max-width: 72rem;
+   width: 100%;
+   align-items: center;
  }

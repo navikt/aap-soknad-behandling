@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import fetch from 'cross-fetch';
 import {APP_URL} from "../config";
-import {Sak} from "../types/Sak";
 
 export type ApiResponse = {
-  data: Sak[] | null;
+  data: any;
   error: string;
   loading: boolean;
 };
@@ -23,6 +22,7 @@ export const useFetch = (path: string): ApiResponse => {
       data && setData(data);
       setLoading(false);
     } catch (e) {
+      console.error(e);
       setError(`Error fetch: ${e}`);
       setLoading(false);
     }
