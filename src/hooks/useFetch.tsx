@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import fetch from 'cross-fetch';
-import {APP_URL} from "../config";
+import {APP_URL_TEST} from "../config";
 
 export type ApiResponse = {
   data: any;
@@ -15,9 +15,12 @@ export const useFetch = (path: string): ApiResponse => {
 
   const fetchGet = async () => {
     setLoading(true);
-    const url = new URL(path, APP_URL);
+    let url = path;
+    if (process.env.NODE_ENV === "test") {
+      url = APP_URL_TEST + path;
+    }
     try {
-      const res = await fetch(url.toString(), { method: "GET", credentials: "include" });
+      const res = await fetch(url, { method: "GET", credentials: "include" });
       const data = await res.json();
       data && setData(data);
       setLoading(false);
