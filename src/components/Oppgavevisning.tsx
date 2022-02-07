@@ -4,7 +4,7 @@ import { Sak, TILSTAND, valueFrom, Vilkårsvurdering } from "../types/Sak";
 import { Applicant, Close, Law } from "@navikt/ds-icons";
 
 import "./Oppgavevisning.css";
-import { Button } from "@navikt/ds-react";
+import {Button, Heading} from "@navikt/ds-react";
 
 const Vilkårsvurderinger = ({
   vilkår,
@@ -17,13 +17,13 @@ const Vilkårsvurderinger = ({
 
   return (
     <>
-      <h2>
+      <Heading level={"2"} size={"large"}>
         <Law /> Vilkårsvurderinger
-      </h2>
+      </Heading>
       <section>
         {vilkår.map((v) => (
           <div key={v.paragraf + "-" + v.ledd}>
-            <h3>Vilkår</h3>
+            <Heading level={"3"} size={"medium"}>Vilkår</Heading>
             <div>
               § {v.paragraf}, ledd {v.ledd}
             </div>
@@ -40,9 +40,9 @@ const Vilkårsvurderinger = ({
 
 const Søker = ({ søker }: { søker: any }): JSX.Element => (
   <>
-    <h2>
+    <Heading size={"large"} level={"2"}>
       <Applicant /> Om søkeren
-    </h2>
+    </Heading>
     <dl>
       <dt>Fødselsnummer</dt>
       <dd>{søker?.personident}</dd>
@@ -65,7 +65,7 @@ const Oppgavevisning = ({
     <div className="oppgavevisning__container">
       <div className="oppgavevisning__oppgave">
         <div className="oppgavevisning__header">
-          <h1>Søknad om AAP</h1>
+          <Heading level={"1"} size={"2xlarge"}>Søknad om AAP</Heading>
           {onClose && (
             <div>
               <Button onClick={() => onClose()} aria-label={"Lukk saksvisning"}>
