@@ -5,7 +5,7 @@
   "description": "",
   "scripts": {
     "start": "cross-env USE_MOCK='true' parcel src/index.html",
-    "test": "jest --watch",
+    "test": "jest",
     "build": "parcel build src/index.html",
     "lint": "yarn eslint --ext .tsx,.ts src/"
   },
