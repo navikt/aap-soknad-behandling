@@ -22,7 +22,7 @@ export function App() {
             path="*"
             element={
               <>
-                <Heading size={"2xlarge"} level={"1"} spacing={true}>
+                <Heading size={"xlarge"} level={"1"} spacing={true}>
                   AAP App
                 </Heading>
                 <span>Not Found</span>

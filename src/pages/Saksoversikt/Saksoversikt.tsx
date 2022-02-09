@@ -25,7 +25,7 @@ const Saksoversikt = () => {
   return (
     <div className="saksliste-page">
       <div className="banner">
-        <Heading size={"2xlarge"} level={"1"}>
+        <Heading size={"xlarge"} level={"1"}>
           Saksoversikt
         </Heading>
       </div>

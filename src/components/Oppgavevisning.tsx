@@ -65,7 +65,7 @@ const Oppgavevisning = ({
     <div className="oppgavevisning__container">
       <div className="oppgavevisning__oppgave">
         <div className="oppgavevisning__header">
-          <Heading level={"1"} size={"2xlarge"}>Søknad om AAP</Heading>
+          <Heading level={"1"} size={"xlarge"}>Søknad om AAP</Heading>
           {onClose && (
             <div>
               <Button onClick={() => onClose()} aria-label={"Lukk saksvisning"}>
