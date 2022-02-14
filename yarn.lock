@@ -641,6 +641,11 @@
     outvariant "^1.2.0"
     strict-event-emitter "^0.2.0"
 
+"@navikt/ds-css-internal@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.1.tgz#674fabf444c4a970c0d3631aac621fd46bfdca4c"
+  integrity sha512-atk2/O8bKx73614zwlWiHZza3vV5i3M5hbfitnAX5awCrRg9y8Hy7Xpu5zEpH0goTw74/AZuTJ50vghtiMC/9w==
+
 "@navikt/ds-css@^0.15.2":
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.15.2.tgz#017cc37e04c954aeff42b02ff04a89ae132495f2"
@@ -652,6 +657,18 @@
   integrity sha512-M0Q5HkXaQN2m06jo72XJEoStpDoP4TZbc3NMHKowlZ40/kCvSSqvW1uj6pZU7rZqMLZ3cgDRpBPncOfB5rMK+g==
   dependencies:
     uuid "^8.3.2"
+
+"@navikt/ds-react-internal@^0.11.4":
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.11.4.tgz#0f0598abe588c6a4932d182c8698549f6db37923"
+  integrity sha512-ISnPTH1FpO6H+r2J3v/4doCuDDZ1N8uC5lXDKfBpYwh10X5jmlJ9wXk8poGR7wSsD/vJwPJ3tkEBaww3b6capQ==
+  dependencies:
+    "@navikt/ds-icons" "^0.8.3"
+    "@navikt/ds-react" "^0.16.4"
+    "@popperjs/core" "^2.10.1"
+    classnames "^2.3.1"
+    copy-to-clipboard "^3.3.1"
+    react-merge-refs "^1.1.0"
 
 "@navikt/ds-react@^0.16.4":
   version "0.16.4"
@@ -1684,7 +1701,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/utils@5.11.0":
+"@typescript-eslint/utils@5.11.0", "@typescript-eslint/utils@^5.10.0":
   version "5.11.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-5.11.0.tgz#d91548ef180d74c95d417950336d9260fdbe1dc5"
   integrity sha512-g2I480tFE1iYRDyMhxPAtLQ9HAn0jjBtipgTCZmd9I9s11OV8CTsG+YfFciuNDcHqm4csbAgC2aVZCHzLxMSUw==
@@ -2265,7 +2282,7 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz#9f84ba3244a512f3a54e5277e8eef4c489864e40"
   integrity sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==
 
-classnames@^2.2.6:
+classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -2413,6 +2430,13 @@ cookie@^0.4.1:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.2.tgz#0e41f24de5ecf317947c82fc789e06a884824432"
   integrity sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==
+
+copy-to-clipboard@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
+  dependencies:
+    toggle-selection "^1.0.6"
 
 core-js@^3.2.1:
   version "3.21.0"
@@ -3005,6 +3029,18 @@ eslint-config-standard@^16.0.3:
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-16.0.3.tgz#6c8761e544e96c531ff92642eeb87842b8488516"
   integrity sha512-x4fmJL5hGqNJKGHSjnLdgA6U6h1YW/G2dW9fA+cyVur4SK6lyue8+UgNKWlZtUDTXvgKDD/Oa3GQjmB5kjtVvg==
+
+eslint-plugin-jest@^26.1.0:
+  version "26.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-26.1.0.tgz#9f6c33e66f3cef3f2832c3a4d2caa21a75792dee"
+  integrity sha512-vjF6RvcKm4xZSJgCmXb9fXmhzTva+I9jtj9Qv5JeZQTRocU7WT1g3Kx0cZ+00SekPe2DtSWDawHtSj4RaxFhXQ==
+  dependencies:
+    "@typescript-eslint/utils" "^5.10.0"
+
+eslint-plugin-react-hooks@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.3.0.tgz#318dbf312e06fab1c835a4abef00121751ac1172"
+  integrity sha512-XslZy0LnMn+84NEG9jSGR6eGqaZB3133L8xewQo3fQagbQuGt7a63gf+P1NGKZavEYEC3UXaWEAA/AqDkuN6xA==
 
 eslint-plugin-react@^7.28.0:
   version "7.28.0"
@@ -6513,6 +6549,11 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 tough-cookie@^4.0.0:
   version "4.0.0"

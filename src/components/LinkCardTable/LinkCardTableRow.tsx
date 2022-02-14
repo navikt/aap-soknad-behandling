@@ -8,6 +8,7 @@ export type LinkCardTableRowType = {
   selected?: boolean;
 }
 
+// eslint-disable-next-line no-unused-vars
 export const LinkCardTableRow = ({ href, onClick, children, selected }: LinkCardTableRowType) => {
   const isSelected = `${selected ? 'selected__row' : ''}`;
   return (

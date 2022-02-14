@@ -1,7 +1,9 @@
+/* eslint-disable */
 export enum TILSTAND {
   IKKE_OPPFYLT = "ikke oppfylt",
   OPPFYLT = "oppfylt"
 }
+/* eslint-enable */
 
 export const valueFrom = (v:keyof typeof TILSTAND) => {
   const verdier = Object.keys(TILSTAND);

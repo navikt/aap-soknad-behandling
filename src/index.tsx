@@ -2,6 +2,7 @@ import React from "react";
 import {render } from "react-dom";
 import { App } from "./App";
 import "@navikt/ds-css";
+import "@navikt/ds-css-internal";
 import "./index.css";
 
 if (process.env.USE_MOCK) {
