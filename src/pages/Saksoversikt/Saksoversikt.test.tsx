@@ -1,15 +1,10 @@
 import React from "react";
-import {render, screen, waitFor} from "@testing-library/react";
+import {screen, waitFor} from "@testing-library/react";
 import Saksoversikt from "./Saksoversikt";
-import {BrowserRouter} from "react-router-dom";
+import {renderWithRouter} from "../../test/renderWithRouter";
 
 describe('Saksoversikt',  () => {
   it('viser liste med oppgaver', async () => {
-    const renderWithRouter = (component:JSX.Element, {route = '/'} = {}) => {
-      window.history.pushState({}, '', route)
-
-      return render(component, {wrapper: BrowserRouter})
-    };
 
     renderWithRouter(<Saksoversikt />);
     expect(screen.getByText("venter...")).toBeInTheDocument();

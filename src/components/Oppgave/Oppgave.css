@@ -4,8 +4,6 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-
-  margin-left: .5rem;
 }
 
 .oppgavevisning__oppgave {
@@ -34,4 +32,12 @@ dt {
 .rad {
   display: flex;
   flex-direction: row;
+}
+
+.yay {
+  color: hsl(103, 100%, 49%);
+}
+
+.nay {
+  color: hsl(10, 100%, 49%);
 }

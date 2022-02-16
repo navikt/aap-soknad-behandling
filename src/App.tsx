@@ -5,9 +5,9 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Heading } from "@navikt/ds-react";
 
 import Saksoversikt from "./pages/Saksoversikt/Saksoversikt";
-import { NesteSak } from "./components/NesteSak";
 import { Feilviser } from "./components/Feilviser/Feilviser";
 import { AppHeader } from "./components/Header/AppHeader";
+import {SakHenter} from "./components/SakHenter/SakHenter";
 
 export function App() {
   return (
@@ -20,7 +20,8 @@ export function App() {
               path="/aap-behandling/saksoversikt"
               element={<Saksoversikt />}
             />
-            <Route path="/aap-behandling/sak/neste" element={<NesteSak />} />
+            <Route path="/aap-behandling/sak/neste" element={<SakHenter />} />
+            <Route path="/aap-behandling/sak/:personid" element={<SakHenter />} />
             <Route
               path="*"
               element={

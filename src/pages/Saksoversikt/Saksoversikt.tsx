@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { BodyShort, Heading, Loader } from "@navikt/ds-react";
 import "./Saksoversikt.css";
 import { LinkCardTable } from "../../components/LinkCardTable";
 import { useFetch } from "../../hooks/useFetch";
 import { Sak } from "../../types/Sak";
 import { RenderWhen } from "../../components/RenderWhen";
-import { Oppgavevisning } from "../../components/Oppgavevisning";
 
 type APIResponse = {
   data: Sak[] | null;
@@ -17,7 +16,6 @@ const Saksoversikt = () => {
   const { data, loading, error }: APIResponse = useFetch(
     "/aap-behandling/api/sak"
   );
-  const [valgtSak, settValgtSak] = useState<Sak | undefined>(undefined);
   if (error) {
     return <div>{error}</div>;
   }
@@ -40,27 +38,20 @@ const Saksoversikt = () => {
                 headingLabels={["Personident", "Fødselsdato", "Dato opprettet"]}
               >
                 {data &&
-                data.map((oppgave: Sak) => (
-                  <LinkCardTable.Row
-                    // href={`/aap-behandling/sak/${oppgave.personident}`}
-                    onClick={()=> settValgtSak(oppgave)}
-                    key={oppgave.personident}
-                    selected={valgtSak && valgtSak.personident === oppgave.personident}
-                  >
-                    <BodyShort>{oppgave.personident}</BodyShort>
-                    <BodyShort>{oppgave.fødselsdato}</BodyShort>
-                    <BodyShort>{"today"}</BodyShort>
-                  </LinkCardTable.Row>
-                ))}
+                  data.map((oppgave: Sak) => (
+                    <LinkCardTable.Row
+                      href={`/aap-behandling/sak/${oppgave.personident}`}
+                      key={oppgave.personident}
+                    >
+                      <BodyShort>{oppgave.personident}</BodyShort>
+                      <BodyShort>{oppgave.fødselsdato}</BodyShort>
+                      <BodyShort>{"today"}</BodyShort>
+                    </LinkCardTable.Row>
+                  ))}
               </LinkCardTable>
             </RenderWhen>
           </main>
         </div>
-        <RenderWhen when={valgtSak !== undefined}>
-          <>
-            {valgtSak !== undefined && <Oppgavevisning sak={valgtSak} onClose={() => settValgtSak(undefined)}/>}
-          </>
-        </RenderWhen>
       </section>
     </div>
   );

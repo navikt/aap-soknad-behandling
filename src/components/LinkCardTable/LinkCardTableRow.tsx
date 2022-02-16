@@ -3,16 +3,12 @@ import React from "react";
 
 export type LinkCardTableRowType = {
   href?: string;
-  onClick: Function;
   children: React.ReactNode;
-  selected?: boolean;
 }
 
-// eslint-disable-next-line no-unused-vars
-export const LinkCardTableRow = ({ href, onClick, children, selected }: LinkCardTableRowType) => {
-  const isSelected = `${selected ? 'selected__row' : ''}`;
+export const LinkCardTableRow = ({ href, children }: LinkCardTableRowType) => {
   return (
-    <LinkPanel onClick={() => onClick()} className={isSelected}>
+    <LinkPanel href={href}>
       <div className="link-card-table-row">
         {children}
       </div>

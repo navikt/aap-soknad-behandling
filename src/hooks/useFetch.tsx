@@ -13,26 +13,29 @@ export const useFetch = (path: string): ApiResponse => {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchGet = async () => {
-    setLoading(true);
-    let url = path;
-    if (process.env.NODE_ENV === "test") {
-      url = APP_URL_TEST + path;
-    }
-    try {
-      const res = await fetch(url, { method: "GET", credentials: "include" });
-      const data = await res.json();
-      data && setData(data);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setError(`Error fetch: ${e}`);
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchGet();
+    let isMounted = true;
+    const doFetch = async () => {
+      setLoading(true);
+      let url = path;
+      if (process.env.NODE_ENV === "test") {
+        url = APP_URL_TEST + path;
+      }
+      try {
+        const res = await fetch(url, {method: "GET", credentials: "include"});
+        const data = await res.json();
+        if (isMounted) {
+          data && setData(data);
+          setLoading(false);
+        }
+      } catch (e) {
+        console.error(e);
+        setError(`Error fetch: ${e}`);
+        setLoading(false);
+      }
+    }
+    doFetch();
+    return () => { isMounted = false; }
   }, []);
 
   return { data, error, loading };
