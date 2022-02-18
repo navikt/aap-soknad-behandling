@@ -647,36 +647,36 @@
   integrity sha512-atk2/O8bKx73614zwlWiHZza3vV5i3M5hbfitnAX5awCrRg9y8Hy7Xpu5zEpH0goTw74/AZuTJ50vghtiMC/9w==
 
 "@navikt/ds-css@^0.15.2":
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.15.2.tgz#017cc37e04c954aeff42b02ff04a89ae132495f2"
-  integrity sha512-GuKRraaWsWrkuR2bkvksyhKjlEXB7Fzu7OfQuKOxZK2F3Zp3E/IIP9kUsxThCSQBsdDO5nENrAYwuplkel0Rig==
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.15.3.tgz#5d1cba22721a38c067c48729351750e3a335c06d"
+  integrity sha512-/BFw77BnbjEl3yL45hO5H0Z8bgDLMnY5ty//aGpk+Jy//1Gm5WlF7JvWSlIu1/hDj6eeT4zwRdXJVO6pFkHCFA==
 
-"@navikt/ds-icons@^0.8.3":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.8.3.tgz#79c2453146aae07104a3858c4499ee9d61ed4eb4"
-  integrity sha512-M0Q5HkXaQN2m06jo72XJEoStpDoP4TZbc3NMHKowlZ40/kCvSSqvW1uj6pZU7rZqMLZ3cgDRpBPncOfB5rMK+g==
+"@navikt/ds-icons@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.8.4.tgz#82ba73cbc5704132ec2dd6e6faace3a2b9d6abff"
+  integrity sha512-yIBYeJrkO3pEL2qcR5DGtQQ6mfs9Bb8iueMdmj1sa0JBPuDmPLLW5SJ/2HH4tcQciDZ3erp7k4CemJkbtob5AQ==
   dependencies:
     uuid "^8.3.2"
 
 "@navikt/ds-react-internal@^0.11.4":
-  version "0.11.4"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.11.4.tgz#0f0598abe588c6a4932d182c8698549f6db37923"
-  integrity sha512-ISnPTH1FpO6H+r2J3v/4doCuDDZ1N8uC5lXDKfBpYwh10X5jmlJ9wXk8poGR7wSsD/vJwPJ3tkEBaww3b6capQ==
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react-internal/-/ds-react-internal-0.11.7.tgz#00ef488d2936337e09ee96c80b063999f17c465c"
+  integrity sha512-IBUGbN2wIEfC1jP6BMuUsZheXrslBtUrwJzwU45afoVHIK5cXhvBeUkAQz/4TC3ziQBiH7ThtfKk2Rt8doYa3Q==
   dependencies:
-    "@navikt/ds-icons" "^0.8.3"
-    "@navikt/ds-react" "^0.16.4"
+    "@navikt/ds-icons" "^0.8.4"
+    "@navikt/ds-react" "^0.16.7"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
     react-merge-refs "^1.1.0"
 
-"@navikt/ds-react@^0.16.4":
-  version "0.16.4"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.16.4.tgz#1aeb8547493aea4ca4a7e67c2689d839f8edd43c"
-  integrity sha512-o4opU+cIBTUYxNAoAxGaYDnhTbVhQnL4Y5ARjKfOTM15BPAoMFfn/lRCIdqAjiLHb7ADEwoWHLdoHCV9Wam2dg==
+"@navikt/ds-react@^0.16.4", "@navikt/ds-react@^0.16.7":
+  version "0.16.7"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-react/-/ds-react-0.16.7.tgz#f7814bd659e91c23792d997c479290318a92f454"
+  integrity sha512-kHXdiwmKfEH06hbpmvQz9cOGLidBvDCk6CKiZrt8LWT8atQp3Yhd7uRt5z+/OT4Y9WVsPudEN9azGgdgubB3Sg==
   dependencies:
     "@material-ui/core" "^4.12.3"
-    "@navikt/ds-icons" "^0.8.3"
+    "@navikt/ds-icons" "^0.8.4"
     "@popperjs/core" "^2.10.1"
     classnames "^2.2.6"
     react-collapse "^5.1.0"
