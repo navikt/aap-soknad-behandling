@@ -30,15 +30,29 @@ const Vilkår = ({
   complete: boolean;
 }): JSX.Element => (
   <Accordion.Item>
-    <Accordion.Header>
+    <Accordion.Header className={"header__override"}>
       <span>
         {complete ? <Success className={"yay"} /> : <Error className={"nay"} />}{" "}
         § {vk.paragraf}, ledd {vk.ledd}
       </span>
     </Accordion.Header>
-    <Accordion.Content>
-      <div>Vilkåret er {valueFrom(vk.tilstand as keyof typeof TILSTAND)}</div>
-      <div>Saken har {vk.harÅpenOppgave ? "" : "ingen"} åpne oppgaver</div>
+    <Accordion.Content className={"vilkår__container"}>
+      <main className={"vilkår"}>
+        <div>Vilkåret er {valueFrom(vk.tilstand as keyof typeof TILSTAND)}</div>
+        <div>Saken har {vk.harÅpenOppgave ? "" : "ingen"} åpne oppgaver</div>
+      </main>
+      <aside className={"vilkår__støtte"}>
+        <Heading level={"3"} size={"medium"}>
+          Fra søknaden
+        </Heading>
+        <article>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eros dolor. Phasellus commodo diam dolor, vel venenatis mi eleifend sit amet. Maecenas in turpis dignissim mi efficitur faucibus.
+        </article>
+        <Heading level={"3"} size={"medium"}>
+          Beregningsgrunnlag
+        </Heading>
+        <div>Inntekt: 123 456,-</div>
+      </aside>
     </Accordion.Content>
   </Accordion.Item>
 );

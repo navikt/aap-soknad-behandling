@@ -22,14 +22,14 @@ const Saksoversikt = () => {
 
   return (
     <div className="saksliste-page">
-      <div className="banner">
-        <Heading size={"xlarge"} level={"1"}>
-          Saksoversikt
-        </Heading>
-      </div>
       <section className="vedtaksflate">
         <div className="saksliste__container">
           <main className="saksliste__innhold">
+            <div className="banner">
+              <Heading size={"xlarge"} level={"1"}>
+                Saksoversikt
+              </Heading>
+            </div>
             <RenderWhen when={loading}>
               <Loader />
             </RenderWhen>

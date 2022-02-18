@@ -41,3 +41,23 @@ dt {
 .nay {
   color: hsl(10, 100%, 49%);
 }
+
+.vilkår__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.vilkår__container > .vilkår {
+  flex: 1 1;
+  border-right: 2px solid hsl(136, 0%, 40%);
+}
+
+.vilkår__container > .vilkår__støtte {
+  flex: 1 1;
+  padding-left: 1rem;
+}
+
+/* TODO ikke god nok måte, hva om navds bytter navn*/
+.navds-accordion__header.header__override {
+  justify-content: start;
+}
