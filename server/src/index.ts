@@ -38,7 +38,7 @@ const startServer = () => {
   server.use(`${config.BASE_PATH}/*`, enforceAzureADMiddleware);
 
   // user info
-  server.get(`${config.BASE_PATH}/userinfo`, azureUserInfo);
+  server.get(`${config.BASE_PATH}/internal/userinfo`, azureUserInfo);
 
   // Reverse proxy to add tokenx header for api calls
   tokenXProxy(`${config.BASE_PATH}/api`, server);

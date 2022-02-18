@@ -36,7 +36,7 @@ export const azureUserInfo = async function(req: Request, res: Response) {
   try {
     const token = authorization.split(" ")[1];
     const JWTVerifyResult = await validerToken(token);
-    res.json(JWTVerifyResult);
+    res.json({name: JWTVerifyResult.payload.name});
   } catch (e) {
     LogError('azureUserInfo', e);
     res.sendStatus(500);
