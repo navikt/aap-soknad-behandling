@@ -30,3 +30,15 @@ const validateAuthorization = async (authorization: string) => {
     return false;
   }
 }
+
+export const azureUserInfo = async function(req: Request, res: Response) {
+  const {authorization} = req.headers;
+  try {
+    const token = authorization.split(" ")[1];
+    const JWTVerifyResult = await validerToken(token);
+    res.json(JWTVerifyResult);
+  } catch (e) {
+    LogError('azureUserInfo', e);
+    res.sendStatus(500);
+  }
+}

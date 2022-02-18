@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import client from 'prom-client';
 import config from './config';
 import {LogInfo} from "./logger";
-import { enforceAzureADMiddleware } from "./auth/middleware";
+import {azureUserInfo, enforceAzureADMiddleware} from "./auth/middleware";
 import { tokenXProxy } from "./apiProxy";
 
 
@@ -36,6 +36,9 @@ const startServer = () => {
 
   // Enforce Azure AD authentication
   server.use(`${config.BASE_PATH}/*`, enforceAzureADMiddleware);
+
+  // user info
+  server.get(`${config.BASE_PATH}/userinfo`, azureUserInfo);
 
   // Reverse proxy to add tokenx header for api calls
   tokenXProxy(`${config.BASE_PATH}/api`, server);
