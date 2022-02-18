@@ -25,6 +25,9 @@ const SakHenter = ():JSX.Element => {
     return <ErrorSummary>{error}</ErrorSummary>
   }
   if (data) {
+    if (Array.isArray(data)) {
+      return <Oppgave sak={data[0]} />
+    }
     return <Oppgave sak={data} />
   }
 

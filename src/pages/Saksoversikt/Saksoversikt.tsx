@@ -5,12 +5,15 @@ import { LinkCardTable } from "../../components/LinkCardTable";
 import { useFetch } from "../../hooks/useFetch";
 import { Sak } from "../../types/Sak";
 import { RenderWhen } from "../../components/RenderWhen";
+import {formaterDatoArray} from "../../lib/dato";
 
 type APIResponse = {
   data: Sak[] | null;
   loading: boolean;
   error: string;
 };
+
+const Fødselsdato = ({dato} : {dato:number[]}):JSX.Element => <span>{formaterDatoArray(dato)}</span>
 
 const Saksoversikt = () => {
   const { data, loading, error }: APIResponse = useFetch(
@@ -44,7 +47,7 @@ const Saksoversikt = () => {
                       key={oppgave.personident}
                     >
                       <BodyShort>{oppgave.personident}</BodyShort>
-                      <BodyShort>{oppgave.fødselsdato}</BodyShort>
+                      <BodyShort><Fødselsdato dato={oppgave.fødselsdato} /></BodyShort>
                       <BodyShort>{"today"}</BodyShort>
                     </LinkCardTable.Row>
                   ))}

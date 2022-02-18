@@ -16,12 +16,12 @@ export const valueFrom = (v:keyof typeof TILSTAND) => {
 export type Vilkårsvurdering = {
   tilstand: string;
   paragraf: string;
-  ledd: string;
+  ledd: string[];
   harÅpenOppgave: boolean;
 };
 export type Sak = {
   personident: string;
-  fødselsdato: string;
+  fødselsdato: number[];
   tilstand: string;
   vilkårsvurderinger: Array<Vilkårsvurdering>;
 };

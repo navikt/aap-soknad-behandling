@@ -1,21 +1,59 @@
-const personMedEnAktivSak =   {
-  personident: "11068812345",
-  fødselsdato: "1988-06-11",
-  tilstand: "meh",
-  vilkårsvurderinger: [
-    {
-      paragraf: "11-4",
-      ledd: "1",
-      tilstand: "OPPFYLT",
-      harÅpenOppgave: false
-    },
-    {
-      paragraf: "11-5",
-      ledd: "1",
-      tilstand: "IKKE_OPPFYLT",
-      harÅpenOppgave: true
-    },
-  ],
-}
+const personMedEnAktivSak = [
+  {
+    personident: "1234567890",
+    fødselsdato: [1971, 5, 2],
+    tilstand: "SØKNAD_MOTTATT",
+    vilkårsvurderinger: [
+      {
+        paragraf: "PARAGRAF_11_2",
+        ledd: ["LEDD_1", "LEDD_2"],
+        tilstand: "SØKNAD_MOTTATT",
+        harÅpenOppgave: false,
+      },
+      {
+        paragraf: "PARAGRAF_11_3",
+        ledd: ["LEDD_1", "LEDD_2", "LEDD_3"],
+        tilstand: "SØKNAD_MOTTATT",
+        harÅpenOppgave: true,
+      },
+      {
+        paragraf: "PARAGRAF_11_4",
+        ledd: ["LEDD_1"],
+        tilstand: "OPPFYLT",
+        harÅpenOppgave: false,
+      },
+      {
+        paragraf: "PARAGRAF_11_4",
+        ledd: ["LEDD_2", "LEDD_3"],
+        tilstand: "SØKNAD_MOTTATT",
+        harÅpenOppgave: true,
+      },
+      {
+        paragraf: "PARAGRAF_11_5",
+        ledd: ["LEDD_1", "LEDD_2"],
+        tilstand: "SØKNAD_MOTTATT",
+        harÅpenOppgave: true,
+      },
+      {
+        paragraf: "PARAGRAF_11_6",
+        ledd: ["LEDD_1"],
+        tilstand: "SØKNAD_MOTTATT",
+        harÅpenOppgave: true,
+      },
+      {
+        paragraf: "PARAGRAF_11_12",
+        ledd: ["LEDD_1"],
+        tilstand: "SØKNAD_MOTTATT",
+        harÅpenOppgave: true,
+      },
+      {
+        paragraf: "PARAGRAF_11_29",
+        ledd: ["LEDD_1"],
+        tilstand: "SØKNAD_MOTTATT",
+        harÅpenOppgave: true,
+      },
+    ],
+  },
+];
 
-export {personMedEnAktivSak};
+export { personMedEnAktivSak };

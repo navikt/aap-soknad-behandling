@@ -12,7 +12,7 @@ describe("Sak-henter", () => {
   });
   it("henter sak med id", async () => {
     renderWithRouter(<SakHenter />, {route: "/aap-behandling/sak/1234567890"});
-    await waitFor(() => expect(screen.getByText('11068812345')).toBeVisible());
+    await waitFor(() => expect(screen.getByText('1234567890')).toBeVisible());
   });
 
   it("henter neste sak", async () => {
