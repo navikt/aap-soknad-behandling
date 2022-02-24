@@ -29,6 +29,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^14.0.0-beta",
     "@types/jest": "^27.0.3",
     "@types/node-fetch": "^3.0.3",
     "@types/react": "^17.0.37",
