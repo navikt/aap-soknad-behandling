@@ -19,6 +19,7 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
       <Sammendrag sak={sak} />
       <section className={"sak"}>
         <aside className={"sak__navigasjon"}>
+          <Heading size={"medium"} level={"2"}>Vurderinger</Heading>
           <nav>
             <LinkPanel><HandsHeart />Inngangsvilkår</LinkPanel>
             <LinkPanel><Law />11-5</LinkPanel>
