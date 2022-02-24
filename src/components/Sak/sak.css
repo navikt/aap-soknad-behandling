@@ -1,0 +1,79 @@
+.sak__container {
+  width: 100%;
+  min-width: 48rem;
+}
+.value {
+  font-weight: 900;
+  margin: 0 .25rem;
+}
+.key {
+  font-weight: 400;
+  margin: 0 .25rem;
+}
+
+.sak__header {
+  background: hsl(0 0% 100%);
+  padding: 1rem;
+}
+
+.rad {
+  display: flex;
+  flex-direction: row;
+}
+
+.sak__oppsummering {
+  padding: 1rem;
+  background: hsl(0, 0%, 100%);
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+.sak {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.sak > .sak__navigasjon {
+  min-width: 10vw;
+  max-width: 20vw;
+  background: hsl(0, 0%, 100%);
+  margin-right: 1rem;
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+.sak > .sak__navigasjon > nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sak > .sak__navigasjon > nav svg {
+  margin-right: .5rem;
+}
+
+.sak > .sak__behandling {
+  min-width: calc(100vw - (10vw - 1rem));
+  background: hsl(0, 0%, 100%);
+  padding: 1rem;
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+button.oppsummering__toggle {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  width: 100%;
+  border: none;
+  border-top: 2px solid hsl(0, 0%, 0%);
+  cursor: pointer;
+  background-color: hsl(0, 0%, 100%);
+  font-size: 1.5rem;
+}
+
+button.oppsummering__toggle:hover {
+  color: rgb(0, 103, 197);
+  border-color: rgb(0, 103, 197);
+}
+
+button.oppsummering__toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(0, 52, 125);
+}

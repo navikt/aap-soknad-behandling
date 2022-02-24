@@ -1,13 +1,13 @@
 import React from "react";
 import {useFetch} from "../../hooks/useFetch";
 import {ErrorSummary, Loader} from "@navikt/ds-react";
-import {Oppgave} from "../Oppgave/Oppgave";
-import {Sak} from "../../types/Sak";
+import {SakType} from "../../types/SakType";
 import {useMatch} from "react-router-dom";
+import {Sak} from "../Sak/Sak";
 
 // eslint-disable-next-line no-unused-vars
 type APIResponse = {
-  data: Sak;
+  data: SakType;
   loading: boolean;
   error: string;
 };
@@ -26,9 +26,10 @@ const SakHenter = ():JSX.Element => {
   }
   if (data) {
     if (Array.isArray(data)) {
-      return <Oppgave sak={data[0]} />
+      // TODO eget api for å hente en sak?
+      return <Sak sak={data[0]} />
     }
-    return <Oppgave sak={data} />
+    return <Sak sak={data} />
   }
 
   return <></>;

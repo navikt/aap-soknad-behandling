@@ -3,17 +3,17 @@ import { BodyShort, Heading, Loader } from "@navikt/ds-react";
 import "./Saksoversikt.css";
 import { LinkCardTable } from "../../components/LinkCardTable";
 import { useFetch } from "../../hooks/useFetch";
-import { Sak } from "../../types/Sak";
+import { SakType } from "../../types/SakType";
 import { RenderWhen } from "../../components/RenderWhen";
-import {formaterDatoArray} from "../../lib/dato";
+import {datoFraArray, formaterDato} from "../../lib/dato";
 
 type APIResponse = {
-  data: Sak[] | null;
+  data: SakType[] | null;
   loading: boolean;
   error: string;
 };
 
-const Fødselsdato = ({dato} : {dato:number[]}):JSX.Element => <span>{formaterDatoArray(dato)}</span>
+const Fødselsdato = ({dato} : {dato:number[]}):JSX.Element => <span>{formaterDato(datoFraArray(dato))}</span>
 
 const Saksoversikt = () => {
   const { data, loading, error }: APIResponse = useFetch(
@@ -41,7 +41,7 @@ const Saksoversikt = () => {
                 headingLabels={["Personident", "Fødselsdato", "Dato opprettet"]}
               >
                 {data &&
-                  data.map((oppgave: Sak) => (
+                  data.map((oppgave: SakType) => (
                     <LinkCardTable.Row
                       href={`/aap-behandling/sak/${oppgave.personident}`}
                       key={oppgave.personident}

@@ -1,24 +1,3 @@
-.oppgavevisning__container {
-  width: 100%;
-  min-width: 48rem;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.oppgavevisning__oppgave {
-  background: hsl(0 0% 100%);
-  padding: 2rem;
-  width: 100%;
-}
-
-dd {
-  font-weight: 900;
-}
-
-dt {
-  font-weight: 400;
-}
 
 .oppgavevisning__oppgave > h1 {
   margin: 0;
@@ -55,6 +34,10 @@ dt {
 .vilkår__container > .vilkår__støtte {
   flex: 1 1;
   padding-left: 1rem;
+}
+
+.vilkår > button + button {
+  margin-left: 0.5rem;
 }
 
 /* TODO ikke god nok måte, hva om navds bytter navn*/
