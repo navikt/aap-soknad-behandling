@@ -10,7 +10,7 @@
       "DOM"
     ],
     /* Specify JSX code generation */
-    "jsx": "react",
+    "jsx": "react-jsx",
     /* Generate corresponding .map files */
     "sourceMap": true,
     /* Enable all strict type-checking options */
