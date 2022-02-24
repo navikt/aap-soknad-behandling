@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Dropdown, Header} from "@navikt/ds-react-internal";
-import {useFetch} from "../../hooks/useFetch";
+import {fetchGET} from "../../hooks/useFetch";
 
 import "./appHeader.css";
 
@@ -10,7 +10,7 @@ interface Userinfo {
 
 const AppHeader = ():JSX.Element => {
   const [userinfo, setUserinfo] = useState<Userinfo|undefined>();
-  const {data, error} = useFetch("/aap-behandling/internal/userinfo");
+  const {data, error} = fetchGET("/aap-behandling/internal/userinfo");
   useEffect(() => {
     if (data && !error && !userinfo) {
       setUserinfo(data);

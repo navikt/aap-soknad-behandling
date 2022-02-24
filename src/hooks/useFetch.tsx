@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import fetch from 'cross-fetch';
 import {APP_URL_TEST} from "../config";
+import { RequestOptions } from "http";
 
 export type ApiResponse = {
   data: any;
@@ -8,7 +9,7 @@ export type ApiResponse = {
   loading: boolean;
 };
 
-export const useFetch = (path: string): ApiResponse => {
+export const fetchGET = (path: string): ApiResponse => {
   const [data, setData] = useState(null);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -39,4 +40,29 @@ export const useFetch = (path: string): ApiResponse => {
   }, []);
 
   return { data, error, loading };
+};
+
+export const fetchPOST = async (url: string, payload: object, opts: RequestOptions = {}) => {
+  const completeUrl = process.env.NODE_ENV === "test"
+    ? `${APP_URL_TEST}${url}`
+    : url;
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(opts.headers ? opts.headers : {})
+  }
+  try {
+    const res = await fetch(completeUrl, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers
+    });
+    if(res.ok) {
+      const data = await res.json();
+      return { ok: res.ok, data};
+    } else {
+      return {ok: res.ok, error: res.statusText};
+    }
+  } catch (e) {
+    return { error: `useFetchPOST: ${e}` };
+  }
 };

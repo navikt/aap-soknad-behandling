@@ -2,7 +2,7 @@ import React from "react";
 import { BodyShort, Heading, Loader } from "@navikt/ds-react";
 import "./Saksoversikt.css";
 import { LinkCardTable } from "../../components/LinkCardTable";
-import { useFetch } from "../../hooks/useFetch";
+import { fetchGET } from "../../hooks/useFetch";
 import { SakType } from "../../types/SakType";
 import { RenderWhen } from "../../components/RenderWhen";
 import {datoFraArray, formaterDato} from "../../lib/dato";
@@ -16,7 +16,7 @@ type APIResponse = {
 const Fødselsdato = ({dato} : {dato:number[]}):JSX.Element => <span>{formaterDato(datoFraArray(dato))}</span>
 
 const Saksoversikt = () => {
-  const { data, loading, error }: APIResponse = useFetch(
+  const { data, loading, error }: APIResponse = fetchGET(
     "/aap-behandling/api/sak"
   );
   if (error) {

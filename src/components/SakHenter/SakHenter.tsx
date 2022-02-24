@@ -1,5 +1,5 @@
 import React from "react";
-import {useFetch} from "../../hooks/useFetch";
+import {fetchGET} from "../../hooks/useFetch";
 import {ErrorSummary, Loader} from "@navikt/ds-react";
 import {SakType} from "../../types/SakType";
 import {useMatch} from "react-router-dom";
@@ -16,7 +16,7 @@ const SakHenter = ():JSX.Element => {
   const urlParams = useMatch("/aap-behandling/sak/:personid");
   const personid = urlParams?.params.personid;
   const url = personid ? `/aap-behandling/api/sak/${personid}` : "/aap-behandling/sak/neste"
-  const { data, loading, error } = useFetch(url);
+  const { data, loading, error } = fetchGET(url);
 
   if (loading) {
     return <Loader />
