@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import fetch from 'cross-fetch';
 import {APP_URL_TEST} from "../config";
 import { RequestOptions } from "http";
+import { useErrorHandler } from "react-error-boundary";
 
 export type ApiResponse = {
   data: any;
@@ -13,6 +14,8 @@ export const fetchGET = (path: string): ApiResponse => {
   const [data, setData] = useState(null);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
+  const errorHandler = useErrorHandler();
 
   useEffect(() => {
     let isMounted = true;
@@ -31,6 +34,7 @@ export const fetchGET = (path: string): ApiResponse => {
         }
       } catch (e) {
         console.error(e);
+        errorHandler(e);
         setError(`Error fetch: ${e}`);
         setLoading(false);
       }
@@ -43,6 +47,7 @@ export const fetchGET = (path: string): ApiResponse => {
 };
 
 export const fetchPOST = async (url: string, payload: object, opts: RequestOptions = {}) => {
+  const errorHandler = useErrorHandler();
   const completeUrl = process.env.NODE_ENV === "test"
     ? `${APP_URL_TEST}${url}`
     : url;
@@ -63,6 +68,7 @@ export const fetchPOST = async (url: string, payload: object, opts: RequestOptio
       return {ok: res.ok, error: res.statusText};
     }
   } catch (e) {
+    errorHandler(e);
     return { error: `useFetchPOST: ${e}` };
   }
 };

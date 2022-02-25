@@ -3,7 +3,7 @@ import React from "react";
 import {Alert, BodyShort, Button, Heading, Label, Panel} from "@navikt/ds-react";
 
 const Feilviser = ({ error, resetErrorBoundary }: { error: Error, resetErrorBoundary: Function }) => (
-  <Alert variant={"error"}>
+  <Alert variant={"error"} style={{marginTop: "1rem"}}>
     <Heading level={"1"} size={"large"}>
       Å nei! Dette var ikke helt planlagt...
     </Heading>

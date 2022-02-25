@@ -18,7 +18,7 @@ export function App() {
           <Routes>
             <Route
               path="/aap-behandling/saksoversikt"
-              element={<Saksoversikt />}
+              element={<ErrorBoundary FallbackComponent={Feilviser}><Saksoversikt /></ErrorBoundary>}
             />
             <Route path="/aap-behandling/sak/neste" element={<SakHenter />} />
             <Route path="/aap-behandling/sak/:personid" element={<SakHenter />} />
