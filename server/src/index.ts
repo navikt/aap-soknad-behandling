@@ -47,13 +47,14 @@ const startServer = () => {
   // user info
   server.get(`${config.BASE_PATH}/internal/userinfo`, azureUserInfo);
 
-  // Reverse proxy to add tokenx header for api calls
-  tokenXProxy(`${config.BASE_PATH}/api`, server);
-
   server.post(`${config.BASE_PATH}/api/manueltVedtak`, async (req, res) => {
     await sendToKafka(req.body);
     res.send('OK');
   });
+
+  // Reverse proxy to add tokenx header for api calls
+  tokenXProxy(`${config.BASE_PATH}/api`, server);
+
 
   // Render app
   server.get(`${config.BASE_PATH}/*`, (req: any, res: any) =>
