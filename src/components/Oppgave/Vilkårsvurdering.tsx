@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { VilkårsvurderingType } from "../../types/SakType";
 import { Success, Error, DecisionCheck, DecisionCross } from "@navikt/ds-icons";
