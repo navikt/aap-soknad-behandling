@@ -47,7 +47,6 @@ export const fetchGET = (path: string): ApiResponse => {
 };
 
 export const fetchPOST = async (url: string, payload: object, opts: RequestOptions = {}) => {
-  const errorHandler = useErrorHandler();
   const completeUrl = process.env.NODE_ENV === "test"
     ? `${APP_URL_TEST}${url}`
     : url;
@@ -68,7 +67,6 @@ export const fetchPOST = async (url: string, payload: object, opts: RequestOptio
       return {ok: res.ok, error: res.statusText};
     }
   } catch (e) {
-    errorHandler(e);
     return { error: `useFetchPOST: ${e}` };
   }
 };
