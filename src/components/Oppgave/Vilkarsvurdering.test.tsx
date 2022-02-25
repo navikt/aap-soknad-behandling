@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { testdataliste } from "../../mocks/datas/vurderinger";
 import { Vilkårsvurderinger } from "./Vilkarsvurdering";
-import { VILKÅRSTILSTAND } from "../../types/Vilkårstilstand";
+import { Vilkarstilstand } from "../../types/Vilkarstilstand";
 
 describe("Vilkårsvurderinger", () => {
   test("viser vilkårsvurderinger", () => {
@@ -27,7 +27,7 @@ describe("Vilkårsvurderinger", () => {
     // TODO ikke helt ferdig enda
     const testdata = [
       {
-        tilstand: VILKÅRSTILSTAND.OPPFYLT,
+        tilstand: Vilkarstilstand.OPPFYLT,
         paragraf: "PARAGRAF_11_2",
         ledd: ["LEDD_1"],
         harÅpenOppgave: false,

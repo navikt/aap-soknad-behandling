@@ -5,7 +5,7 @@ import { Success, Error, DecisionCheck, DecisionCross } from "@navikt/ds-icons";
 
 import "./vilkarsvurdering.css";
 import { Accordion, Alert, Button, Loader } from "@navikt/ds-react";
-import { vilkårstilstand, VILKÅRSTILSTAND } from "../../types/Vilkårstilstand";
+import { vilkårstilstand, Vilkarstilstand } from "../../types/Vilkarstilstand";
 import { getText } from "../../tekster/tekster";
 import { fetchPOST } from "../../hooks/useFetch";
 
@@ -46,7 +46,7 @@ const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: 
       </Accordion.Header>
       <Accordion.Content className={"vilkår__container"}>
         <main className={"vilkår"}>
-          <div>Vilkåret er {vilkårstilstand(vk.tilstand as keyof typeof VILKÅRSTILSTAND)}</div>
+          <div>Vilkåret er {vilkårstilstand(vk.tilstand as keyof typeof Vilkarstilstand)}</div>
           {vk.harÅpenOppgave && (
             <div>
               <Button
