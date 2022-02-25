@@ -26,11 +26,11 @@ export const handlers = [
       })
     );
   }),
-  rest.post("/aap-behandling/api/sak/vurderVilkaar", (req, res, ctx) => {
+  rest.post("/aap-behandling/api/manueltVedtak", (req, res, ctx) => {
     return res(
-      ctx.status(500),
-      ctx.json({ errorMessage: "Oh noes!" }),
-      ctx.delay(1000)
+      ctx.status(200),
+      ctx.json({}),
+      ctx.delay(500)
     )
   })
 ];

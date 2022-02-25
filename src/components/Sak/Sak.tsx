@@ -29,7 +29,7 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
           </nav>
         </aside>
         <main className={"sak__behandling"}>
-          <Vilkårsvurderinger vilkår={sak.vilkårsvurderinger} />
+          <Vilkårsvurderinger vilkår={sak.vilkårsvurderinger} personident={sak.personident} />
         </main>
       </section>
     </div>
