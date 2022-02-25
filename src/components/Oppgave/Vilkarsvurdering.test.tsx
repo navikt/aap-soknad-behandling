@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { testdataliste } from "../../mocks/datas/vurderinger";
-import { Vilkårsvurderinger } from "./Vilkårsvurdering";
+import { Vilkårsvurderinger } from "./Vilkarsvurdering";
 import { VILKÅRSTILSTAND } from "../../types/Vilkårstilstand";
 
 describe("Vilkårsvurderinger", () => {

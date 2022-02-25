@@ -3,7 +3,7 @@ import { Heading, LinkPanel } from "@navikt/ds-react";
 import {Calculator, HandsHeart, Law, Receipt} from "@navikt/ds-icons";
 
 import { SakType } from "../../types/SakType";
-import { Vilkårsvurderinger } from "../Oppgave/Vilkårsvurdering";
+import { Vilkårsvurderinger } from "../Oppgave/Vilkarsvurdering";
 import { Sammendrag } from "../Sammendrag/Sammendrag";
 
 import "./sak.css";

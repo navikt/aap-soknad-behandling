@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { VilkårsvurderingType } from "../../types/SakType";
 import { Success, Error, DecisionCheck, DecisionCross } from "@navikt/ds-icons";
 
-import "./vilkårsvurdering.css";
+import "./vilkarsvurdering.css";
 import { Accordion, Alert, Button, Loader } from "@navikt/ds-react";
 import { vilkårstilstand, VILKÅRSTILSTAND } from "../../types/Vilkårstilstand";
 import { getText } from "../../tekster/tekster";
