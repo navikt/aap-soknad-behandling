@@ -43,4 +43,4 @@ spec:
       rules:
         - application: vedtak
   kafka:
-    pool: nav-dev
+    pool: {{ kafka-pool }}

@@ -9,3 +9,5 @@ env:
   value: "dev-gcp:aap:vedtak"
 - name: API_SCOPE
   value: "api://dev-gcp.aap.vedtak/.default"
+kafka-pool:
+- nav-dev
