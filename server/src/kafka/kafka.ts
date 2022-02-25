@@ -32,7 +32,7 @@ interface Melding {
 const sendToKafka = async (message: Melding) => {
   const producer = kafka.producer();
   const schema = await avdlToAVSCAsync(
-    "https://raw.githubusercontent.com/navikt/aap-avro/0.0.4-manuell/manuell/main/manuell.avdl"
+    "server/manuell.avdl"
   );
   const { id } = await registry.register({
     type: SchemaType.AVRO,
