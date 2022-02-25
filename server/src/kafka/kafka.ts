@@ -1,3 +1,4 @@
+import path from 'path';
 import { Kafka } from "kafkajs";
 import {
   SchemaType,
@@ -32,7 +33,7 @@ interface Melding {
 const sendToKafka = async (message: Melding) => {
   const producer = kafka.producer();
   const schema = await avdlToAVSCAsync(
-    "server/manuell.avdl"
+    path.join(__dirname, "server", "manuell.avdl")
   );
   const { id } = await registry.register({
     type: SchemaType.AVRO,
