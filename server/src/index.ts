@@ -23,6 +23,7 @@ const startServer = () => {
 
   server.use(cookieParser());
   server.use(express.static(BUILD_PATH));
+  server.use(express.json());
 
   // metrics
   server.get(
