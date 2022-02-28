@@ -48,6 +48,7 @@ const startServer = () => {
   server.get(`${config.BASE_PATH}/internal/userinfo`, azureUserInfo);
 
   server.post(`${config.BASE_PATH}/api/manueltVedtak`, async (req, res) => {
+    LogInfo("frackend:" + req.body);
     await sendToKafka(req.body);
     res.send('OK');
   });
