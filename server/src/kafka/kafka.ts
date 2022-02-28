@@ -11,10 +11,11 @@ const kafka = new Kafka({
   brokers: process.env.KAFKA_BROKERS.split(","),
   ssl: {
     rejectUnauthorized: false,
-    ca: [process.env.KAFKA_TRUSTSTORE_PATH],
-    key: process.env.KAFKA_KEYSTORE_PATH,
-    cert: process.env.KAFKA_CREDSTORE_PASSWORD,
+    ca: [process.env.KAFKA_CA],
+    key: process.env.KAFKA_PRIVATE_KEY,
+    cert: process.env.KAFKA_CERTIFICATE,
   },
+  requestTimeout: 10000
 });
 
 const registry = new SchemaRegistry({
