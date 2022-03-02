@@ -4,19 +4,16 @@ import {Calculator, HandsHeart, Law, Receipt} from "@navikt/ds-icons";
 
 import { SakType } from "../../types/SakType";
 import { Vilkårsvurderinger } from "../Vilkarsvurdering/Vilkarsvurdering";
-import { Sammendrag } from "../Sammendrag/Sammendrag";
+// eslint-disable-next-line no-unused-vars
+import { Sammendrag, Sammendrag2 } from "../Sammendrag/Sammendrag";
 
 import "./sak.css";
 
 const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
   return (
     <div className="sak__container">
-      <div className="sak__header">
-        <Heading level={"1"} size={"xlarge"}>
-          Søknad om AAP
-        </Heading>
-      </div>
-      <Sammendrag sak={sak} />
+      {/*<Sammendrag sak={sak} />*/}
+      <Sammendrag2 sak={sak} />
       <section className={"sak"}>
         <aside className={"sak__navigasjon"}>
           <Heading size={"medium"} level={"2"}>Vurderinger</Heading>

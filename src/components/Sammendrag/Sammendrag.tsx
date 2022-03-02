@@ -1,46 +1,57 @@
-import { useState } from "react";
-
-import { Heading } from "@navikt/ds-react";
-import { Applicant, Expand, Collapse } from "@navikt/ds-icons";
-import { datoFraArray, finnAlder, formaterDato } from "../../lib/dato";
-import { SAKSTILSTAND, sakstilstand } from "../../types/Sakstilstand";
+import { BodyShort, Button, Heading, Link } from "@navikt/ds-react";
+import { Neutral, Copy } from "@navikt/ds-icons";
+import { datoFraArray, finnAlder, formaterPid } from "../../lib/dato";
 import { SakType } from "../../types/SakType";
+import { pipe } from "../../lib/functions";
 
-const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
-  const [vis, toggleVis] = useState<boolean>(false);
+import "./sammendrag.css";
+
+const Sammendrag2 = ({ sak }: { sak: SakType }): JSX.Element => {
   return (
-    <section className={"sak__oppsummering"}>
-      <Heading size={"large"} level={"2"}>
-        <Applicant /> <span>Om søkeren</span>
-      </Heading>
-      <section>
-        <span className={"key"}>Fødselsnummer</span>
-        <span className={"value"}>{sak?.personident}</span>
-        <span className={"key"}>Fødselsdato</span>
-        <span className={"value"}>{formaterDato(datoFraArray(sak?.fødselsdato))}</span>
-        <span className={"key"}>Alder</span>
-        <span className={"value"}>{finnAlder(datoFraArray(sak?.fødselsdato))}</span>
-        <span className={"key"}>Status</span>
-        <span className={"value"}>{sakstilstand(sak?.tilstand as keyof typeof SAKSTILSTAND)}</span>
-      </section>
-      {vis && <section>
-        <div className={"rad"}>
-          <span className={"key"}>Sivilstand</span>
-          <span className={"value"}>Gift</span>
-        </div>
-        <div className={"rad"}>
-          <div className={"key"}>Adresse</div>
-          <div>
-            <div className={"value"}>Brynsveien 984</div>
-            <div className={"value"}>2408 Elverum</div>
-          </div>
-        </div>
-      </section>}
-      <button onClick={() => toggleVis(!vis)} className={"oppsummering__toggle"} aria-expanded={vis}>
-        {vis ? <Collapse /> : <Expand />}
-      </button>
+    <section className={"personlinje"}>
+      <Neutral />
+      <span style={{ fontWeight: 900, marginLeft: "0.5rem" }}>
+        Navn Navnesen ({pipe(datoFraArray, finnAlder)(sak.fødselsdato)})
+      </span>
+      <BodyShort className={"separator"}>/</BodyShort>
+      <span>
+        {formaterPid(sak.personident)}{" "}
+        <Button
+          variant={"tertiary"}
+          onClick={() => navigator.clipboard.writeText(sak.personident)}
+          size={"small"}
+          className={"personlinje__knapp"}
+        >
+          <Copy title={"Kopier personid til utklippstavlen"} />
+        </Button>
+      </span>
+      <BodyShort className={"separator"}>/</BodyShort>
+      <Link href={"#"}>Brukerhistorikk</Link>
     </section>
   );
 };
 
-export { Sammendrag };
+const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
+  return (
+    <section className={"sak__oppsummering"}>
+      <Heading size={"large"} level={"2"} style={{ flex: "1 1 25%" }}>
+        Navn Navnesen
+      </Heading>
+      <div style={{ flex: "1 1 25%" }}>
+        <div style={{ fontWeight: "900" }}>Fødselsnummer</div>
+        <div>
+          {sak.personident} ({pipe(datoFraArray, finnAlder)(sak.fødselsdato)} år)
+        </div>
+      </div>
+      <div style={{ flex: "1 1 25%" }}>
+        <div style={{ fontWeight: "900" }}>Søkte</div>
+        <div>dd.mm.yyyy</div>
+      </div>
+      <div style={{ flex: "1 1 25%" }}>
+        <Link href={"#"}>Brukerhistorikk</Link>
+      </div>
+    </section>
+  );
+};
+
+export { Sammendrag, Sammendrag2 };
