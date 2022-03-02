@@ -56,6 +56,7 @@ const sendToKafka = async (message: Melding) => {
   await producer.send({
     topic: "aap.manuell.v1",
     messages: [outgoingMessage],
+    acks: 1
   });
   await producer.disconnect();
 };

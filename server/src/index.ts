@@ -49,9 +49,8 @@ const startServer = () => {
   server.get(`${config.BASE_PATH}/internal/userinfo`, azureUserInfo);
 
   server.post(`${config.BASE_PATH}/api/manueltVedtak`, async (req, res) => {
-    LogInfo("frackend:" + req.body);
     await sendToKafka(req.body);
-    res.send('OK');
+    res.status(200).send({message: 'OK'});
   });
 
   // Reverse proxy to add tokenx header for api calls
