@@ -4,28 +4,28 @@ import { datoFraArray, finnAlder, formaterPid } from "../../lib/dato";
 import { SakType } from "../../types/SakType";
 import { pipe } from "../../lib/functions";
 
-import "./sammendrag.css";
+import * as styles from "./sammendrag.module.css";
 
 const Sammendrag2 = ({ sak }: { sak: SakType }): JSX.Element => {
   return (
-    <section className={"personlinje"}>
+    <section className={styles.personlinje}>
       <Neutral />
       <span style={{ fontWeight: 900, marginLeft: "0.5rem" }}>
-        Navn Navnesen ({pipe(datoFraArray, finnAlder)(sak.fødselsdato)})
+        Navn Navnesen ({pipe(datoFraArray, finnAlder)(sak.fødselsdato)}) år
       </span>
-      <BodyShort className={"separator"}>/</BodyShort>
+      <BodyShort className={styles.separator}>/</BodyShort>
       <span>
         {formaterPid(sak.personident)}{" "}
         <Button
           variant={"tertiary"}
           onClick={() => navigator.clipboard.writeText(sak.personident)}
           size={"small"}
-          className={"personlinje__knapp"}
+          className={styles.personlinje__knapp}
         >
           <Copy title={"Kopier personid til utklippstavlen"} />
         </Button>
       </span>
-      <BodyShort className={"separator"}>/</BodyShort>
+      <BodyShort className={styles.separator}>/</BodyShort>
       <Link href={"#"}>Brukerhistorikk</Link>
     </section>
   );
@@ -33,7 +33,7 @@ const Sammendrag2 = ({ sak }: { sak: SakType }): JSX.Element => {
 
 const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
   return (
-    <section className={"sak__oppsummering"}>
+    <section className={styles.oppsummering}>
       <Heading size={"large"} level={"2"} style={{ flex: "1 1 25%" }}>
         Navn Navnesen
       </Heading>

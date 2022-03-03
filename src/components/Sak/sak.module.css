@@ -25,14 +25,6 @@
   flex-direction: row;
 }
 
-.sak__oppsummering {
-  padding: 1rem;
-  background: hsl(0, 0%, 100%);
-  box-shadow: var(--shadow-elevation-medium);
-  display: flex;
-  flex-direction: row;
-}
-
 .sak {
   display: flex;
   flex-direction: row;

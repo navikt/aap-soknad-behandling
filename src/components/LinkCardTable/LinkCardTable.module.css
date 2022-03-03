@@ -1,19 +1,19 @@
-.link-card-table-list {
+.link_card_table_list {
   display: flex;
   flex-direction: column;
   gap: var(--navds-spacing-3);
 }
-.link-card-table-row {
+.link_card_table_row {
   display: grid;
   grid-auto-flow: column;
   gap: var(--navds-spacing-8);
   align-items: center;
 }
-.navds-link-panel__content {
+.navds_link_panel__content {
   flex: 100;
 }
 
-.navds-link-panel.selected__row {
+.navds_link_panel.selected__row {
   border: none;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;

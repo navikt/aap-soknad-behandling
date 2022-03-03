@@ -3,7 +3,7 @@ import { Dropdown, Header } from "@navikt/ds-react-internal";
 import { System, ExternalLink } from "@navikt/ds-icons";
 import { fetchGET } from "../../hooks/useFetch";
 
-import "./appHeader.css";
+import * as styles from "./appHeader.module.css";
 import { Link } from "@navikt/ds-react";
 
 interface Brukerinfo {
@@ -67,7 +67,7 @@ const AppHeader = (): JSX.Element => {
   }, [brukerinfo, setBrukerinfo, data, error]);
 
   return (
-    <Header className={"app__header"}>
+    <Header className={styles.app__header}>
       <Header.Title href="/aap-behandling/saksoversikt">AAP Vedtaksløsning</Header.Title>
       <Systemmeny />
       <Brukermeny brukerinfo={brukerinfo} />

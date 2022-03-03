@@ -4,6 +4,7 @@ import { SakHenter } from "./SakHenter";
 import { screen, waitFor } from "@testing-library/react";
 import {renderWithRouter} from "../../test/renderWithRouter";
 import {testdataliste} from "../../mocks/datas/vurderinger";
+import { formaterPid } from "../../lib/dato";
 
 describe("Sak-henter", () => {
   it("viser laster-animasjon når vi gjør et kall", async () => {
@@ -12,11 +13,12 @@ describe("Sak-henter", () => {
   });
   it("henter sak med id", async () => {
     renderWithRouter(<SakHenter />, {route: "/aap-behandling/sak/1234567890"});
-    await waitFor(() => expect(screen.getByText('1234567890')).toBeVisible());
+    await waitFor(() => expect(screen.getByText('123456 7890')).toBeVisible());
   });
 
   it("henter neste sak", async () => {
     renderWithRouter(<SakHenter />, {route: "/aap-behandling/sak/neste"});
-    await waitFor(() => expect(screen.getByText(testdataliste[0].personident)).toBeVisible());
+    const forventetPid = formaterPid(testdataliste[0].personident);
+    await waitFor(() => expect(screen.getByText(forventetPid)).toBeVisible());
   });
 });

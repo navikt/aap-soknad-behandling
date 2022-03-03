@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { VilkårsvurderingType } from "../../types/SakType";
 import { Success, Error, DecisionCheck, DecisionCross } from "@navikt/ds-icons";
 
-import "./vilkarsvurdering.css";
+import * as styles from "./vilkarsvurdering.module.css";
 import { Accordion, Alert, Button, Loader } from "@navikt/ds-react";
 import { vilkårstilstand, Vilkarstilstand } from "../../types/Vilkarstilstand";
 import { getText } from "../../tekster/tekster";
@@ -38,14 +38,14 @@ const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: 
 
   return (
     <Accordion.Item defaultOpen={vk.harÅpenOppgave}>
-      <Accordion.Header className={"header__override"}>
+      <Accordion.Header className={styles.header__override}>
         <span>
-          {vk.harÅpenOppgave ? <Error className={"nay"} /> : <Success className={"yay"} />}{" "}
+          {vk.harÅpenOppgave ? <Error className={styles.nay} /> : <Success className={styles.yay} />}{" "}
           {getText(`paragraf.${vk.paragraf}`)}, {vk.ledd.map((l) => getText(`ledd.${l}`)).join(", ")}
         </span>
       </Accordion.Header>
-      <Accordion.Content className={"vilkår__container"}>
-        <main className={"vilkår"}>
+      <Accordion.Content className={styles.vilkår__container}>
+        <main className={styles.vilkår}>
           <div>Vilkåret er {vilkårstilstand(vk.tilstand as keyof typeof Vilkarstilstand)}</div>
           {vk.harÅpenOppgave && (
             <div>

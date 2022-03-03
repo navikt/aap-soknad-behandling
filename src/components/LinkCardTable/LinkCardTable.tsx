@@ -1,7 +1,8 @@
 import {BodyShort, Panel} from "@navikt/ds-react";
 import React from "react";
 import {LinkCardTableRowType, LinkCardTableRow} from "./LinkCardTableRow";
-import "./LinkCardTable.css"
+
+import * as styles from "./LinkCardTable.module.css"
 
 type LinkCardTableProps = {
   headingLabels?: string[];
@@ -12,8 +13,8 @@ type LinkCardTableProps = {
 const LinkCardTable = ({children, headingLabels}: LinkCardTableProps) => {
   return (
     <>
-      {headingLabels && <Panel className="link-card-table-row">{headingLabels.map((label: string) => <BodyShort key={label}>{label}</BodyShort>)}</Panel>}
-      <div role="list" className="link-card-table-list">
+      {headingLabels && <Panel className={styles.link_card_table_row}>{headingLabels.map((label: string) => <BodyShort key={label}>{label}</BodyShort>)}</Panel>}
+      <div role="list" className={styles.link_card_table_list}>
         {children}
       </div>
     </>);
