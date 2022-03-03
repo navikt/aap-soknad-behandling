@@ -41,7 +41,7 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
           </nav>
         </aside>
         <main className={styles.sak__behandling}>
-          <Vilkårsvurderinger vilkår={sak.vilkårsvurderinger} personident={sak.personident} />
+          <Vilkårsvurderinger vilkår={sak.sakstype?.vilkårsvurderinger} personident={sak.personident} />
         </main>
       </section>
     </div>

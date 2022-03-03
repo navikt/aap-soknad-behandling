@@ -81,7 +81,7 @@ const Vilkårsvurderinger = ({
   vilkår,
   personident,
 }: {
-  vilkår: VilkårsvurderingType[];
+  vilkår?: VilkårsvurderingType[];
   personident: string;
 }): JSX.Element => {
   if (!vilkår || vilkår.length === 0) {
