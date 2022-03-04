@@ -1,0 +1,30 @@
+.oppsummering {
+  padding: 1rem;
+  background: hsl(0, 0%, 100%);
+  box-shadow: var(--shadow-elevation-medium);
+  display: flex;
+  flex-direction: column;
+}
+
+.oppsummering > h2 {
+  margin: .5rem 0;
+}
+
+.oppsummering__personlinje {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.kv__pair:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.key {
+  font-weight: 900;
+  margin-right: .5rem;
+}
+
+.value {
+  font-weight: 400;
+}

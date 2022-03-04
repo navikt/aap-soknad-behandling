@@ -1,8 +1,9 @@
 const personMedEnAktivSak = [
   {
-    personident: "1234567890",
+    personident: "12345678910",
     fødselsdato: [1971, 5, 2],
     tilstand: "SØKNAD_MOTTATT",
+    navn: "Klatrende Eføy", // ikke fra modell
     sakstype: {
       type: 'Ny sak',
       vilkårsvurderinger: [

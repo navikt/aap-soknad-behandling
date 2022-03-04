@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import { VilkårsvurderingType } from "../../types/SakType";
+import { VilkårsvurderingType } from "../../../types/SakType";
 import { Success, Error, DecisionCheck, DecisionCross } from "@navikt/ds-icons";
 
 import * as styles from "./vilkarsvurdering.module.css";
 import { Accordion, Alert, Button, Loader } from "@navikt/ds-react";
-import { vilkårstilstand, Vilkarstilstand } from "../../types/Vilkarstilstand";
-import { getText } from "../../tekster/tekster";
-import { fetchPOST } from "../../hooks/useFetch";
+import { vilkårstilstand, Vilkarstilstand } from "../../../types/Vilkarstilstand";
+import { getText } from "../../../tekster/tekster";
+import { fetchPOST } from "../../../hooks/useFetch";
 
 const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: string }): JSX.Element => {
   const [senderMelding, setSenderMelding] = useState<boolean>(false);

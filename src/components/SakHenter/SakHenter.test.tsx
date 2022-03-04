@@ -8,12 +8,12 @@ import { formaterPid } from "../../lib/dato";
 
 describe("Sak-henter", () => {
   it("viser laster-animasjon når vi gjør et kall", async () => {
-    renderWithRouter(<SakHenter />, {route: "/aap-behandling/sak/1234567890"});
+    renderWithRouter(<SakHenter />, {route: "/aap-behandling/sak/12345678910"});
     expect(screen.getByText("venter...")).toBeInTheDocument();
   });
   it("henter sak med id", async () => {
-    renderWithRouter(<SakHenter />, {route: "/aap-behandling/sak/1234567890"});
-    await waitFor(() => expect(screen.getByText('123456 7890')).toBeVisible());
+    renderWithRouter(<SakHenter />, {route: "/aap-behandling/sak/12345678910"});
+    await waitFor(() => expect(screen.getByText('123456 78910')).toBeVisible());
   });
 
   it("henter neste sak", async () => {

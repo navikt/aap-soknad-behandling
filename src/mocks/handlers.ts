@@ -9,7 +9,7 @@ export const handlers = [
   rest.get("/aap-behandling/api/sak/neste", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(testdataliste[0]), ctx.delay(100));
   }),
-  rest.get("/aap-behandling/api/sak/1234567890", (req, res, ctx) => {
+  rest.get("/aap-behandling/api/sak/12345678910", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(personMedEnAktivSak), ctx.delay(300));
   }),
   rest.get("/aap-behandling/api/sak/:personid", (req, res, ctx) => {

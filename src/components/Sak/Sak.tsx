@@ -1,9 +1,8 @@
 import { Heading } from "@navikt/ds-react";
 
 import { SakType } from "../../types/SakType";
-import { Vilkårsvurderinger } from "../Vilkarsvurdering/Vilkarsvurdering";
-// eslint-disable-next-line no-unused-vars
-import { Sammendrag, Sammendrag2 } from "../Sammendrag/Sammendrag";
+import { Vilkårsvurderinger } from "./Vilkarsvurdering/Vilkarsvurdering";
+import { Sammendrag } from "./Sammendrag/Sammendrag";
 
 import * as styles from "./sak.module.css";
 import { Oppgaveliste } from "../Oppgaveliste/Oppgaveliste";
@@ -23,8 +22,7 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
   const requestedPage = searchParams.get('page') || DEFAULT_PAGE;
   return (
     <div className={styles.sak__container}>
-      {/*<Sammendrag sak={sak} />*/}
-      <Sammendrag2 sak={sak} />
+      <Sammendrag sak={sak} />
       <section className={styles.sak}>
         <aside className={styles.sak__navigasjon}>
           <Heading size={"medium"} level={"2"}>

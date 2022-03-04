@@ -1,5 +1,6 @@
 export interface SakType {
   personident: string;
+  navn?: string; // ikke fra modell
   fødselsdato: number[];
   tilstand: string;
   sakstype?: Sakstype;
