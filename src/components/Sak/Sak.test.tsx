@@ -1,12 +1,14 @@
-import React from "react";
-import {render, screen} from "@testing-library/react";
-import {personMedEnAktivSak} from "../../mocks/datas/personsaker";
+import {screen} from "@testing-library/react";
+
 import {Sak} from "./Sak";
 import { formaterPid } from "../../lib/dato";
+import { renderWithRouter } from "../../test/renderWithRouter";
+
+import {personMedEnAktivSak} from "../../mocks/datas/personsaker";
 
 describe("Saksvisning", () => {
   test("viser en enkelt sak", () => {
-    render(<Sak sak={personMedEnAktivSak[0]} />);
+    renderWithRouter(<Sak sak={personMedEnAktivSak[0]} />);
     const forventetPid = formaterPid(personMedEnAktivSak[0].personident);
     expect(screen.getByText(forventetPid)).toBeVisible();
   })

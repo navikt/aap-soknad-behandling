@@ -1,0 +1,9 @@
+.oppgaveliste > ol {
+  list-style: none;
+
+  font-size: 1.25rem;
+  line-height: 3;
+
+  margin-top: 0;
+  padding: 0;
+}

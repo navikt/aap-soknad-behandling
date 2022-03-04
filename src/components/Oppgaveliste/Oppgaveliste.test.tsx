@@ -1,11 +1,10 @@
-import React from "react";
-import {render} from "@testing-library/react";
-
-import {personMedEnAktivSak} from "../../mocks/datas/personsaker";
+import {render, screen} from "@testing-library/react";
 import {Oppgaveliste} from "./Oppgaveliste";
 
-describe("oppgaveliste", () => {
-  test("viser en oppgave pr vilkår / ledd", () => {
-    render(<Oppgaveliste vilkårsliste={personMedEnAktivSak[0].vilkårsvurderinger} />)
+describe.skip("oppgaveliste", () => {
+  test("tegner nav-elementer", () => {
+    render(<Oppgaveliste sider={{}} />);
+    expect(screen.getByRole('link', {name: /Inngangsvilkår/})).toBeVisible();
+    expect(screen.getByRole('link', {name: /§ 11-5/})).toBeVisible();
   });
 });

@@ -1,6 +1,4 @@
-import React from "react";
-import { Heading, LinkPanel } from "@navikt/ds-react";
-import { Calculator, HandsHeart, Law, Receipt } from "@navikt/ds-icons";
+import { Heading } from "@navikt/ds-react";
 
 import { SakType } from "../../types/SakType";
 import { Vilkårsvurderinger } from "../Vilkarsvurdering/Vilkarsvurdering";
@@ -8,8 +6,21 @@ import { Vilkårsvurderinger } from "../Vilkarsvurdering/Vilkarsvurdering";
 import { Sammendrag, Sammendrag2 } from "../Sammendrag/Sammendrag";
 
 import * as styles from "./sak.module.css";
+import { Oppgaveliste } from "../Oppgaveliste/Oppgaveliste";
+import { useSearchParams } from "react-router-dom";
+
+const PAGES = {
+  INNGANG: 'inngang',
+  P11_5: '11_5',
+  BEREGNING: 'beregning',
+  RESULTAT: 'resultat'
+}
+
+const DEFAULT_PAGE = PAGES.INNGANG;
 
 const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
+  const [searchParams] = useSearchParams();
+  const requestedPage = searchParams.get('page') || DEFAULT_PAGE;
   return (
     <div className={styles.sak__container}>
       {/*<Sammendrag sak={sak} />*/}
@@ -19,29 +30,15 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
           <Heading size={"medium"} level={"2"}>
             Vurderinger
           </Heading>
-          <nav>
-            <LinkPanel>
-              <HandsHeart />
-              Inngangsvilkår
-            </LinkPanel>
-            <LinkPanel>
-              <Law />
-              11-5
-            </LinkPanel>
-            <LinkPanel>
-              <Law />
-              11-6
-            </LinkPanel>
-            <LinkPanel>
-              <Calculator /> Beregning
-            </LinkPanel>
-            <LinkPanel>
-              <Receipt /> Resultat
-            </LinkPanel>
-          </nav>
+          <Oppgaveliste sider={PAGES} />
         </aside>
         <main className={styles.sak__behandling}>
-          <Vilkårsvurderinger vilkår={sak.sakstype?.vilkårsvurderinger} personident={sak.personident} />
+          {requestedPage === "inngang" && (
+            <Vilkårsvurderinger vilkår={sak.sakstype?.vilkårsvurderinger} personident={sak.personident} />
+          )}
+          {requestedPage === 'P11_5' && <div>11 5</div>}
+          {requestedPage === 'beregning' && <div>2+2=NaN</div>}
+          {requestedPage === 'resultat' && <div>Yay! $$$</div>}
         </main>
       </section>
     </div>

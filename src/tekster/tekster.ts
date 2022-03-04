@@ -40,6 +40,12 @@ const texts = {
     LEDD_6: "ledd 6",
     LEDD_7: "ledd 7",
   },
+  navigasjon: {
+    'inngangsvilkaar': 'Inngangsvilkår',
+    '11_5': '§ 11-5',
+    'beregning': 'Beregning',
+    'resultat': 'Resultat'
+  }
 };
 
 export const getText = (key: string): string => {
