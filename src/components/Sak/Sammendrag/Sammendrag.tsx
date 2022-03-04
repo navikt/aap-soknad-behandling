@@ -18,7 +18,6 @@ const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
           variant={"tertiary"}
           onClick={() => navigator.clipboard.writeText(sak.navn || "Ukjent navn")}
           size={"small"}
-          className={styles.personlinje__knapp}
         >
           <Copy title={"Kopier navn til utklippstavlen"} />
         </Button>
@@ -33,7 +32,6 @@ const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
             variant={"tertiary"}
             onClick={() => navigator.clipboard.writeText(sak.personident)}
             size={"small"}
-            className={styles.personlinje__knapp}
           >
             <Copy title={"Kopier personid til utklippstavlen"} />
           </Button>
