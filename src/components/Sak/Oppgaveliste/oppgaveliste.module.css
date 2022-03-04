@@ -1,0 +1,17 @@
+.oppgaveliste > ol {
+  list-style: none;
+
+  font-size: 1.25rem;
+  line-height: 3;
+
+  margin-top: 0;
+  padding: 0;
+}
+
+.oppgaveliste > ol > li {
+  padding-left: .5rem;
+}
+
+.oppgaveliste > ol > li.active {
+  box-shadow: -5px 0 hsl(223, 100%, 50%);
+}

@@ -5,15 +5,9 @@ import { Vilkårsvurderinger } from "./Vilkarsvurdering/Vilkarsvurdering";
 import { Sammendrag } from "./Sammendrag/Sammendrag";
 
 import * as styles from "./sak.module.css";
-import { Oppgaveliste } from "../Oppgaveliste/Oppgaveliste";
+import { Oppgaveliste } from "./Oppgaveliste/Oppgaveliste";
 import { useSearchParams } from "react-router-dom";
-
-const PAGES = {
-  INNGANG: 'inngang',
-  P11_5: '11_5',
-  BEREGNING: 'beregning',
-  RESULTAT: 'resultat'
-}
+import { PAGES } from "./pages";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
@@ -28,7 +22,7 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
           <Heading size={"medium"} level={"2"}>
             Vurderinger
           </Heading>
-          <Oppgaveliste sider={PAGES} />
+          <Oppgaveliste activePage={requestedPage} />
         </aside>
         <main className={styles.sak__behandling}>
           {requestedPage === "inngang" && (
