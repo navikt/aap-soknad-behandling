@@ -9,11 +9,11 @@ env:
   value: "dev-gcp:aap:vedtak"
 - name: VEDTAK_API_SCOPE
   value: "api://dev-gcp.aap.vedtak/.default"
-- name: OPPGAVEBEHANDLING_API_URL
+- name: OPPGAVESTYRING_API_URL
   value: "http://oppgavestyring"
-- name: OPPGAVEBEHANDLING_API_AUDIENCE
+- name: OPPGAVESTYRING_API_AUDIENCE
   value: "dev-gcp:aap:oppgavestyring"
-- name: OPPGAVEBEHANDLING_API_SCOPE
-  value: "api://dev-gcp.aap.oppgavebehandling/.default"
+- name: OPPGAVESTYRING_API_SCOPE
+  value: "api://dev-gcp.aap.oppgavestyring/.default"
 kafka-pool:
 - nav-dev
