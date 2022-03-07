@@ -1,7 +1,6 @@
 import { Application, Request} from "express";
 import proxy from 'express-http-proxy';
 import {LogError} from "./logger";
-import config from "./config";
 import {getOnBehalfOfToken} from "./auth/azureOnBehalfOfToken";
 import { IncomingMessage } from "http";
 
