@@ -5,13 +5,13 @@ import config from "./config";
 import {getOnBehalfOfToken} from "./auth/azureOnBehalfOfToken";
 import { IncomingMessage } from "http";
 
-const options = () => ({
+const options = (scope: string) => ({
   parseReqBody: true,
   proxyReqOptDecorator: (options: any, req: Request) => {
     const { authorization } = req.headers;
     const token = authorization.split(" ")[1];
     return new Promise((resolve, reject) => {
-      return getOnBehalfOfToken(token).then(
+      return getOnBehalfOfToken(scope, token).then(
           apiToken => {
             resolve({
               ...options,
@@ -53,6 +53,6 @@ const options = () => ({
 
 
 
-export const tokenXProxy = (path: string, server: Application) => {
-  server.use(path, proxy(config.VEDTAK_API_URL, options()));
+export const tokenXProxy = (apiUrl: string, scope: string, path: string, server: Application) => {
+  server.use(path, proxy(apiUrl, options(scope)));
 }

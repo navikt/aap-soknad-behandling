@@ -42,5 +42,6 @@ spec:
     outbound:
       rules:
         - application: vedtak
+        - application: oppgavestyring
   kafka:
     pool: {{ kafka-pool }}

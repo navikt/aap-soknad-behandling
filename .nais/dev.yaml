@@ -7,7 +7,13 @@ env:
   value: "http://vedtak"
 - name: VEDTAK_API_AUDIENCE
   value: "dev-gcp:aap:vedtak"
-- name: API_SCOPE
+- name: VEDTAK_API_SCOPE
   value: "api://dev-gcp.aap.vedtak/.default"
+- name: OPPGAVEBEHANDLING_API_URL
+  value: "http://oppgavestyring"
+- name: OPPGAVEBEHANDLING_API_AUDIENCE
+  value: "dev-gcp:aap:oppgavestyring"
+- name: OPPGAVEBEHANDLING_API_SCOPE
+  value: "api://dev-gcp.aap.oppgavebehandling/.default"
 kafka-pool:
 - nav-dev

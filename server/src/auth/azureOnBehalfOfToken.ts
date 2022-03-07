@@ -44,17 +44,15 @@ async function client() {
   return _client;
 }
 
-export async function getOnBehalfOfToken(subject_token: string) {
+export async function getOnBehalfOfToken(scope: string, subject_token: string) {
   const _client = await client();
   console.log('client', _client);
-  if (!process.env.API_SCOPE)
-    throw new TypeError(`Miljøvariabelen API_SCOPE må være satt`);
 
   const grantBody: GrantBody = {
     grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
     assertion: subject_token,
     requested_token_use: 'on_behalf_of',
-    scope: process.env.API_SCOPE,
+    scope: scope,
   };
 
   return _client
