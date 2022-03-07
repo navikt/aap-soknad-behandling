@@ -54,5 +54,5 @@ const options = () => ({
 
 
 export const tokenXProxy = (path: string, server: Application) => {
-  server.use(path, proxy(config.SOKNAD_API_URL, options()));
+  server.use(path, proxy(config.VEDTAK_API_URL, options()));
 }
