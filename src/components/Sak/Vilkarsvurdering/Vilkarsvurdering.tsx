@@ -15,12 +15,9 @@ const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: 
   const [meldingSendt, setMeldingSendt] = useState<boolean>(false);
   const sendMelding = async () => {
     setSenderMelding(true);
-    const res = await fetchPOST("/aap-behandling/api/manueltVedtak", {
-      personident,
-      value: {
-        losning_11_5_manuell: {
-          grad: 60,
-        },
+    const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
+      losning_11_5_manuell: {
+        grad: 60,
       },
     });
     if (!res.ok) {
