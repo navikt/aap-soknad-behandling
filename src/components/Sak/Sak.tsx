@@ -32,6 +32,7 @@ const Inngangsvilkår = ({ sak }: { sak: SakType }): JSX.Element => {
       />
       <Paragraf_11_4
         vilkårsvurderinger={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_4")}
+        fødselsdato={sak.fødselsdato}
       />
     </>
   );
