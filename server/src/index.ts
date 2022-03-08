@@ -6,7 +6,6 @@ import config from "./config";
 import { LogInfo } from "./logger";
 import { azureUserInfo, enforceAzureADMiddleware } from "./auth/middleware";
 import { tokenXProxy } from "./apiProxy";
-import { sendToKafka } from "./kafka/kafka";
 
 const BUILD_PATH = path.join(__dirname, "../dist");
 const PORT = process.env.PORT || 3000;
@@ -47,11 +46,6 @@ const startServer = () => {
 
   // user info
   server.get(`${config.BASE_PATH}/internal/userinfo`, azureUserInfo);
-
-  server.post(`${config.BASE_PATH}/api/manueltVedtak`, async (req, res) => {
-    await sendToKafka(req.body);
-    res.status(200).send({message: 'OK'});
-  });
 
   // Reverse proxy to add tokenx header for api calls
   tokenXProxy(config.OPPGAVESTYRING_API_URL, config.OPPGAVESTYRING_API_SCOPE, `${config.BASE_PATH}/api/sak/:personident/losning`, server);

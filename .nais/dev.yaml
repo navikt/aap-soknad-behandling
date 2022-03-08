@@ -15,5 +15,3 @@ env:
   value: "dev-gcp:aap:oppgavestyring"
 - name: OPPGAVESTYRING_API_SCOPE
   value: "api://dev-gcp.aap.oppgavestyring/.default"
-kafka-pool:
-- nav-dev
