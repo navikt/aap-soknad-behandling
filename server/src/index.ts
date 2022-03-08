@@ -48,11 +48,7 @@ const startServer = () => {
   server.get(`${config.BASE_PATH}/internal/userinfo`, azureUserInfo);
 
   // Reverse proxy to add tokenx header for api calls
-  tokenXProxy(config.OPPGAVESTYRING_API_URL, config.OPPGAVESTYRING_API_SCOPE, `${config.BASE_PATH}/api/sak/:personident/losning`, server);
-
-  // Reverse proxy to add tokenx header for api calls
-  tokenXProxy(config.VEDTAK_API_URL, config.VEDTAK_API_SCOPE, `${config.BASE_PATH}/api`, server);
-
+  tokenXProxy(config.OPPGAVESTYRING_API_URL, config.OPPGAVESTYRING_API_SCOPE, `${config.BASE_PATH}/api`, server);
 
   // Render app
   server.get(`${config.BASE_PATH}/*`, (req: any, res: any) =>
