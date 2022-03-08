@@ -46,6 +46,9 @@ const texts = {
     beregning: "Beregning",
     resultat: "Resultat",
   },
+  sak: {
+    heading: "Vurdere sak"
+  },
   paragrafer: {
     knapper: {
       fullfør: "Fullfør oppgaven",

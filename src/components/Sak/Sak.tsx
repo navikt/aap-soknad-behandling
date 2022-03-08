@@ -20,7 +20,7 @@ const DEFAULT_PAGE = PAGES.INNGANG;
 const Inngangsvilkår = ({ sak }: { sak: SakType }): JSX.Element => {
   return (
     <>
-      <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
+      <Heading size={"large"} level={"2"} className={styles.blokk__header}>
         {getText("paragrafer.inngangsvilkår.heading")}
       </Heading>
       <Paragraf_11_2
@@ -54,15 +54,20 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
   const requestedPage = searchParams.get("page") || DEFAULT_PAGE;
   return (
     <div className={styles.sak__container}>
+      <div className={styles.sentrer}>
+        <Heading level={"1"} size={"xlarge"}>
+          {getText("sak.heading")}
+        </Heading>
+      </div>
       <Sammendrag sak={sak} />
       <section className={styles.sak}>
-        <aside className={styles.sak__navigasjon}>
-          <Heading size={"medium"} level={"2"}>
+        <aside className={`${styles.sak__navigasjon} box`}>
+          <Heading size={"large"} level={"2"}>
             Vurderinger
           </Heading>
           <Oppgaveliste activePage={requestedPage} />
         </aside>
-        <main className={styles.sak__behandling}>
+        <main className={`${styles.sak__behandling} box`}>
           <RenderWhen when={requestedPage === "inngang"}>
             <Inngangsvilkår sak={sak} />
           </RenderWhen>

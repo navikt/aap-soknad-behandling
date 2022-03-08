@@ -8,7 +8,7 @@ import * as styles from "./sammendrag.module.css";
 
 const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
   return (
-    <section className={styles.oppsummering}>
+    <section className={`${styles.oppsummering} box`}>
       <div>
         <Tag variant={"warning"}>Ikke påbegynt</Tag>
       </div>
