@@ -3,12 +3,6 @@ ingresses:
 env:
 - name: APP_URL
   value: "https://aap-soknad-behandling.dev.intern.nav.no"
-- name: VEDTAK_API_URL
-  value: "http://vedtak"
-- name: VEDTAK_API_AUDIENCE
-  value: "dev-gcp:aap:vedtak"
-- name: VEDTAK_API_SCOPE
-  value: "api://dev-gcp.aap.vedtak/.default"
 - name: OPPGAVESTYRING_API_URL
   value: "http://oppgavestyring"
 - name: OPPGAVESTYRING_API_AUDIENCE
