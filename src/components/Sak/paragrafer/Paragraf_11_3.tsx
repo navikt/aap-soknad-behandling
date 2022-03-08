@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import { Button, Heading, Radio, RadioGroup } from "@navikt/ds-react";
+import { Button, Heading, Radio} from "@navikt/ds-react";
 
 import { VilkårsvurderingType } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
 import { useForm } from "react-hook-form";
 import { getText } from "../../../tekster/tekster";
 import { fetchPOST } from "../../../hooks/useFetch";
+import {InputRadioGroup} from "../../InputRadio";
 
 const Paragraf_11_3 = ({
   vilkårsvurderinger,
@@ -16,8 +17,8 @@ const Paragraf_11_3 = ({
   personident: string;
 }): JSX.Element => {
   const {
-    register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm();
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
@@ -26,6 +27,7 @@ const Paragraf_11_3 = ({
     return <>Fant ikke 11-3</>;
   }
   const onSubmit = async (datas: any) => {
+    console.log(datas)
     oppdaterSenderMelding(true);
     const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
       løsning_11_3_manuell: {
@@ -51,14 +53,19 @@ const Paragraf_11_3 = ({
         Bosatt
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <RadioGroup legend={"Oppfyller medlemmet 11-3?"} size={"medium"} error={errors.erOppfylt?.message}>
-          <Radio value={"true"} {...register("erOppfylt", { required: getText("inngangsvilkår.påkrevd") })}>
-            Ja
-          </Radio>
-          <Radio value={"false"} {...register("erOppfylt", { required: getText("inngangsvilkår.påkrevd") })}>
-            Nei
-          </Radio>
-        </RadioGroup>
+        <InputRadioGroup
+          name={"erOppfylt"}
+          control={control}
+          legend={"Oppfyller medlemmet 11-3?"}
+          error={errors.erOppfylt?.message}
+        >
+            <Radio value={"true"}>
+              Ja
+            </Radio>
+            <Radio value={"false"} >
+              Nei
+            </Radio>
+          </InputRadioGroup>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>
