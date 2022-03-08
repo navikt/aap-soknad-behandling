@@ -41,11 +41,31 @@ const texts = {
     LEDD_7: "ledd 7",
   },
   navigasjon: {
-    'inngangsvilkaar': 'Inngangsvilkår',
-    '11_5': '§ 11-5',
-    'beregning': 'Beregning',
-    'resultat': 'Resultat'
-  }
+    inngangsvilkaar: "Inngangsvilkår",
+    "11_5": "§ 11-5",
+    beregning: "Beregning",
+    resultat: "Resultat",
+  },
+  paragrafer: {
+    knapper: {
+      fullfør: "Fullfør oppgaven",
+      fortsett: "Fortsett"
+    },
+    inngangsvilkår: {
+      heading: "Inngangsvilkår",
+      påkrevd: 'Du må velge om bruker oppfyller kravet til § 11-3 eller ikke'
+    },
+    "11_5": {
+      heading: "Vurdering av § 11-5",
+      nedsattArbeidsevne: {
+        label: "Med hvor mange prosent er arbeidsevnen nedsatt?",
+        paakrevd: "Du må legge inn hvor mange prosent arbeidsevnen er nedsatt med.",
+        ikkeMindreEnnNull: "Arbeidsevnen kan ikke være nedsatt med mindre enn 0 prosent.",
+        ikkeOverHundre: "Arbeidsevnen kan ikke være nedsatt med mer enn 100 prosent",
+        ugyldigFormat: "Nedsatt arbeidsevne må registreres i prosent, mellom 0 og 100"
+      },
+    },
+  },
 };
 
 export const getText = (key: string): string => {

@@ -1,0 +1,15 @@
+.paragraf__blokk {
+  margin-top: 1rem;
+}
+
+h3.paragraf__heading {
+  border-bottom: 2px solid hsl(0, 0%, 80%);
+}
+
+.green {
+  color: hsl(103, 100%, 49%);
+}
+
+.red {
+  color: hsl(10, 100%, 49%);
+}

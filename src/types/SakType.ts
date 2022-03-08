@@ -22,7 +22,7 @@ export interface VilkårsvurderingType {
 interface VedtakType {
   innvilget: boolean;
   inntektsgrunnlag: InntektsgrunnlagType;
-  søknadstidspunkt: Date; // TODO LDT?
+  søknadstidspunkt: Date;
   vedtaksdato: Date;
   virkningsdato: Date;
 }

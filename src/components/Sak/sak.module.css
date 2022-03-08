@@ -81,3 +81,7 @@ button.oppsummering__toggle:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgb(0, 52, 125);
 }
+
+h2.blokk__header {
+  border-bottom: 3px solid hsl(0, 0%, 59%);
+}

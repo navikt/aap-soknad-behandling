@@ -5,12 +5,12 @@ const personMedEnAktivSak = [
     tilstand: "SØKNAD_MOTTATT",
     navn: "Klatrende Eføy", // ikke fra modell
     sakstype: {
-      type: 'Ny sak',
+      type: "STANDARD",
       vilkårsvurderinger: [
         {
           paragraf: "PARAGRAF_11_2",
           ledd: ["LEDD_1", "LEDD_2"],
-          tilstand: "SØKNAD_MOTTATT",
+          tilstand: "OPPFYLT_MASKINELT",
           harÅpenOppgave: false,
         },
         {
@@ -28,14 +28,14 @@ const personMedEnAktivSak = [
         {
           paragraf: "PARAGRAF_11_4",
           ledd: ["LEDD_2", "LEDD_3"],
-          tilstand: "SØKNAD_MOTTATT",
-          harÅpenOppgave: true,
+          tilstand: "IKKE_RELEVANT",
+          harÅpenOppgave: false,
         },
         {
           paragraf: "PARAGRAF_11_5",
           ledd: ["LEDD_1", "LEDD_2"],
           tilstand: "SØKNAD_MOTTATT",
-          harÅpenOppgave: true,
+          harÅpenOppgave: false,
         },
         {
           paragraf: "PARAGRAF_11_6",
