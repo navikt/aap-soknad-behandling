@@ -30,7 +30,7 @@ const Paragraf_11_3 = ({
     oppdaterSenderMelding(true);
     const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
       løsning_11_3_manuell: {
-        erOppfylt: datas.erOppfylt,
+        erOppfylt: datas.erOppfylt === "true",
       },
     });
     oppdaterSenderMelding(false);
@@ -56,7 +56,7 @@ const Paragraf_11_3 = ({
           control={control}
           legend={"Oppfyller medlemmet 11-3?"}
           error={errors.erOppfylt?.message}
-          rules={{required: getText('paragrafer.inngangsvilkår.påkrevd')}}
+          rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
         >
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>
