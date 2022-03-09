@@ -56,7 +56,7 @@ const texts = {
     },
     inngangsvilkår: {
       heading: "Inngangsvilkår",
-      påkrevd: 'Du må velge om bruker oppfyller kravet til § 11-3 eller ikke'
+      påkrevd: 'Du må ta stilling til om bruker oppfyller kravet til § 11-3 eller ikke.'
     },
     "11_5": {
       heading: "Vurdering av § 11-5",

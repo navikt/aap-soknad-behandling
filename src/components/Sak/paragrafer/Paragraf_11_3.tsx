@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import { Button, Heading, Radio} from "@navikt/ds-react";
+import { Button, Heading, Radio } from "@navikt/ds-react";
 
 import { VilkårsvurderingType } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
 import { useForm } from "react-hook-form";
 import { getText } from "../../../tekster/tekster";
 import { fetchPOST } from "../../../hooks/useFetch";
-import {InputRadioGroup} from "../../InputRadio";
+import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 
 const Paragraf_11_3 = ({
   vilkårsvurderinger,
@@ -27,7 +27,6 @@ const Paragraf_11_3 = ({
     return <>Fant ikke 11-3</>;
   }
   const onSubmit = async (datas: any) => {
-    console.log(datas)
     oppdaterSenderMelding(true);
     const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
       løsning_11_3_manuell: {
@@ -35,12 +34,11 @@ const Paragraf_11_3 = ({
       },
     });
     oppdaterSenderMelding(false);
-    if(!res.ok) {
-      console.warn('Noe feilet under innsending');
+    if (!res.ok) {
+      console.warn("Noe feilet under innsending");
     } else {
       settMeldingErSendt(true);
     }
-
   };
 
   if (meldingErSendt) {
@@ -53,19 +51,16 @@ const Paragraf_11_3 = ({
         Bosatt
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <InputRadioGroup
+        <RadioGroupWrapper
           name={"erOppfylt"}
           control={control}
           legend={"Oppfyller medlemmet 11-3?"}
           error={errors.erOppfylt?.message}
+          rules={{required: getText('paragrafer.inngangsvilkår.påkrevd')}}
         >
-            <Radio value={"true"}>
-              Ja
-            </Radio>
-            <Radio value={"false"} >
-              Nei
-            </Radio>
-          </InputRadioGroup>
+          <Radio value={"true"}>Ja</Radio>
+          <Radio value={"false"}>Nei</Radio>
+        </RadioGroupWrapper>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>
