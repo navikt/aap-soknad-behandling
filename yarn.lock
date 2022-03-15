@@ -656,10 +656,10 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-css-internal/-/ds-css-internal-0.7.1.tgz#674fabf444c4a970c0d3631aac621fd46bfdca4c"
   integrity sha512-atk2/O8bKx73614zwlWiHZza3vV5i3M5hbfitnAX5awCrRg9y8Hy7Xpu5zEpH0goTw74/AZuTJ50vghtiMC/9w==
 
-"@navikt/ds-css@^0.15.2":
-  version "0.15.4"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.15.4.tgz#260653b203bf04f0e86a2ae9f9872ede54e3ead2"
-  integrity sha512-31tSMb+RIylncwJK3453TY/8atrnN0X/5uh7mljAxbowptV3/nZt9pK9PqCkdvAgap+VrAgtAXHBPiZ6lRDq2A==
+"@navikt/ds-css@^0.15.5":
+  version "0.15.12"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.15.12.tgz#dae50463663c72e40dd84a5d24dc6c71dfecabe2"
+  integrity sha512-WbYAWsy/rFhCzp+zbZwy1+JqxxgKPx7mEqdI/qtr6dbYoDtHwF0eDBFYOHxUuihgGd5Dm+gANhnY5PdIMpymHw==
 
 "@navikt/ds-icons@^0.8.4":
   version "0.8.4"
