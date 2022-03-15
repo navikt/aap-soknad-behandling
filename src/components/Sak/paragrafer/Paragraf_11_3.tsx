@@ -38,6 +38,7 @@ const Paragraf_11_3 = ({
       console.warn("Noe feilet under innsending");
     } else {
       settMeldingErSendt(true);
+      window.location.reload();
     }
   };
 
