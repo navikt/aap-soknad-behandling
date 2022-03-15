@@ -9,7 +9,7 @@
   gap: var(--navds-spacing-8);
   align-items: center;
 }
-.navds_link_panel__content {
+:global(.navds-link-panel__content) {
   flex: 100;
 }
 
