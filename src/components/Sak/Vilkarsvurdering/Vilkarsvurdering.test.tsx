@@ -30,7 +30,7 @@ describe("Vilkårsvurderinger", () => {
         tilstand: Vilkarstilstand.OPPFYLT,
         paragraf: "PARAGRAF_11_2",
         ledd: ["LEDD_1"],
-        harÅpenOppgave: false,
+        måVurderesManuelt: false,
       },
     ];
     render(<Vilkårsvurderinger vilkår={testdata} personident={"1234567890"} />);

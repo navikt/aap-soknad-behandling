@@ -34,17 +34,17 @@ const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: 
   };
 
   return (
-    <Accordion.Item defaultOpen={vk.harÅpenOppgave}>
+    <Accordion.Item defaultOpen={vk.måVurderesManuelt}>
       <Accordion.Header className={styles.header__override}>
         <span>
-          {vk.harÅpenOppgave ? <Error className={styles.nay} /> : <Success className={styles.yay} />}{" "}
+          {vk.måVurderesManuelt ? <Error className={styles.nay} /> : <Success className={styles.yay} />}{" "}
           {getText(`paragraf.${vk.paragraf}`)}, {vk.ledd.map((l) => getText(`ledd.${l}`)).join(", ")}
         </span>
       </Accordion.Header>
       <Accordion.Content className={styles.vilkår__container}>
         <main className={styles.vilkår}>
           <div>Vilkåret er {vilkårstilstand(vk.tilstand as keyof typeof Vilkarstilstand)}</div>
-          {vk.harÅpenOppgave && (
+          {vk.måVurderesManuelt && (
             <div>
               <Button
                 variant={"secondary"}

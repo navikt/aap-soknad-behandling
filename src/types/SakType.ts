@@ -16,7 +16,7 @@ export interface VilkårsvurderingType {
   tilstand: string;
   paragraf: string;
   ledd: string[];
-  harÅpenOppgave: boolean;
+  måVurderesManuelt: boolean;
 }
 
 interface VedtakType {
