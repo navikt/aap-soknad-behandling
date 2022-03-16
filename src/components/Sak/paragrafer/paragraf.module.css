@@ -1,0 +1,42 @@
+.paragraf__blokk {
+  margin-top: 1rem;
+}
+
+h3.paragraf__heading {
+  border-bottom: 2px solid hsl(0, 0%, 80%);
+  margin-bottom: .5rem;
+}
+
+.green {
+  color: hsl(103, 75%, 40%);
+}
+
+.red {
+  color: hsl(10, 100%, 49%);
+}
+
+.kolonne {
+  display: flex;
+  flex-direction: column;
+}
+
+.kolonne:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.key {
+  font-weight: 900;
+}
+
+.kolonne > .key {
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-weight: 400;
+}
+
+.rad {
+  display: flex;
+  flex-direction: row;
+}

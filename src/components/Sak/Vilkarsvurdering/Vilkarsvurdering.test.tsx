@@ -1,13 +1,13 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { testdataliste } from "../../mocks/datas/vurderinger";
+import { testdataliste } from "../../../mocks/datas/vurderinger";
 import { Vilkårsvurderinger } from "./Vilkarsvurdering";
-import { Vilkarstilstand } from "../../types/Vilkarstilstand";
+import { Vilkarstilstand } from "../../../types/Vilkarstilstand";
 
 describe("Vilkårsvurderinger", () => {
   test("viser vilkårsvurderinger", () => {
     const testdata = testdataliste[0];
-    render(<Vilkårsvurderinger vilkår={testdata.vilkårsvurderinger} personident={testdata.personident} />);
+    render(<Vilkårsvurderinger vilkår={testdata.sakstype.vilkårsvurderinger} personident={testdata.personident} />);
     expect(screen.getByText(/^§ 11-4, ledd 1$/)).toBeVisible();
   });
 
@@ -18,7 +18,7 @@ describe("Vilkårsvurderinger", () => {
 
   test("viser valg for godkjenne og avslå når et vilkår har åpne oppgaver", () => {
     const testdata = testdataliste[0];
-    render(<Vilkårsvurderinger vilkår={testdata.vilkårsvurderinger} personident={testdata.personident} />);
+    render(<Vilkårsvurderinger vilkår={testdata.sakstype.vilkårsvurderinger} personident={testdata.personident} />);
     expect(screen.getByRole("button", { name: /Vilkåret er oppfylt/ })).toBeVisible();
     expect(screen.getByRole("button", { name: /Vilkåret er ikke oppfylt/ })).toBeVisible();
   });
@@ -30,7 +30,7 @@ describe("Vilkårsvurderinger", () => {
         tilstand: Vilkarstilstand.OPPFYLT,
         paragraf: "PARAGRAF_11_2",
         ledd: ["LEDD_1"],
-        harÅpenOppgave: false,
+        måVurderesManuelt: false,
       },
     ];
     render(<Vilkårsvurderinger vilkår={testdata} personident={"1234567890"} />);
@@ -41,3 +41,4 @@ describe("Vilkårsvurderinger", () => {
     screen.debug();
   });
 });
+1

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import { VilkårsvurderingType } from "../../types/SakType";
+import { VilkårsvurderingType } from "../../../types/SakType";
 import { Success, Error, DecisionCheck, DecisionCross } from "@navikt/ds-icons";
 
-import "./vilkarsvurdering.css";
+import * as styles from "./vilkarsvurdering.module.css";
 import { Accordion, Alert, Button, Loader } from "@navikt/ds-react";
-import { vilkårstilstand, Vilkarstilstand } from "../../types/Vilkarstilstand";
-import { getText } from "../../tekster/tekster";
-import { fetchPOST } from "../../hooks/useFetch";
+import { vilkårstilstand, Vilkarstilstand } from "../../../types/Vilkarstilstand";
+import { getText } from "../../../tekster/tekster";
+import { fetchPOST } from "../../../hooks/useFetch";
 
 const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: string }): JSX.Element => {
   const [senderMelding, setSenderMelding] = useState<boolean>(false);
@@ -15,12 +15,9 @@ const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: 
   const [meldingSendt, setMeldingSendt] = useState<boolean>(false);
   const sendMelding = async () => {
     setSenderMelding(true);
-    const res = await fetchPOST("/aap-behandling/api/manueltVedtak", {
-      personident,
-      value: {
-        losning_11_5_manuell: {
-          grad: 60,
-        },
+    const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
+      løsning_11_5_manuell: {
+        grad: 60,
       },
     });
     if (!res.ok) {
@@ -37,17 +34,17 @@ const Vilkår = ({ vk, personident }: { vk: VilkårsvurderingType; personident: 
   };
 
   return (
-    <Accordion.Item defaultOpen={vk.harÅpenOppgave}>
-      <Accordion.Header className={"header__override"}>
+    <Accordion.Item defaultOpen={vk.måVurderesManuelt}>
+      <Accordion.Header className={styles.header__override}>
         <span>
-          {vk.harÅpenOppgave ? <Error className={"nay"} /> : <Success className={"yay"} />}{" "}
+          {vk.måVurderesManuelt ? <Error className={styles.nay} /> : <Success className={styles.yay} />}{" "}
           {getText(`paragraf.${vk.paragraf}`)}, {vk.ledd.map((l) => getText(`ledd.${l}`)).join(", ")}
         </span>
       </Accordion.Header>
-      <Accordion.Content className={"vilkår__container"}>
-        <main className={"vilkår"}>
+      <Accordion.Content className={styles.vilkår__container}>
+        <main className={styles.vilkår}>
           <div>Vilkåret er {vilkårstilstand(vk.tilstand as keyof typeof Vilkarstilstand)}</div>
-          {vk.harÅpenOppgave && (
+          {vk.måVurderesManuelt && (
             <div>
               <Button
                 variant={"secondary"}
@@ -81,7 +78,7 @@ const Vilkårsvurderinger = ({
   vilkår,
   personident,
 }: {
-  vilkår: VilkårsvurderingType[];
+  vilkår?: VilkårsvurderingType[];
   personident: string;
 }): JSX.Element => {
   if (!vilkår || vilkår.length === 0) {

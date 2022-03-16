@@ -7,7 +7,7 @@ import { Heading } from "@navikt/ds-react";
 import Saksoversikt from "./pages/Saksoversikt/Saksoversikt";
 import { Feilviser } from "./components/Feilviser/Feilviser";
 import { AppHeader } from "./components/Header/AppHeader";
-import {SakHenter} from "./components/SakHenter/SakHenter";
+import { SakHenter } from "./components/SakHenter/SakHenter";
 
 export function App() {
   return (
@@ -18,7 +18,11 @@ export function App() {
           <Routes>
             <Route
               path="/aap-behandling/saksoversikt"
-              element={<ErrorBoundary FallbackComponent={Feilviser}><Saksoversikt /></ErrorBoundary>}
+              element={
+                <ErrorBoundary FallbackComponent={Feilviser}>
+                  <Saksoversikt />
+                </ErrorBoundary>
+              }
             />
             <Route path="/aap-behandling/sak/neste" element={<SakHenter />} />
             <Route path="/aap-behandling/sak/:personid" element={<SakHenter />} />
