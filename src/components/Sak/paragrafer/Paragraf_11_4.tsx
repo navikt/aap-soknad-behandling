@@ -16,7 +16,6 @@ const Paragraf_11_4 = ({
   if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
     return <div>Fant ikke 11-4</div>;
   }
-  console.log(vilkårsvurderinger);
   return (
     <div className={styles.paragraf__blokk}>
       <div className={styles.paragraf__heading}>
