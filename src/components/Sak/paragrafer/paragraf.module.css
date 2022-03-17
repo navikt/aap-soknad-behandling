@@ -2,9 +2,14 @@
   margin-top: 1rem;
 }
 
-h3.paragraf__heading {
-  border-bottom: 2px solid hsl(0, 0%, 80%);
+.paragraf__heading {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
   margin-bottom: .5rem;
+
+  border-bottom: 2px solid hsl(0, 0%, 80%);
 }
 
 .green {

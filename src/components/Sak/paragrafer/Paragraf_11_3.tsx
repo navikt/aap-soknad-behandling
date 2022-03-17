@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { getText } from "../../../tekster/tekster";
 import { fetchPOST } from "../../../hooks/useFetch";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
+import { Vilkårsstatus } from "../Vilkarsstatus/Vilkårsstatus";
 
 const Paragraf_11_3 = ({
   vilkårsvurderinger,
@@ -23,8 +24,8 @@ const Paragraf_11_3 = ({
   } = useForm();
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   const [meldingErSendt, settMeldingErSendt] = useState<boolean>(false); // temporary
-  if (!vilkårsvurderinger) {
-    return <>Fant ikke 11-3</>;
+  if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
+    return <div>Fant ikke 11-3</div>;
   }
   const onSubmit = async (datas: any) => {
     oppdaterSenderMelding(true);
@@ -48,9 +49,12 @@ const Paragraf_11_3 = ({
 
   return (
     <div className={styles.paragraf__blokk}>
-      <Heading size={"medium"} level={"3"} className={styles.paragraf__heading}>
-        Bosatt
-      </Heading>
+      <div className={styles.paragraf__heading}>
+        <Heading size={"medium"} level={"3"}>
+          Bosatt
+        </Heading>
+        <Vilkårsstatus tilstand={vilkårsvurderinger[0].tilstand} />
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RadioGroupWrapper
           name={"erOppfylt"}

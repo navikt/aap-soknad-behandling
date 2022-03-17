@@ -24,7 +24,7 @@ const Inngangsvilkår = ({ sak }: { sak: SakType }): JSX.Element => {
         {getText("paragrafer.inngangsvilkår.heading")}
       </Heading>
       <Paragraf_11_2
-        vilkårsvurderinger={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_2")}
+        vilkårsvurdering={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_2")[0]}
       />
       <Paragraf_11_3
         vilkårsvurderinger={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_3")}

@@ -4,22 +4,27 @@ import { datoFraArray, finnAlder, formaterDato } from "../../../lib/dato";
 import { pipe } from "../../../lib/functions";
 
 import * as styles from "./paragraf.module.css";
+import { Vilkårsstatus } from "../Vilkarsstatus/Vilkårsstatus";
 
 const Paragraf_11_4 = ({
   vilkårsvurderinger,
-  fødselsdato
+  fødselsdato,
 }: {
-  vilkårsvurderinger: VilkårsvurderingType[] | undefined,
-  fødselsdato: number[]
+  vilkårsvurderinger: VilkårsvurderingType[] | undefined;
+  fødselsdato: number[];
 }): JSX.Element => {
-  if (!vilkårsvurderinger) {
-    return <>Fant ikke 11-4</>;
+  if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
+    return <div>Fant ikke 11-4</div>;
   }
+  console.log(vilkårsvurderinger);
   return (
     <div className={styles.paragraf__blokk}>
-      <Heading size={"medium"} level={"3"} className={styles.paragraf__heading}>
-        Alder
-      </Heading>
+      <div className={styles.paragraf__heading}>
+        <Heading size={"medium"} level={"3"}>
+          Alder
+        </Heading>
+        <Vilkårsstatus tilstand={vilkårsvurderinger[0].tilstand} />
+      </div>
       <div className={styles.rad}>
         <div className={styles.kolonne}>
           <span className={styles.key}>Alder</span>

@@ -1,0 +1,17 @@
+.status {
+  margin-left: .5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.status__ok {
+  color: #006A23;
+}
+
+.status__nok {
+  color: #A32A17;
+}
+
+.status__beskrivelse {
+  margin-left: .25rem
+}

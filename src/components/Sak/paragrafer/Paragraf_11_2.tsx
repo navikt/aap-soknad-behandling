@@ -1,30 +1,30 @@
 import { Heading } from "@navikt/ds-react";
-import { AutomaticSystem, Caseworker, Success } from "@navikt/ds-icons";
 
 import { VilkårsvurderingType } from "../../../types/SakType";
 
 import * as styles from "./paragraf.module.css";
+import { Vilkårsstatus } from "../Vilkarsstatus/Vilkårsstatus";
 
-const Paragraf_11_2 = ({
-  vilkårsvurderinger,
-}: {
-  vilkårsvurderinger: VilkårsvurderingType[] | undefined;
-}): JSX.Element => {
-  if (!vilkårsvurderinger) {
-    return <>Fant ikke 11-2</>;
+const Paragraf_11_2 = ({ vilkårsvurdering }: { vilkårsvurdering: VilkårsvurderingType | undefined }): JSX.Element => {
+  if (!vilkårsvurdering) {
+    return <div>Fant ikke 11-2</div>;
   }
   return (
     <div className={styles.paragraf__blokk}>
-      <Heading size={"medium"} level={"3"} className={styles.paragraf__heading}>
-        Medlemskap i Folketrygden
-      </Heading>
-      {vilkårsvurderinger.map((vilkårsvurdering) => (
-        <div key={vilkårsvurdering.paragraf + vilkårsvurdering.ledd.join("-")}>
-          {vilkårsvurdering.tilstand === "OPPFYLT_MASKINELT" && <Success className={styles.green} />}
-          {vilkårsvurdering.tilstand === "OPPFYLT_MASKINELT" && <AutomaticSystem />}
-          {vilkårsvurdering.tilstand === "OPPFYLT_MANUELT" && <Caseworker />}
-        </div>
-      ))}
+      <div className={styles.paragraf__heading}>
+        <Heading size={"medium"} level={"3"}>
+          Medlemskap i Folketrygden
+        </Heading>
+        <Vilkårsstatus tilstand={vilkårsvurdering.tilstand} />
+      </div>
+      <div>
+        {vilkårsvurdering.tilstand === "OPPFYLT_MASKINELT" && (
+          <span>Søker har vært medlem i Folketrygden i minst 5 år.</span>
+        )}
+        {vilkårsvurdering.tilstand !== "OPPFYLT_MASKINELT" && (
+          <span>Søker har ikke vært medlem i Folketrygden i minst 5 år</span>
+        )}
+      </div>
     </div>
   );
 };
