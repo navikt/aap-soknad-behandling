@@ -14,10 +14,10 @@ const Paragraf_11_6 = ({
   vilkårsvurdering: VilkårsvurderingType | undefined;
   personident: string;
 }): JSX.Element => {
-
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -53,12 +53,25 @@ const Paragraf_11_6 = ({
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>
         </RadioGroupWrapper>
-        <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
-          {getText("paragrafer.knapper.fortsett")}
-        </Button>
+        <div>
+          <Button
+            type={"button"}
+            variant={"tertiary"}
+            onClick={() => {
+              reset({ erOppfylt: null });
+            }}
+          >
+            Nullstill vurdering
+          </Button>
+        </div>
+        <div>
+          <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+            {getText("paragrafer.knapper.fortsett")}
+          </Button>
+        </div>
       </form>
     </div>
-  )
+  );
 };
 
 export { Paragraf_11_6 };

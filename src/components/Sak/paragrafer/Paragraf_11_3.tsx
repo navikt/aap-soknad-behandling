@@ -20,6 +20,7 @@ const Paragraf_11_3 = ({
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm();
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
@@ -60,9 +61,22 @@ const Paragraf_11_3 = ({
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>
         </RadioGroupWrapper>
-        <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
-          {getText("paragrafer.knapper.fortsett")}
-        </Button>
+        <div>
+          <Button
+            variant={"tertiary"}
+            type={"button"}
+            onClick={() => {
+              reset({ erOppfylt: null });
+            }}
+          >
+            Nullstill vurdering
+          </Button>
+        </div>
+        <div>
+          <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+            {getText("paragrafer.knapper.fortsett")}
+          </Button>
+        </div>
       </form>
     </div>
   );
