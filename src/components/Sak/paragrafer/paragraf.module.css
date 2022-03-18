@@ -2,6 +2,10 @@
   margin-top: 1rem;
 }
 
+.paragraf__blokk + .paragraf__blokk {
+  margin-top: 2rem;
+}
+
 .paragraf__heading {
   display: flex;
   flex-direction: row;
