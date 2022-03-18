@@ -14,6 +14,7 @@ import { Paragraf_11_2 } from "./paragrafer/Paragraf_11_2";
 import { Paragraf_11_3 } from "./paragrafer/Paragraf_11_3";
 import { Paragraf_11_4 } from "./paragrafer/Paragraf_11_4";
 import { Paragraf_11_5 } from "./paragrafer/Paragraf_11_5";
+import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
@@ -50,6 +51,18 @@ const P11_5 = ({ sak }: { sak: SakType }): JSX.Element => (
   </>
 );
 
+const Bistandsbehov = ({ sak }: { sak: SakType }): JSX.Element => (
+  <>
+    <Heading size={"medium"} level={"2"}>
+      {getText("paragrafer.11_6.heading")}
+    </Heading>
+    <Paragraf_11_6
+      vilkårsvurdering={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_6")[0]}
+      personident={sak.personident}
+    />
+  </>
+);
+
 const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
   const [searchParams] = useSearchParams();
   const requestedPage = searchParams.get("page") || DEFAULT_PAGE;
@@ -69,14 +82,21 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
           <Oppgaveliste activePage={requestedPage} />
         </aside>
         <main className={`${styles.sak__behandling} box`}>
-          <RenderWhen when={requestedPage === "inngang"}>
+          <RenderWhen when={requestedPage === PAGES.INNGANG}>
             <Inngangsvilkår sak={sak} />
           </RenderWhen>
-          <RenderWhen when={requestedPage === "11_5"}>
+          <RenderWhen when={requestedPage === PAGES.P11_5}>
             <P11_5 sak={sak} />
           </RenderWhen>
-          {requestedPage === "beregning" && <div>Beregning...</div>}
-          {requestedPage === "resultat" && <div>Resultat...</div>}
+          <RenderWhen when={requestedPage === PAGES.BISTANDSBEHOV}>
+            <Bistandsbehov sak={sak} />
+          </RenderWhen>
+          <RenderWhen when={requestedPage === PAGES.BEREGNING}>
+            <div>Beregning</div>
+          </RenderWhen>
+          <RenderWhen when={requestedPage === PAGES.RESULTAT}>
+            <div>Resultat...</div>
+          </RenderWhen>
         </main>
       </section>
     </div>

@@ -14,6 +14,9 @@ const Oppgaveliste = ({ activePage }: { activePage: string }): JSX.Element => {
         <li className={activePage === PAGES.P11_5 ? styles.active : ""}>
           <Link to={`?page=${PAGES.P11_5}`}>{getText("navigasjon.11_5")}</Link>
         </li>
+        <li className={activePage === PAGES.BISTANDSBEHOV ? styles.active : ""}>
+          <Link to={`?page=${PAGES.BISTANDSBEHOV}`}>{getText("navigasjon.11_6")}</Link>
+        </li>
         <li className={activePage === PAGES.BEREGNING ? styles.active : ""}>
           <Link to={`?page=${PAGES.BEREGNING}`}>{getText("navigasjon.beregning")}</Link>
         </li>

@@ -15,7 +15,6 @@ const Paragraf_11_5 = ({
   personident: string;
 }): JSX.Element => {
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
-  const [meldingErSendt, settMeldingErSendt] = useState<boolean>(false); // temporary
   const {
     register,
     handleSubmit,
@@ -32,16 +31,15 @@ const Paragraf_11_5 = ({
     if (!res.ok) {
       console.warn('Noe feilet under innsending');
     } else {
-      settMeldingErSendt(true);
       window.location.reload();
     }
 
   };
-  if (!vilkårsvurdering) {
+  if (!vilkårsvurdering || vilkårsvurdering.length === 0) {
     return <div>Fant ikke 11-5</div>;
   }
   const vurdering = vilkårsvurdering[0];
-  if (vurdering.tilstand !== "SØKNAD_MOTTATT" || meldingErSendt) {
+  if (vurdering.tilstand !== "SØKNAD_MOTTATT") {
     return <div>Ferdig vurdert? {vurdering.tilstand}</div>;
   }
   return (

@@ -43,6 +43,7 @@ const texts = {
   navigasjon: {
     inngangsvilkaar: "Inngangsvilkår",
     "11_5": "§ 11-5",
+    "11_6": "§ 11-6",
     beregning: "Beregning",
     resultat: "Resultat",
   },
@@ -68,6 +69,10 @@ const texts = {
         ugyldigFormat: "Nedsatt arbeidsevne må registreres i prosent, mellom 0 og 100"
       },
     },
+    "11_6": {
+      heading: "Vurdering av § 11-6",
+      påkrevd: 'Du må ta stilling til om bruker oppfyller kravet til § 11-6 eller ikke.'
+    }
   },
 };
 

@@ -1,35 +1,34 @@
-import { useState } from "react";
-
-import { Button, Heading, Radio } from "@navikt/ds-react";
-
 import { VilkårsvurderingType } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
-import { useForm } from "react-hook-form";
-import { getText } from "../../../tekster/tekster";
-import { fetchPOST } from "../../../hooks/useFetch";
+import { Button, Radio } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { Vilkårsstatus } from "../Vilkarsstatus/Vilkårsstatus";
+import { getText } from "../../../tekster/tekster";
+import { useForm } from "react-hook-form";
+import { fetchPOST } from "../../../hooks/useFetch";
+import { useState } from "react";
 
-const Paragraf_11_3 = ({
-  vilkårsvurderinger,
+const Paragraf_11_6 = ({
+  vilkårsvurdering,
   personident,
 }: {
-  vilkårsvurderinger: VilkårsvurderingType[] | undefined;
+  vilkårsvurdering: VilkårsvurderingType | undefined;
   personident: string;
 }): JSX.Element => {
+
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm();
-  const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
-  if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
-    return <div>Fant ikke 11-3</div>;
+
+  if (!vilkårsvurdering) {
+    return <div>Fant ingen vurdering for 11-6</div>;
   }
+  const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   const onSubmit = async (datas: any) => {
     oppdaterSenderMelding(true);
     const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
-      løsning_11_3_manuell: {
+      løsning_11_6_manuell: {
         erOppfylt: datas.erOppfylt === "true",
       },
     });
@@ -43,19 +42,13 @@ const Paragraf_11_3 = ({
 
   return (
     <div className={styles.paragraf__blokk}>
-      <div className={styles.paragraf__heading}>
-        <Heading size={"medium"} level={"3"}>
-          Bosatt
-        </Heading>
-        <Vilkårsstatus tilstand={vilkårsvurderinger[0].tilstand} />
-      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RadioGroupWrapper
           name={"erOppfylt"}
           control={control}
-          legend={"Oppfyller medlemmet 11-3?"}
+          legend={"Oppfyller medlemmet kravene i 11-6?"}
           error={errors.erOppfylt?.message}
-          rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
+          rules={{ required: getText("paragrafer.11_6.påkrevd") }}
         >
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>
@@ -65,7 +58,7 @@ const Paragraf_11_3 = ({
         </Button>
       </form>
     </div>
-  );
+  )
 };
 
-export { Paragraf_11_3 };
+export { Paragraf_11_6 };
