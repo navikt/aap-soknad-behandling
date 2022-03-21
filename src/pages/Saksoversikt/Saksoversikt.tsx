@@ -22,7 +22,13 @@ const Saksoversikt = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  const søkere: SøkerType[] = data || [];
+
+  const søkere:SøkerType[] = data?.map((d:SøkerType) => ({
+    personident: d.personident,
+    sak: d.sak,
+    fødselsdato: new Date(d.fødselsdato),
+    navn: d.navn
+  })) || [];
 
   return (
     <div className="saksliste-page">
@@ -37,7 +43,7 @@ const Saksoversikt = () => {
             <RenderWhen when={loading}>
               <Loader/>
             </RenderWhen>
-            <RenderWhen when={!loading && søkere.length > 0}>
+            <RenderWhen when={!loading && søkere?.length > 0}>
               <LinkCardTable
                 headingLabels={["Personident", "Fødselsdato", "Dato opprettet"]}
               >

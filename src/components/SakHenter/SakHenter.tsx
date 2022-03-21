@@ -23,7 +23,12 @@ const SakHenter = ():JSX.Element => {
   if (response.error) {
     return <ErrorSummary>{response.error}</ErrorSummary>
   }
-  const søkere: SøkerType[] = response.data || [];
+  const søkere: SøkerType[] = response.data?.map((d: SøkerType) => ({
+    personident: d.personident,
+    sak: d.sak,
+    fødselsdato: new Date(d.fødselsdato),
+    navn: d.navn
+  })) || [];
 
   if (søkere.length === 1) {
     const søker = søkere[0];
