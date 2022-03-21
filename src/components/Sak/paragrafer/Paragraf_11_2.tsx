@@ -3,7 +3,7 @@ import { Heading } from "@navikt/ds-react";
 import { VilkårsvurderingType } from "../../../types/SakType";
 
 import * as styles from "./paragraf.module.css";
-import { Vilkårsstatus } from "../Vilkarsstatus/Vilkårsstatus";
+import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
 const Paragraf_11_2 = ({ vilkårsvurdering }: { vilkårsvurdering: VilkårsvurderingType | undefined }): JSX.Element => {
   if (!vilkårsvurdering) {
@@ -15,7 +15,7 @@ const Paragraf_11_2 = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
         <Heading size={"medium"} level={"3"}>
           Medlemskap i Folketrygden
         </Heading>
-        <Vilkårsstatus tilstand={vilkårsvurdering.tilstand} />
+        <Vilkarsstatus tilstand={vilkårsvurdering.tilstand} />
       </div>
       <div>
         {vilkårsvurdering.tilstand === "OPPFYLT_MASKINELT" && (

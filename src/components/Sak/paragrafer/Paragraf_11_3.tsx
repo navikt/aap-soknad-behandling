@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { getText } from "../../../tekster/tekster";
 import { fetchPOST } from "../../../hooks/useFetch";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { Vilkårsstatus } from "../Vilkarsstatus/Vilkårsstatus";
+import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
 const Paragraf_11_3 = ({
   vilkårsvurderinger,
@@ -48,7 +48,7 @@ const Paragraf_11_3 = ({
         <Heading size={"medium"} level={"3"}>
           Bosatt
         </Heading>
-        <Vilkårsstatus tilstand={vilkårsvurderinger[0].tilstand} />
+        <Vilkarsstatus tilstand={vilkårsvurderinger[0].tilstand} />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RadioGroupWrapper

@@ -4,7 +4,7 @@ import { datoFraArray, finnAlder, formaterDato } from "../../../lib/dato";
 import { pipe } from "../../../lib/functions";
 
 import * as styles from "./paragraf.module.css";
-import { Vilkårsstatus } from "../Vilkarsstatus/Vilkårsstatus";
+import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
 const Paragraf_11_4 = ({
   vilkårsvurderinger,
@@ -22,7 +22,7 @@ const Paragraf_11_4 = ({
         <Heading size={"medium"} level={"3"}>
           Alder
         </Heading>
-        <Vilkårsstatus tilstand={vilkårsvurderinger[0].tilstand} />
+        <Vilkarsstatus tilstand={vilkårsvurderinger[0].tilstand} />
       </div>
       <div className={styles.rad}>
         <div className={styles.kolonne}>
