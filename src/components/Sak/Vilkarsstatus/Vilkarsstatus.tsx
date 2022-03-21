@@ -16,7 +16,7 @@ const IkkeOppfylt = (): JSX.Element => (
   </span>
 );
 
-const Vilkårsstatus = ({ tilstand }: { tilstand: string }): JSX.Element => {
+const Vilkarsstatus = ({ tilstand }: { tilstand: string }): JSX.Element => {
   let elem = <></>;
   switch (tilstand) {
     case "OPPFYLT_MASKINELT":
@@ -33,4 +33,4 @@ const Vilkårsstatus = ({ tilstand }: { tilstand: string }): JSX.Element => {
   return <div className={styles.status}>{elem}</div>;
 };
 
-export { Vilkårsstatus };
+export { Vilkarsstatus };
