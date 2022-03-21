@@ -11,7 +11,7 @@ export const handlers = [
   }),
   rest.get("/aap-behandling/api/sak/:personid", (req, res, ctx) => {
     const { personid } = req.params;
-    const person = testdataliste.filter((p) => p.personident === personid)[0];
+    const person = testdataliste.filter((p) => p.personident === personid);
 
     return res(ctx.status(200), ctx.json(person), ctx.delay(400));
   }),
