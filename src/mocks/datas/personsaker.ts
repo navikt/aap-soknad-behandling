@@ -1,9 +1,10 @@
 import {SøkerType} from "../../types/SakType";
+import { parseISO } from "date-fns";
 
 const personMedEnAktivSak: SøkerType[] = [
   {
     personident: "12345678910",
-    fødselsdato: new Date("01-01-1970"),
+    fødselsdato: parseISO("1970-01-01"),
     navn: "Klatrende Eføy", // ikke fra modell
     sak: {
       saksid: "uuid",
