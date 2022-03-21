@@ -4,7 +4,7 @@ import { APP_URL_TEST } from "../config";
 import { RequestOptions } from "http";
 import { useErrorHandler } from "react-error-boundary";
 
-export type ApiResponse = {
+type ApiResponse = {
   data: any;
   error: string;
   loading: boolean;

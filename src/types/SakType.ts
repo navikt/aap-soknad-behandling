@@ -1,7 +1,12 @@
-export interface SakType {
+export interface SøkerType {
   personident: string;
+  sak: SakType;
+  fødselsdato: Date;
   navn?: string; // ikke fra modell
-  fødselsdato: number[];
+}
+
+export interface SakType {
+  saksid: string, // TODO: UUID?
   tilstand: string;
   sakstype?: Sakstype;
   vedtak?: VedtakType;

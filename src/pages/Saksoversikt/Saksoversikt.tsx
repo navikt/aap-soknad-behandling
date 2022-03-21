@@ -1,27 +1,28 @@
 import React from "react";
-import { BodyShort, Heading, Loader } from "@navikt/ds-react";
+import {BodyShort, Heading, Loader} from "@navikt/ds-react";
 import "./Saksoversikt.css";
-import { LinkCardTable } from "../../components/LinkCardTable";
-import { fetchGET } from "../../hooks/useFetch";
-import { SakType } from "../../types/SakType";
-import { RenderWhen } from "../../components/RenderWhen";
-import {datoFraArray, formaterDato} from "../../lib/dato";
+import {LinkCardTable} from "../../components/LinkCardTable";
+import {fetchGET} from "../../hooks/useFetch";
+import {SøkerType} from "../../types/SakType";
+import {RenderWhen} from "../../components/RenderWhen";
+import {formaterDato} from "../../lib/dato";
 
-type APIResponse = {
-  data: SakType[] | null;
-  loading: boolean;
+const Fødselsdato = ({dato}: { dato: Date }): JSX.Element => <span>{formaterDato(dato)}</span>
+
+type ApiResponse = {
+  data: any;
   error: string;
+  loading: boolean;
 };
 
-const Fødselsdato = ({dato} : {dato:number[]}):JSX.Element => <span>{formaterDato(datoFraArray(dato))}</span>
-
 const Saksoversikt = () => {
-  const { data, loading, error }: APIResponse = fetchGET(
+  const {data, loading, error}: ApiResponse = fetchGET(
     "/aap-behandling/api/sak"
   );
   if (error) {
     return <div>{error}</div>;
   }
+  const søkere: SøkerType[] = data || [];
 
   return (
     <div className="saksliste-page">
@@ -34,20 +35,20 @@ const Saksoversikt = () => {
               </Heading>
             </div>
             <RenderWhen when={loading}>
-              <Loader />
+              <Loader/>
             </RenderWhen>
-            <RenderWhen when={!loading && !!data}>
+            <RenderWhen when={!loading && søkere.length > 0}>
               <LinkCardTable
                 headingLabels={["Personident", "Fødselsdato", "Dato opprettet"]}
               >
-                {data &&
-                  data.map((oppgave: SakType) => (
+                {søkere &&
+                  søkere.map((søker: SøkerType) => (
                     <LinkCardTable.Row
-                      href={`/aap-behandling/sak/${oppgave.personident}`}
-                      key={oppgave.personident}
+                      href={`/aap-behandling/sak/${søker.personident}`}
+                      key={søker.personident}
                     >
-                      <BodyShort>{oppgave.personident}</BodyShort>
-                      <BodyShort><Fødselsdato dato={oppgave.fødselsdato} /></BodyShort>
+                      <BodyShort>{søker.personident}</BodyShort>
+                      <BodyShort><Fødselsdato dato={søker.fødselsdato}/></BodyShort>
                       <BodyShort>{"today"}</BodyShort>
                     </LinkCardTable.Row>
                   ))}

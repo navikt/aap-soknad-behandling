@@ -1,22 +1,21 @@
 import { Button, Heading, Link, Tag } from "@navikt/ds-react";
 import { Copy } from "@navikt/ds-icons";
-import { datoFraArray, finnAlder, formaterPid } from "../../../lib/dato";
-import { SakType } from "../../../types/SakType";
-import { pipe } from "../../../lib/functions";
+import { finnAlder, formaterPid } from "../../../lib/dato";
+import { SøkerType} from "../../../types/SakType";
 
 import * as styles from "./sammendrag.module.css";
 
-const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
+const Sammendrag = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <section className={`${styles.oppsummering} box`}>
       <div>
         <Tag variant={"warning"}>Ikke påbegynt</Tag>
       </div>
       <Heading size={"large"} level={"2"}>
-        {sak?.navn}
+        {søker?.navn}
         <Button
           variant={"tertiary"}
-          onClick={() => navigator.clipboard.writeText(sak.navn || "Ukjent navn")}
+          onClick={() => navigator.clipboard.writeText(søker.navn || "Ukjent navn")}
           size={"small"}
         >
           <Copy title={"Kopier navn til utklippstavlen"} />
@@ -26,16 +25,16 @@ const Sammendrag = ({ sak }: { sak: SakType }): JSX.Element => {
         <div className={styles.kv__pair}>
           <span className={styles.key}>Fødselsnummer</span>
           <span className={styles.value}>
-            {formaterPid(sak.personident)}
+            {formaterPid(søker.personident)}
           </span>
           <Button
             variant={"tertiary"}
-            onClick={() => navigator.clipboard.writeText(sak.personident)}
+            onClick={() => navigator.clipboard.writeText(søker.personident)}
             size={"small"}
           >
             <Copy title={"Kopier personid til utklippstavlen"} />
           </Button>
-          <span>({pipe(datoFraArray, finnAlder)(sak.fødselsdato)} år)</span>
+          <span>({finnAlder(søker.fødselsdato)} år)</span>
         </div>
         <div className={styles.kv__pair}>
           <span className={styles.key}>Søkte</span>

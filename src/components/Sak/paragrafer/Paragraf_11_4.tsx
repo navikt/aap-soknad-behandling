@@ -1,7 +1,6 @@
 import { Heading } from "@navikt/ds-react";
 import { VilkårsvurderingType } from "../../../types/SakType";
-import { datoFraArray, finnAlder, formaterDato } from "../../../lib/dato";
-import { pipe } from "../../../lib/functions";
+import { finnAlder, formaterDato } from "../../../lib/dato";
 
 import * as styles from "./paragraf.module.css";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
@@ -11,7 +10,7 @@ const Paragraf_11_4 = ({
   fødselsdato,
 }: {
   vilkårsvurderinger: VilkårsvurderingType[] | undefined;
-  fødselsdato: number[];
+  fødselsdato: Date;
 }): JSX.Element => {
   if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
     return <div>Fant ikke 11-4</div>;
@@ -27,11 +26,11 @@ const Paragraf_11_4 = ({
       <div className={styles.rad}>
         <div className={styles.kolonne}>
           <span className={styles.key}>Alder</span>
-          <span className={styles.value}>{pipe(datoFraArray, finnAlder)(fødselsdato)} år</span>
+          <span className={styles.value}>{finnAlder(fødselsdato)} år</span>
         </div>
         <div className={styles.kolonne}>
           <span className={styles.key}>Fødselsdato</span>
-          <span className={styles.value}>{pipe(datoFraArray, formaterDato)(fødselsdato)}</span>
+          <span className={styles.value}>{formaterDato(fødselsdato)}</span>
         </div>
       </div>
     </div>

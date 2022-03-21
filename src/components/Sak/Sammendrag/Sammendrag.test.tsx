@@ -5,7 +5,7 @@ import { personMedEnAktivSak } from "../../../mocks/datas/personsaker";
 
 describe("Sammendrag", () => {
   test("vises i minimert visning initielt", () => {
-    render(<Sammendrag sak={personMedEnAktivSak[0]} />);
+    render(<Sammendrag søker={personMedEnAktivSak[0]} />);
     expect(screen.getByRole('heading', {'name': /Klatrende Eføy/})).toBeVisible();
   });
 });

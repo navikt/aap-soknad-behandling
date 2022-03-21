@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { Heading } from "@navikt/ds-react";
 
-import { SakType } from "../../types/SakType";
+import { SøkerType } from "../../types/SakType";
 import { Sammendrag } from "./Sammendrag/Sammendrag";
 import { Oppgaveliste } from "./Oppgaveliste/Oppgaveliste";
 import { getText } from "../../tekster/tekster";
@@ -18,52 +18,52 @@ import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
-const Inngangsvilkår = ({ sak }: { sak: SakType }): JSX.Element => {
+const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <>
       <Heading size={"large"} level={"2"} className={styles.blokk__header}>
         {getText("paragrafer.inngangsvilkår.heading")}
       </Heading>
       <Paragraf_11_2
-        vilkårsvurdering={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_2")[0]}
+        vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_2")[0]}
       />
       <Paragraf_11_3
-        vilkårsvurderinger={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_3")}
-        personident={sak.personident}
+        vilkårsvurderinger={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_3")}
+        personident={søker.personident}
       />
       <Paragraf_11_4
-        vilkårsvurderinger={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_4")}
-        fødselsdato={sak.fødselsdato}
+        vilkårsvurderinger={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_4")}
+        fødselsdato={søker.fødselsdato}
       />
     </>
   );
 };
 
-const P11_5 = ({ sak }: { sak: SakType }): JSX.Element => (
+const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Heading size={"medium"} level={"2"}>
       {getText("paragrafer.11_5.heading")}
     </Heading>
     <Paragraf_11_5
-      vilkårsvurdering={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_5")}
-      personident={sak.personident}
+      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_5")}
+      personident={søker.personident}
     />
   </>
 );
 
-const Bistandsbehov = ({ sak }: { sak: SakType }): JSX.Element => (
+const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Heading size={"medium"} level={"2"}>
       {getText("paragrafer.11_6.heading")}
     </Heading>
     <Paragraf_11_6
-      vilkårsvurdering={sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_6")[0]}
-      personident={sak.personident}
+      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_6")[0]}
+      personident={søker.personident}
     />
   </>
 );
 
-const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
+const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
   const [searchParams] = useSearchParams();
   const requestedPage = searchParams.get("page") || DEFAULT_PAGE;
   return (
@@ -73,7 +73,7 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
           {getText("sak.heading")}
         </Heading>
       </div>
-      <Sammendrag sak={sak} />
+      <Sammendrag søker={søker}/>
       <section className={styles.sak}>
         <aside className={`${styles.sak__navigasjon} box`}>
           <Heading size={"large"} level={"2"}>
@@ -83,13 +83,13 @@ const Sak = ({ sak }: { sak: SakType }): JSX.Element => {
         </aside>
         <main className={`${styles.sak__behandling} box`}>
           <RenderWhen when={requestedPage === PAGES.INNGANG}>
-            <Inngangsvilkår sak={sak} />
+            <Inngangsvilkår søker={søker}/>
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.P11_5}>
-            <P11_5 sak={sak} />
+            <P11_5 søker={søker} />
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.BISTANDSBEHOV}>
-            <Bistandsbehov sak={sak} />
+            <Bistandsbehov søker={søker} />
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.BEREGNING}>
             <div>Beregning</div>

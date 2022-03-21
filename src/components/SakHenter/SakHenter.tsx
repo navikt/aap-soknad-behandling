@@ -1,35 +1,33 @@
 import React from "react";
 import {fetchGET} from "../../hooks/useFetch";
 import {ErrorSummary, Loader} from "@navikt/ds-react";
-import {SakType} from "../../types/SakType";
 import {useMatch} from "react-router-dom";
 import {Sak} from "../Sak/Sak";
+import {SøkerType} from "../../types/SakType";
 
-// eslint-disable-next-line no-unused-vars
-type APIResponse = {
-  data: SakType;
-  loading: boolean;
+type ApiResponse = {
+  data: any;
   error: string;
+  loading: boolean;
 };
 
 const SakHenter = ():JSX.Element => {
   const urlParams = useMatch("/aap-behandling/sak/:personid");
   const personid = urlParams?.params.personid;
-  const url = personid ? `/aap-behandling/api/sak/${personid}` : "/aap-behandling/sak/neste"
-  const { data, loading, error } = fetchGET(url);
+  const url = `/aap-behandling/api/sak/${personid}`;
+  const response: ApiResponse = fetchGET(url);
 
-  if (loading) {
+  if (response.loading) {
     return <Loader />
   }
-  if (error) {
-    return <ErrorSummary>{error}</ErrorSummary>
+  if (response.error) {
+    return <ErrorSummary>{response.error}</ErrorSummary>
   }
-  if (data) {
-    if (Array.isArray(data)) {
-      // TODO eget api for å hente en sak?
-      return <Sak sak={data[0]} />
-    }
-    return <Sak sak={data} />
+  const søkere: SøkerType[] = response.data || [];
+
+  if (søkere.length === 1) {
+    const søker = søkere[0];
+    return <Sak søker={søker} />
   }
 
   return <></>;

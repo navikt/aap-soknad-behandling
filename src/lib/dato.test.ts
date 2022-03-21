@@ -1,16 +1,7 @@
 import { subYears, addDays } from "date-fns";
-import { datoFraArray, finnAlder, formaterPid } from "./dato";
+import { finnAlder, formaterPid } from "./dato";
 
 describe("dato-verktøy", () => {
-  test("lager dato-objekt fra array", () => {
-    const datoArray = [2008, 9, 10];
-    const res = datoFraArray(datoArray);
-    expect(res.getFullYear()).toBe(datoArray[0]);
-  });
-
-  test("kaster feil ved ugyldig input-lengde", () => {
-    expect(() => datoFraArray([2007])).toThrowError(Error);
-  });
 
   test("er 25 år i dag", () => {
     const nå = new Date();
