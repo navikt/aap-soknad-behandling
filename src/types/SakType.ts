@@ -12,7 +12,7 @@ export interface SakType {
   vedtak?: VedtakType;
 }
 
-interface Sakstype {
+export interface Sakstype {
   type: string;
   vilkårsvurderinger: VilkårsvurderingType[];
 }
@@ -24,7 +24,7 @@ export interface VilkårsvurderingType {
   måVurderesManuelt: boolean;
 }
 
-interface VedtakType {
+export interface VedtakType {
   innvilget: boolean;
   inntektsgrunnlag: InntektsgrunnlagType;
   søknadstidspunkt: Date;
@@ -32,7 +32,7 @@ interface VedtakType {
   virkningsdato: Date;
 }
 
-interface InntektsgrunnlagType {
+export interface InntektsgrunnlagType {
   beregningsdato: Date;
   inntekterSiste3Kalenderår: InntektsgrunnlagForÅr[],
   fødselsdato: Date;
@@ -40,7 +40,7 @@ interface InntektsgrunnlagType {
   grunnlagsfaktor: number;
 }
 
-interface InntektsgrunnlagForÅr {
+export interface InntektsgrunnlagForÅr {
   år: number,
   inntekter: FrontendInntekt[],
   beløpFørJustering: number,
@@ -49,7 +49,7 @@ interface InntektsgrunnlagForÅr {
   grunnlagsfaktor: number
 }
 
-interface FrontendInntekt {
+export interface FrontendInntekt {
   arbeidsgiver: string,
   inntekstmåned: Date,
   beløp: number
