@@ -50,6 +50,14 @@ const texts = {
   sak: {
     heading: "Vurdere sak"
   },
+  saksoversikt: {
+    heading: "Saksoversikt",
+    tabell: {
+      søknadsdato: "Søknadsdato",
+      navn: "Navn",
+      fødselsdato: "Fødselsdato",
+    }
+  },
   paragrafer: {
     knapper: {
       fullfør: "Fullfør oppgaven",

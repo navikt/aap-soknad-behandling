@@ -9,6 +9,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     sak: {
       saksid: "uuid-1",
       tilstand: "SØKNAD_MOTTATT",
+      mottattDato: new Date(),
       sakstype: {
         type: "STANDARD",
         vilkårsvurderinger: [
@@ -47,6 +48,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     sak: {
       saksid: "uuid-2",
       tilstand: "SØKNAD_MOTTATT",
+      mottattDato: new Date(),
       sakstype: {
         type: "STANDARD",
         vilkårsvurderinger: [
@@ -85,6 +87,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     sak: {
       saksid: "uuid-3",
       tilstand: "SØKNAD_MOTTATT",
+      mottattDato: new Date(),
       sakstype: {
         type: "STANDARD",
         vilkårsvurderinger: [
@@ -123,6 +126,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     sak: {
       saksid: "uuid-4",
       tilstand: "SØKNAD_MOTTATT",
+      mottattDato: new Date(),
       sakstype: {
         type: "STANDARD",
         vilkårsvurderinger: [

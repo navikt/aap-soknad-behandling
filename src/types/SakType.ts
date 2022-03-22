@@ -10,6 +10,7 @@ export interface SakType {
   tilstand: string;
   sakstype?: Sakstype;
   vedtak?: VedtakType;
+  mottattDato?: Date; // ikke fra modell
 }
 
 export interface Sakstype {

@@ -1,14 +1,12 @@
 import React from "react";
-import {BodyShort, Heading, Loader} from "@navikt/ds-react";
+import { Heading, Link, Loader, Table } from "@navikt/ds-react";
 import "./Saksoversikt.css";
-import {LinkCardTable} from "../../components/LinkCardTable";
-import {fetchGET} from "../../hooks/useFetch";
-import {SøkerType} from "../../types/SakType";
-import {RenderWhen} from "../../components/RenderWhen";
-import {formaterDato} from "../../lib/dato";
+import { fetchGET } from "../../hooks/useFetch";
+import { SøkerType } from "../../types/SakType";
+import { RenderWhen } from "../../components/RenderWhen";
+import { formaterDato } from "../../lib/dato";
 import { mapSøker } from "../../lib/sokerMapper";
-
-const Fødselsdato = ({dato}: { dato: Date }): JSX.Element => <span>{formaterDato(dato)}</span>
+import { getText } from "../../tekster/tekster";
 
 type ApiResponse = {
   data: any;
@@ -17,14 +15,12 @@ type ApiResponse = {
 };
 
 const Saksoversikt = () => {
-  const {data, loading, error}: ApiResponse = fetchGET(
-    "/aap-behandling/api/sak"
-  );
+  const { data, loading, error }: ApiResponse = fetchGET("/aap-behandling/api/sak");
   if (error) {
     return <div>{error}</div>;
   }
 
-  const søkere:SøkerType[] = mapSøker(data);
+  const søkere: SøkerType[] = mapSøker(data);
 
   return (
     <div className="saksliste-page">
@@ -37,24 +33,29 @@ const Saksoversikt = () => {
               </Heading>
             </div>
             <RenderWhen when={loading}>
-              <Loader/>
+              <Loader />
             </RenderWhen>
             <RenderWhen when={!loading && søkere?.length > 0}>
-              <LinkCardTable
-                headingLabels={["Personident", "Fødselsdato", "Dato opprettet"]}
-              >
-                {søkere &&
-                  søkere.map((søker: SøkerType) => (
-                    <LinkCardTable.Row
-                      href={`/aap-behandling/sak/${søker.personident}`}
-                      key={søker.personident}
-                    >
-                      <BodyShort>{søker.personident}</BodyShort>
-                      <BodyShort><Fødselsdato dato={søker.fødselsdato}/></BodyShort>
-                      <BodyShort>{"today"}</BodyShort>
-                    </LinkCardTable.Row>
+              <Table size={"medium"} className={"saksliste__tabell"} zebraStripes>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>{getText("saksoversikt.tabell.søknadsdato")}</Table.HeaderCell>
+                    <Table.HeaderCell>{getText("saksoversikt.tabell.navn")}</Table.HeaderCell>
+                    <Table.HeaderCell>{getText("saksoversikt.tabell.fødselsdato")}</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {søkere.map((søker: SøkerType) => (
+                    <Table.Row key={søker.sak.saksid}>
+                      <Table.DataCell>{søker.sak.mottattDato && formaterDato(søker.sak.mottattDato)}</Table.DataCell>
+                      <Table.DataCell>
+                        <Link href={`/aap-behandling/sak/${søker.personident}`}>{søker.navn}</Link>
+                      </Table.DataCell>
+                      <Table.DataCell>{formaterDato(søker.fødselsdato)}</Table.DataCell>
+                    </Table.Row>
                   ))}
-              </LinkCardTable>
+                </Table.Body>
+              </Table>
             </RenderWhen>
           </main>
         </div>
