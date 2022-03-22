@@ -11,8 +11,10 @@ const CrashingComponent = ():JSX.Element => {
 
 describe("Feilviser", () => {
   test("vis feilmelding når applikasjonen krasjer", () => {
+    console.error = jest.fn();
     render(<ErrorBoundary FallbackComponent={Feilviser}><CrashingComponent /></ErrorBoundary> );
     expect(screen.getByText('Å nei! Dette var ikke helt planlagt...')).toBeVisible();
     expect(screen.getByText(feilmelding)).toBeVisible();
+    expect(console.error).toHaveBeenCalled();
   })
 })
