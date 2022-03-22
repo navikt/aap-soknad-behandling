@@ -4,6 +4,7 @@ import {ErrorSummary, Loader} from "@navikt/ds-react";
 import {useMatch} from "react-router-dom";
 import {Sak} from "../Sak/Sak";
 import {SøkerType} from "../../types/SakType";
+import { mapSøker } from "../../lib/sokerMapper";
 
 type ApiResponse = {
   data: any;
@@ -23,12 +24,8 @@ const SakHenter = ():JSX.Element => {
   if (response.error) {
     return <ErrorSummary>{response.error}</ErrorSummary>
   }
-  const søkere: SøkerType[] = response.data?.map((d: SøkerType) => ({
-    personident: d.personident,
-    sak: d.sak,
-    fødselsdato: new Date(d.fødselsdato),
-    navn: d.navn
-  })) || [];
+
+  const søkere:SøkerType[] = mapSøker(response.data);
 
   if (søkere.length === 1) {
     const søker = søkere[0];

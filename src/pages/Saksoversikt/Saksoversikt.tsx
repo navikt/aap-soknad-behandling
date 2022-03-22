@@ -6,6 +6,7 @@ import {fetchGET} from "../../hooks/useFetch";
 import {SøkerType} from "../../types/SakType";
 import {RenderWhen} from "../../components/RenderWhen";
 import {formaterDato} from "../../lib/dato";
+import { mapSøker } from "../../lib/sokerMapper";
 
 const Fødselsdato = ({dato}: { dato: Date }): JSX.Element => <span>{formaterDato(dato)}</span>
 
@@ -23,12 +24,7 @@ const Saksoversikt = () => {
     return <div>{error}</div>;
   }
 
-  const søkere:SøkerType[] = data?.map((d:SøkerType) => ({
-    personident: d.personident,
-    sak: d.sak,
-    fødselsdato: new Date(d.fødselsdato),
-    navn: d.navn
-  })) || [];
+  const søkere:SøkerType[] = mapSøker(data);
 
   return (
     <div className="saksliste-page">
