@@ -1,13 +1,9 @@
 import { rest } from "msw";
-import { personMedEnAktivSak } from "./datas/personsaker";
 import { listeMedSøkereOgSaker } from "./datas/saksliste";
 
 export const handlers = [
   rest.get("/aap-behandling/api/sak", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(listeMedSøkereOgSaker), ctx.delay(100));
-  }),
-  rest.get("/aap-behandling/api/sak/12345678910", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(personMedEnAktivSak), ctx.delay(300));
   }),
   rest.get("/aap-behandling/api/sak/:personid", (req, res, ctx) => {
     const { personid } = req.params;
