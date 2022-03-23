@@ -39,8 +39,8 @@ const Paragraf_11_5 = ({
     return <div>Fant ikke 11-5</div>;
   }
   const vurdering = vilkårsvurdering[0];
-  if (vurdering.tilstand !== "SØKNAD_MOTTATT") {
-    return <div>Ferdig vurdert? {vurdering.tilstand}</div>;
+  if (vurdering.tilstand == "OPPFYLT") {
+    return <div>Vilkår er ferdig vurdert</div>;
   }
   return (
     <>

@@ -15,6 +15,7 @@ import { Paragraf_11_3 } from "./paragrafer/Paragraf_11_3";
 import { Paragraf_11_4 } from "./paragrafer/Paragraf_11_4";
 import { Paragraf_11_5 } from "./paragrafer/Paragraf_11_5";
 import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
+import Vedtak from "./vedtak/Vedtak";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
@@ -95,7 +96,7 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
             <div>Beregning</div>
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.RESULTAT}>
-            <div>Resultat...</div>
+            <Vedtak søker={søker} />
           </RenderWhen>
         </main>
       </section>
