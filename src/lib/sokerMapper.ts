@@ -59,7 +59,7 @@ const mapVedtak = (vedtak: any): VedtakType => ({
 const mapSak = (sak: any): SakType => ({
   saksid: sak.saksid,
   tilstand: sak.tilstand,
-  mottattDato: parseISO(sak.mottattDato),
+  mottattDato: sak.mottattDato ? parseISO(sak.mottattDato) : undefined,
   sakstype: sak.sakstype ? mapSakstype(sak.sakstype) : undefined,
   vedtak: sak.vedtak ? mapVedtak(sak.vedtak) : undefined,
 });

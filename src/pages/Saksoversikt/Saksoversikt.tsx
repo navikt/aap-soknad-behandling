@@ -1,4 +1,3 @@
-import React from "react";
 import { Heading, Link, Loader, Table } from "@navikt/ds-react";
 import "./Saksoversikt.css";
 import { fetchGET } from "../../hooks/useFetch";
@@ -39,9 +38,15 @@ const Saksoversikt = () => {
               <Table size={"medium"} className={"saksliste__tabell"} zebraStripes>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>{getText("saksoversikt.tabell.søknadsdato")}</Table.HeaderCell>
-                    <Table.HeaderCell>{getText("saksoversikt.tabell.navn")}</Table.HeaderCell>
-                    <Table.HeaderCell>{getText("saksoversikt.tabell.fødselsdato")}</Table.HeaderCell>
+                    <Table.ColumnHeader sortable sortKey={"søknadsdato"}>
+                      {getText("saksoversikt.tabell.søknadsdato")}
+                    </Table.ColumnHeader>
+                    <Table.ColumnHeader sortable sortKey={"navn"}>
+                      {getText("saksoversikt.tabell.navn")}
+                    </Table.ColumnHeader>
+                    <Table.ColumnHeader sortable sortKey={"fødselsdato"}>
+                      {getText("saksoversikt.tabell.fødselsdato")}
+                    </Table.ColumnHeader>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
