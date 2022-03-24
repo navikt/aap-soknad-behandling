@@ -53,11 +53,13 @@ const texts = {
   saksoversikt: {
     heading: "Saksoversikt",
     ingenFunnet: "Fant ingen saker.",
+    behandle: "Behandle sak",
     tabell: {
       søknadsdato: "Søknadsdato",
       navn: "Navn",
       fødselsdato: "Fødselsdato",
       ansvarlig: "Ansvarlig",
+      handling: "Handling",
     },
   },
   paragrafer: {

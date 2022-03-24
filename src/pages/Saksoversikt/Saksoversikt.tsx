@@ -18,7 +18,7 @@ type ApiResponse = {
 
 const IngenSakerFunnet = (): JSX.Element => (
   <Table.Row>
-    <Table.DataCell colSpan={5} style={{ textAlign: "center" }}>
+    <Table.DataCell colSpan={6} style={{ textAlign: "center" }}>
       <BodyShort>{getText("saksoversikt.ingenFunnet")}</BodyShort>
     </Table.DataCell>
   </Table.Row>
@@ -36,6 +36,9 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
         <Link href={`/aap-behandling/sak/${søker.personident}`}>{søker.navn}</Link>
       </Table.DataCell>
       <Table.DataCell>{formaterDato(søker.fødselsdato)}</Table.DataCell>
+      <Table.DataCell>
+        <Link href={`/aap-behandling/sak/${søker.personident}`}>{getText("saksoversikt.behandle")}</Link>
+      </Table.DataCell>
       <Table.DataCell style={{ textAlign: "center" }}>
         {søker.sak?.ansvarlig && <Caseworker title={søker.sak.ansvarlig} />}
       </Table.DataCell>
@@ -79,6 +82,7 @@ const Saksoversikt = () => {
                     <Table.ColumnHeader sortable={kanSorteres} sortKey={"fødselsdato"}>
                       {getText("saksoversikt.tabell.fødselsdato")}
                     </Table.ColumnHeader>
+                    <Table.ColumnHeader>{getText("saksoversikt.tabell.handling")}</Table.ColumnHeader>
                     <Table.ColumnHeader style={{ minWidth: "6rem", width: "6rem" }}>
                       {getText("saksoversikt.tabell.ansvarlig")}
                     </Table.ColumnHeader>
