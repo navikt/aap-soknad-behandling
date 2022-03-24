@@ -48,25 +48,26 @@ const texts = {
     resultat: "Resultat",
   },
   sak: {
-    heading: "Vurdere sak"
+    heading: "Vurdere sak",
   },
   saksoversikt: {
     heading: "Saksoversikt",
+    ingenFunnet: "Fant ingen saker.",
     tabell: {
       søknadsdato: "Søknadsdato",
       navn: "Navn",
       fødselsdato: "Fødselsdato",
-      ansvarlig: "Ansvarlig"
-    }
+      ansvarlig: "Ansvarlig",
+    },
   },
   paragrafer: {
     knapper: {
       fullfør: "Fullfør oppgaven",
-      fortsett: "Fortsett"
+      fortsett: "Fortsett",
     },
     inngangsvilkår: {
       heading: "Inngangsvilkår",
-      påkrevd: 'Du må ta stilling til om bruker oppfyller kravet til § 11-3 eller ikke.'
+      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-3 eller ikke.",
     },
     "11_5": {
       heading: "Vurdering av § 11-5",
@@ -75,13 +76,13 @@ const texts = {
         paakrevd: "Du må legge inn hvor mange prosent arbeidsevnen er nedsatt med.",
         ikkeMindreEnnNull: "Arbeidsevnen kan ikke være nedsatt med mindre enn 0 prosent.",
         ikkeOverHundre: "Arbeidsevnen kan ikke være nedsatt med mer enn 100 prosent",
-        ugyldigFormat: "Nedsatt arbeidsevne må registreres i prosent, mellom 0 og 100"
+        ugyldigFormat: "Nedsatt arbeidsevne må registreres i prosent, mellom 0 og 100",
       },
     },
     "11_6": {
       heading: "Vurdering av § 11-6",
-      påkrevd: 'Du må ta stilling til om bruker oppfyller kravet til § 11-6 eller ikke.'
-    }
+      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-6 eller ikke.",
+    },
   },
 };
 

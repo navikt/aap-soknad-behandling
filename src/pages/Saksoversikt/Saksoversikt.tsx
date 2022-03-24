@@ -1,4 +1,4 @@
-import { Heading, Link, Loader, Table } from "@navikt/ds-react";
+import { BodyShort, Heading, Link, Loader, Table } from "@navikt/ds-react";
 
 import { Caseworker, Warning } from "@navikt/ds-icons";
 import { fetchGET } from "../../hooks/useFetch";
@@ -16,6 +16,33 @@ type ApiResponse = {
   loading: boolean;
 };
 
+const IngenSakerFunnet = (): JSX.Element => (
+  <Table.Row>
+    <Table.DataCell colSpan={5} style={{ textAlign: "center" }}>
+      <BodyShort>{getText("saksoversikt.ingenFunnet")}</BodyShort>
+    </Table.DataCell>
+  </Table.Row>
+);
+
+const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
+  const harAdressebeskyttelse = (søker: SøkerType) => søker.adressebeskyttelse;
+  return (
+    <Table.Row key={søker.sak.saksid} className={harAdressebeskyttelse(søker) ? styles.gradert : ""}>
+      <Table.DataCell>
+        {harAdressebeskyttelse(søker) && <Warning title={"Personen har adressegradering"} />}
+      </Table.DataCell>
+      <Table.DataCell>{søker.sak.mottattDato && formaterDato(søker.sak.mottattDato)}</Table.DataCell>
+      <Table.DataCell>
+        <Link href={`/aap-behandling/sak/${søker.personident}`}>{søker.navn}</Link>
+      </Table.DataCell>
+      <Table.DataCell>{formaterDato(søker.fødselsdato)}</Table.DataCell>
+      <Table.DataCell style={{ textAlign: "center" }}>
+        {søker.sak?.ansvarlig && <Caseworker title={søker.sak.ansvarlig} />}
+      </Table.DataCell>
+    </Table.Row>
+  );
+};
+
 const Saksoversikt = () => {
   const { data, loading, error }: ApiResponse = fetchGET("/aap-behandling/api/sak");
   if (error) {
@@ -23,6 +50,7 @@ const Saksoversikt = () => {
   }
 
   const søkere: SøkerType[] = mapSøker(data);
+  const kanSorteres = søkere.length > 1;
 
   return (
     <div className={styles.saksliste}>
@@ -31,24 +59,24 @@ const Saksoversikt = () => {
           <main className={styles.saksliste__innhold}>
             <div className={styles.banner}>
               <Heading size={"xlarge"} level={"1"}>
-                Saksoversikt
+                {getText("saksoversikt.heading")}
               </Heading>
             </div>
             <RenderWhen when={loading}>
               <Loader />
             </RenderWhen>
-            <RenderWhen when={!loading && søkere?.length > 0}>
+            <RenderWhen when={!loading}>
               <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
                 <Table.Header>
                   <Table.Row>
                     <Table.ColumnHeader style={{ minWidth: "2rem", width: "2rem" }} />
-                    <Table.ColumnHeader sortable sortKey={"søknadsdato"}>
+                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
                       {getText("saksoversikt.tabell.søknadsdato")}
                     </Table.ColumnHeader>
-                    <Table.ColumnHeader sortable sortKey={"navn"}>
+                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"navn"}>
                       {getText("saksoversikt.tabell.navn")}
                     </Table.ColumnHeader>
-                    <Table.ColumnHeader sortable sortKey={"fødselsdato"}>
+                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"fødselsdato"}>
                       {getText("saksoversikt.tabell.fødselsdato")}
                     </Table.ColumnHeader>
                     <Table.ColumnHeader style={{ minWidth: "6rem", width: "6rem" }}>
@@ -57,26 +85,9 @@ const Saksoversikt = () => {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {søkere.map((søker: SøkerType) => (
-                    <Table.Row
-                      key={søker.sak.saksid}
-                      className={søker.adressebeskyttelse === "strengtFortrolig" ? styles.gradert : ""}
-                    >
-                      <Table.DataCell>
-                        {søker.adressebeskyttelse === "strengtFortrolig" && (
-                          <Warning title={"Personen har adressegradering"} />
-                        )}
-                      </Table.DataCell>
-                      <Table.DataCell>{søker.sak.mottattDato && formaterDato(søker.sak.mottattDato)}</Table.DataCell>
-                      <Table.DataCell>
-                        <Link href={`/aap-behandling/sak/${søker.personident}`}>{søker.navn}</Link>
-                      </Table.DataCell>
-                      <Table.DataCell>{formaterDato(søker.fødselsdato)}</Table.DataCell>
-                      <Table.DataCell style={{textAlign: "center"}}>
-                        {søker.sak?.ansvarlig && <Caseworker title={søker.sak.ansvarlig} />}
-                      </Table.DataCell>
-                    </Table.Row>
-                  ))}
+                  {søkere.length === 0 && <IngenSakerFunnet />}
+                  {søkere.length > 0 &&
+                    søkere.map((søker: SøkerType) => <Saksrad key={søker.personident} søker={søker} />)}
                 </Table.Body>
               </Table>
             </RenderWhen>
