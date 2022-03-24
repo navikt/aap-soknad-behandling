@@ -56,6 +56,7 @@ const texts = {
       søknadsdato: "Søknadsdato",
       navn: "Navn",
       fødselsdato: "Fødselsdato",
+      ansvarlig: "Ansvarlig"
     }
   },
   paragrafer: {

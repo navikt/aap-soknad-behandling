@@ -1,5 +1,5 @@
 import {SøkerType} from "../../types/SakType";
-import {parseISO} from "date-fns";
+import { parseISO, subDays } from "date-fns";
 
 export const listeMedSøkereOgSaker: SøkerType[] = [
   {
@@ -49,6 +49,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       saksid: "uuid-2",
       tilstand: "SØKNAD_MOTTATT",
       mottattDato: new Date(),
+      ansvarlig: "x593138",
       sakstype: {
         type: "STANDARD",
         vilkårsvurderinger: [
@@ -200,9 +201,12 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     personident: "12345678910",
     fødselsdato: parseISO("1970-01-01"),
     navn: "Klatrende Eføy", // ikke fra modell
+    adressebeskyttelse: "strengtFortrolig",
     sak: {
       saksid: "uuid",
       tilstand: "SØKNAD_MOTTATT",
+      mottattDato: subDays(new Date(), 8),
+      ansvarlig: "x943580",
       sakstype: {
         type: "STANDARD",
         vilkårsvurderinger: [

@@ -62,6 +62,7 @@ const mapSak = (sak: any): SakType => ({
   mottattDato: sak.mottattDato ? parseISO(sak.mottattDato) : undefined,
   sakstype: sak.sakstype ? mapSakstype(sak.sakstype) : undefined,
   vedtak: sak.vedtak ? mapVedtak(sak.vedtak) : undefined,
+  ansvarlig: sak.ansvarlig
 });
 
 export const mapSøker = (søker:any[]): SøkerType[] => {
@@ -73,5 +74,6 @@ export const mapSøker = (søker:any[]): SøkerType[] => {
     sak: mapSak(s.sak),
     fødselsdato: parseISO(s.fødselsdato),
     navn: s.navn,
+    adressebeskyttelse: s.adressebeskyttelse
   }));
 };

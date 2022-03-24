@@ -3,6 +3,7 @@ export interface SøkerType {
   sak: SakType;
   fødselsdato: Date;
   navn?: string; // ikke fra modell
+  adressebeskyttelse?: string // ikke fra modell
 }
 
 export interface SakType {
@@ -11,6 +12,7 @@ export interface SakType {
   sakstype?: Sakstype;
   vedtak?: VedtakType;
   mottattDato?: Date; // ikke fra modell
+  ansvarlig?: string; // ikke fra modell
 }
 
 export interface Sakstype {

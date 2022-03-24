@@ -1,4 +1,4 @@
-.saksliste-page {
+.saksliste {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -45,4 +45,12 @@
 .vedtaksflate {
   display: flex;
   flex-direction: row;
+}
+
+.gradert {
+  border: 2px solid hsl(10, 100%, 50%);
+}
+
+.gradert td {
+  background: hsl(10, 60%, 90%);
 }
