@@ -60,6 +60,7 @@ const texts = {
       fødselsdato: "Fødselsdato",
       ansvarlig: "Ansvarlig",
       handling: "Handling",
+      pid: "Fødsels-/D-nummer",
     },
   },
   paragrafer: {

@@ -4,7 +4,7 @@ import { Caseworker, Warning } from "@navikt/ds-icons";
 import { fetchGET } from "../../hooks/useFetch";
 import { SøkerType } from "../../types/SakType";
 import { RenderWhen } from "../../components/RenderWhen";
-import { formaterDato } from "../../lib/dato";
+import { formaterDato, formaterPid } from "../../lib/dato";
 import { mapSøker } from "../../lib/sokerMapper";
 import { getText } from "../../tekster/tekster";
 
@@ -18,7 +18,7 @@ type ApiResponse = {
 
 const IngenSakerFunnet = (): JSX.Element => (
   <Table.Row>
-    <Table.DataCell colSpan={6} style={{ textAlign: "center" }}>
+    <Table.DataCell colSpan={7} style={{ textAlign: "center" }}>
       <BodyShort>{getText("saksoversikt.ingenFunnet")}</BodyShort>
     </Table.DataCell>
   </Table.Row>
@@ -32,6 +32,9 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
         {harAdressebeskyttelse(søker) && <Warning title={"Personen har adressegradering"} />}
       </Table.DataCell>
       <Table.DataCell>{søker.sak.mottattDato && formaterDato(søker.sak.mottattDato)}</Table.DataCell>
+      <Table.DataCell>
+        <Link href={`/aap-behandling/sak/${søker.personident}`}>{formaterPid(søker.personident)}</Link>
+      </Table.DataCell>
       <Table.DataCell>
         <Link href={`/aap-behandling/sak/${søker.personident}`}>{søker.navn}</Link>
       </Table.DataCell>
@@ -75,6 +78,9 @@ const Saksoversikt = () => {
                     <Table.ColumnHeader style={{ minWidth: "2rem", width: "2rem" }} />
                     <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
                       {getText("saksoversikt.tabell.søknadsdato")}
+                    </Table.ColumnHeader>
+                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"pid"}>
+                      {getText("saksoversikt.tabell.pid")}
                     </Table.ColumnHeader>
                     <Table.ColumnHeader sortable={kanSorteres} sortKey={"navn"}>
                       {getText("saksoversikt.tabell.navn")}
