@@ -29,7 +29,6 @@ const Vedtak = ({ søker }: { søker: SøkerType }): JSX.Element => {
       <Heading size={"large"}>Vedtak er {vedtak.innvilget ? 'innvilget' : 'ikke innvilget'}</Heading>
       <div className={styles.kolonne}>
         <span>Vedtak ble innvilget {formaterDato(vedtak.vedtaksdato)}</span>
-        <span>Søknadsdato er {formaterDato(vedtak.søknadstidspunkt)}</span>
         <span>Virkningstidspunkt er {formaterDato(vedtak.virkningsdato)}</span>
       </div>
       <Inntektsgrunnlag inntekt={vedtak.inntektsgrunnlag} />
