@@ -15,13 +15,12 @@ const Beregningsdato = ({
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
   const onSubmit = async (datas: any) => {
     oppdaterSenderMelding(true);
     const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
       løsningVurderingAvBeregningsdato: {
-        beregningsdato: new Date(datas),
+        beregningsdato: new Date(datas.nedsattArbeidsevne),
       },
     });
     oppdaterSenderMelding(false);
