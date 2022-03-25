@@ -56,6 +56,7 @@ const texts = {
     heading: "Saksoversikt",
     ingenFunnet: "Fant ingen saker.",
     behandle: "Behandle sak",
+    visSak: "Vis sak",
     tabell: {
       søknadsdato: "Søknadsdato",
       navn: "Navn",
@@ -63,6 +64,7 @@ const texts = {
       ansvarlig: "Ansvarlig",
       handling: "Handling",
       pid: "Fødsels-/D-nummer",
+      status: "Status",
     },
   },
   paragrafer: {

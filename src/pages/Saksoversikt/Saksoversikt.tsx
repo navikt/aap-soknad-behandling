@@ -1,4 +1,4 @@
-import { BodyShort, Heading, Link, Loader, Table } from "@navikt/ds-react";
+import { BodyShort, Heading, Link, Loader, Table, Tag } from "@navikt/ds-react";
 
 import { Caseworker, Warning } from "@navikt/ds-icons";
 import { fetchGET } from "../../hooks/useFetch";
@@ -40,7 +40,16 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
       </Table.DataCell>
       <Table.DataCell>{formaterDato(søker.fødselsdato)}</Table.DataCell>
       <Table.DataCell>
-        <Link href={`/aap-behandling/sak/${søker.personident}`}>{getText("saksoversikt.behandle")}</Link>
+        {søker.sak.vedtak?.innvilget && (
+          <Tag variant={"success"} size={"small"}>
+            {getText("Vedtak fattet")}
+          </Tag>
+        )}
+      </Table.DataCell>
+      <Table.DataCell>
+        <Link href={`/aap-behandling/sak/${søker.personident}`}>
+          {getText(søker.sak.vedtak?.innvilget ? "saksoversikt.visSak" : "saksoversikt.behandle")}
+        </Link>
       </Table.DataCell>
       <Table.DataCell style={{ textAlign: "center" }}>
         {søker.sak?.ansvarlig && <Caseworker title={søker.sak.ansvarlig} />}
@@ -88,6 +97,7 @@ const Saksoversikt = () => {
                     <Table.ColumnHeader sortable={kanSorteres} sortKey={"fødselsdato"}>
                       {getText("saksoversikt.tabell.fødselsdato")}
                     </Table.ColumnHeader>
+                    <Table.ColumnHeader>{getText("saksoversikt.tabell.status")}</Table.ColumnHeader>
                     <Table.ColumnHeader>{getText("saksoversikt.tabell.handling")}</Table.ColumnHeader>
                     <Table.ColumnHeader style={{ minWidth: "6rem", width: "6rem" }}>
                       {getText("saksoversikt.tabell.ansvarlig")}

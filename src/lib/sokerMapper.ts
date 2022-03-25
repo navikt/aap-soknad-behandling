@@ -20,6 +20,7 @@ const mapVilkårsvurderinger = (vilkårsvurderinger: any[]): VilkårsvurderingTy
 
 const mapSakstype = (sakstype: any): Sakstype => ({
   type: sakstype.type,
+  aktiv: sakstype.aktiv,
   vilkårsvurderinger: mapVilkårsvurderinger(sakstype.vilkårsvurderinger),
 });
 
@@ -51,7 +52,6 @@ const mapInntektsgrunnlag = (inntektsgrunnlag: any): InntektsgrunnlagType => ({
 const mapVedtak = (vedtak: any): VedtakType => ({
   innvilget: vedtak.innvilget,
   inntektsgrunnlag: mapInntektsgrunnlag(vedtak.inntektsgrunnlag),
-  søknadstidspunkt: parseISO(vedtak.søknadstidspunkt),
   vedtaksdato: parseISO(vedtak.vedtaksdato),
   virkningsdato: parseISO(vedtak.virkningsdato),
 });
@@ -60,12 +60,13 @@ const mapSak = (sak: any): SakType => ({
   saksid: sak.saksid,
   tilstand: sak.tilstand,
   mottattDato: sak.mottattDato ? parseISO(sak.mottattDato) : undefined,
+  søknadstidspunkt: parseISO(sak.søknadstidspunkt),
   sakstype: sak.sakstype ? mapSakstype(sak.sakstype) : undefined,
   vedtak: sak.vedtak ? mapVedtak(sak.vedtak) : undefined,
-  ansvarlig: sak.ansvarlig
+  ansvarlig: sak.ansvarlig,
 });
 
-export const mapSøker = (søker:any[]): SøkerType[] => {
+export const mapSøker = (søker: any[]): SøkerType[] => {
   if (!søker) {
     return [];
   }
@@ -74,6 +75,6 @@ export const mapSøker = (søker:any[]): SøkerType[] => {
     sak: mapSak(s.sak),
     fødselsdato: parseISO(s.fødselsdato),
     navn: s.navn,
-    adressebeskyttelse: s.adressebeskyttelse
+    adressebeskyttelse: s.adressebeskyttelse,
   }));
 };
