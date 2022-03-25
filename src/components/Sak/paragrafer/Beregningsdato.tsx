@@ -39,13 +39,9 @@ const Beregningsdato = ({
         <div>
           <TextField
             {...register("nedsattArbeidsevne", {
-              required: getText("paragrafer.11_5.nedsattArbeidsevne.paakrevd"),
-              min: { value: 0, message: getText("paragrafer.11_5.nedsattArbeidsevne.ikkeMindreEnnNull") },
-              max: { value: 100, message: getText("paragrafer.11_5.nedsattArbeidsevne.ikkeOverHundre") },
-              pattern: { value: /^[0-9]{1,3}$/, message: getText("paragrafer.11_5.nedsattArbeidsevne.ugyldigFormat") },
+              required: getText("paragrafer.11_5.nedsattArbeidsevne.paakrevd")
             })}
             label={getText("paragrafer.11_5.nedsattArbeidsevne.label")}
-            error={errors?.nedsattArbeidsevne?.message}
           />
           <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
             {getText("paragrafer.knapper.fullfør")}
