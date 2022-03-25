@@ -3,15 +3,12 @@ import { useForm } from "react-hook-form";
 
 import { Button, TextField } from "@navikt/ds-react";
 
-import { VilkårsvurderingType } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
 import { fetchPOST } from "../../../hooks/useFetch";
 
 const Beregningsdato = ({
-  vilkårsvurdering,
   personident,
 }: {
-  vilkårsvurdering: VilkårsvurderingType[] | undefined;
   personident: string;
 }): JSX.Element => {
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
@@ -35,13 +32,7 @@ const Beregningsdato = ({
     }
 
   };
-  if (!vilkårsvurdering || vilkårsvurdering.length === 0) {
-    return <div>Fant ikke 11-5</div>;
-  }
-  const vurdering = vilkårsvurdering[0];
-  if (vurdering.tilstand == "OPPFYLT") {
-    return <div>Vilkår er ferdig vurdert</div>;
-  }
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>

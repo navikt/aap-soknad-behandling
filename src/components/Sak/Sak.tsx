@@ -97,7 +97,6 @@ const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
       {getText("paragrafer.11_5.heading")}
     </Heading>
     <Beregningsdato
-      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_5")}
       personident={søker.personident}
     />
   </>
