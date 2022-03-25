@@ -44,6 +44,8 @@ const texts = {
     inngangsvilkaar: "Inngangsvilkår",
     "11_5": "§ 11-5",
     "11_6": "§ 11-6",
+    "11_12": "§ 11-12",
+    "11_29": "§ 11-29",
     beregning: "Beregning",
     resultat: "Resultat",
   },
@@ -85,6 +87,14 @@ const texts = {
     "11_6": {
       heading: "Vurdering av § 11-6",
       påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-6 eller ikke.",
+    },
+    "11_12": {
+      heading: "Vurdering av § 11-12",
+      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-12 eller ikke.",
+    },
+    "11_29": {
+      heading: "Vurdering av § 11-29",
+      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-29 eller ikke.",
     },
   },
 };

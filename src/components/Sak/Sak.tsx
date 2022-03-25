@@ -16,6 +16,8 @@ import { Paragraf_11_4 } from "./paragrafer/Paragraf_11_4";
 import { Paragraf_11_5 } from "./paragrafer/Paragraf_11_5";
 import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 import Vedtak from "./vedtak/Vedtak";
+import {Paragraf_11_12} from "./paragrafer/Paragraf_11_12";
+import {Paragraf_11_29} from "./paragrafer/Paragraf_11_29";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
@@ -64,6 +66,30 @@ const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
   </>
 );
 
+const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
+  <>
+    <Heading size={"medium"} level={"2"}>
+      {getText("paragrafer.11_12.heading")}
+    </Heading>
+    <Paragraf_11_12
+      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_12")[0]}
+      personident={søker.personident}
+    />
+  </>
+);
+
+const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
+  <>
+    <Heading size={"medium"} level={"2"}>
+      {getText("paragrafer.11_29.heading")}
+    </Heading>
+    <Paragraf_11_29
+      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_29")[0]}
+      personident={søker.personident}
+    />
+  </>
+);
+
 const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
   const [searchParams] = useSearchParams();
   const requestedPage = searchParams.get("page") || DEFAULT_PAGE;
@@ -91,6 +117,12 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.BISTANDSBEHOV}>
             <Bistandsbehov søker={søker} />
+          </RenderWhen>
+          <RenderWhen when={requestedPage === PAGES.VARIGHET}>
+            <Varighet søker={søker} />
+          </RenderWhen>
+          <RenderWhen when={requestedPage === PAGES.ANDRE_YTELSER}>
+            <AndreYtelser søker={søker} />
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.BEREGNING}>
             <div>Beregning</div>

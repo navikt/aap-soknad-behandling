@@ -77,6 +77,24 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
             tilstand: "IKKE_OPPFYLT",
             måVurderesManuelt: true,
           },
+          {
+            paragraf: "PARAGRAF_11_6",
+            ledd: ["LEDD_1"],
+            tilstand: "IKKE_OPPFYLT",
+            måVurderesManuelt: true,
+          },
+          {
+            paragraf: "PARAGRAF_11_12",
+            ledd: ["LEDD_1"],
+            tilstand: "IKKE_OPPFYLT",
+            måVurderesManuelt: true,
+          },
+          {
+            paragraf: "PARAGRAF_11_29",
+            ledd: ["LEDD_1"],
+            tilstand: "IKKE_OPPFYLT",
+            måVurderesManuelt: true,
+          }
         ],
       },
     },
