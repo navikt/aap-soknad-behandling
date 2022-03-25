@@ -18,6 +18,7 @@ import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 import Vedtak from "./vedtak/Vedtak";
 import {Paragraf_11_12} from "./paragrafer/Paragraf_11_12";
 import {Paragraf_11_29} from "./paragrafer/Paragraf_11_29";
+import {Beregningsdato} from "./paragrafer/Beregningsdato";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
@@ -90,6 +91,18 @@ const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
   </>
 );
 
+const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
+  <>
+    <Heading size={"medium"} level={"2"}>
+      {getText("paragrafer.11_5.heading")}
+    </Heading>
+    <Beregningsdato
+      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_5")}
+      personident={søker.personident}
+    />
+  </>
+);
+
 const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
   const [searchParams] = useSearchParams();
   const requestedPage = searchParams.get("page") || DEFAULT_PAGE;
@@ -125,7 +138,7 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
             <AndreYtelser søker={søker} />
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.BEREGNING}>
-            <div>Beregning</div>
+            <Beregning søker={søker} />
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.RESULTAT}>
             <Vedtak søker={søker} />
