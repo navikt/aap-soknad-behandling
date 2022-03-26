@@ -94,7 +94,7 @@ const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
 const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Heading size={"medium"} level={"2"}>
-      {getText("paragrafer.11_5.heading")}
+      {getText("beregningsdato.heading")}
     </Heading>
     <Beregningsdato
       personident={søker.personident}

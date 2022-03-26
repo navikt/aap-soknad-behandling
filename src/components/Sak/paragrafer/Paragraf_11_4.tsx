@@ -5,13 +5,12 @@ import { finnAlder, formaterDato } from "../../../lib/dato";
 import * as styles from "./paragraf.module.css";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
-const Paragraf_11_4 = ({
-  vilkårsvurderinger,
-  fødselsdato,
-}: {
+type ParagrafProps = {
   vilkårsvurderinger: VilkårsvurderingType[] | undefined;
   fødselsdato: Date;
-}): JSX.Element => {
+}
+
+const Paragraf_11_4 = ({ vilkårsvurderinger, fødselsdato }: ParagrafProps): JSX.Element => {
   if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
     return <div>Fant ikke 11-4</div>;
   }

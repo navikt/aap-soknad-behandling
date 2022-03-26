@@ -5,7 +5,11 @@ import { VilkårsvurderingType } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
-const Paragraf_11_2 = ({ vilkårsvurdering }: { vilkårsvurdering: VilkårsvurderingType | undefined }): JSX.Element => {
+type ParagrafProps = {
+  vilkårsvurdering: VilkårsvurderingType | undefined;
+}
+
+const Paragraf_11_2 = ({ vilkårsvurdering }: ParagrafProps): JSX.Element => {
   if (!vilkårsvurdering) {
     return <div>Fant ikke 11-2</div>;
   }

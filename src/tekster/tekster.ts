@@ -99,6 +99,11 @@ const texts = {
       påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-29 eller ikke.",
     },
   },
+  beregningsdato: {
+    heading: "Beregningsdato",
+    label: "Sett beregningsdato for vedtak",
+    knapp: "Sett dato"
+  }
 };
 
 export const getText = (key: string): string => {

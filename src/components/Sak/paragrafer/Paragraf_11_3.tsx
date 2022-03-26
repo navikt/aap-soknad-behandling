@@ -6,17 +6,16 @@ import { VilkårsvurderingType } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
 import { useForm } from "react-hook-form";
 import { getText } from "../../../tekster/tekster";
-import { fetchPOST } from "../../../hooks/useFetch";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
+import {sendLøsning} from "./SendLosning";
 
-const Paragraf_11_3 = ({
-  vilkårsvurderinger,
-  personident,
-}: {
+type ParagrafProps = {
   vilkårsvurderinger: VilkårsvurderingType[] | undefined;
   personident: string;
-}): JSX.Element => {
+}
+
+const Paragraf_11_3 = ({ vilkårsvurderinger, personident }: ParagrafProps): JSX.Element => {
   const {
     handleSubmit,
     control,
@@ -29,10 +28,10 @@ const Paragraf_11_3 = ({
   }
   const onSubmit = async (datas: any) => {
     oppdaterSenderMelding(true);
-    const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
+    const res = await sendLøsning(personident, {
       løsning_11_3_manuell: {
         erOppfylt: datas.erOppfylt === "true",
-      },
+      }
     });
     oppdaterSenderMelding(false);
     if (!res.ok) {

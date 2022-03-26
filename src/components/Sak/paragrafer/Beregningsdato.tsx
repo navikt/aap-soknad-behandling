@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { Button, TextField } from "@navikt/ds-react";
 
 import { getText } from "../../../tekster/tekster";
-import { fetchPOST } from "../../../hooks/useFetch";
+import { sendLøsning } from "./SendLosning";
 
-const Beregningsdato = ({
-  personident,
-}: {
+type BeregningsdatoProps = {
   personident: string;
-}): JSX.Element => {
+}
+
+const Beregningsdato = ({ personident }: BeregningsdatoProps): JSX.Element => {
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   const {
     register,
@@ -18,10 +18,10 @@ const Beregningsdato = ({
   } = useForm();
   const onSubmit = async (datas: any) => {
     oppdaterSenderMelding(true);
-    const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
+    const res = await sendLøsning(personident, {
       løsningVurderingAvBeregningsdato: {
         beregningsdato: new Date(datas.nedsattArbeidsevne),
-      },
+      }
     });
     oppdaterSenderMelding(false);
     if (!res.ok) {
@@ -38,12 +38,12 @@ const Beregningsdato = ({
         <div>
           <TextField
             {...register("nedsattArbeidsevne", {
-              required: getText("paragrafer.11_5.nedsattArbeidsevne.paakrevd")
+              required: getText("beregningsdato.paakrevd")
             })}
-            label={getText("paragrafer.11_5.nedsattArbeidsevne.label")}
+            label={getText("beregningsdato.label")}
           />
           <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
-            {getText("paragrafer.knapper.fullfør")}
+            {getText("beregningsdato.knapp")}
           </Button>
         </div>
       </form>
