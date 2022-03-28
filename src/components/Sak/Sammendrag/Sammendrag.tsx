@@ -1,6 +1,6 @@
 import { Button, Heading, Link, Tag } from "@navikt/ds-react";
 import { Copy } from "@navikt/ds-icons";
-import { finnAlder, formaterPid } from "../../../lib/dato";
+import { finnAlder, formaterPid, formatterTidspunkt } from "../../../lib/dato";
 import { SøkerType } from "../../../types/SakType";
 
 import * as styles from "./sammendrag.module.css";
@@ -33,7 +33,7 @@ const Sammendrag = ({ søker }: { søker: SøkerType }): JSX.Element => {
         </div>
         <div className={styles.kv__pair}>
           <span className={styles.key}>Søkte</span>
-          <span className={styles.value}>dd.mm.yyyy</span>
+          <span className={styles.value}>{formatterTidspunkt(søker.sak.søknadstidspunkt)}</span>
         </div>
         <Link href={"#"}>Brukerhistorikk</Link>
       </div>
