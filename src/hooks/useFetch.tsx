@@ -61,7 +61,12 @@ export const fetchPOST = async (url: string, payload: object, opts: RequestOptio
       headers,
     });
     if (res.ok) {
-      const data = await res.json();
+      let data = {};
+      try {
+        data = await res.json();
+      } catch (e) {
+        console.error("Klarte ikke parse json:" + e);
+      }
       return { ok: res.ok, data };
     } else {
       return { ok: res.ok, error: res.statusText };
