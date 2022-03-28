@@ -8,12 +8,12 @@ import { useForm } from "react-hook-form";
 import { getText } from "../../../tekster/tekster";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
-import {sendLøsning} from "./SendLosning";
+import { sendLøsning } from "./SendLosning";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_3Type | undefined;
   personident: string;
-}
+};
 
 const Paragraf_11_3 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
   const {
@@ -31,11 +31,12 @@ const Paragraf_11_3 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
     const res = await sendLøsning(personident, {
       løsning_11_3_manuell: {
         erOppfylt: datas.erOppfylt === "true",
-      }
+      },
     });
     oppdaterSenderMelding(false);
     if (!res.ok) {
       console.warn("Noe feilet under innsending");
+      console.warn(res);
     } else {
       window.location.reload();
     }
