@@ -4,7 +4,7 @@ import { Caseworker, Warning } from "@navikt/ds-icons";
 import { fetchGET } from "../../hooks/useFetch";
 import { SøkerType } from "../../types/SakType";
 import { RenderWhen } from "../../components/RenderWhen";
-import { formaterDato, formaterPid } from "../../lib/dato";
+import {formaterDato, formaterPid, formatterTidspunkt} from "../../lib/dato";
 import { mapSøker } from "../../lib/sokerMapper";
 import { getText } from "../../tekster/tekster";
 
@@ -31,7 +31,7 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
       <Table.DataCell>
         {harAdressebeskyttelse(søker) && <Warning title={"Personen har adressegradering"} />}
       </Table.DataCell>
-      <Table.DataCell>{søker.sak.mottattDato && formaterDato(søker.sak.mottattDato)}</Table.DataCell>
+      <Table.DataCell>{søker.sak.søknadstidspunkt && formatterTidspunkt(søker.sak.søknadstidspunkt)}</Table.DataCell>
       <Table.DataCell>
         <Link href={`/aap-behandling/sak/${søker.personident}`}>{formaterPid(søker.personident)}</Link>
       </Table.DataCell>

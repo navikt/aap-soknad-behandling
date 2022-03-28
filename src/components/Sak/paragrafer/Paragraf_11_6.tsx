@@ -1,4 +1,4 @@
-import { VilkårsvurderingType } from "../../../types/SakType";
+import { Paragraf_11_6Type } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
 import { Button, Radio } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
@@ -8,7 +8,7 @@ import { useState } from "react";
 import { sendLøsning } from "./SendLosning";
 
 type ParagrafProps = {
-  vilkårsvurdering: VilkårsvurderingType | undefined;
+  vilkårsvurdering: Paragraf_11_6Type | undefined;
   personident: string;
 }
 

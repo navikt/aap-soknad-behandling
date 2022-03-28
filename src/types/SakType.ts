@@ -1,62 +1,61 @@
+import { VedtakType } from "./Vedtak";
+
 export interface SøkerType {
   personident: string;
   sak: SakType;
   fødselsdato: Date;
   navn?: string; // ikke fra modell
   adressebeskyttelse?: string; // ikke fra modell
+  skjermet: boolean;
 }
 
 export interface SakType {
-  saksid: string; // TODO: UUID?
-  tilstand: string;
-  sakstype?: Sakstype;
+  saksid: string;
   søknadstidspunkt: Date;
   vedtak?: VedtakType;
-  mottattDato?: Date; // ikke fra modell
-  ansvarlig?: string; // ikke fra modell
+  ansvarlig?: string; // TODO Sette opp granulert tildeling (flere personer kan "eie") aktiv / venter
+  type: string; // 11-5, SP-erstattning, Student, Uføre
+  aktiv: boolean; // TODO Hva betyr egentlig dette? Tilstand? Bruke eksplisitte booleans?
+  paragraf_11_2?: Paragraf_11_2Type,
+  paragraf_11_3?: Paragraf_11_3Type,
+  paragraf_11_4?: Paragraf_11_4Type,
+  paragraf_11_5?: Paragraf_11_5Type,
+  paragraf_11_6?: Paragraf_11_6Type,
+  paragraf_11_12?: Paragraf_11_12Type,
+  paragraf_11_29?: Paragraf_11_29Type
 }
 
-export interface Sakstype {
-  type: string;
-  aktiv: boolean;
-  vilkårsvurderinger: VilkårsvurderingType[];
-}
-
-export interface VilkårsvurderingType {
-  tilstand: string;
-  paragraf: string;
-  ledd: string[];
+interface VilkårsvurderingType {
+  vilkårsvurderingsid: string;
+  erOppfylt?: boolean;
   måVurderesManuelt: boolean;
-  vilkårsvurderingsid?: string; // neppe optional
 }
 
-export interface VedtakType {
-  innvilget: boolean;
-  inntektsgrunnlag: InntektsgrunnlagType;
-  vedtaksdato: Date;
-  virkningsdato: Date;
-  vedtaksid?: string; // neppe optional
+export interface Paragraf_11_2Type extends VilkårsvurderingType {
+
 }
 
-export interface InntektsgrunnlagType {
-  beregningsdato: Date;
-  inntekterSiste3Kalenderår: InntektsgrunnlagForÅr[];
-  fødselsdato: Date;
-  sisteKalenderår: number;
-  grunnlagsfaktor: number;
+export interface Paragraf_11_3Type extends VilkårsvurderingType {
+
 }
 
-export interface InntektsgrunnlagForÅr {
-  år: number;
-  inntekter: FrontendInntekt[];
-  beløpFørJustering: number;
-  beløpJustertFor6G: number;
-  erBeløpJustertFor6G: boolean;
-  grunnlagsfaktor: number;
+export interface Paragraf_11_4Type extends VilkårsvurderingType {
+
 }
 
-export interface FrontendInntekt {
-  arbeidsgiver: string;
-  inntekstmåned: Date;
-  beløp: number;
+export interface Paragraf_11_5Type extends VilkårsvurderingType {
+
 }
+
+export interface Paragraf_11_6Type extends VilkårsvurderingType {
+
+}
+
+export interface Paragraf_11_12Type extends VilkårsvurderingType {
+
+}
+
+export interface Paragraf_11_29Type extends VilkårsvurderingType {
+
+}
+

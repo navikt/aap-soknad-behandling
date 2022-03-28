@@ -29,14 +29,14 @@ const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
         {getText("paragrafer.inngangsvilkår.heading")}
       </Heading>
       <Paragraf_11_2
-        vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_2")[0]}
+        vilkårsvurdering={søker.sak.paragraf_11_2}
       />
       <Paragraf_11_3
-        vilkårsvurderinger={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_3")}
+        vilkårsvurdering={søker.sak.paragraf_11_3}
         personident={søker.personident}
       />
       <Paragraf_11_4
-        vilkårsvurderinger={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_4")}
+        vilkårsvurdering={søker.sak.paragraf_11_4}
         fødselsdato={søker.fødselsdato}
       />
     </>
@@ -49,7 +49,7 @@ const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
       {getText("paragrafer.11_5.heading")}
     </Heading>
     <Paragraf_11_5
-      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_5")}
+      vilkårsvurdering={søker.sak.paragraf_11_5}
       personident={søker.personident}
     />
   </>
@@ -61,7 +61,7 @@ const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
       {getText("paragrafer.11_6.heading")}
     </Heading>
     <Paragraf_11_6
-      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_6")[0]}
+      vilkårsvurdering={søker.sak.paragraf_11_6}
       personident={søker.personident}
     />
   </>
@@ -73,7 +73,7 @@ const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
       {getText("paragrafer.11_12.heading")}
     </Heading>
     <Paragraf_11_12
-      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_12")[0]}
+      vilkårsvurdering={søker.sak.paragraf_11_12}
       personident={søker.personident}
     />
   </>
@@ -85,7 +85,7 @@ const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
       {getText("paragrafer.11_29.heading")}
     </Heading>
     <Paragraf_11_29
-      vilkårsvurdering={søker.sak.sakstype?.vilkårsvurderinger.filter((v) => v.paragraf === "PARAGRAF_11_29")[0]}
+      vilkårsvurdering={søker.sak.paragraf_11_29}
       personident={søker.personident}
     />
   </>
@@ -118,7 +118,7 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           <Heading size={"large"} level={"2"}>
             Vurderinger
           </Heading>
-          <Oppgaveliste activePage={requestedPage} />
+          <Oppgaveliste søker={søker} activePage={requestedPage} />
         </aside>
         <main className={`${styles.sak__behandling} box`}>
           <RenderWhen when={requestedPage === PAGES.INNGANG}>

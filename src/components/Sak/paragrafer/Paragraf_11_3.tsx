@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Button, Heading, Radio } from "@navikt/ds-react";
 
-import { VilkårsvurderingType } from "../../../types/SakType";
+import { Paragraf_11_3Type } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
 import { useForm } from "react-hook-form";
 import { getText } from "../../../tekster/tekster";
@@ -11,11 +11,11 @@ import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 import {sendLøsning} from "./SendLosning";
 
 type ParagrafProps = {
-  vilkårsvurderinger: VilkårsvurderingType[] | undefined;
+  vilkårsvurdering: Paragraf_11_3Type | undefined;
   personident: string;
 }
 
-const Paragraf_11_3 = ({ vilkårsvurderinger, personident }: ParagrafProps): JSX.Element => {
+const Paragraf_11_3 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
   const {
     handleSubmit,
     control,
@@ -23,7 +23,7 @@ const Paragraf_11_3 = ({ vilkårsvurderinger, personident }: ParagrafProps): JSX
     formState: { errors },
   } = useForm();
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
-  if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
+  if (!vilkårsvurdering) {
     return <div>Fant ikke 11-3</div>;
   }
   const onSubmit = async (datas: any) => {
@@ -47,7 +47,7 @@ const Paragraf_11_3 = ({ vilkårsvurderinger, personident }: ParagrafProps): JSX
         <Heading size={"medium"} level={"3"}>
           Bosatt
         </Heading>
-        <Vilkarsstatus tilstand={vilkårsvurderinger[0].tilstand} />
+        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RadioGroupWrapper

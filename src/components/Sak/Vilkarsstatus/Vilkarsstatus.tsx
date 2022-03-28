@@ -2,6 +2,10 @@ import { ErrorFilled, SuccessFilled } from "@navikt/ds-icons";
 
 import * as styles from "./vilkarsstatus.module.css";
 
+type VilkårsstatusProps = {
+  erOppfylt?: boolean;
+}
+
 const Oppfylt = (): JSX.Element => (
   <span className={styles.status__ok}>
     <SuccessFilled />
@@ -16,21 +20,12 @@ const IkkeOppfylt = (): JSX.Element => (
   </span>
 );
 
-const Vilkarsstatus = ({ tilstand }: { tilstand: string }): JSX.Element => {
-  let elem = <></>;
-  switch (tilstand) {
-    case "OPPFYLT_MASKINELT":
-    case "OPPFYLT_MANUELT":
-    case "OPPFYLT":
-      elem = <Oppfylt />;
-      break;
-    case "IKKE_OPPFYLT_MASKINELT":
-    case "IKKE_OPPFYLT_MANUELT":
-    case "IKKE_OPPFYLT":
-      elem = <IkkeOppfylt />;
-      break;
-  }
-  return <div className={styles.status}>{elem}</div>;
+const Vilkarsstatus = ({ erOppfylt }: VilkårsstatusProps): JSX.Element => {
+  return (
+    <div className={styles.status}>
+      { erOppfylt ? <Oppfylt /> : <IkkeOppfylt /> }
+    </div>
+  );
 };
 
 export { Vilkarsstatus };

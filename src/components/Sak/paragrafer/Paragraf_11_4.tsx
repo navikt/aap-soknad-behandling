@@ -1,17 +1,17 @@
 import { Heading } from "@navikt/ds-react";
-import { VilkårsvurderingType } from "../../../types/SakType";
+import { Paragraf_11_4Type } from "../../../types/SakType";
 import { finnAlder, formaterDato } from "../../../lib/dato";
 
 import * as styles from "./paragraf.module.css";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
 type ParagrafProps = {
-  vilkårsvurderinger: VilkårsvurderingType[] | undefined;
+  vilkårsvurdering: Paragraf_11_4Type | undefined;
   fødselsdato: Date;
 }
 
-const Paragraf_11_4 = ({ vilkårsvurderinger, fødselsdato }: ParagrafProps): JSX.Element => {
-  if (!vilkårsvurderinger || vilkårsvurderinger.length === 0) {
+const Paragraf_11_4 = ({ vilkårsvurdering, fødselsdato }: ParagrafProps): JSX.Element => {
+  if (!vilkårsvurdering) {
     return <div>Fant ikke 11-4</div>;
   }
   return (
@@ -20,7 +20,7 @@ const Paragraf_11_4 = ({ vilkårsvurderinger, fødselsdato }: ParagrafProps): JS
         <Heading size={"medium"} level={"3"}>
           Alder
         </Heading>
-        <Vilkarsstatus tilstand={vilkårsvurderinger[0].tilstand} />
+        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} />
       </div>
       <div className={styles.rad}>
         <div className={styles.kolonne}>

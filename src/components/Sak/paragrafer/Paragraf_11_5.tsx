@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 
 import { Button, TextField } from "@navikt/ds-react";
 
-import { VilkårsvurderingType } from "../../../types/SakType";
+import { Paragraf_11_5Type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
 import { sendLøsning } from "./SendLosning";
 
 type ParagrafProps = {
-  vilkårsvurdering: VilkårsvurderingType[] | undefined;
+  vilkårsvurdering: Paragraf_11_5Type | undefined;
   personident: string;
 }
 
@@ -34,11 +34,10 @@ const Paragraf_11_5 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
     }
 
   };
-  if (!vilkårsvurdering || vilkårsvurdering.length === 0) {
+  if (!vilkårsvurdering) {
     return <div>Fant ikke 11-5</div>;
   }
-  const vurdering = vilkårsvurdering[0];
-  if (vurdering.tilstand == "OPPFYLT") {
+  if (vilkårsvurdering.erOppfylt) {
     return <div>Vilkår er ferdig vurdert</div>;
   }
   return (

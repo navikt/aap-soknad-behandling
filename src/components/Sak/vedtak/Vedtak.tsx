@@ -1,7 +1,8 @@
-import { InntektsgrunnlagType, SøkerType } from "../../../types/SakType";
+import { SøkerType } from "../../../types/SakType";
 import { Heading } from "@navikt/ds-react";
 import { formaterDato } from "../../../lib/dato";
 import * as styles from "./vedtak.module.css";
+import {InntektsgrunnlagType} from "../../../types/Vedtak";
 
 const Inntektsgrunnlag = ({ inntekt }: { inntekt: InntektsgrunnlagType }): JSX.Element => {
   return (
