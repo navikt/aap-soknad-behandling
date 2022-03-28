@@ -6,10 +6,12 @@ import config from "./config";
 import { LogInfo } from "./logger";
 import { azureUserInfo, enforceAzureADMiddleware } from "./auth/middleware";
 import { tokenXProxy } from "./apiProxy";
+import helmet from "helmet";
 
 const BUILD_PATH = path.join(__dirname, "../dist");
 const PORT = process.env.PORT || 3000;
 const server = express();
+server.use(helmet());
 
 const startServer = () => {
   // Create a Registry which registers the metrics
@@ -48,7 +50,12 @@ const startServer = () => {
   server.get(`${config.BASE_PATH}/internal/userinfo`, azureUserInfo);
 
   // Reverse proxy to add tokenx header for api calls
-  tokenXProxy(config.OPPGAVESTYRING_API_URL, config.OPPGAVESTYRING_API_SCOPE, `${config.BASE_PATH}/api`, server);
+  tokenXProxy(
+    config.OPPGAVESTYRING_API_URL,
+    config.OPPGAVESTYRING_API_SCOPE,
+    `${config.BASE_PATH}/api`,
+    server
+  );
 
   // Render app
   server.get(`${config.BASE_PATH}/*`, (req: any, res: any) =>
