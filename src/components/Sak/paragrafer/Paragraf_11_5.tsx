@@ -10,7 +10,7 @@ import { sendLøsning } from "./SendLosning";
 type ParagrafProps = {
   vilkårsvurdering: VilkårsvurderingType[] | undefined;
   personident: string;
-}
+};
 
 const Paragraf_11_5 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
@@ -24,15 +24,15 @@ const Paragraf_11_5 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
     const res = await sendLøsning(personident, {
       løsning_11_5_manuell: {
         grad: datas.nedsattArbeidsevne,
-      }
+      },
     });
     oppdaterSenderMelding(false);
     if (!res.ok) {
-      console.warn('Noe feilet under innsending');
+      console.warn("Noe feilet under innsending");
+      console.warn(res);
     } else {
       window.location.reload();
     }
-
   };
   if (!vilkårsvurdering || vilkårsvurdering.length === 0) {
     return <div>Fant ikke 11-5</div>;
