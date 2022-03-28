@@ -4,16 +4,15 @@ import { Button, Radio } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useForm } from "react-hook-form";
-import { fetchPOST } from "../../../hooks/useFetch";
 import { useState } from "react";
+import {sendLøsning} from "./SendLosning";
 
-const Paragraf_11_29 = ({
-  vilkårsvurdering,
-  personident,
-}: {
+type ParagrafProps = {
   vilkårsvurdering: VilkårsvurderingType | undefined;
   personident: string;
-}): JSX.Element => {
+}
+
+const Paragraf_11_29 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
   const {
     handleSubmit,
     control,
@@ -27,10 +26,10 @@ const Paragraf_11_29 = ({
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   const onSubmit = async (datas: any) => {
     oppdaterSenderMelding(true);
-    const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
+    const res = await sendLøsning(personident, {
       løsning_11_29_manuell: {
         erOppfylt: datas.erOppfylt === "true",
-      },
+      }
     });
     oppdaterSenderMelding(false);
     if (!res.ok) {

@@ -5,15 +5,14 @@ import { Button, TextField } from "@navikt/ds-react";
 
 import { VilkårsvurderingType } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
-import { fetchPOST } from "../../../hooks/useFetch";
+import { sendLøsning } from "./SendLosning";
 
-const Paragraf_11_5 = ({
-  vilkårsvurdering,
-  personident,
-}: {
+type ParagrafProps = {
   vilkårsvurdering: VilkårsvurderingType[] | undefined;
   personident: string;
-}): JSX.Element => {
+}
+
+const Paragraf_11_5 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   const {
     register,
@@ -22,10 +21,10 @@ const Paragraf_11_5 = ({
   } = useForm();
   const onSubmit = async (datas: any) => {
     oppdaterSenderMelding(true);
-    const res = await fetchPOST(`/aap-behandling/api/sak/${personident}/losning`, {
+    const res = await sendLøsning(personident, {
       løsning_11_5_manuell: {
         grad: datas.nedsattArbeidsevne,
-      },
+      }
     });
     oppdaterSenderMelding(false);
     if (!res.ok) {
