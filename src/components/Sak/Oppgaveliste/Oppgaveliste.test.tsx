@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { Oppgaveliste } from "./Oppgaveliste";
 import { renderWithRouter } from "../../../test/renderWithRouter";
 import { PAGES } from "../pages";
-import {listeMedSøkereOgSaker} from "../../../mocks/datas/saksliste";
+import { listeMedSøkereOgSaker } from "../../../mocks/datas/saksliste";
 
 describe("oppgaveliste", () => {
   test("tegner nav-elementer", () => {
