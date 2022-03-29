@@ -48,7 +48,7 @@ const Paragraf_11_3 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         <Heading size={"medium"} level={"3"}>
           Bosatt
         </Heading>
-        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} />
+        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <RadioGroupWrapper

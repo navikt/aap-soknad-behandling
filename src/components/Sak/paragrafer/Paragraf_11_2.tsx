@@ -7,7 +7,7 @@ import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_2Type | undefined;
-}
+};
 
 const Paragraf_11_2 = ({ vilkårsvurdering }: ParagrafProps): JSX.Element => {
   if (!vilkårsvurdering) {
@@ -19,11 +19,9 @@ const Paragraf_11_2 = ({ vilkårsvurdering }: ParagrafProps): JSX.Element => {
         <Heading size={"medium"} level={"3"}>
           Medlemskap i Folketrygden
         </Heading>
-        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} />
+        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />
       </div>
-      <div>
-        Hva skal stå her?
-      </div>
+      <div>Hva skal stå her?</div>
     </div>
   );
 };

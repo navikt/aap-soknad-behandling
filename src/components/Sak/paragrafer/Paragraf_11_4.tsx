@@ -8,7 +8,7 @@ import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_4Type | undefined;
   fødselsdato: Date;
-}
+};
 
 const Paragraf_11_4 = ({ vilkårsvurdering, fødselsdato }: ParagrafProps): JSX.Element => {
   if (!vilkårsvurdering) {
@@ -20,7 +20,7 @@ const Paragraf_11_4 = ({ vilkårsvurdering, fødselsdato }: ParagrafProps): JSX.
         <Heading size={"medium"} level={"3"}>
           Alder
         </Heading>
-        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} />
+        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />
       </div>
       <div className={styles.rad}>
         <div className={styles.kolonne}>

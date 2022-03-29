@@ -12,6 +12,10 @@
   color: #A32A17;
 }
 
+.status__manuell {
+  color: hsl(25, 100%, 49%);
+}
+
 .status__beskrivelse {
   margin-left: .25rem
 }
