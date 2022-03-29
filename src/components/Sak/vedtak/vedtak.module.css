@@ -2,3 +2,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.vedtak__blokk {
+  margin-top: 1rem;
+}
+
+.vedtak__blokk > h2 {
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid hsl(0, 0%, 80%);
+}
+
+.inntektstabell {
+  min-width: 15%;
+  max-width: 15%;
+}
