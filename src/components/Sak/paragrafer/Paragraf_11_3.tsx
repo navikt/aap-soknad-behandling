@@ -42,6 +42,23 @@ const Paragraf_11_3 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
     }
   };
 
+  if (!vilkårsvurdering.måVurderesManuelt) {
+    return (
+      <div className={styles.paragraf__blokk}>
+        <div className={styles.paragraf__heading}>
+          <Heading size={"medium"} level={"3"}>
+            Bosatt
+          </Heading>
+          <Vilkarsstatus
+            erOppfylt={vilkårsvurdering.erOppfylt}
+            måVurderesManuelt={vilkårsvurdering.måVurderesManuelt}
+          />
+        </div>
+        <div>{`Vilkåret er ${vilkårsvurdering.erOppfylt ? "oppfylt" : "ikke oppfylt"}`}</div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.paragraf__blokk}>
       <div className={styles.paragraf__heading}>
