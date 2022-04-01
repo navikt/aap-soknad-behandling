@@ -1,11 +1,15 @@
 import format from "date-fns/format";
 import { differenceInYears } from "date-fns";
+import { nb } from "date-fns/locale";
 
-const DATO_FORMAT = "dd.MM.yyyy";
-const DATO_TID_FORMAT = "dd.MM.yyyy HH:mm"
+export const DATO_FORMATER = Object.freeze({
+  ddMMyyyy: "dd.MM.yyyy",
+  ddMMMyyyy: "dd. MMM yyyy",
+  ddMMyyyy_HHmm: "dd.MM.yyyy HH:mm",
+});
 
-export const formaterDato = (dato: Date): string => {
-  return format(dato, DATO_FORMAT);
+export const formaterDato = (dato: Date, datoformat?: string): string => {
+  return format(dato, datoformat || DATO_FORMATER.ddMMyyyy, { locale: nb });
 };
 
 export const finnAlder = (dato: Date): number => {
@@ -13,8 +17,8 @@ export const finnAlder = (dato: Date): number => {
   return differenceInYears(nå, dato);
 };
 
-export const formatterTidspunkt = (dato: Date): string => {
-  return format(dato, DATO_TID_FORMAT);
-}
+export const formaterTidspunkt = (dato: Date): string => {
+  return format(dato, DATO_FORMATER.ddMMyyyy_HHmm);
+};
 
 export const formaterPid = (pid: string): string => `${pid.substring(0, 6)} ${pid.substring(6)}`;

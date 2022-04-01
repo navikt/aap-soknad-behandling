@@ -9,7 +9,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     skjermet: false,
     sak: {
       saksid: "uuid-1",
-      søknadstidspunkt: parseISO("2022-05-05T12:22:43"),
+      søknadstidspunkt: parseISO("2022-03-23T12:22:43"),
       type: "STANDARD",
       aktiv: true,
       paragraf_11_2: {
@@ -56,7 +56,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     skjermet: false,
     sak: {
       saksid: "uuid-2",
-      søknadstidspunkt: parseISO("2022-05-05T08:19:00"),
+      søknadstidspunkt: parseISO("2022-04-12T08:19:00"),
       type: "STANDARD",
       aktiv: true,
       paragraf_11_2: {

@@ -1,11 +1,16 @@
 import { parseISO } from "date-fns";
 import {
-  Paragraf_11_12Type, Paragraf_11_29Type,
-  Paragraf_11_2Type, Paragraf_11_3Type, Paragraf_11_4Type, Paragraf_11_5Type, Paragraf_11_6Type,
+  Paragraf_11_12Type,
+  Paragraf_11_29Type,
+  Paragraf_11_2Type,
+  Paragraf_11_3Type,
+  Paragraf_11_4Type,
+  Paragraf_11_5Type,
+  Paragraf_11_6Type,
   SakType,
-  SøkerType
+  SøkerType,
 } from "../types/SakType";
-import {InntektsgrunnlagForÅr, InntektsgrunnlagType, InntektType, VedtakType} from "../types/Vedtak";
+import { InntektsgrunnlagForÅr, InntektsgrunnlagType, InntektType, VedtakType } from "../types/Vedtak";
 
 const mapInntekter = (inntekter: any[]): InntektType[] =>
   inntekter.map((inntekt: any) => ({
@@ -41,44 +46,44 @@ const mapVedtak = (vedtak: any): VedtakType => ({
 
 const mapParagraf_11_2 = (paragraf: any): Paragraf_11_2Type => ({
   vilkårsvurderingsid: paragraf.vilkårsvurderingsid,
-  erOppfylt: paragraf.erOppfylt ? paragraf.erOppfylt : undefined,
-  måVurderesManuelt: paragraf.måVurderesManuelt
+  erOppfylt: paragraf.erOppfylt,
+  måVurderesManuelt: paragraf.måVurderesManuelt,
 });
 
 const mapParagraf_11_3 = (paragraf: any): Paragraf_11_3Type => ({
   vilkårsvurderingsid: paragraf.vilkårsvurderingsid,
-  erOppfylt: paragraf.erOppfylt ? paragraf.erOppfylt : undefined,
-  måVurderesManuelt: paragraf.måVurderesManuelt
+  erOppfylt: paragraf.erOppfylt,
+  måVurderesManuelt: paragraf.måVurderesManuelt,
 });
 
 const mapParagraf_11_4 = (paragraf: any): Paragraf_11_4Type => ({
   vilkårsvurderingsid: paragraf.vilkårsvurderingsid,
-  erOppfylt: paragraf.erOppfylt ? paragraf.erOppfylt : undefined,
-  måVurderesManuelt: paragraf.måVurderesManuelt
+  erOppfylt: paragraf.erOppfylt,
+  måVurderesManuelt: paragraf.måVurderesManuelt,
 });
 
 const mapParagraf_11_5 = (paragraf: any): Paragraf_11_5Type => ({
   vilkårsvurderingsid: paragraf.vilkårsvurderingsid,
-  erOppfylt: paragraf.erOppfylt ? paragraf.erOppfylt : undefined,
-  måVurderesManuelt: paragraf.måVurderesManuelt
+  erOppfylt: paragraf.erOppfylt,
+  måVurderesManuelt: paragraf.måVurderesManuelt,
 });
 
 const mapParagraf_11_6 = (paragraf: any): Paragraf_11_6Type => ({
   vilkårsvurderingsid: paragraf.vilkårsvurderingsid,
-  erOppfylt: paragraf.erOppfylt ? paragraf.erOppfylt : undefined,
-  måVurderesManuelt: paragraf.måVurderesManuelt
+  erOppfylt: paragraf.erOppfylt,
+  måVurderesManuelt: paragraf.måVurderesManuelt,
 });
 
 const mapParagraf_11_12 = (paragraf: any): Paragraf_11_12Type => ({
   vilkårsvurderingsid: paragraf.vilkårsvurderingsid,
-  erOppfylt: paragraf.erOppfylt ? paragraf.erOppfylt : undefined,
-  måVurderesManuelt: paragraf.måVurderesManuelt
+  erOppfylt: paragraf.erOppfylt,
+  måVurderesManuelt: paragraf.måVurderesManuelt,
 });
 
 const mapParagraf_11_29 = (paragraf: any): Paragraf_11_29Type => ({
   vilkårsvurderingsid: paragraf.vilkårsvurderingsid,
-  erOppfylt: paragraf.erOppfylt ? paragraf.erOppfylt : undefined,
-  måVurderesManuelt: paragraf.måVurderesManuelt
+  erOppfylt: paragraf.erOppfylt,
+  måVurderesManuelt: paragraf.måVurderesManuelt,
 });
 
 const mapSak = (sak: any): SakType => ({
@@ -107,6 +112,6 @@ export const mapSøker = (søker: any[]): SøkerType[] => {
     fødselsdato: parseISO(s.fødselsdato),
     navn: s.navn,
     adressebeskyttelse: s.adressebeskyttelse,
-    skjermet: s.skjermet
+    skjermet: s.skjermet,
   }));
 };

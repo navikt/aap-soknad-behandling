@@ -5,6 +5,7 @@ import { renderWithRouter } from "../../test/renderWithRouter";
 import { listeMedSøkereOgSaker } from "../../mocks/datas/saksliste";
 import { server } from "../../mocks/server";
 import { rest } from "msw";
+import { formaterPid } from "../../lib/dato";
 
 describe("Saksoversikt", () => {
   test("viser liste med oppgaver", async () => {
@@ -13,11 +14,9 @@ describe("Saksoversikt", () => {
     expect(screen.getByText("venter...")).toBeInTheDocument();
 
     await waitFor(() => expect(screen.getByRole("heading", { name: /Saksoversikt/ })).toBeVisible());
-    await waitFor(() => expect(screen.getByRole("columnheader", { name: /Søknadsdato/ })).toBeVisible());
-    expect(screen.getByRole("columnheader", { name: /Navn/ })).toBeVisible();
-    expect(screen.getByRole("columnheader", { name: /Fødselsdato/ })).toBeVisible();
+    await waitFor(() => expect(screen.getByRole("columnheader", { name: /Bruker/ })).toBeVisible());
     expect(screen.getAllByRole("row")).toHaveLength(forventetAntallRader);
-    expect(screen.getByRole("link", { name: listeMedSøkereOgSaker[0].navn || "NAVN" })).toBeVisible();
+    expect(screen.getByRole("link", { name: formaterPid(listeMedSøkereOgSaker[0].personident) })).toBeVisible();
   });
 
   test("viser melding når det ikke blir returnert noen saker", async () => {

@@ -58,13 +58,13 @@ const texts = {
     behandle: "Behandle sak",
     visSak: "Vis sak",
     tabell: {
-      søknadsdato: "Søknadsdato",
-      navn: "Navn",
-      fødselsdato: "Fødselsdato",
-      ansvarlig: "Ansvarlig",
-      handling: "Handling",
-      pid: "Fødsels-/D-nummer",
-      status: "Status",
+      søknadsdato: "Søknad",
+      pid: "Bruker",
+      aap: "AAP",
+    },
+    tags: {
+      inngangsvilkår: "Inngang",
+      "11_5": "§ 11-5",
     },
   },
   paragrafer: {

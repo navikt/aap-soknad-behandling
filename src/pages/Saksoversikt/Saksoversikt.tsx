@@ -1,10 +1,9 @@
 import { BodyShort, Heading, Link, Loader, Table, Tag } from "@navikt/ds-react";
 
-import { Caseworker, Warning } from "@navikt/ds-icons";
 import { fetchGET } from "../../hooks/useFetch";
-import { SøkerType } from "../../types/SakType";
+import { SakType, SøkerType } from "../../types/SakType";
 import { RenderWhen } from "../../components/RenderWhen";
-import {formaterDato, formaterPid, formatterTidspunkt} from "../../lib/dato";
+import { DATO_FORMATER, formaterDato, formaterPid } from "../../lib/dato";
 import { mapSøker } from "../../lib/sokerMapper";
 import { getText } from "../../tekster/tekster";
 
@@ -16,9 +15,42 @@ type ApiResponse = {
   loading: boolean;
 };
 
+const Sakstags = ({ sak }: { sak: SakType }): JSX.Element => {
+  // TODO må avklares hvordan respons skal se ut
+  if (sak.paragraf_11_5?.erOppfylt) {
+    return (
+      <Tag variant={"success"} size={"small"}>
+        {getText("saksoversikt.tags.11_5")}
+      </Tag>
+    );
+  }
+
+  if (sak.paragraf_11_2 || sak.paragraf_11_3 || sak.paragraf_11_4) {
+    let p11_2_ikke_oppfylt =
+      (sak.paragraf_11_2?.erOppfylt === false && sak.paragraf_11_2?.måVurderesManuelt === false) ?? undefined;
+    let p11_3_ikke_oppfylt =
+      (sak.paragraf_11_3?.erOppfylt === false && sak.paragraf_11_3?.måVurderesManuelt === false) ?? undefined;
+    let p11_4_ikke_oppfylt =
+      (sak.paragraf_11_4?.erOppfylt === false && sak.paragraf_11_4?.måVurderesManuelt === false) ?? undefined;
+    if (p11_2_ikke_oppfylt || p11_3_ikke_oppfylt || p11_4_ikke_oppfylt) {
+      const paragrafer = [p11_2_ikke_oppfylt && "§11-2", p11_3_ikke_oppfylt && "§11-3", p11_4_ikke_oppfylt && "§11-4"]
+        .filter((v) => !!v)
+        .join(", ");
+      return (
+        <Tag variant={"error"} size={"small"}>
+          {getText("saksoversikt.tags.inngangsvilkår")}&nbsp;
+          {paragrafer}
+        </Tag>
+      );
+    }
+  }
+
+  return <></>;
+};
+
 const IngenSakerFunnet = (): JSX.Element => (
   <Table.Row>
-    <Table.DataCell colSpan={7} style={{ textAlign: "center" }}>
+    <Table.DataCell colSpan={4} style={{ textAlign: "center" }}>
       <BodyShort>{getText("saksoversikt.ingenFunnet")}</BodyShort>
     </Table.DataCell>
   </Table.Row>
@@ -29,31 +61,15 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <Table.Row key={søker.sak.saksid} className={harAdressebeskyttelse(søker) ? styles.gradert : ""}>
       <Table.DataCell>
-        {harAdressebeskyttelse(søker) && <Warning title={"Personen har adressegradering"} />}
-      </Table.DataCell>
-      <Table.DataCell>{søker.sak.søknadstidspunkt && formatterTidspunkt(søker.sak.søknadstidspunkt)}</Table.DataCell>
-      <Table.DataCell>
         <Link href={`/aap-behandling/sak/${søker.personident}`}>{formaterPid(søker.personident)}</Link>
       </Table.DataCell>
       <Table.DataCell>
-        <Link href={`/aap-behandling/sak/${søker.personident}`}>{søker.navn}</Link>
-      </Table.DataCell>
-      <Table.DataCell>{formaterDato(søker.fødselsdato)}</Table.DataCell>
-      <Table.DataCell>
-        {søker.sak.vedtak?.innvilget && (
-          <Tag variant={"success"} size={"small"}>
-            {getText("Vedtak fattet")}
-          </Tag>
-        )}
+        {søker.sak.søknadstidspunkt && formaterDato(søker.sak.søknadstidspunkt, DATO_FORMATER.ddMMMyyyy)}
       </Table.DataCell>
       <Table.DataCell>
-        <Link href={`/aap-behandling/sak/${søker.personident}`}>
-          {getText(søker.sak.vedtak?.innvilget ? "saksoversikt.visSak" : "saksoversikt.behandle")}
-        </Link>
+        <Sakstags sak={søker.sak} />
       </Table.DataCell>
-      <Table.DataCell style={{ textAlign: "center" }}>
-        {søker.sak?.ansvarlig && <Caseworker title={søker.sak.ansvarlig} />}
-      </Table.DataCell>
+      <Table.DataCell>{søker.navn}</Table.DataCell>
     </Table.Row>
   );
 };
@@ -84,24 +100,16 @@ const Saksoversikt = () => {
               <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
                 <Table.Header>
                   <Table.Row>
-                    <Table.ColumnHeader style={{ minWidth: "2rem", width: "2rem" }} />
-                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
-                      {getText("saksoversikt.tabell.søknadsdato")}
-                    </Table.ColumnHeader>
                     <Table.ColumnHeader sortable={kanSorteres} sortKey={"pid"}>
                       {getText("saksoversikt.tabell.pid")}
                     </Table.ColumnHeader>
-                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"navn"}>
-                      {getText("saksoversikt.tabell.navn")}
+                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
+                      {getText("saksoversikt.tabell.søknadsdato")}
                     </Table.ColumnHeader>
-                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"fødselsdato"}>
-                      {getText("saksoversikt.tabell.fødselsdato")}
+                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"sakstype"}>
+                      {getText("saksoversikt.tabell.aap")}
                     </Table.ColumnHeader>
-                    <Table.ColumnHeader>{getText("saksoversikt.tabell.status")}</Table.ColumnHeader>
-                    <Table.ColumnHeader>{getText("saksoversikt.tabell.handling")}</Table.ColumnHeader>
-                    <Table.ColumnHeader style={{ minWidth: "6rem", width: "6rem" }}>
-                      {getText("saksoversikt.tabell.ansvarlig")}
-                    </Table.ColumnHeader>
+                    <Table.ColumnHeader>Navn</Table.ColumnHeader>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
