@@ -4,11 +4,9 @@ import { Paragraf_11_2Type } from "../../../types/SakType";
 
 import * as styles from "./paragraf.module.css";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
-import { useForm } from "react-hook-form";
-import { sendLøsning } from "./SendLosning";
-import { useState } from "react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
+import { useSkjema } from "../../../hooks/useSkjema";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_2Type | undefined;
@@ -16,33 +14,17 @@ type ParagrafProps = {
 };
 
 const Paragraf_11_2 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
-  const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   if (!vilkårsvurdering) {
     return <div>Fant ikke 11-2</div>;
   }
 
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, control, reset, errors, onSubmit, senderMelding } = useSkjema();
 
-  const onSubmit = async (datas: any) => {
-    oppdaterSenderMelding(true);
-    const res = await sendLøsning(personident, {
-      løsning_11_2_manuell: {
-        erMedlem: datas.erOppfylt,
-      },
-    });
-    oppdaterSenderMelding(false);
-    if (!res.ok) {
-      console.warn("Noe feilet under innsending");
-      console.warn(res);
-    } else {
-      window.location.reload();
-    }
-  };
+  const løsning = (datas: any) => ({
+    løsning_11_2_manuell: {
+      erMedlem: datas.erOppfylt,
+    },
+  });
 
   if (!vilkårsvurdering.måVurderesManuelt) {
     return (
@@ -69,7 +51,7 @@ const Paragraf_11_2 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         </Heading>
         <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
         <RadioGroupWrapper
           name={"erOppfylt"}
           control={control}

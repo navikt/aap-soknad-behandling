@@ -1,11 +1,8 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-
 import { Button, TextField } from "@navikt/ds-react";
 
 import { Paragraf_11_5Type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
-import { sendLøsning } from "./SendLosning";
+import { useSkjema } from "../../../hooks/useSkjema";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_5Type | undefined;
@@ -13,27 +10,13 @@ type ParagrafProps = {
 };
 
 const Paragraf_11_5 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
-  const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = async (datas: any) => {
-    oppdaterSenderMelding(true);
-    const res = await sendLøsning(personident, {
-      løsning_11_5_manuell: {
-        grad: datas.nedsattArbeidsevne,
-      },
-    });
-    oppdaterSenderMelding(false);
-    if (!res.ok) {
-      console.warn("Noe feilet under innsending");
-      console.warn(res);
-    } else {
-      window.location.reload();
-    }
-  };
+  const { register, handleSubmit, errors, onSubmit, senderMelding } = useSkjema();
+  const løsning = (datas: any) => ({
+    løsning_11_5_manuell: {
+      grad: datas.nedsattArbeidsevne,
+    },
+  });
+
   if (!vilkårsvurdering) {
     return <div>Fant ikke 11-5</div>;
   }
@@ -42,7 +25,7 @@ const Paragraf_11_5 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   }
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
         <div>
           <TextField
             {...register("nedsattArbeidsevne", {

@@ -74,7 +74,7 @@ const texts = {
     },
     inngangsvilkår: {
       heading: "Inngangsvilkår",
-      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-3 eller ikke.",
+      påkrevd: "Du må ta stilling til om bruker oppfyller kravet eller ikke.",
     },
     "11_5": {
       heading: "Vurdering av § 11-5",
@@ -102,8 +102,8 @@ const texts = {
   beregningsdato: {
     heading: "Beregningsdato",
     label: "Sett beregningsdato for vedtak",
-    knapp: "Sett dato"
-  }
+    knapp: "Sett dato",
+  },
 };
 
 export const getText = (key: string): string => {

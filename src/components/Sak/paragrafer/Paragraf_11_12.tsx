@@ -3,45 +3,29 @@ import * as styles from "./paragraf.module.css";
 import { Button, Radio } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { sendLøsning } from "./SendLosning";
+import { useSkjema } from "../../../hooks/useSkjema";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_12Type | undefined;
   personident: string;
-}
+};
 
 const Paragraf_11_12 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, control, reset, errors, onSubmit, senderMelding } = useSkjema();
 
   if (!vilkårsvurdering) {
     return <div>Fant ingen vurdering for 11-12</div>;
   }
-  const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
-  const onSubmit = async (datas: any) => {
-    oppdaterSenderMelding(true);
-    const res = await sendLøsning(personident, {
-      løsning_11_12_ledd1_manuell: {
-        erOppfylt: datas.erOppfylt === "true",
-      }
-    });
-    oppdaterSenderMelding(false);
-    if (!res.ok) {
-      console.warn("Noe feilet under innsending");
-    } else {
-      window.location.reload();
-    }
-  };
+
+  const løsning = (datas: any) => ({
+    løsning_11_12_ledd1_manuell: {
+      erOppfylt: datas.erOppfylt === "true",
+    },
+  });
 
   return (
     <div className={styles.paragraf__blokk}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
         <RadioGroupWrapper
           name={"erOppfylt"}
           control={control}
