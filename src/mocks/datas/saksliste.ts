@@ -1,5 +1,5 @@
 import { SøkerType } from "../../types/SakType";
-import { parseISO } from "date-fns";
+import { parseISO, subDays } from "date-fns";
 
 export const listeMedSøkereOgSaker: SøkerType[] = [
   {
@@ -277,6 +277,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
   },
   {
     personident: "06826999576",
+    navn: "Innvilget vedtak",
     fødselsdato: parseISO("1969-02-06"),
     skjermet: true,
     sak: {
@@ -324,6 +325,109 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         innvilget: true,
         inntektsgrunnlag: {
           beregningsdato: parseISO("2022-01-01"),
+          inntekterSiste3Kalenderår: [
+            {
+              år: 2021,
+              inntekter: [
+                {
+                  arbeidsgiver: "321",
+                  inntekstmåned: parseISO("2021-01"),
+                  beløp: 400000.0,
+                },
+              ],
+              beløpFørJustering: 400000.0,
+              beløpJustertFor6G: 400000.0,
+              erBeløpJustertFor6G: false,
+              grunnlagsfaktor: 3.819856,
+            },
+            {
+              år: 2020,
+              inntekter: [
+                {
+                  arbeidsgiver: "321",
+                  inntekstmåned: parseISO("2020-01"),
+                  beløp: 400000.0,
+                },
+              ],
+              beløpFørJustering: 400000.0,
+              beløpJustertFor6G: 400000.0,
+              erBeløpJustertFor6G: false,
+              grunnlagsfaktor: 3.966169,
+            },
+            {
+              år: 2019,
+              inntekter: [
+                {
+                  arbeidsgiver: "321",
+                  inntekstmåned: parseISO("2019-01"),
+                  beløp: 400000.0,
+                },
+              ],
+              beløpFørJustering: 400000.0,
+              beløpJustertFor6G: 400000.0,
+              erBeløpJustertFor6G: false,
+              grunnlagsfaktor: 4.04588,
+            },
+          ],
+          fødselsdato: parseISO("1969-02-06"),
+          sisteKalenderår: 2021,
+          grunnlagsfaktor: 3.943968,
+        },
+        vedtaksdato: parseISO("2022-03-25"),
+        virkningsdato: parseISO("2022-03-25"),
+      },
+    },
+  },
+  {
+    personident: "12838121301",
+    navn: "Ikke innvilget",
+    fødselsdato: parseISO("1981-03-12"),
+    skjermet: false,
+    sak: {
+      saksid: "uuid-9345",
+      søknadstidspunkt: parseISO(subDays(new Date(), 38).toISOString()),
+      type: "STANDARD",
+      aktiv: true,
+      paragraf_11_2: {
+        vilkårsvurderingsid: "uuid-3-2",
+        erOppfylt: true,
+        måVurderesManuelt: false,
+      },
+      paragraf_11_3: {
+        vilkårsvurderingsid: "uuid-3-3",
+        erOppfylt: false,
+        måVurderesManuelt: false,
+      },
+      paragraf_11_4: {
+        vilkårsvurderingsid: "uuid-3-4",
+        erOppfylt: true,
+        måVurderesManuelt: false,
+      },
+      paragraf_11_5: {
+        vilkårsvurderingsid: "uuid-3-5",
+        erOppfylt: false,
+        måVurderesManuelt: false,
+      },
+      paragraf_11_6: {
+        vilkårsvurderingsid: "uuid-3-6",
+        erOppfylt: false,
+        måVurderesManuelt: false,
+      },
+      paragraf_11_12: {
+        vilkårsvurderingsid: "uuid-3-12",
+        erOppfylt: false,
+        måVurderesManuelt: false,
+      },
+      paragraf_11_29: {
+        vilkårsvurderingsid: "uuid-3-29",
+        erOppfylt: false,
+        måVurderesManuelt: false,
+      },
+      vedtak: {
+        vedtaksid: "52e31434-179a-40af-9d8f-1a84c0c9baaf",
+        innvilget: false,
+        inntektsgrunnlag: {
+          beregningsdato: parseISO(subDays(new Date(), 5).toISOString()),
           inntekterSiste3Kalenderår: [
             {
               år: 2021,

@@ -8,8 +8,8 @@ import { rest } from "msw";
 import { formaterPid } from "../../lib/dato";
 
 describe("Saksoversikt", () => {
-  test("viser liste med oppgaver", async () => {
-    const forventetAntallRader = listeMedSøkereOgSaker.length + 1; //row inkluderer og headere, derav +1
+  test("viser ledige oppgaver som initiell visning", async () => {
+    const forventetAntallRader = listeMedSøkereOgSaker.filter((søker) => !søker.sak.vedtak).length + 1; //row inkluderer og headere, derav +1
     renderWithRouter(<Saksoversikt />);
     expect(screen.getByText("venter...")).toBeInTheDocument();
 
@@ -17,6 +17,15 @@ describe("Saksoversikt", () => {
     await waitFor(() => expect(screen.getByRole("columnheader", { name: /Bruker/ })).toBeVisible());
     expect(screen.getAllByRole("row")).toHaveLength(forventetAntallRader);
     expect(screen.getByRole("link", { name: formaterPid(listeMedSøkereOgSaker[0].personident) })).toBeVisible();
+
+    const tilBehandlingValg = screen.getByRole("radio", { name: /Alle saker til behandling/ });
+    const behandletValg = screen.getByRole("radio", { name: /Alle saker som er ferdig behandlet/ });
+
+    expect(tilBehandlingValg).toBeVisible();
+    expect(tilBehandlingValg).toBeChecked();
+
+    expect(behandletValg).toBeVisible();
+    expect(behandletValg).not.toBeChecked();
   });
 
   test("viser melding når det ikke blir returnert noen saker", async () => {

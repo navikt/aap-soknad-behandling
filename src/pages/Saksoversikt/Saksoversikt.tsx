@@ -1,4 +1,5 @@
-import { BodyShort, Heading, Link, Loader, Table, Tag } from "@navikt/ds-react";
+import { useSearchParams } from "react-router-dom";
+import { BodyShort, Heading, Link, Loader, Table, Tag, ToggleGroup } from "@navikt/ds-react";
 
 import { fetchGET } from "../../hooks/useFetch";
 import { SakType, SøkerType } from "../../types/SakType";
@@ -17,6 +18,13 @@ type ApiResponse = {
 
 const Sakstags = ({ sak }: { sak: SakType }): JSX.Element => {
   // TODO må avklares hvordan respons skal se ut
+  if (sak.vedtak) {
+    return (
+      <Tag variant={sak.vedtak.innvilget ? "success" : "error"}>
+        {sak.vedtak.innvilget ? "Innvilget" : "Ikke innvilget"}
+      </Tag>
+    );
+  }
   if (sak.paragraf_11_5?.erOppfylt) {
     return (
       <Tag variant={"success"} size={"small"}>
@@ -74,14 +82,38 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
   );
 };
 
+const VISNINGER = {
+  LEDIGE: "ledige",
+  BEHANDLET: "behandlede",
+};
+
+const DEFAULT_PAGE = VISNINGER.LEDIGE;
+
 const Saksoversikt = () => {
   const { data, loading, error }: ApiResponse = fetchGET("/aap-behandling/api/sak");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const onsketVisning = searchParams.get("vis");
+  const gyldigVisning = onsketVisning && Object.values(VISNINGER).includes(onsketVisning);
+
+  const visning = gyldigVisning ? onsketVisning : DEFAULT_PAGE;
+
   if (error) {
     return <div>{error}</div>;
   }
-
   const søkere: SøkerType[] = mapSøker(data);
   const kanSorteres = søkere.length > 1;
+  const tabellInnhold = () => {
+    if (søkere.length === 0) {
+      return <IngenSakerFunnet />;
+    }
+    return søkere
+      .filter((søker: SøkerType) => (visning === VISNINGER.BEHANDLET ? !!søker.sak.vedtak : !søker.sak.vedtak))
+      .map((søker: SøkerType) => <Saksrad key={søker.personident} søker={søker} />);
+  };
+
+  const settVisning = (nyVisning: string) => {
+    setSearchParams({ vis: nyVisning });
+  };
 
   return (
     <div className={styles.saksliste}>
@@ -97,27 +129,33 @@ const Saksoversikt = () => {
               <Loader />
             </RenderWhen>
             <RenderWhen when={!loading}>
-              <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"pid"}>
-                      {getText("saksoversikt.tabell.pid")}
-                    </Table.ColumnHeader>
-                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
-                      {getText("saksoversikt.tabell.søknadsdato")}
-                    </Table.ColumnHeader>
-                    <Table.ColumnHeader sortable={kanSorteres} sortKey={"sakstype"}>
-                      {getText("saksoversikt.tabell.aap")}
-                    </Table.ColumnHeader>
-                    <Table.ColumnHeader>Navn</Table.ColumnHeader>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {søkere.length === 0 && <IngenSakerFunnet />}
-                  {søkere.length > 0 &&
-                    søkere.map((søker: SøkerType) => <Saksrad key={søker.personident} søker={søker} />)}
-                </Table.Body>
-              </Table>
+              <>
+                <ToggleGroup onChange={settVisning} value={visning}>
+                  <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>
+                    Til behandling
+                  </ToggleGroup.Item>
+                  <ToggleGroup.Item value={VISNINGER.BEHANDLET} title={"Alle saker som er ferdig behandlet"}>
+                    Behandlet
+                  </ToggleGroup.Item>
+                </ToggleGroup>
+                <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"pid"}>
+                        {getText("saksoversikt.tabell.pid")}
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
+                        {getText("saksoversikt.tabell.søknadsdato")}
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"sakstype"}>
+                        {getText("saksoversikt.tabell.aap")}
+                      </Table.ColumnHeader>
+                      <Table.ColumnHeader>Navn</Table.ColumnHeader>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>{tabellInnhold()}</Table.Body>
+                </Table>
+              </>
             </RenderWhen>
           </main>
         </div>
