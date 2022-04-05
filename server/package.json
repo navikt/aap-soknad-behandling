@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && ncc build src/index.ts -o dist",
-    "postbuild": "cp manuell.avdl dist",
     "build:mock": "rimraf dist && ncc build src/mockServer.ts -o dist",
     "dev:server": "nodemon",
     "dev:server-debug": "node -r ts-node/register --inspect=5858 src/index.ts",
@@ -23,7 +22,6 @@
     "node-fetch": "3.2.3",
     "openid-client": "5.1.4",
     "prom-client": "^14.0.1",
-    "react": "^17.0.2",
     "winston": "3.7.2"
   },
   "devDependencies": {
