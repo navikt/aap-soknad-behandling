@@ -58,7 +58,7 @@ const Sakstags = ({ sak }: { sak: SakType }): JSX.Element => {
 
 const IngenSakerFunnet = (): JSX.Element => (
   <Table.Row>
-    <Table.DataCell colSpan={4} style={{ textAlign: "center" }}>
+    <Table.DataCell colSpan={5} style={{ textAlign: "center" }}>
       <BodyShort>{getText("saksoversikt.ingenFunnet")}</BodyShort>
     </Table.DataCell>
   </Table.Row>
@@ -69,11 +69,14 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <Table.Row key={søker.sak.saksid} className={harAdressebeskyttelse(søker) ? styles.gradert : ""}>
       <Table.DataCell>
-        <Link href={`/aap-behandling/sak/${søker.personident}`}>{formaterPid(søker.personident)}</Link>
+        {søker.sak.søknadstidspunkt && (
+          <Link href={`/aap-behandling/sak/${søker.personident}`}>
+            {formaterDato(søker.sak.søknadstidspunkt, DATO_FORMATER.ddMMMyyyy)}
+          </Link>
+        )}
       </Table.DataCell>
-      <Table.DataCell>
-        {søker.sak.søknadstidspunkt && formaterDato(søker.sak.søknadstidspunkt, DATO_FORMATER.ddMMMyyyy)}
-      </Table.DataCell>
+      <Table.DataCell>{formaterPid(søker.personident)}</Table.DataCell>
+      <Table.DataCell>&nbsp;</Table.DataCell>
       <Table.DataCell>
         <Sakstags sak={søker.sak} />
       </Table.DataCell>
@@ -141,11 +144,14 @@ const Saksoversikt = () => {
                 <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
                   <Table.Header>
                     <Table.Row>
+                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
+                        {getText("saksoversikt.tabell.søknadsdato")}
+                      </Table.ColumnHeader>
                       <Table.ColumnHeader sortable={kanSorteres} sortKey={"pid"}>
                         {getText("saksoversikt.tabell.pid")}
                       </Table.ColumnHeader>
-                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
-                        {getText("saksoversikt.tabell.søknadsdato")}
+                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"status"}>
+                        {getText("saksoversikt.tabell.status")}
                       </Table.ColumnHeader>
                       <Table.ColumnHeader sortable={kanSorteres} sortKey={"sakstype"}>
                         {getText("saksoversikt.tabell.aap")}

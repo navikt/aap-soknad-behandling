@@ -60,6 +60,7 @@ const texts = {
     tabell: {
       søknadsdato: "Søknad",
       pid: "Bruker",
+      status: "Status",
       aap: "AAP",
     },
     tags: {

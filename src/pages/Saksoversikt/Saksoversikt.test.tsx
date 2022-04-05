@@ -1,11 +1,11 @@
-import React from "react";
-import { screen, waitFor } from "@testing-library/react";
+import { screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import { rest } from "msw";
+
 import Saksoversikt from "./Saksoversikt";
 import { renderWithRouter } from "../../test/renderWithRouter";
 import { listeMedSøkereOgSaker } from "../../mocks/datas/saksliste";
 import { server } from "../../mocks/server";
-import { rest } from "msw";
-import { formaterPid } from "../../lib/dato";
+import { DATO_FORMATER, formaterDato } from "../../lib/dato";
 
 describe("Saksoversikt", () => {
   test("viser ledige oppgaver som initiell visning", async () => {
@@ -16,7 +16,11 @@ describe("Saksoversikt", () => {
     await waitFor(() => expect(screen.getByRole("heading", { name: /Saksoversikt/ })).toBeVisible());
     await waitFor(() => expect(screen.getByRole("columnheader", { name: /Bruker/ })).toBeVisible());
     expect(screen.getAllByRole("row")).toHaveLength(forventetAntallRader);
-    expect(screen.getByRole("link", { name: formaterPid(listeMedSøkereOgSaker[0].personident) })).toBeVisible();
+    expect(
+      screen.getByRole("link", {
+        name: formaterDato(listeMedSøkereOgSaker[0].sak.søknadstidspunkt, DATO_FORMATER.ddMMMyyyy),
+      })
+    ).toBeVisible();
 
     const tilBehandlingValg = screen.getByRole("radio", { name: /Alle saker til behandling/ });
     const behandletValg = screen.getByRole("radio", { name: /Alle saker som er ferdig behandlet/ });
@@ -26,6 +30,14 @@ describe("Saksoversikt", () => {
 
     expect(behandletValg).toBeVisible();
     expect(behandletValg).not.toBeChecked();
+  });
+
+  test("søknadsdato skal lenke til sak", async () => {
+    const førsteSøknadsdato = listeMedSøkereOgSaker[0].sak.søknadstidspunkt;
+    renderWithRouter(<Saksoversikt />);
+    await waitForElementToBeRemoved(screen.getByText("venter..."));
+    await waitFor(() => expect(screen.getByRole("heading", { name: /Saksoversikt/ })).toBeVisible());
+    expect(screen.getByRole("link", { name: formaterDato(førsteSøknadsdato, DATO_FORMATER.ddMMMyyyy) })).toBeVisible();
   });
 
   test("viser melding når det ikke blir returnert noen saker", async () => {
