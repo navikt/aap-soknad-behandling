@@ -25,7 +25,7 @@ export interface SakType {
   paragraf_11_29?: Paragraf_11_29Type;
 }
 
-interface VilkårsvurderingType {
+export interface VilkårsvurderingType {
   vilkårsvurderingsid: string;
   erOppfylt?: boolean;
   måVurderesManuelt: boolean;

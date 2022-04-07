@@ -114,12 +114,12 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       paragraf_11_3: {
         vilkårsvurderingsid: "uuid-3-3",
         erOppfylt: false,
-        måVurderesManuelt: true,
+        måVurderesManuelt: false,
       },
       paragraf_11_4: {
         vilkårsvurderingsid: "uuid-3-4",
-        erOppfylt: false,
-        måVurderesManuelt: true,
+        erOppfylt: true,
+        måVurderesManuelt: false,
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-3-5",
@@ -297,28 +297,28 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       },
       paragraf_11_4: {
         vilkårsvurderingsid: "uuid-3-4",
-        erOppfylt: false,
-        måVurderesManuelt: true,
+        erOppfylt: true,
+        måVurderesManuelt: false,
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-3-5",
-        erOppfylt: false,
-        måVurderesManuelt: true,
+        erOppfylt: true,
+        måVurderesManuelt: false,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-3-6",
-        erOppfylt: false,
-        måVurderesManuelt: true,
+        erOppfylt: true,
+        måVurderesManuelt: false,
       },
       paragraf_11_12: {
         vilkårsvurderingsid: "uuid-3-12",
-        erOppfylt: false,
-        måVurderesManuelt: true,
+        erOppfylt: true,
+        måVurderesManuelt: false,
       },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-3-29",
-        erOppfylt: false,
-        måVurderesManuelt: true,
+        erOppfylt: true,
+        måVurderesManuelt: false,
       },
       vedtak: {
         vedtaksid: "52e31434-179a-40af-9d8f-1a84c0c9baaf",

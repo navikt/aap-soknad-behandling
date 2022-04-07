@@ -1,17 +1,21 @@
-.oppgaveliste > ol {
-  list-style: none;
-
+.oppgaveliste > a {
   font-size: 1.25rem;
-  line-height: 3;
-
-  margin-top: 0;
-  padding: 0;
+  min-height: 6vh;
+  padding: .5rem 1rem;
+  text-decoration: none;
 }
 
-.oppgaveliste > ol > li {
-  padding-left: .5rem;
+.oppgaveliste > a:not(:last-child) {
+  border-bottom: 1px solid hsl(0, 0%, 70%);
 }
 
-.oppgaveliste > ol > li.active {
-  box-shadow: -5px 0 hsl(223, 100%, 50%);
+.oppgaveliste > a:hover {
+  background-color: hsla(0, 0%, 90%, .5);
+}
+
+.oppgaveliste > a.active {
+  border-left: 10px solid hsl(209, 100%, 39%);
+  background-color: hsl(216, 100%, 95%);
+  color: hsl(0, 0%, 0%);
+  font-weight: 900;
 }
