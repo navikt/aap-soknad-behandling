@@ -9,7 +9,7 @@
 
 .vedtak__blokk > h2 {
   margin-bottom: 0.5rem;
-  border-bottom: 2px solid hsl(0, 0%, 80%);
+  border-bottom: 2px solid var(--navds-semantic-color-border-muted);
 }
 
 .inntektstabell {

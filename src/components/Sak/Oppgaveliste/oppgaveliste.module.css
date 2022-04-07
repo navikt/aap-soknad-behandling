@@ -6,16 +6,16 @@
 }
 
 .oppgaveliste > a:not(:last-child) {
-  border-bottom: 1px solid hsl(0, 0%, 70%);
+  border-bottom: 1px solid var(--navds-semantic-color-border-muted);
 }
 
 .oppgaveliste > a:hover {
-  background-color: hsla(0, 0%, 90%, .5);
+  background-color: hsla(0, 0%, 90%, .5); /** ikke fra design **/
 }
 
 .oppgaveliste > a.active {
-  border-left: 10px solid hsl(209, 100%, 39%);
-  background-color: hsl(216, 100%, 95%);
-  color: hsl(0, 0%, 0%);
+  border-left: 10px solid var(--navds-semantic-color-interaction-primary);
+  background-color: var(--navds-semantic-color-interaction-primary-hover-subtle);
+  color: var(--navds-semantic-color-text);
   font-weight: 900;
 }

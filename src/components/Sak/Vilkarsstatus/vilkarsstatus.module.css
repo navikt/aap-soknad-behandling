@@ -5,15 +5,15 @@
 }
 
 .status__ok {
-  color: #006A23;
+  color: var(--navds-semantic-color-feedback-success-icon);
 }
 
 .status__nok {
-  color: #A32A17;
+  color: var(--navds-semantic-color-feedback-danger-icon);
 }
 
 .status__manuell {
-  color: hsl(25, 100%, 49%);
+  color: var(--navds-semantic-color-feedback-warning-icon);
 }
 
 .status__beskrivelse {

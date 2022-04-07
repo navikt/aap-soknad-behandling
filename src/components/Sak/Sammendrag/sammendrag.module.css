@@ -1,6 +1,6 @@
 .oppsummering {
   padding: 1rem;
-  background: hsl(0, 0%, 100%);
+  background: var(--navds-semantic-color-canvas-background-light);
   display: flex;
   flex-direction: column;
 }

@@ -18,15 +18,8 @@
 }
 
 .saksliste__tabell {
-  background: hsl(0, 0%, 100%);
-  border: 1px solid hsl(0, 0%, 71%);
-}
-
-.actions {
-  background: hsl(0 0% 100%);
-  max-width: 24rem;
-  margin: 0 1rem;
-  padding: 1rem;
+  background-color: var(--navds-semantic-color-canvas-background-light);
+  border: 1px solid var(--navds-semantic-color-border-muted);
 }
 
 .banner {
@@ -48,9 +41,9 @@
 }
 
 .gradert {
-  border: 2px solid hsl(10, 100%, 50%);
+  border: 2px solid var(--navds-semantic-color-feedback-warning-border);
 }
 
 .gradert td {
-  background: hsl(10, 60%, 90%);
+  background-color: var(--navds-semantic-color-feedback-danger-background);
 }

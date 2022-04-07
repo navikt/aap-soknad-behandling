@@ -13,15 +13,16 @@
 
   margin-bottom: .5rem;
 
-  border-bottom: 2px solid hsl(0, 0%, 80%);
+  border-bottom: 2px solid var(--navds-semantic-color-border-muted);
 }
 
 .green {
-  color: hsl(103, 75%, 40%);
+  color: var(--navds-semantic-color-feedback-success-icon);
 }
 
 .red {
-  color: hsl(10, 100%, 49%);
+  color: var(--navds-semantic-color-feedback-danger-icon);
+
 }
 
 .kolonne {
