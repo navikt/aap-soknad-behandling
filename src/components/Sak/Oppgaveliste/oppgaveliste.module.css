@@ -9,7 +9,7 @@
   border-bottom: 1px solid var(--navds-semantic-color-border-muted);
 }
 
-.oppgaveliste > a:hover {
+.oppgaveliste > a:is(:hover, :focus) {
   background-color: hsla(0, 0%, 90%, .5); /** ikke fra design **/
 }
 
