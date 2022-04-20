@@ -1,11 +1,10 @@
 import { useSearchParams } from "react-router-dom";
-import { BodyShort, Heading, Link, Loader, Table, Tag, ToggleGroup } from "@navikt/ds-react";
+import { BodyShort, ErrorSummary, Heading, Link, Loader, Table, Tag, ToggleGroup } from "@navikt/ds-react";
 
 import { fetchGET } from "../../hooks/useFetch";
-import { SakType, SøkerType } from "../../types/SakType";
+import { SakType, søkerliste, SøkerType } from "../../types/SakType";
 import { RenderWhen } from "../../components/RenderWhen";
 import { DATO_FORMATER, formaterDato, formaterPid } from "../../lib/dato";
-import { mapSøker } from "../../lib/sokerMapper";
 import { getText } from "../../tekster/tekster";
 
 import * as styles from "./saksoversikt.module.css";
@@ -100,16 +99,22 @@ const Saksoversikt = () => {
 
   const visning = gyldigVisning ? onsketVisning : DEFAULT_PAGE;
 
-  if (error) {
-    return <div>{error}</div>;
+  const søkere = data && søkerliste.safeParse(data);
+  if (søkere && !søkere.success) {
+    console.error(søkere.error);
+    return (
+      <>
+        <ErrorSummary heading={"Feil under parsing av svar"}>{søkere.error.message}</ErrorSummary>
+      </>
+    );
   }
-  const søkere: SøkerType[] = mapSøker(data);
-  const kanSorteres = søkere.length > 1;
+
+  const kanSorteres = () => søkere?.data?.length > 1;
   const tabellInnhold = () => {
-    if (søkere.length === 0) {
+    if (!søkere || søkere.data.length === 0) {
       return <IngenSakerFunnet />;
     }
-    return søkere
+    return søkere.data
       .filter((søker: SøkerType) => (visning === VISNINGER.BEHANDLET ? !!søker.sak.vedtak : !søker.sak.vedtak))
       .map((søker: SøkerType) => <Saksrad key={søker.personident} søker={søker} />);
   };
@@ -131,7 +136,10 @@ const Saksoversikt = () => {
             <RenderWhen when={loading}>
               <Loader />
             </RenderWhen>
-            <RenderWhen when={!loading}>
+            <RenderWhen when={!!error}>
+              <ErrorSummary>{error}</ErrorSummary>
+            </RenderWhen>
+            <RenderWhen when={!loading && !error}>
               <>
                 <ToggleGroup onChange={settVisning} value={visning}>
                   <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>
@@ -144,16 +152,16 @@ const Saksoversikt = () => {
                 <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
                   <Table.Header>
                     <Table.Row>
-                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"søknadsdato"}>
+                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"søknadsdato"}>
                         {getText("saksoversikt.tabell.søknadsdato")}
                       </Table.ColumnHeader>
-                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"pid"}>
+                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"pid"}>
                         {getText("saksoversikt.tabell.pid")}
                       </Table.ColumnHeader>
-                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"status"}>
+                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"status"}>
                         {getText("saksoversikt.tabell.status")}
                       </Table.ColumnHeader>
-                      <Table.ColumnHeader sortable={kanSorteres} sortKey={"sakstype"}>
+                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"sakstype"}>
                         {getText("saksoversikt.tabell.aap")}
                       </Table.ColumnHeader>
                       <Table.ColumnHeader>Navn</Table.ColumnHeader>

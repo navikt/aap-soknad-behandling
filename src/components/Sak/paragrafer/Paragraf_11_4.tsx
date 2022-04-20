@@ -7,7 +7,7 @@ import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_4Type | undefined;
-  fødselsdato: Date;
+  fødselsdato: string;
 };
 
 const Paragraf_11_4 = ({ vilkårsvurdering, fødselsdato }: ParagrafProps): JSX.Element => {

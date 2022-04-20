@@ -1,10 +1,9 @@
 import React from "react";
-import {fetchGET} from "../../hooks/useFetch";
-import {ErrorSummary, Loader} from "@navikt/ds-react";
-import {useMatch} from "react-router-dom";
-import {Sak} from "../Sak/Sak";
-import {SøkerType} from "../../types/SakType";
-import { mapSøker } from "../../lib/sokerMapper";
+import { fetchGET } from "../../hooks/useFetch";
+import { ErrorSummary, Loader } from "@navikt/ds-react";
+import { useMatch } from "react-router-dom";
+import { Sak } from "../Sak/Sak";
+import { søkerliste } from "../../types/SakType";
 
 type ApiResponse = {
   data: any;
@@ -12,27 +11,26 @@ type ApiResponse = {
   loading: boolean;
 };
 
-const SakHenter = ():JSX.Element => {
+const SakHenter = (): JSX.Element => {
   const urlParams = useMatch("/aap-behandling/sak/:personid");
   const personid = urlParams?.params.personid;
   const url = `/aap-behandling/api/sak/${personid}`;
   const response: ApiResponse = fetchGET(url);
 
-  if (response.loading) {
-    return <Loader />
-  }
   if (response.error) {
-    return <ErrorSummary>{response.error}</ErrorSummary>
+    return <ErrorSummary>{response.error}</ErrorSummary>;
+  }
+  if (response.loading || !response.data) {
+    return <Loader />;
   }
 
-  const søkere:SøkerType[] = mapSøker(response.data);
-
-  if (søkere.length === 1) {
-    const søker = søkere[0];
-    return <Sak søker={søker} />
+  const søkere = søkerliste.safeParse(response.data);
+  if (!søkere.success) {
+    console.error(søkere.error);
+    return <ErrorSummary heading={"Feil under parsing av svar"}>{søkere.error.message}</ErrorSummary>;
   }
-
-  return <></>;
+  const søker = søkere.data[0];
+  return <Sak søker={søker} />;
 };
 
 export { SakHenter };
