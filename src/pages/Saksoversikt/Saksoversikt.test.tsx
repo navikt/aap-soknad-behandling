@@ -13,7 +13,7 @@ describe("Saksoversikt", () => {
     renderWithRouter(<Saksoversikt />);
     expect(screen.getByText("venter...")).toBeInTheDocument();
 
-    await waitFor(() => expect(screen.getByRole("heading", { name: /Saksoversikt/ })).toBeVisible());
+    await waitFor(() => expect(screen.getByRole("heading", { name: /Oppgaver AAP/ })).toBeVisible());
     await waitFor(() => expect(screen.getByRole("columnheader", { name: /Bruker/ })).toBeVisible());
     expect(screen.getAllByRole("row")).toHaveLength(forventetAntallRader);
     expect(
