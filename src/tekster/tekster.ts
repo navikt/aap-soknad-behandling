@@ -53,7 +53,7 @@ const texts = {
     heading: "Vurdere sak",
   },
   saksoversikt: {
-    heading: "Saksoversikt",
+    heading: "Oppgaver AAP",
     ingenFunnet: "Fant ingen saker.",
     behandle: "Behandle sak",
     visSak: "Vis sak",
