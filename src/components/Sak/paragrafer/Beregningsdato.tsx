@@ -1,3 +1,7 @@
+// @ts-nocheck
+// nocheck fordi TextField forventer at value har type string | undefined, useInput henter type for value fra React.InputHTMLAttributes
+// som er string | ReadOnly string[] | number | undefined
+// useInput brukes i påvente av en egen datovelger fra designsystemet
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -44,6 +48,7 @@ const Beregningsdato = ({ personident }: BeregningsdatoProps): JSX.Element => {
   const formatCaption: DateFormatter = (date, options) => (
     <span className={styles.mnd__caption}>{format(date, "LLLL yyyy", { locale: options?.locale })}</span>
   );
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
