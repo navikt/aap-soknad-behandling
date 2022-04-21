@@ -128,11 +128,9 @@ const Saksoversikt = () => {
       <section className={styles.vedtaksflate}>
         <div className={styles.saksliste__container}>
           <main className={styles.saksliste__innhold}>
-            <div className={styles.banner}>
-              <Heading size={"xlarge"} level={"1"}>
-                {getText("saksoversikt.heading")}
-              </Heading>
-            </div>
+            <Heading size={"xlarge"} level={"1"}>
+              {getText("saksoversikt.heading")}
+            </Heading>
             <RenderWhen when={loading}>
               <Loader />
             </RenderWhen>
@@ -141,7 +139,7 @@ const Saksoversikt = () => {
             </RenderWhen>
             <RenderWhen when={!loading && !error}>
               <>
-                <ToggleGroup onChange={settVisning} value={visning}>
+                <ToggleGroup onChange={settVisning} value={visning} size={"small"} className={styles.toggleGroup}>
                   <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>
                     Til behandling
                   </ToggleGroup.Item>
