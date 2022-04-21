@@ -36,7 +36,7 @@ describe("Saksoversikt", () => {
     const førsteSøknadsdato = listeMedSøkereOgSaker[0].sak.søknadstidspunkt;
     renderWithRouter(<Saksoversikt />);
     await waitForElementToBeRemoved(screen.getByText("venter..."));
-    await waitFor(() => expect(screen.getByRole("heading", { name: /Saksoversikt/ })).toBeVisible());
+    await waitFor(() => expect(screen.getByRole("heading", { name: /Oppgaver AAP/ })).toBeVisible());
     expect(screen.getByRole("link", { name: formaterDato(førsteSøknadsdato, DATO_FORMATER.ddMMMyyyy) })).toBeVisible();
   });
 
