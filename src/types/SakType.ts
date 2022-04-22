@@ -29,10 +29,10 @@ export type Paragraf_11_29Type = z.infer<typeof paragraf_11_29Schema>;
 const sakSchema = z.object({
   saksid: z.string(),
   søknadstidspunkt: z.string().refine((dato) => refineDato(dato)),
-  vedtak: vedtakSchema.optional(),
+  vedtak: vedtakSchema.nullable(),
   ansvarlig: z.string().optional(), // TODO Sette opp granulert tildeling (flere personer kan "eie") aktiv / venter
   type: z.string(), // 11-5, SP-erstattning, Student, Uføre
-  aktiv: z.boolean(), // TODO Hva betyr egentlig dette? Tilstand? Bruke eksplisitte booleans?
+  aktiv: z.boolean().optional(), // TODO Hva betyr egentlig dette? Tilstand? Bruke eksplisitte booleans?
   paragraf_11_2: paragraf_11_2Schema.optional(),
   paragraf_11_3: paragraf_11_3Schema.optional(),
   paragraf_11_4: paragraf_11_4Schema.optional(),

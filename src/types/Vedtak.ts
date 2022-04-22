@@ -11,7 +11,7 @@ const inntektSchema = z.object({
 export type InntektType = z.infer<typeof inntektSchema>;
 
 const inntektsgrunnlagForÅrSchema = z.object({
-  år: z.number(),
+  år: z.string(),
   inntekter: z.array(inntektSchema),
   beløpFørJustering: z.number(),
   beløpJustertFor6G: z.number(),
@@ -24,7 +24,7 @@ const inntektsgrunnlagSchema = z.object({
   beregningsdato: z.string().refine((dato) => refineDato(dato)),
   inntekterSiste3Kalenderår: z.array(inntektsgrunnlagForÅrSchema),
   fødselsdato: z.string().refine((dato) => refineDato(dato)),
-  sisteKalenderår: z.number(),
+  sisteKalenderår: z.string(),
   grunnlagsfaktor: z.number(),
 });
 export type InntektsgrunnlagType = z.infer<typeof inntektsgrunnlagSchema>;
