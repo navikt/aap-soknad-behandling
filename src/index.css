@@ -9,8 +9,6 @@ body {
 }
 
 .main__content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 }

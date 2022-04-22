@@ -124,55 +124,49 @@ const Saksoversikt = () => {
   };
 
   return (
-    <div className={styles.saksliste}>
-      <section className={styles.vedtaksflate}>
-        <div className={styles.saksliste__container}>
-          <main className={styles.saksliste__innhold}>
-            <Heading size={"xlarge"} level={"1"}>
-              {getText("saksoversikt.heading")}
-            </Heading>
-            <RenderWhen when={loading}>
-              <Loader />
-            </RenderWhen>
-            <RenderWhen when={!!error}>
-              <ErrorSummary>{error}</ErrorSummary>
-            </RenderWhen>
-            <RenderWhen when={!loading && !error}>
-              <>
-                <ToggleGroup onChange={settVisning} value={visning} size={"small"} className={styles.toggleGroup}>
-                  <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>
-                    Til behandling
-                  </ToggleGroup.Item>
-                  <ToggleGroup.Item value={VISNINGER.BEHANDLET} title={"Alle saker som er ferdig behandlet"}>
-                    Behandlet
-                  </ToggleGroup.Item>
-                </ToggleGroup>
-                <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"søknadsdato"}>
-                        {getText("saksoversikt.tabell.søknadsdato")}
-                      </Table.ColumnHeader>
-                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"pid"}>
-                        {getText("saksoversikt.tabell.pid")}
-                      </Table.ColumnHeader>
-                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"status"}>
-                        {getText("saksoversikt.tabell.status")}
-                      </Table.ColumnHeader>
-                      <Table.ColumnHeader sortable={kanSorteres()} sortKey={"sakstype"}>
-                        {getText("saksoversikt.tabell.aap")}
-                      </Table.ColumnHeader>
-                      <Table.ColumnHeader>Navn</Table.ColumnHeader>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>{tabellInnhold()}</Table.Body>
-                </Table>
-              </>
-            </RenderWhen>
-          </main>
-        </div>
-      </section>
-    </div>
+    <section className={styles.saksliste__innhold}>
+      <Heading size={"xlarge"} level={"1"}>
+        {getText("saksoversikt.heading")}
+      </Heading>
+      <RenderWhen when={loading}>
+        <Loader />
+      </RenderWhen>
+      <RenderWhen when={!!error}>
+        <ErrorSummary>{error}</ErrorSummary>
+      </RenderWhen>
+      <RenderWhen when={!loading && !error}>
+        <>
+          <ToggleGroup onChange={settVisning} value={visning} size={"small"} className={styles.toggleGroup}>
+            <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>
+              Til behandling
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value={VISNINGER.BEHANDLET} title={"Alle saker som er ferdig behandlet"}>
+              Behandlet
+            </ToggleGroup.Item>
+          </ToggleGroup>
+          <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
+            <Table.Header>
+              <Table.Row>
+                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"søknadsdato"}>
+                  {getText("saksoversikt.tabell.søknadsdato")}
+                </Table.ColumnHeader>
+                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"pid"}>
+                  {getText("saksoversikt.tabell.pid")}
+                </Table.ColumnHeader>
+                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"status"}>
+                  {getText("saksoversikt.tabell.status")}
+                </Table.ColumnHeader>
+                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"sakstype"}>
+                  {getText("saksoversikt.tabell.aap")}
+                </Table.ColumnHeader>
+                <Table.ColumnHeader>Navn</Table.ColumnHeader>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>{tabellInnhold()}</Table.Body>
+          </Table>
+        </>
+      </RenderWhen>
+    </section>
   );
 };
 
