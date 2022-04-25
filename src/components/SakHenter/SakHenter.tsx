@@ -5,6 +5,8 @@ import { useMatch } from "react-router-dom";
 import { Sak } from "../Sak/Sak";
 import { søkerliste } from "../../types/SakType";
 
+import * as styles from "./sakhenter.module.css";
+
 type ApiResponse = {
   data: any;
   error: string;
@@ -27,7 +29,11 @@ const SakHenter = (): JSX.Element => {
   const søkere = søkerliste.safeParse(response.data);
   if (!søkere.success) {
     console.error(søkere.error);
-    return <ErrorSummary heading={"Feil under parsing av svar"}>{søkere.error.message}</ErrorSummary>;
+    return (
+      <ErrorSummary heading={"Feil under parsing av svar"} className={styles.feilmelding}>
+        {søkere.error.message}
+      </ErrorSummary>
+    );
   }
   const søker = søkere.data[0];
   return <Sak søker={søker} />;

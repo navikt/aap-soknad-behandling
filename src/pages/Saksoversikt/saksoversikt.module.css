@@ -1,5 +1,5 @@
 .saksliste__innhold {
-  width: clamp(50rem, 60vw, 80rem);
+  width: var(--page-width);
 }
 
 .saksliste__tabell {
@@ -31,4 +31,9 @@
 .toggleGroup {
   margin: 2rem 0 2.5rem;
   border: 1px solid var(--navds-semantic-color-border-muted);
+}
+
+.feilmelding {
+  margin-top: 1rem;
+  width: var(--page-width);
 }

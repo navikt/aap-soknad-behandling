@@ -1,3 +1,7 @@
+:root {
+  --page-width: clamp(50rem, 60vw, 80rem);
+}
+
 .box {
   border: 2px solid var(--navds-semantic-color-border-muted);
   border-radius: 5px;

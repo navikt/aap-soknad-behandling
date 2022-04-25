@@ -104,7 +104,9 @@ const Saksoversikt = () => {
     console.error(søkere.error);
     return (
       <>
-        <ErrorSummary heading={"Feil under parsing av svar"}>{søkere.error.message}</ErrorSummary>
+        <ErrorSummary heading={"Feil under parsing av svar"} className={styles.feilmelding}>
+          {søkere.error.message}
+        </ErrorSummary>
       </>
     );
   }
