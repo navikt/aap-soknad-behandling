@@ -100,16 +100,6 @@ const Saksoversikt = () => {
   const visning = gyldigVisning ? onsketVisning : DEFAULT_PAGE;
 
   const søkere = data && søkerliste.safeParse(data);
-  if (søkere && !søkere.success) {
-    console.error(søkere.error);
-    return (
-      <>
-        <ErrorSummary heading={"Feil under parsing av svar"} className={styles.feilmelding}>
-          {søkere.error.message}
-        </ErrorSummary>
-      </>
-    );
-  }
 
   const kanSorteres = () => søkere?.data?.length > 1;
   const tabellInnhold = () => {
@@ -131,12 +121,19 @@ const Saksoversikt = () => {
         {getText("saksoversikt.heading")}
       </Heading>
       <RenderWhen when={loading}>
-        <Loader />
+        <div className={styles.loader__container}>
+          <Loader size={"2xlarge"} />
+        </div>
       </RenderWhen>
       <RenderWhen when={!!error}>
-        <ErrorSummary>{error}</ErrorSummary>
+        <ErrorSummary className={styles.feilmelding}>{error}</ErrorSummary>
       </RenderWhen>
-      <RenderWhen when={!loading && !error}>
+      <RenderWhen when={søkere && !søkere.success}>
+        <ErrorSummary heading={"Feil under parsing av svar"} className={styles.feilmelding}>
+          {søkere?.error?.message}
+        </ErrorSummary>
+      </RenderWhen>
+      <RenderWhen when={!loading && !error && søkere && søkere.success}>
         <>
           <ToggleGroup onChange={settVisning} value={visning} size={"small"} className={styles.toggleGroup}>
             <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>

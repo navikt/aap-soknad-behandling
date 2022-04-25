@@ -20,10 +20,6 @@ export const handlers = [
     );
   }),
   rest.post("/aap-behandling/api/sak/:personid/losning", (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({message: 'OK'}),
-      ctx.delay(500)
-    )
-  })
+    return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+  }),
 ];
