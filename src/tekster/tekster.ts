@@ -79,6 +79,18 @@ const texts = {
     },
     "11_5": {
       heading: "Vurdering av § 11-5",
+      kravOmNedsattArbeidsevneErOppfylt: {
+        label: "Er arbeidsevnen nedsatt med minst 50% ?",
+        ja: "Ja",
+        nei: "Nei",
+        påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt med minst 50%.",
+      },
+      nedsettelseSkyldesSykdomEllerSkade: {
+        label: "Er søkerens arbeidsevne nedsatt på grunn av sykdom, skade eller lyte?",
+        ja: "Ja",
+        nei: "Nei",
+        påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt på grunn av sykdom, skade eller lyte.",
+      },
       nedsattArbeidsevne: {
         label: "Med hvor mange prosent er arbeidsevnen nedsatt?",
         paakrevd: "Du må legge inn hvor mange prosent arbeidsevnen er nedsatt med.",

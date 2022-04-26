@@ -13,7 +13,10 @@ export type VilkårsvurderingType = z.infer<typeof vilkårsvurderingSchema>;
 const paragraf_11_2Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_3Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_4Schema = vilkårsvurderingSchema.extend({});
-const paragraf_11_5Schema = vilkårsvurderingSchema.extend({});
+const paragraf_11_5Schema = vilkårsvurderingSchema.extend({
+  kravOmNedsattArbeidsevneErOppfylt: z.boolean().optional(),
+  nedsettelseSkyldesSykdomEllerSkade: z.boolean().optional(),
+});
 const paragraf_11_6Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_12Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_29Schema = vilkårsvurderingSchema.extend({});

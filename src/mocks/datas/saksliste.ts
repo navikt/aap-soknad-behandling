@@ -175,6 +175,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         vilkårsvurderingsid: "uuid-4-5",
         erOppfylt: true,
         måVurderesManuelt: false,
+        kravOmNedsattArbeidsevneErOppfylt: true,
+        nedsettelseSkyldesSykdomEllerSkade: true,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-4-6",
@@ -308,6 +310,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         vilkårsvurderingsid: "uuid-3-5",
         erOppfylt: true,
         måVurderesManuelt: false,
+        kravOmNedsattArbeidsevneErOppfylt: true,
+        nedsettelseSkyldesSykdomEllerSkade: true,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-3-6",
@@ -411,6 +415,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         vilkårsvurderingsid: "uuid-3-5",
         erOppfylt: false,
         måVurderesManuelt: false,
+        kravOmNedsattArbeidsevneErOppfylt: true,
+        nedsettelseSkyldesSykdomEllerSkade: false,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-3-6",
@@ -512,6 +518,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         vilkårsvurderingsid: "8b67d5f8-cc5d-4012-b657-831cf78133c3",
         erOppfylt: false,
         måVurderesManuelt: true,
+        kravOmNedsattArbeidsevneErOppfylt: false,
+        nedsettelseSkyldesSykdomEllerSkade: false,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "61a7f49d-6a76-48b6-9ffd-dbe3dc2e6439",
@@ -558,6 +566,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         vilkårsvurderingsid: "dc4b91ec-96c7-4eee-8045-902d719dd157",
         erOppfylt: false,
         måVurderesManuelt: true,
+        kravOmNedsattArbeidsevneErOppfylt: false,
+        nedsettelseSkyldesSykdomEllerSkade: true,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "26aee9a3-344a-4770-b100-87d1e93c74e3",
@@ -760,6 +770,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         vilkårsvurderingsid: "c640687a-afd8-4966-9163-b8b052edf715",
         erOppfylt: true,
         måVurderesManuelt: false,
+        kravOmNedsattArbeidsevneErOppfylt: true,
+        nedsettelseSkyldesSykdomEllerSkade: true,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "936e46a5-6829-46fb-8e86-80a0b1a9efeb",

@@ -25,7 +25,7 @@ const DEFAULT_PAGE = PAGES.INNGANG;
 const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <>
-      <Heading size={"large"} level={"2"} className={styles.blokk__header}>
+      <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
         {getText("paragrafer.inngangsvilkår.heading")}
       </Heading>
       <Paragraf_11_2 vilkårsvurdering={søker.sak.paragraf_11_2} personident={søker.personident} />
@@ -37,7 +37,7 @@ const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
 
 const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"}>
+    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
       {getText("paragrafer.11_5.heading")}
     </Heading>
     <Paragraf_11_5 vilkårsvurdering={søker.sak.paragraf_11_5} personident={søker.personident} />
@@ -46,7 +46,7 @@ const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
 
 const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"}>
+    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
       {getText("paragrafer.11_6.heading")}
     </Heading>
     <Paragraf_11_6 vilkårsvurdering={søker.sak.paragraf_11_6} personident={søker.personident} />
@@ -55,7 +55,7 @@ const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
 
 const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"}>
+    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
       {getText("paragrafer.11_12.heading")}
     </Heading>
     <Paragraf_11_12 vilkårsvurdering={søker.sak.paragraf_11_12} personident={søker.personident} />
@@ -64,7 +64,7 @@ const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
 
 const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"}>
+    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
       {getText("paragrafer.11_29.heading")}
     </Heading>
     <Paragraf_11_29 vilkårsvurdering={søker.sak.paragraf_11_29} personident={søker.personident} />
@@ -73,7 +73,7 @@ const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
 
 const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"}>
+    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
       {getText("beregningsdato.heading")}
     </Heading>
     <Beregningsdato personident={søker.personident} />
