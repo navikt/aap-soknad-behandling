@@ -39,7 +39,13 @@
 }
 
 .loader__container {
-  display: grid;
-  place-items: center;
   margin-top: 1rem;
+  animation-name: loader-display;
+  animation-delay: 600ms;
+  opacity: 0;
+}
+
+@keyframes loader-display {
+  from { opacity: 0;}
+  to {opacity: 1}
 }

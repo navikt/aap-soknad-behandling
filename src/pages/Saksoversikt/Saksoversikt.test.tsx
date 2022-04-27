@@ -6,8 +6,39 @@ import { renderWithRouter } from "../../test/renderWithRouter";
 import { listeMedSøkereOgSaker } from "../../mocks/datas/saksliste";
 import { server } from "../../mocks/server";
 import { DATO_FORMATER, formaterDato } from "../../lib/dato";
+import { ErrorBoundary } from "react-error-boundary";
+import { Feilviser } from "../../components/Feilviser/Feilviser";
 
 describe("Saksoversikt", () => {
+  test("kaster exception ved parsefeil", async () => {
+    server.use(
+      rest.get("/aap-behandling/api/sak", (req, res, ctx) => {
+        return res.once(
+          ctx.status(200),
+          ctx.json([
+            {
+              personident: "11068812345",
+              navn: "11-5 Mangler", // ikke fra modell
+              fødselsdato: "1986-03-08",
+              skjermet: "false",
+              sak: {},
+            },
+          ]),
+          ctx.delay(400)
+        );
+      })
+    );
+    console.error = jest.fn();
+    renderWithRouter(
+      <ErrorBoundary FallbackComponent={Feilviser}>
+        <Saksoversikt />
+      </ErrorBoundary>
+    );
+    await waitFor(() => expect(screen.getByText("Å nei! Dette var ikke helt planlagt...")).toBeVisible());
+    expect(screen.getByText(/"code": "invalid_type"/)).toBeVisible();
+    expect(console.error).toHaveBeenCalled();
+  });
+
   test("viser ledige oppgaver som initiell visning", async () => {
     const forventetAntallRader = listeMedSøkereOgSaker.filter((søker) => !søker.sak.vedtak).length + 1; //row inkluderer og headere, derav +1
     renderWithRouter(<Saksoversikt />);

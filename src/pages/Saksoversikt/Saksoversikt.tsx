@@ -3,7 +3,6 @@ import { BodyShort, ErrorSummary, Heading, Link, Loader, Table, Tag, ToggleGroup
 
 import { fetchGET } from "../../hooks/useFetch";
 import { SakType, søkerliste, SøkerType } from "../../types/SakType";
-import { RenderWhen } from "../../components/RenderWhen";
 import { DATO_FORMATER, formaterDato, formaterPid } from "../../lib/dato";
 import { getText } from "../../tekster/tekster";
 
@@ -103,7 +102,7 @@ const Saksoversikt = () => {
 
   const kanSorteres = () => søkere?.data?.length > 1;
   const tabellInnhold = () => {
-    if (!søkere || søkere.data.length === 0) {
+    if (søkere.data.length === 0) {
       return <IngenSakerFunnet />;
     }
     return søkere.data
@@ -115,56 +114,49 @@ const Saksoversikt = () => {
     setSearchParams({ vis: nyVisning });
   };
 
+  if (loading || !data || !søkere) {
+    return <Loader size={"2xlarge"} className={styles.loader__container} />;
+  }
+  if (søkere && !søkere.success) {
+    throw new Error(søkere.error.message);
+  }
+  if (error) {
+    return <ErrorSummary>{error}</ErrorSummary>;
+  }
+
   return (
     <section className={styles.saksliste__innhold}>
       <Heading size={"xlarge"} level={"1"}>
         {getText("saksoversikt.heading")}
       </Heading>
-      <RenderWhen when={loading}>
-        <div className={styles.loader__container}>
-          <Loader size={"2xlarge"} />
-        </div>
-      </RenderWhen>
-      <RenderWhen when={!!error}>
-        <ErrorSummary className={styles.feilmelding}>{error}</ErrorSummary>
-      </RenderWhen>
-      <RenderWhen when={søkere && !søkere.success}>
-        <ErrorSummary heading={"Feil under parsing av svar"} className={styles.feilmelding}>
-          {søkere?.error?.message}
-        </ErrorSummary>
-      </RenderWhen>
-      <RenderWhen when={!loading && !error && søkere && søkere.success}>
-        <>
-          <ToggleGroup onChange={settVisning} value={visning} size={"small"} className={styles.toggleGroup}>
-            <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>
-              Til behandling
-            </ToggleGroup.Item>
-            <ToggleGroup.Item value={VISNINGER.BEHANDLET} title={"Alle saker som er ferdig behandlet"}>
-              Behandlet
-            </ToggleGroup.Item>
-          </ToggleGroup>
-          <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
-            <Table.Header>
-              <Table.Row>
-                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"søknadsdato"}>
-                  {getText("saksoversikt.tabell.søknadsdato")}
-                </Table.ColumnHeader>
-                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"pid"}>
-                  {getText("saksoversikt.tabell.pid")}
-                </Table.ColumnHeader>
-                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"status"}>
-                  {getText("saksoversikt.tabell.status")}
-                </Table.ColumnHeader>
-                <Table.ColumnHeader sortable={kanSorteres()} sortKey={"sakstype"}>
-                  {getText("saksoversikt.tabell.aap")}
-                </Table.ColumnHeader>
-                <Table.ColumnHeader>Navn</Table.ColumnHeader>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>{tabellInnhold()}</Table.Body>
-          </Table>
-        </>
-      </RenderWhen>
+      <ToggleGroup onChange={settVisning} value={visning} size={"small"} className={styles.toggleGroup}>
+        <ToggleGroup.Item value={VISNINGER.LEDIGE} title={"Alle saker til behandling"}>
+          Til behandling
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value={VISNINGER.BEHANDLET} title={"Alle saker som er ferdig behandlet"}>
+          Behandlet
+        </ToggleGroup.Item>
+      </ToggleGroup>
+      <Table size={"medium"} className={styles.saksliste__tabell} zebraStripes>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeader sortable={kanSorteres()} sortKey={"søknadsdato"}>
+              {getText("saksoversikt.tabell.søknadsdato")}
+            </Table.ColumnHeader>
+            <Table.ColumnHeader sortable={kanSorteres()} sortKey={"pid"}>
+              {getText("saksoversikt.tabell.pid")}
+            </Table.ColumnHeader>
+            <Table.ColumnHeader sortable={kanSorteres()} sortKey={"status"}>
+              {getText("saksoversikt.tabell.status")}
+            </Table.ColumnHeader>
+            <Table.ColumnHeader sortable={kanSorteres()} sortKey={"sakstype"}>
+              {getText("saksoversikt.tabell.aap")}
+            </Table.ColumnHeader>
+            <Table.ColumnHeader>Navn</Table.ColumnHeader>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>{tabellInnhold()}</Table.Body>
+      </Table>
     </section>
   );
 };

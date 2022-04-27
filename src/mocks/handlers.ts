@@ -3,7 +3,7 @@ import { listeMedSøkereOgSaker } from "./datas/saksliste";
 
 export const handlers = [
   rest.get("/aap-behandling/api/sak", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(listeMedSøkereOgSaker), ctx.delay(100));
+    return res(ctx.status(200), ctx.json(listeMedSøkereOgSaker), ctx.delay(400));
   }),
   rest.get("/aap-behandling/api/sak/:personid", (req, res, ctx) => {
     const { personid } = req.params;
