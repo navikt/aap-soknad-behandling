@@ -1,0 +1,15 @@
+.oppgavestatus {
+  margin-top: .5rem;
+}
+
+.maa_behandles {
+  color: var(--navds-semantic-color-feedback-warning-icon);
+}
+
+.oppfylt {
+  color: var(--navds-semantic-color-feedback-success-icon);
+}
+
+.ikke_oppfylt {
+  color: var(--navds-semantic-color-feedback-danger-text);
+}
