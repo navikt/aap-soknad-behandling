@@ -54,4 +54,4 @@ const Vedtak = ({ søker }: { søker: SøkerType }): JSX.Element => {
   );
 };
 
-export default Vedtak;
+export { Vedtak };

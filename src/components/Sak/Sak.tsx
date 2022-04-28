@@ -15,7 +15,7 @@ import { Paragraf_11_3 } from "./paragrafer/Paragraf_11_3";
 import { Paragraf_11_4 } from "./paragrafer/Paragraf_11_4";
 import { Paragraf_11_5 } from "./paragrafer/Paragraf_11_5";
 import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
-import Vedtak from "./vedtak/Vedtak";
+import { Vedtak } from "./vedtak/Vedtak";
 import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";
 import { Beregningsdato } from "./paragrafer/Beregningsdato";

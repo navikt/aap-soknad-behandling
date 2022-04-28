@@ -12,8 +12,10 @@
   align-items: baseline;
 
   margin-bottom: .5rem;
+}
 
-  border-bottom: 2px solid var(--navds-semantic-color-border-muted);
+.paragraf__sub__blokk:not(:last-of-type) {
+  margin-bottom: 1rem;
 }
 
 .green {

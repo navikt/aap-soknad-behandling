@@ -77,6 +77,18 @@ const texts = {
       heading: "Inngangsvilkår",
       påkrevd: "Du må ta stilling til om bruker oppfyller kravet eller ikke.",
     },
+    "11_2": {
+      heading: "Medlemskap i folketrygden (§ 11-2)",
+      vurdering: "Har søkeren vært medlem i folketrygden i minst 5 år?",
+    },
+    "11_3": {
+      heading: "Opphold i Norge (§ 11-3)",
+      vurdering: "Hadde søkeren opphold i Norge ved søknadstidspunkt?",
+    },
+    "11_4": {
+      heading: "Alder (§ 11-4)",
+      vurdering: "Er søkeren mellom 18 og 67 år?",
+    },
     "11_5": {
       heading: "Vurdering av § 11-5",
       kravOmNedsattArbeidsevneErOppfylt: {
