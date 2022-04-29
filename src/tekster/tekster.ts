@@ -90,7 +90,7 @@ const texts = {
       vurdering: "Er søkeren mellom 18 og 67 år?",
     },
     "11_5": {
-      heading: "Vurdering av § 11-5",
+      heading: "Nedsatt arbeidsevne og medvirkende årsak (§ 11-5)",
       kravOmNedsattArbeidsevneErOppfylt: {
         label: "Er arbeidsevnen nedsatt med minst 50% ?",
         ja: "Ja",
@@ -112,7 +112,7 @@ const texts = {
       },
     },
     "11_6": {
-      heading: "Vurdering av § 11-6",
+      heading: "Behov for bistand til å skaffe seg eller beholde arbeid (§ 11-6)",
       påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-6 eller ikke.",
     },
     "11_12": {

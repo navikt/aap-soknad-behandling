@@ -1,4 +1,4 @@
-import { BodyShort, Button, Radio } from "@navikt/ds-react";
+import { BodyShort, Button, Heading, Radio } from "@navikt/ds-react";
 
 import { Paragraf_11_5Type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
@@ -6,7 +6,6 @@ import { useSkjema } from "../../../hooks/useSkjema";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { Løsning } from "../../../types/Losning";
 import * as styles from "./paragraf.module.css";
-import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_5Type | undefined;
@@ -48,7 +47,10 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
 
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
-      <div>
+      <div className={styles.paragraf__blokk}>
+        <Heading size={"medium"} level={"3"}>
+          Nedsatt arbeidsevne
+        </Heading>
         <RadioGroupWrapper
           name={"kravOmNedsattArbeidsevneErOppfylt"}
           control={control}
@@ -59,6 +61,11 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           <Radio value={"true"}>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.ja")}</Radio>
           <Radio value={"false"}>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.nei")}</Radio>
         </RadioGroupWrapper>
+      </div>
+      <div className={styles.paragraf__blokk}>
+        <Heading size={"medium"} level={"3"}>
+          Sykdom, skade eller lyte
+        </Heading>
         <RadioGroupWrapper
           name={"nedsettelseSkyldesSykdomEllerSkade"}
           control={control}
@@ -84,11 +91,8 @@ const Paragraf_11_5 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
 
   return (
     <>
-      <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />
-      <div className={styles.paragraf__blokk}>
-        <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
-        <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
-      </div>
+      <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
+      <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
     </>
   );
 };

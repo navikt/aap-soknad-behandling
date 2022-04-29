@@ -19,15 +19,18 @@ import { Vedtak } from "./vedtak/Vedtak";
 import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";
 import { Beregningsdato } from "./paragrafer/Beregningsdato";
+import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
 const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <>
-      <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
-        {getText("paragrafer.inngangsvilkår.heading")}
-      </Heading>
+      <div className={styles.blokk__header}>
+        <Heading size={"medium"} level={"2"}>
+          {getText("paragrafer.inngangsvilkår.heading")}
+        </Heading>
+      </div>
       <Paragraf_11_2 vilkårsvurdering={søker.sak.paragraf_11_2} personident={søker.personident} />
       <Paragraf_11_3 vilkårsvurdering={søker.sak.paragraf_11_3} personident={søker.personident} />
       <Paragraf_11_4 vilkårsvurdering={søker.sak.paragraf_11_4} fødselsdato={søker.fødselsdato} />
@@ -37,36 +40,60 @@ const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
 
 const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
-      {getText("paragrafer.11_5.heading")}
-    </Heading>
+    <div className={styles.blokk__header}>
+      <Heading size={"medium"} level={"2"}>
+        {getText("paragrafer.11_5.heading")}
+      </Heading>
+      <Vilkarsstatus
+        erOppfylt={søker.sak.paragraf_11_5?.erOppfylt}
+        måVurderesManuelt={søker.sak.paragraf_11_5?.måVurderesManuelt}
+      />
+    </div>
     <Paragraf_11_5 vilkårsvurdering={søker.sak.paragraf_11_5} personident={søker.personident} />
   </>
 );
 
 const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
-      {getText("paragrafer.11_6.heading")}
-    </Heading>
+    <div className={styles.blokk__header}>
+      <Heading size={"medium"} level={"2"}>
+        {getText("paragrafer.11_6.heading")}
+      </Heading>
+      <Vilkarsstatus
+        erOppfylt={søker.sak.paragraf_11_6?.erOppfylt}
+        måVurderesManuelt={søker.sak.paragraf_11_6?.måVurderesManuelt}
+      />
+    </div>
     <Paragraf_11_6 vilkårsvurdering={søker.sak.paragraf_11_6} personident={søker.personident} />
   </>
 );
 
 const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
-      {getText("paragrafer.11_12.heading")}
-    </Heading>
+    <div className={styles.blokk__header}>
+      <Heading size={"medium"} level={"2"}>
+        {getText("paragrafer.11_12.heading")}
+      </Heading>
+      <Vilkarsstatus
+        erOppfylt={søker.sak.paragraf_11_12?.erOppfylt}
+        måVurderesManuelt={søker.sak.paragraf_11_12?.måVurderesManuelt}
+      />
+    </div>
     <Paragraf_11_12 vilkårsvurdering={søker.sak.paragraf_11_12} personident={søker.personident} />
   </>
 );
 
 const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
-      {getText("paragrafer.11_29.heading")}
-    </Heading>
+    <div className={styles.blokk__header}>
+      <Heading size={"medium"} level={"2"}>
+        {getText("paragrafer.11_29.heading")}
+      </Heading>
+      <Vilkarsstatus
+        erOppfylt={søker.sak.paragraf_11_29?.erOppfylt}
+        måVurderesManuelt={søker.sak.paragraf_11_29?.måVurderesManuelt}
+      />
+    </div>
     <Paragraf_11_29 vilkårsvurdering={søker.sak.paragraf_11_29} personident={søker.personident} />
   </>
 );
