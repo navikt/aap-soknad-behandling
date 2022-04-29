@@ -1,17 +1,16 @@
 .status {
   margin-left: .5rem;
-  font-weight: 700;
 }
 
-.status__ok {
+.status__ok > svg {
   color: var(--navds-semantic-color-feedback-success-icon);
 }
 
-.status__nok {
+.status__nok > svg {
   color: var(--navds-semantic-color-feedback-danger-icon);
 }
 
-.status__manuell {
+.status__manuell > svg {
   color: var(--navds-semantic-color-feedback-warning-icon);
 }
 

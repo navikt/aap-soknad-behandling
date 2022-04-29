@@ -1,4 +1,4 @@
-import { Caseworker, ErrorFilled, SuccessFilled } from "@navikt/ds-icons";
+import { ErrorFilled, HelptextFilled, SuccessFilled } from "@navikt/ds-icons";
 
 import * as styles from "./vilkarsstatus.module.css";
 
@@ -23,7 +23,7 @@ const IkkeOppfylt = (): JSX.Element => (
 
 const MåVurderesManuelt = (): JSX.Element => (
   <span className={styles.status__manuell}>
-    <Caseworker />
+    <HelptextFilled />
     <span className={styles.status__beskrivelse}>Må vurderes manuelt</span>
   </span>
 );
