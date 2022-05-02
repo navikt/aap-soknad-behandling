@@ -49,22 +49,23 @@ const Beregningsdato = ({ personident }: BeregningsdatoProps): JSX.Element => {
     <span className={styles.mnd__caption}>{format(date, "LLLL yyyy", { locale: options?.locale })}</span>
   );
 
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <TextField
-          {...register("beregningsdato", { required: getText("beregningsdato.paakrevd") })}
-          {...inputProps}
-          label={getText("beregningsdato.label")}
-          autoComplete={"false"}
-        />
-        <DayPicker formatters={{ formatCaption }} locale={nb} {...dayPickerProps} />
-        <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
-          {getText("beregningsdato.knapp")}
-        </Button>
-      </div>
-    </form>
+    <div className={styles.paragraf__blokk}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <TextField
+            {...register("beregningsdato", { required: getText("beregningsdato.paakrevd") })}
+            {...inputProps}
+            label={getText("beregningsdato.label")}
+            autoComplete={"false"}
+          />
+          <DayPicker formatters={{ formatCaption }} locale={nb} {...dayPickerProps} />
+          <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+            {getText("beregningsdato.knapp")}
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 };
 
