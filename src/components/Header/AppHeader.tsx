@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown, Header } from "@navikt/ds-react-internal";
 import { System, ExternalLink } from "@navikt/ds-icons";
 import { fetchGET } from "../../hooks/useFetch";

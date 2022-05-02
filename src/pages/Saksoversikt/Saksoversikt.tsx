@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { Link as RouterLink, useSearchParams } from "react-router-dom";
 import { BodyShort, ErrorSummary, Heading, Link, Loader, Table, Tag, ToggleGroup } from "@navikt/ds-react";
 
 import { fetchGET } from "../../hooks/useFetch";
@@ -68,7 +68,7 @@ const Saksrad = ({ søker }: { søker: SøkerType }): JSX.Element => {
     <Table.Row key={søker.sak.saksid} className={harAdressebeskyttelse(søker) ? styles.gradert : ""}>
       <Table.DataCell>
         {søker.sak.søknadstidspunkt && (
-          <Link href={`/aap-behandling/sak/${søker.personident}`}>
+          <Link to={`/aap-behandling/sak/${søker.personident}`} as={RouterLink}>
             {formaterDato(søker.sak.søknadstidspunkt, DATO_FORMATER.ddMMMyyyy)}
           </Link>
         )}
