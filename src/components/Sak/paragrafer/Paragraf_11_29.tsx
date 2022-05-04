@@ -1,9 +1,9 @@
 import { Paragraf_11_29Type, VilkårsvurderingType } from "../../../types/SakType";
-import * as styles from "./paragraf.module.css";
-import { BodyShort, Button, Radio } from "@navikt/ds-react";
+import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
+import { ParagrafBlokk } from "./ParagrafBlokk";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_29Type | undefined;
@@ -16,8 +16,8 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
   }
   return (
     <>
-      <BodyShort className={styles.key}>Oppfyller medlemmet kravene i 11-29?</BodyShort>
-      <BodyShort className={styles.value}>{vilkårsvurdering.erOppfylt ? "Ja" : "Nei"}</BodyShort>
+      <Label>Oppfyller medlemmet kravene i 11-29?</Label>
+      <BodyShort>{vilkårsvurdering.erOppfylt ? "Ja" : "Nei"}</BodyShort>
     </>
   );
 };
@@ -71,10 +71,10 @@ const Paragraf_11_29 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.
   }
 
   return (
-    <div className={styles.paragraf__blokk}>
+    <ParagrafBlokk>
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
-    </div>
+    </ParagrafBlokk>
   );
 };
 

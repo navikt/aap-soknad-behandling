@@ -1,11 +1,11 @@
-import { BodyShort, Button, Heading, Radio } from "@navikt/ds-react";
+import { BodyShort, Button, Label, Heading, Radio } from "@navikt/ds-react";
 
 import { Paragraf_11_5Type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { Løsning } from "../../../types/Losning";
-import * as styles from "./paragraf.module.css";
+import { ParagrafBlokk } from "./ParagrafBlokk";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_5Type | undefined;
@@ -18,18 +18,12 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5
   }
 
   return (
-    <>
-      <BodyShort className={styles.key}>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.label")}</BodyShort>
-      <BodyShort className={styles.value}>
-        {vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt ? "Ja" : "Nei"}
-      </BodyShort>
-      <BodyShort className={styles.key}>
-        {getText("paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade.label")}
-      </BodyShort>
-      <BodyShort className={styles.value}>
-        {vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade ? "Ja" : "Nei"}
-      </BodyShort>
-    </>
+    <ParagrafBlokk>
+      <Label>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.label")}</Label>
+      <BodyShort>{vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt ? "Ja" : "Nei"}</BodyShort>
+      <Label>{getText("paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade.label")}</Label>
+      <BodyShort>{vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade ? "Ja" : "Nei"}</BodyShort>
+    </ParagrafBlokk>
   );
 };
 
@@ -47,7 +41,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
 
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
-      <div className={styles.paragraf__blokk}>
+      <ParagrafBlokk>
         <Heading size={"medium"} level={"3"}>
           Nedsatt arbeidsevne
         </Heading>
@@ -61,8 +55,8 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           <Radio value={"true"}>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.ja")}</Radio>
           <Radio value={"false"}>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.nei")}</Radio>
         </RadioGroupWrapper>
-      </div>
-      <div className={styles.paragraf__blokk}>
+      </ParagrafBlokk>
+      <ParagrafBlokk>
         <Heading size={"medium"} level={"3"}>
           Sykdom, skade eller lyte
         </Heading>
@@ -79,7 +73,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fullfør")}
         </Button>
-      </div>
+      </ParagrafBlokk>
     </form>
   );
 };
