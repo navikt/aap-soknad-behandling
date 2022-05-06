@@ -11,19 +11,29 @@ type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_5Type | undefined;
   personident: string;
 };
-
+const tekstNokkel = "paragrafer.11_5";
 const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5Type }): JSX.Element | null => {
   if (vilkårsvurdering.måVurderesManuelt) {
     return null;
   }
 
   return (
-    <ParagrafBlokk>
-      <Label>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.label")}</Label>
-      <BodyShort>{vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt ? "Ja" : "Nei"}</BodyShort>
-      <Label>{getText("paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade.label")}</Label>
-      <BodyShort>{vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade ? "Ja" : "Nei"}</BodyShort>
-    </ParagrafBlokk>
+    <>
+      <ParagrafBlokk>
+        <Heading size={"medium"} level={"3"}>
+          Nedsatt arbeidsevne
+        </Heading>
+        <Label>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.legend`)}</Label>
+        <BodyShort>{vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt ? "Ja" : "Nei"}</BodyShort>
+      </ParagrafBlokk>
+      <ParagrafBlokk>
+        <Heading size={"medium"} level={"3"}>
+          Sykdom, skade eller lyte
+        </Heading>
+        <Label>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.legend`)}</Label>
+        <BodyShort>{vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade ? "Ja" : "Nei"}</BodyShort>
+      </ParagrafBlokk>
+    </>
   );
 };
 
@@ -46,14 +56,14 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           Nedsatt arbeidsevne
         </Heading>
         <RadioGroupWrapper
-          name={"kravOmNedsattArbeidsevneErOppfylt"}
+          feltNokkel={"kravOmNedsattArbeidsevneErOppfylt"}
           control={control}
-          legend={getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.label")}
-          error={errors.kravOmNedsattArbeidsevneErOppfylt?.message}
-          rules={{ required: getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.påkrevd") }}
+          tekstNokkel={`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt`}
+          errors={errors}
+          rules={{ required: getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.påkrevd`) }}
         >
-          <Radio value={"true"}>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.ja")}</Radio>
-          <Radio value={"false"}>{getText("paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt.nei")}</Radio>
+          <Radio value={"true"}>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.ja`)}</Radio>
+          <Radio value={"false"}>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.nei`)}</Radio>
         </RadioGroupWrapper>
       </ParagrafBlokk>
       <ParagrafBlokk>
@@ -61,14 +71,14 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           Sykdom, skade eller lyte
         </Heading>
         <RadioGroupWrapper
-          name={"nedsettelseSkyldesSykdomEllerSkade"}
+          feltNokkel={"nedsettelseSkyldesSykdomEllerSkade"}
           control={control}
-          legend={getText("paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade.label")}
-          error={errors.nedsettelseSkyldesSykdomEllerSkade?.message}
-          rules={{ required: getText("paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade.påkrevd") }}
+          tekstNokkel={`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade`}
+          errors={errors}
+          rules={{ required: getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.påkrevd`) }}
         >
-          <Radio value={"true"}>{getText("paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade.ja")}</Radio>
-          <Radio value={"false"}>{getText("paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade.nei")}</Radio>
+          <Radio value={"true"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.ja`)}</Radio>
+          <Radio value={"false"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.nei`)}</Radio>
         </RadioGroupWrapper>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fullfør")}

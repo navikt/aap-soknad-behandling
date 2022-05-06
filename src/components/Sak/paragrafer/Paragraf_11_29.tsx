@@ -26,7 +26,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { handleSubmit, control, reset, errors, onSubmit, senderMelding } = useSkjema();
+  const { handleSubmit, control, reset, errors, onSubmit, senderMelding, getValues } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_29_manuell: {
       erOppfylt: datas.erOppfylt === "true",
@@ -36,26 +36,17 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
       <RadioGroupWrapper
-        name={"erOppfylt"}
+        feltNokkel={"erOppfylt"}
         control={control}
-        legend={"Oppfyller medlemmet kravene i 11-29?"}
-        error={errors.erOppfylt?.message}
+        tekstNokkel={"paragrafer.11_29"}
+        errors={errors}
         rules={{ required: getText("paragrafer.11_29.påkrevd") }}
+        reset={reset}
+        getValues={getValues}
       >
         <Radio value={"true"}>Ja</Radio>
         <Radio value={"false"}>Nei</Radio>
       </RadioGroupWrapper>
-      <div>
-        <Button
-          type={"button"}
-          variant={"tertiary"}
-          onClick={() => {
-            reset({ erOppfylt: null });
-          }}
-        >
-          Nullstill vurdering
-        </Button>
-      </div>
       <div>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
