@@ -75,15 +75,15 @@ const texts = {
     },
     inngangsvilkår: {
       heading: "Inngangsvilkår",
-      påkrevd: "Du må ta stilling til om bruker oppfyller kravet eller ikke.",
+      påkrevd: "Du må ta stilling til om søker oppfyller kravet eller ikke.",
     },
     "11_2": {
       heading: "Medlemskap i folketrygden (§ 11-2)",
-      vurdering: "Har søkeren vært medlem i folketrygden i minst 5 år?",
+      legend: "Har søkeren vært medlem i folketrygden i minst 5 år?",
     },
     "11_3": {
       heading: "Opphold i Norge (§ 11-3)",
-      vurdering: "Hadde søkeren opphold i Norge ved søknadstidspunkt?",
+      legend: "Hadde søkeren opphold i Norge ved søknadstidspunkt?",
     },
     "11_4": {
       heading: "Alder (§ 11-4)",
@@ -92,13 +92,13 @@ const texts = {
     "11_5": {
       heading: "Nedsatt arbeidsevne og medvirkende årsak (§ 11-5)",
       kravOmNedsattArbeidsevneErOppfylt: {
-        label: "Er arbeidsevnen nedsatt med minst 50% ?",
+        legend: "Er arbeidsevnen nedsatt med minst 50% ?",
         ja: "Ja",
         nei: "Nei",
         påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt med minst 50%.",
       },
       nedsettelseSkyldesSykdomEllerSkade: {
-        label: "Er søkerens arbeidsevne nedsatt på grunn av sykdom, skade eller lyte?",
+        legend: "Er søkerens arbeidsevne nedsatt på grunn av sykdom, skade eller lyte?",
         ja: "Ja",
         nei: "Nei",
         påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt på grunn av sykdom, skade eller lyte.",
@@ -112,16 +112,34 @@ const texts = {
       },
     },
     "11_6": {
-      heading: "Behov for bistand til å skaffe seg eller beholde arbeid (§ 11-6)",
-      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-6 eller ikke.",
+      heading: "Behov for behandling og tiltak for å komme i arbeid (§ 11-6)",
+      bokstav_a: {
+        heading: "Behov for behandling (bokstav a)",
+        legend: "Har søkeren behov for aktiv behandling?",
+        påkrevd: "Du må svare på om søker har behov for aktiv behandling.",
+      },
+      bokstav_b: {
+        heading: "Behov for tiltak (bokstav b)",
+        legend: "Har søkeren behov for arbeidsrettet tiltak?",
+        påkrevd: "Du må svare på om søker har behov for arbeidsrettet tiltak.",
+      },
+      bokstav_c: {
+        heading: "Mulighet for å komme i arbeid (bokstav c)",
+        legend:
+          "Etter å ha prøvd a) eller b), anses fortsatt søkeren for å ha en viss mulighet for å komme i arbeid og får annen oppfølging fra NAV?",
+        påkrevd: "Du må svare på om søker anses å ha en viss mulighet til å komme i arbeid.",
+      },
+      påkrevd: "Du må ta stilling til om søker oppfyller kravet til § 11-6 eller ikke.",
     },
     "11_12": {
       heading: "Vurdering av § 11-12",
-      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-12 eller ikke.",
+      påkrevd: "Du må ta stilling til om søker oppfyller kravet til § 11-12 eller ikke.",
+      legend: "Oppfyller medlemmet kravene i 11-12?",
     },
     "11_29": {
       heading: "Vurdering av § 11-29",
-      påkrevd: "Du må ta stilling til om bruker oppfyller kravet til § 11-29 eller ikke.",
+      påkrevd: "Du må ta stilling til om søker oppfyller kravet til § 11-29 eller ikke.",
+      legend: "Oppfyller medlemmet kravene i 11-29?",
     },
   },
   beregningsdato: {

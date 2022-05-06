@@ -27,10 +27,10 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
       <RadioGroupWrapper
-        name={"erOppfylt"}
+        feltNokkel={"erOppfylt"}
         control={control}
-        legend={getText("paragrafer.11_3.vurdering")}
-        error={errors.erOppfylt?.message}
+        tekstNokkel={"paragrafer.11_3"}
+        errors={errors}
         rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
       >
         <Radio value={"true"}>Ja</Radio>
@@ -62,7 +62,7 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
   }
   return (
     <>
-      <Label>{getText("paragrafer.11_3.vurdering")}</Label>
+      <Label>{getText("paragrafer.11_3.legend")}</Label>
       <BodyShort>{vilkårsvurdering.erOppfylt ? "Ja" : "Nei"}</BodyShort>
     </>
   );

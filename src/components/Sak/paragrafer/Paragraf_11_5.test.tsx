@@ -18,8 +18,8 @@ describe("Paragraf 11-5", () => {
 
     render(<Paragraf_11_5 vilkårsvurdering={vilkårsvurdering} personident={"12345678910"} />);
 
-    expect(screen.getByText(getText(nedsattArbeidsevneNokkel + ".label"))).toBeVisible();
-    expect(screen.getByText(getText(skyldesSykdomSkadeNokkel + ".label"))).toBeVisible();
+    expect(screen.getByText(getText(nedsattArbeidsevneNokkel + ".legend"))).toBeVisible();
+    expect(screen.getByText(getText(skyldesSykdomSkadeNokkel + ".legend"))).toBeVisible();
     user.click(screen.getByRole("button", { name: getText("paragrafer.knapper.fullfør") }));
     await waitFor(() => expect(screen.getByText(getText(nedsattArbeidsevneNokkel + ".påkrevd"))).toBeVisible());
     await waitFor(() => expect(screen.getByText(getText(skyldesSykdomSkadeNokkel + ".påkrevd"))).toBeVisible());
@@ -35,7 +35,7 @@ describe("Paragraf 11-5", () => {
     };
 
     render(<Paragraf_11_5 vilkårsvurdering={ferdigVurdertVilkår} personident={"12345678910"} />);
-    expect(screen.getByText(getText(nedsattArbeidsevneNokkel + ".label"))).toBeVisible();
-    expect(screen.getByText(getText(skyldesSykdomSkadeNokkel + ".label"))).toBeVisible();
+    expect(screen.getByText(getText(nedsattArbeidsevneNokkel + ".legend"))).toBeVisible();
+    expect(screen.getByText(getText(skyldesSykdomSkadeNokkel + ".legend"))).toBeVisible();
   });
 });

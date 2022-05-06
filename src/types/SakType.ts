@@ -17,7 +17,11 @@ const paragraf_11_5Schema = vilkårsvurderingSchema.extend({
   kravOmNedsattArbeidsevneErOppfylt: z.boolean().optional(),
   nedsettelseSkyldesSykdomEllerSkade: z.boolean().optional(),
 });
-const paragraf_11_6Schema = vilkårsvurderingSchema.extend({});
+const paragraf_11_6Schema = vilkårsvurderingSchema.extend({
+  harBehovForBehandling: z.boolean().optional(),
+  harBehovForTiltak: z.boolean().optional(),
+  harMulighetForAaKommeIArbeid: z.boolean().optional(),
+});
 const paragraf_11_12Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_29Schema = vilkårsvurderingSchema.extend({});
 

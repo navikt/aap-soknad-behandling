@@ -182,6 +182,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         vilkårsvurderingsid: "uuid-4-6",
         erOppfylt: true,
         måVurderesManuelt: false,
+        harBehovForBehandling: true,
+        harBehovForTiltak: false,
       },
       paragraf_11_12: {
         vilkårsvurderingsid: "uuid-4-12",
