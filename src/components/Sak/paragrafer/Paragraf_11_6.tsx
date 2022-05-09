@@ -47,7 +47,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { handleSubmit, control, reset, errors, onSubmit, senderMelding, getValues } = useSkjema();
+  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_6_manuell: {
       // erOppfylt: datas.erOppfylt === "true",
@@ -66,8 +66,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           tekstNokkel={`${tekstNokkel}.bokstav_a`}
           control={control}
           feltNokkel={"harBehovForBehandling"}
-          reset={reset}
-          getValues={getValues}
+          resetField={resetField}
           rules={{ required: getText(`${tekstNokkel}.bokstav_a.påkrevd`) }}
           errors={errors}
         >
@@ -86,8 +85,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           legend={getText(`${tekstNokkel}.bokstav_b.legend`)}
           errors={errors}
           rules={{ required: getText(`${tekstNokkel}.bokstav_b.påkrevd`) }}
-          reset={reset}
-          getValues={getValues}
+          resetField={resetField}
         >
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>
@@ -104,8 +102,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           legend={getText(`${tekstNokkel}.bokstav_c.legend`)}
           errors={errors}
           rules={{ required: getText(`${tekstNokkel}.bokstav_c.påkrevd`) }}
-          reset={reset}
-          getValues={getValues}
+          resetField={resetField}
         >
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>

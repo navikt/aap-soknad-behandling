@@ -41,7 +41,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { control, handleSubmit, errors, onSubmit, senderMelding } = useSkjema();
+  const { control, handleSubmit, errors, onSubmit, senderMelding, resetField } = useSkjema();
   const løsning = (datas: any): Løsning => ({
     løsning_11_5_manuell: {
       kravOmNedsattArbeidsevneErOppfylt: datas.kravOmNedsattArbeidsevneErOppfylt,
@@ -61,6 +61,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           tekstNokkel={`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt`}
           errors={errors}
           rules={{ required: getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.påkrevd`) }}
+          resetField={resetField}
         >
           <Radio value={"true"}>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.ja`)}</Radio>
           <Radio value={"false"}>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.nei`)}</Radio>
@@ -76,6 +77,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           tekstNokkel={`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade`}
           errors={errors}
           rules={{ required: getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.påkrevd`) }}
+          resetField={resetField}
         >
           <Radio value={"true"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.ja`)}</Radio>
           <Radio value={"false"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.nei`)}</Radio>
