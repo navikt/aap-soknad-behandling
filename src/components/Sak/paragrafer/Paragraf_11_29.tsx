@@ -26,7 +26,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { handleSubmit, control, reset, errors, onSubmit, senderMelding, getValues } = useSkjema();
+  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_29_manuell: {
       erOppfylt: datas.erOppfylt === "true",
@@ -41,8 +41,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         tekstNokkel={"paragrafer.11_29"}
         errors={errors}
         rules={{ required: getText("paragrafer.11_29.påkrevd") }}
-        reset={reset}
-        getValues={getValues}
+        resetField={resetField}
       >
         <Radio value={"true"}>Ja</Radio>
         <Radio value={"false"}>Nei</Radio>

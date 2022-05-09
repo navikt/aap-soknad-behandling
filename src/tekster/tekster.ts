@@ -44,7 +44,7 @@ const texts = {
     inngangsvilkaar: "Inngangsvilkår",
     "11_5": "§ 11-5",
     "11_6": "§ 11-6",
-    "11_12": "§ 11-12",
+    "11_12": "Varighet og virkning",
     "11_29": "§ 11-29",
     beregning: "Beregning",
     resultat: "Resultat",
@@ -132,9 +132,18 @@ const texts = {
       påkrevd: "Du må ta stilling til om søker oppfyller kravet til § 11-6 eller ikke.",
     },
     "11_12": {
-      heading: "Vurdering av § 11-12",
+      heading: "Varighet og virkning",
       påkrevd: "Du må ta stilling til om søker oppfyller kravet til § 11-12 eller ikke.",
-      legend: "Oppfyller medlemmet kravene i 11-12?",
+      virkningstidspunkt: {
+        heading: "Virkningstidspunkt",
+        legend: "Virkningstidspunkt bestemmes av",
+        unntak: {
+          legend: "Unntaksvurdering tar utgangspunkt i at",
+        },
+      },
+      varighet: {
+        heading: "Varighet",
+      },
     },
     "11_29": {
       heading: "Vurdering av § 11-29",

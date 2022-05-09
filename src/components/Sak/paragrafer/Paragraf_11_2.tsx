@@ -28,7 +28,7 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_2
 };
 
 const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
-  const { handleSubmit, control, reset, errors, onSubmit, senderMelding, getValues } = useSkjema();
+  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_2_manuell: {
       erMedlem: datas.erOppfylt,
@@ -47,8 +47,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         tekstNokkel={"paragrafer.11_2"}
         errors={errors}
         rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
-        reset={reset}
-        getValues={getValues}
+        resetField={resetField}
       >
         <Radio value={"ja"}>Ja</Radio>
         <Radio value={"nei"}>Nei</Radio>
