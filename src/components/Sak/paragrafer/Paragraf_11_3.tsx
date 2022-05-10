@@ -37,7 +37,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         <Radio value={"true"}>Ja</Radio>
         <Radio value={"false"}>Nei</Radio>
       </RadioGroupWrapper>
-      <div>
+      <div className={styles.fortsettKnapp}>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>

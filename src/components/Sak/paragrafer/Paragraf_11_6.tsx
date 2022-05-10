@@ -5,6 +5,8 @@ import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 
+import * as styles from "./paragraf.module.css";
+
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_6Type | undefined;
   personident: string;
@@ -108,7 +110,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           <Radio value={"false"}>Nei</Radio>
         </RadioGroupWrapper>
       </ParagrafBlokk>
-      <div>
+      <div className={styles.fortsettKnapp}>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>
