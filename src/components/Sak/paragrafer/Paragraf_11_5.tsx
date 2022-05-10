@@ -7,6 +7,8 @@ import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { Løsning } from "../../../types/Losning";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 
+import * as styles from "./paragraf.module.css";
+
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_5Type | undefined;
   personident: string;
@@ -82,9 +84,11 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           <Radio value={"true"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.ja`)}</Radio>
           <Radio value={"false"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.nei`)}</Radio>
         </RadioGroupWrapper>
-        <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
-          {getText("paragrafer.knapper.fullfør")}
-        </Button>
+        <div className={styles.fortsettKnapp}>
+          <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+            {getText("paragrafer.knapper.fullfør")}
+          </Button>
+        </div>
       </ParagrafBlokk>
     </form>
   );

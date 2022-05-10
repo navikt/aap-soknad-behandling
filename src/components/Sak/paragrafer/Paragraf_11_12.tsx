@@ -1,5 +1,5 @@
 import { Paragraf_11_12Type, VilkårsvurderingType } from "../../../types/SakType";
-import { BodyShort, Button, Heading, Label, Radio } from "@navikt/ds-react";
+import { BodyShort, Button, Heading, Label, Radio, Textarea } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
@@ -30,14 +30,20 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding, watch } = useSkjema();
+  const { register, handleSubmit, control, resetField, errors, onSubmit, senderMelding, watch } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_12_ledd1_manuell: {
       // erOppfylt: datas.erOppfylt === "true",
       bestemmesAv: datas.bestemmesAv,
       unntak: datas.unntak,
+      unntaksbegrunnelse: datas.unntaksbegrunnelse,
     },
   });
+
+  const unntaksbegrunnelseLabel =
+    watch("unntak") === "forhindret"
+      ? "Utdyp hvorfor søkeren ble forhindret fra å sende inn søknaden."
+      : "Utdyp hvilke mangelfulle eller misvisende opplysninger som er oppgitt.";
 
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
@@ -51,6 +57,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
       >
         <Radio value={"soknadstidspunkt"}>Søknadstidspunkt dd.mm.yyyy (må hentes)</Radio>
         <Radio value={"maksdatoSykepenger"}>Maksdato sykepenger dd.mm.yyyy (må hentes)</Radio>
+        <Radio value={"ermiraSays"}>Noe annet her? Ermira?</Radio>
         <Radio value={"unntaksvurdering"}>Unntaksvurdering § 22-13, 7. ledd</Radio>
         <RenderWhen when={watch("bestemmesAv") === "unntaksvurdering"}>
           <div className={styles.innrykk}>
@@ -64,6 +71,11 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
               <Radio value={"forhindret"}>Søkeren ble åpenbart forhindret fra å sende søknaden.</Radio>
               <Radio value={"mangelfull"}>NAV har gitt mangelfull eller misvisende informasjon</Radio>
             </RadioGroupWrapper>
+            <RenderWhen when={watch("unntak")}>
+              <div className={"margin-top__medium"}>
+                <Textarea label={unntaksbegrunnelseLabel} {...register("unntaksbegrunnelse")} />
+              </div>
+            </RenderWhen>
           </div>
         </RenderWhen>
         <Radio value={"etterSisteLoenn"}>Dagen etter siste lønnsutbetaling</Radio>
