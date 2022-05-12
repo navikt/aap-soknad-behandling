@@ -46,7 +46,7 @@ const texts = {
     "11_6": "§ 11-6",
     "11_12": "Varighet og virkning",
     "11_29": "§ 11-29",
-    beregning: "Beregning",
+    beregning: "Beregningstidspunkt",
     resultat: "Resultat",
   },
   sak: {
@@ -151,10 +151,15 @@ const texts = {
       legend: "Oppfyller medlemmet kravene i 11-29?",
     },
   },
-  beregningsdato: {
-    heading: "Beregningsdato",
-    label: "Sett beregningsdato for vedtak",
+  beregningstidspunkt: {
+    heading: "Beregningstidspunkt",
+    label: "Fra hvilken dato har brukeren fått nedsatt arbeidsevne?",
     knapp: "Sett dato",
+    grunnForDato: {
+      legend: "Hvorfor er beregningstidspunktet satt på denne datoen?",
+      description: "Velg hovedgrunnen",
+      begrunnelseForAnnet: "Oppgi en annen grunn 😡",
+    },
   },
 };
 

@@ -22,7 +22,11 @@ const paragraf_11_6Schema = vilkårsvurderingSchema.extend({
   harBehovForTiltak: z.boolean().optional(),
   harMulighetForAaKommeIArbeid: z.boolean().optional(),
 });
-const paragraf_11_12Schema = vilkårsvurderingSchema.extend({});
+const paragraf_11_12Schema = vilkårsvurderingSchema.extend({
+  bestemmesAv: z.string().optional(), // enum her
+  unntak: z.string().optional(), // enum
+  unntaksbegrunnelse: z.string().optional(),
+});
 const paragraf_11_29Schema = vilkårsvurderingSchema.extend({});
 
 export type Paragraf_11_2Type = z.infer<typeof paragraf_11_2Schema>;

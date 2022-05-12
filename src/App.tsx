@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 
 import { Heading } from "@navikt/ds-react";
@@ -8,6 +8,7 @@ import Saksoversikt from "./pages/Saksoversikt/Saksoversikt";
 import { Feilviser } from "./components/Feilviser/Feilviser";
 import { AppHeader } from "./components/Header/AppHeader";
 import { SakHenter } from "./components/SakHenter/SakHenter";
+import { RadioLayoutProvider } from "./contexts/RadioLayout";
 
 const Ruter = (): JSX.Element => (
   <Routes>
@@ -43,11 +44,13 @@ const App = () => {
     <StrictMode>
       <ErrorBoundary FallbackComponent={Feilviser}>
         <AppHeader />
-        <main id="main-content" className="main__content">
-          <BrowserRouter>
-            <Ruter />
-          </BrowserRouter>
-        </main>
+        <RadioLayoutProvider>
+          <main id="main-content" className="main__content">
+            <BrowserRouter>
+              <Ruter />
+            </BrowserRouter>
+          </main>
+        </RadioLayoutProvider>
       </ErrorBoundary>
     </StrictMode>
   );

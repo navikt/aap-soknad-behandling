@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { Heading } from "@navikt/ds-react";
+import { Heading, Switch } from "@navikt/ds-react";
 
 import { SøkerType } from "../../types/SakType";
 import { Sammendrag } from "./Sammendrag/Sammendrag";
@@ -18,8 +18,10 @@ import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 import { Vedtak } from "./vedtak/Vedtak";
 import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";
-import { Beregningsdato } from "./paragrafer/Beregningsdato";
+import { Beregningstidspunkt } from "./paragrafer/Beregningstidspunkt";
 import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
+import { useContext } from "react";
+import { RadioLayoutContext } from "../../contexts/RadioLayout";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
@@ -27,7 +29,7 @@ const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <>
       <div className={styles.blokk__header}>
-        <Heading size={"medium"} level={"2"}>
+        <Heading size={"large"} level={"2"}>
           {getText("paragrafer.inngangsvilkår.heading")}
         </Heading>
       </div>
@@ -41,7 +43,7 @@ const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
 const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <div className={styles.blokk__header}>
-      <Heading size={"medium"} level={"2"}>
+      <Heading size={"large"} level={"2"}>
         {getText("paragrafer.11_5.heading")}
       </Heading>
       <Vilkarsstatus
@@ -56,7 +58,7 @@ const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
 const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <div className={styles.blokk__header}>
-      <Heading size={"medium"} level={"2"}>
+      <Heading size={"large"} level={"2"}>
         {getText("paragrafer.11_6.heading")}
       </Heading>
       <Vilkarsstatus
@@ -71,7 +73,7 @@ const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
 const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <div className={styles.blokk__header}>
-      <Heading size={"medium"} level={"2"}>
+      <Heading size={"large"} level={"2"}>
         {getText("paragrafer.11_12.heading")}
       </Heading>
       <Vilkarsstatus
@@ -86,7 +88,7 @@ const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
 const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <div className={styles.blokk__header}>
-      <Heading size={"medium"} level={"2"}>
+      <Heading size={"large"} level={"2"}>
         {getText("paragrafer.11_29.heading")}
       </Heading>
       <Vilkarsstatus
@@ -100,14 +102,23 @@ const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
 
 const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"medium"} level={"2"} className={styles.blokk__header}>
-      {getText("beregningsdato.heading")}
+    <Heading size={"large"} level={"2"} className={styles.blokk__header}>
+      {getText("beregningstidspunkt.heading")}
     </Heading>
-    <Beregningsdato personident={søker.personident} />
+    <Beregningstidspunkt personident={søker.personident} />
   </>
 );
 
 const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
+  const layout = useContext(RadioLayoutContext);
+  const fixShit = () => {
+    if (layout) {
+      layout.swapLayout();
+    } else {
+      console.error("what");
+    }
+  };
+
   const [searchParams] = useSearchParams();
   const requestedPage = searchParams.get("page") || DEFAULT_PAGE;
   return (
@@ -125,7 +136,7 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           </Heading>
           <Oppgaveliste søker={søker} activePage={requestedPage} />
         </aside>
-        <main className={`${styles.sak__behandling} box`}>
+        <main className={`${styles.sak__behandling} box radio--${layout?.layout}`}>
           <RenderWhen when={requestedPage === PAGES.INNGANG}>
             <Inngangsvilkår søker={søker} />
           </RenderWhen>
@@ -149,6 +160,9 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           </RenderWhen>
         </main>
       </section>
+      <Switch size={"small"} onClick={fixShit}>
+        Horizontal radios
+      </Switch>
     </div>
   );
 };

@@ -66,3 +66,14 @@
 .fortsettKnapp {
   margin-top: 1.5rem;
 }
+
+.dato__wrapper {
+  max-width: 31rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.dato__wrapper > button {
+  margin-top: 2rem;
+  margin-left: .5rem;
+}
