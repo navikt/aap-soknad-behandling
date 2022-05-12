@@ -2,7 +2,7 @@ import { Control, Controller, FieldErrors, FieldValues } from "react-hook-form";
 
 import { Button, RadioGroup } from "@navikt/ds-react";
 import { getText } from "../tekster/tekster";
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import { Delete } from "@navikt/ds-icons";
 
 export interface RadioProps {
@@ -14,6 +14,7 @@ export interface RadioProps {
   children: ReactElement[];
   rules?: object;
   resetField?: Function;
+  description?: ReactNode;
 }
 
 type NullstillProps = {
@@ -49,8 +50,9 @@ export const RadioGroupWrapper = ({
   errors,
   rules,
   resetField,
+  description,
 }: RadioProps): JSX.Element => (
-  <>
+  <div className={"radio__group"}>
     <Controller
       name={feltNokkel}
       control={control}
@@ -64,11 +66,12 @@ export const RadioGroupWrapper = ({
           legend={getText(`${tekstNokkel}.legend`) || getText(tekstNokkel)}
           error={errors && errors[feltNokkel]?.message}
           onChange={onChange}
+          description={description}
         >
           {children}
         </RadioGroup>
       )}
     />
     <Nullstillknapp feltNokkel={feltNokkel} resetField={resetField} />
-  </>
+  </div>
 );

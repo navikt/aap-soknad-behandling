@@ -57,7 +57,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
       >
         <Radio value={"soknadstidspunkt"}>Søknadstidspunkt dd.mm.yyyy (må hentes)</Radio>
         <Radio value={"maksdatoSykepenger"}>Maksdato sykepenger dd.mm.yyyy (må hentes)</Radio>
-        <Radio value={"ermiraSays"}>Noe annet her? Ermira?</Radio>
+        <Radio value={"ermiraSays"}>Noe annet her? Ermira 🤷‍♀️?</Radio>
         <Radio value={"unntaksvurdering"}>Unntaksvurdering § 22-13, 7. ledd</Radio>
         <RenderWhen when={watch("bestemmesAv") === "unntaksvurdering"}>
           <div className={styles.innrykk}>
