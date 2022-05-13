@@ -1,0 +1,22 @@
+.modal {
+  min-width: 25vw;
+}
+
+.dataliste {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  width: 30rem;
+}
+
+dt {
+  text-align: right;
+  font-weight: 900;
+}
+
+dt::after {
+  content: ":";
+}
+
+dd {
+  margin-left: .5rem;
+}

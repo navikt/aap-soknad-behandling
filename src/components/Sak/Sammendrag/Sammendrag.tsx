@@ -1,6 +1,7 @@
 import { Button, Heading, Link, Tag } from "@navikt/ds-react";
 import { Copy } from "@navikt/ds-icons";
 import { finnAlder, formaterPid, formaterTidspunkt } from "../../../lib/dato";
+import { Personopplysninger } from "../Personopplysninger";
 import { SøkerType } from "../../../types/SakType";
 
 import * as styles from "./sammendrag.module.css";
@@ -21,6 +22,7 @@ const Sammendrag = ({ søker }: { søker: SøkerType }): JSX.Element => {
         >
           <Copy title={"Kopier navn til utklippstavlen"} />
         </Button>
+        <Personopplysninger />
       </Heading>
       <div className={styles.oppsummering__personlinje}>
         <div className={styles.kv__pair}>

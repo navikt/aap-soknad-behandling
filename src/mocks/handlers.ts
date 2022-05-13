@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import { listeMedSøkereOgSaker } from "./datas/saksliste";
+import { personopplysning } from "./datas/personopplysninger";
 
 export const handlers = [
   rest.get("/aap-behandling/api/sak", (req, res, ctx) => {
@@ -21,5 +22,8 @@ export const handlers = [
   }),
   rest.post("/aap-behandling/api/sak/:personid/losning", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+  }),
+  rest.get("/aap-behandling/api/personopplysninger/:personid", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(personopplysning), ctx.delay(523));
   }),
 ];

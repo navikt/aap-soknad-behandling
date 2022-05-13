@@ -8,10 +8,12 @@ type ApiResponse = {
   data: any;
   error: string;
   loading: boolean;
+  status: number;
 };
 
 export const fetchGET = (path: string): ApiResponse => {
   const [data, setData] = useState(null);
+  const [status, setStatus] = useState<number>(-1);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -27,11 +29,14 @@ export const fetchGET = (path: string): ApiResponse => {
       }
       try {
         const res = await fetch(url, { method: "GET", credentials: "include" });
-        const data = await res.json();
-        if (isMounted) {
-          data && setData(data);
-          setLoading(false);
+        setStatus(res.status);
+        if (res.status >= 200 && res.status <= 299) {
+          const data = await res.json();
+          if (isMounted) {
+            data && setData(data);
+          }
         }
+        setLoading(false);
       } catch (e) {
         console.error(e);
         errorHandler(e);
@@ -45,7 +50,7 @@ export const fetchGET = (path: string): ApiResponse => {
     };
   }, []);
 
-  return { data, error, loading };
+  return { data, error, loading, status };
 };
 
 export const fetchPOST = async (url: string, payload: object, opts: RequestOptions = {}) => {
