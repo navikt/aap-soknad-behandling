@@ -4,7 +4,7 @@ import { formaterDato } from "../../../lib/dato";
 import * as styles from "./vedtak.module.css";
 import { useSkjema } from "../../../hooks/useSkjema";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { Seksjonsoverskrift } from "../Overskrift/Seksjonsoverskrift";
+import { Seksjonsoverskrift } from "../Seksjonsoverskrift/Seksjonsoverskrift";
 import { getText } from "../../../tekster/tekster";
 import { Løsning } from "../../../types/Losning";
 

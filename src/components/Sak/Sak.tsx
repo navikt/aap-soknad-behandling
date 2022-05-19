@@ -23,7 +23,7 @@ import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
 import { useContext } from "react";
 import { RadioLayoutContext } from "../../contexts/RadioLayout";
 import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
-import { Seksjonsoverskrift } from "./Overskrift/Seksjonsoverskrift";
+import { Seksjonsoverskrift } from "./Seksjonsoverskrift/Seksjonsoverskrift";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
