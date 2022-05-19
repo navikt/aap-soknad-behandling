@@ -60,14 +60,6 @@
   flex: 1;
 }
 
-.blokk__header {
-  border-bottom: 3px solid var(--navds-semantic-color-border-muted);
-  padding: 1rem 1rem 1rem 0;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-
 .sentrer {
   display: flex;
   flex-direction: column;

@@ -5,5 +5,6 @@ export const PAGES = {
   VARIGHET: "varighet",
   ANDRE_YTELSER: "andre_ytelser",
   BEREGNING: "beregning",
+  BEREGNINGSGRUNNLAG: "beregningsgrunnlag",
   RESULTAT: "resultat",
 };

@@ -7,6 +7,7 @@ export interface Løsning {
   løsning_11_12_ledd1_manuell?: LøsningParagraf_11_12_ledd1;
   løsning_11_29_manuell?: LøsningParagraf_11_29;
   løsningVurderingAvBeregningsdato?: LøsningVurderingAvBeregningsdato;
+  vedtak?: LøsningVedtak;
 }
 
 export interface LøsningParagraf_11_2 {
@@ -40,4 +41,8 @@ export interface LøsningParagraf_11_29 {
 
 export interface LøsningVurderingAvBeregningsdato {
   beregningsdato: Date;
+}
+
+export interface LøsningVedtak {
+  innstilling: string;
 }

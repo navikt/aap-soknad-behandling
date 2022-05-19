@@ -47,6 +47,7 @@ const texts = {
     "11_12": "Varighet og virkning",
     "11_29": "§ 11-29",
     beregning: "Beregningstidspunkt",
+    beregningsgrunnlag: "Beregningsgrunnlag",
     resultat: "Resultat",
   },
   sak: {
@@ -150,6 +151,13 @@ const texts = {
       påkrevd: "Du må ta stilling til om søker oppfyller kravet til § 11-29 eller ikke.",
       legend: "Oppfyller medlemmet kravene i 11-29?",
     },
+  },
+  resultat: {
+    heading: "Resultat",
+    legend: "Velg type resultat",
+    godkjent: "Innvilget AAP",
+    avslaatt: "Avslått AAP",
+    trukket: "Søknaden er trukket av søkeren",
   },
   beregningstidspunkt: {
     heading: "Beregningstidspunkt",

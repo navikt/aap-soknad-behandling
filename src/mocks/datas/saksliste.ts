@@ -73,8 +73,8 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       },
       paragraf_11_4: {
         vilkårsvurderingsid: "uuid-2-4",
-        erOppfylt: false,
-        måVurderesManuelt: true,
+        erOppfylt: true,
+        måVurderesManuelt: false,
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-2-5",
@@ -195,40 +195,40 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         erOppfylt: true,
         måVurderesManuelt: false,
       },
+      inntektsgrunnlag: {
+        beregningsdato: "2021-10-10T17:42:42",
+        inntekterSiste3Kalenderår: [
+          {
+            år: "2021",
+            inntekter: [],
+            beløpFørJustering: 400000,
+            beløpJustertFor6G: 350000,
+            erBeløpJustertFor6G: true,
+            grunnlagsfaktor: 3,
+          },
+          {
+            år: "2020",
+            inntekter: [],
+            beløpFørJustering: 300000,
+            beløpJustertFor6G: 300000,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3,
+          },
+          {
+            år: "2019",
+            inntekter: [],
+            beløpFørJustering: 400000,
+            beløpJustertFor6G: 350000,
+            erBeløpJustertFor6G: true,
+            grunnlagsfaktor: 3,
+          },
+        ],
+        fødselsdato: "1900-01-01",
+        sisteKalenderår: "2021",
+        grunnlagsfaktor: 3,
+      },
       vedtak: {
         innvilget: true,
-        inntektsgrunnlag: {
-          beregningsdato: "2021-10-10T17:42:42",
-          inntekterSiste3Kalenderår: [
-            {
-              år: "2021",
-              inntekter: [],
-              beløpFørJustering: 400000,
-              beløpJustertFor6G: 350000,
-              erBeløpJustertFor6G: true,
-              grunnlagsfaktor: 3,
-            },
-            {
-              år: "2020",
-              inntekter: [],
-              beløpFørJustering: 300000,
-              beløpJustertFor6G: 300000,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3,
-            },
-            {
-              år: "2019",
-              inntekter: [],
-              beløpFørJustering: 400000,
-              beløpJustertFor6G: 350000,
-              erBeløpJustertFor6G: true,
-              grunnlagsfaktor: 3,
-            },
-          ],
-          fødselsdato: "1900-01-01",
-          sisteKalenderår: "2021",
-          grunnlagsfaktor: 3,
-        },
         vedtaksdato: "2022-06-05",
         virkningsdato: "2022-05-05",
       },
@@ -330,59 +330,59 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         erOppfylt: true,
         måVurderesManuelt: false,
       },
+      inntektsgrunnlag: {
+        beregningsdato: "2022-01-01",
+        inntekterSiste3Kalenderår: [
+          {
+            år: "2021",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2021-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.819856,
+          },
+          {
+            år: "2020",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2020-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.966169,
+          },
+          {
+            år: "2019",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2019-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 4.04588,
+          },
+        ],
+        fødselsdato: "1969-02-06",
+        sisteKalenderår: "2021",
+        grunnlagsfaktor: 3.943968,
+      },
       vedtak: {
         vedtaksid: "52e31434-179a-40af-9d8f-1a84c0c9baaf",
         innvilget: true,
-        inntektsgrunnlag: {
-          beregningsdato: "2022-01-01",
-          inntekterSiste3Kalenderår: [
-            {
-              år: "2021",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2021-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.819856,
-            },
-            {
-              år: "2020",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2020-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.966169,
-            },
-            {
-              år: "2019",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2019-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 4.04588,
-            },
-          ],
-          fødselsdato: "1969-02-06",
-          sisteKalenderår: "2021",
-          grunnlagsfaktor: 3.943968,
-        },
         vedtaksdato: "2022-03-25",
         virkningsdato: "2022-03-25",
       },
@@ -435,59 +435,59 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         erOppfylt: false,
         måVurderesManuelt: false,
       },
+      inntektsgrunnlag: {
+        beregningsdato: subDays(new Date(), 5).toISOString(),
+        inntekterSiste3Kalenderår: [
+          {
+            år: "2021",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2021-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.819856,
+          },
+          {
+            år: "2020",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2020-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.966169,
+          },
+          {
+            år: "2019",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2019-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 4.04588,
+          },
+        ],
+        fødselsdato: "1969-02-06",
+        sisteKalenderår: "2021",
+        grunnlagsfaktor: 3.943968,
+      },
       vedtak: {
         vedtaksid: "52e31434-179a-40af-9d8f-1a84c0c9baaf",
         innvilget: false,
-        inntektsgrunnlag: {
-          beregningsdato: subDays(new Date(), 5).toISOString(),
-          inntekterSiste3Kalenderår: [
-            {
-              år: "2021",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2021-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.819856,
-            },
-            {
-              år: "2020",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2020-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.966169,
-            },
-            {
-              år: "2019",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2019-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 4.04588,
-            },
-          ],
-          fødselsdato: "1969-02-06",
-          sisteKalenderår: "2021",
-          grunnlagsfaktor: 3.943968,
-        },
         vedtaksdato: "2022-03-25",
         virkningsdato: "2022-03-25",
       },
@@ -599,58 +599,58 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       vedtak: {
         vedtaksid: "eccb98b1-c191-461d-b447-3bd2cc79c73c",
         innvilget: true,
-        inntektsgrunnlag: {
-          beregningsdato: "2022-03-30",
-          inntekterSiste3Kalenderår: [
-            {
-              år: "2021",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2021-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.819856,
-            },
-            {
-              år: "2020",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2020-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.966169,
-            },
-            {
-              år: "2019",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2019-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 4.04588,
-            },
-          ],
-          fødselsdato: "1968-08-24",
-          sisteKalenderår: "2021",
-          grunnlagsfaktor: 3.943968,
-        },
         vedtaksdato: "2022-03-30",
         virkningsdato: "2022-03-30",
+      },
+      inntektsgrunnlag: {
+        beregningsdato: "2022-03-30",
+        inntekterSiste3Kalenderår: [
+          {
+            år: "2021",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2021-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.819856,
+          },
+          {
+            år: "2020",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2020-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.966169,
+          },
+          {
+            år: "2019",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2019-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 4.04588,
+          },
+        ],
+        fødselsdato: "1968-08-24",
+        sisteKalenderår: "2021",
+        grunnlagsfaktor: 3.943968,
       },
       paragraf_11_2: {
         vilkårsvurderingsid: "4b6bfa9d-1edf-4b5d-8dc2-f426a8891771",
@@ -700,58 +700,58 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       vedtak: {
         vedtaksid: "f0fadfc2-fd27-45cd-bdcc-047ee6984578",
         innvilget: true,
-        inntektsgrunnlag: {
-          beregningsdato: "2022-03-30",
-          inntekterSiste3Kalenderår: [
-            {
-              år: "2021",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2021-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.819856,
-            },
-            {
-              år: "2020",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2020-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 3.966169,
-            },
-            {
-              år: "2019",
-              inntekter: [
-                {
-                  arbeidsgiver: "321",
-                  inntektsmåned: "2019-01",
-                  beløp: 400000.0,
-                },
-              ],
-              beløpFørJustering: 400000.0,
-              beløpJustertFor6G: 400000.0,
-              erBeløpJustertFor6G: false,
-              grunnlagsfaktor: 4.04588,
-            },
-          ],
-          fødselsdato: "1969-02-06",
-          sisteKalenderår: "2021",
-          grunnlagsfaktor: 3.943968,
-        },
         vedtaksdato: "2022-03-30",
         virkningsdato: "2022-03-30",
+      },
+      inntektsgrunnlag: {
+        beregningsdato: "2022-03-30",
+        inntekterSiste3Kalenderår: [
+          {
+            år: "2021",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2021-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.819856,
+          },
+          {
+            år: "2020",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2020-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 3.966169,
+          },
+          {
+            år: "2019",
+            inntekter: [
+              {
+                arbeidsgiver: "321",
+                inntektsmåned: "2019-01",
+                beløp: 400000.0,
+              },
+            ],
+            beløpFørJustering: 400000.0,
+            beløpJustertFor6G: 400000.0,
+            erBeløpJustertFor6G: false,
+            grunnlagsfaktor: 4.04588,
+          },
+        ],
+        fødselsdato: "1969-02-06",
+        sisteKalenderår: "2021",
+        grunnlagsfaktor: 3.943968,
       },
       paragraf_11_2: {
         vilkårsvurderingsid: "d344b453-ea72-4aad-9f34-52d397c864f1",

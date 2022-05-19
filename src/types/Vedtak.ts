@@ -20,7 +20,8 @@ const inntektsgrunnlagForÅrSchema = z.object({
 });
 export type InntektsgrunnlagForÅr = z.infer<typeof inntektsgrunnlagForÅrSchema>;
 
-const inntektsgrunnlagSchema = z.object({
+export const inntektsgrunnlagSchema = z.object({
+  // flytt til SakType hvis det ikke skal ligge som en del av vedtaket?
   beregningsdato: z.string().refine((dato) => refineDato(dato)),
   inntekterSiste3Kalenderår: z.array(inntektsgrunnlagForÅrSchema),
   fødselsdato: z.string().refine((dato) => refineDato(dato)),
@@ -31,7 +32,6 @@ export type InntektsgrunnlagType = z.infer<typeof inntektsgrunnlagSchema>;
 
 export const vedtakSchema = z.object({
   innvilget: z.boolean(),
-  inntektsgrunnlag: inntektsgrunnlagSchema,
   vedtaksdato: z.string().refine((dato) => refineDato(dato)),
   virkningsdato: z.string().refine((dato) => refineDato(dato)),
   vedtaksid: z.string().optional(), // neppe optional

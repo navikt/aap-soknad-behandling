@@ -22,17 +22,15 @@ import { Beregningstidspunkt } from "./paragrafer/Beregningstidspunkt";
 import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
 import { useContext } from "react";
 import { RadioLayoutContext } from "../../contexts/RadioLayout";
+import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
+import { Seksjonsoverskrift } from "./Overskrift/Seksjonsoverskrift";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
 const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
     <>
-      <div className={styles.blokk__header}>
-        <Heading size={"large"} level={"2"}>
-          {getText("paragrafer.inngangsvilkår.heading")}
-        </Heading>
-      </div>
+      <Seksjonsoverskrift tekstnokkel={"paragrafer.inngangsvilkår.heading"} />
       <Paragraf_11_2 vilkårsvurdering={søker.sak.paragraf_11_2} personident={søker.personident} />
       <Paragraf_11_3 vilkårsvurdering={søker.sak.paragraf_11_3} personident={søker.personident} />
       <Paragraf_11_4 vilkårsvurdering={søker.sak.paragraf_11_4} fødselsdato={søker.fødselsdato} />
@@ -42,80 +40,64 @@ const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
 
 const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <div className={styles.blokk__header}>
-      <Heading size={"large"} level={"2"}>
-        {getText("paragrafer.11_5.heading")}
-      </Heading>
+    <Seksjonsoverskrift tekstnokkel={"paragrafer.11_5.heading"}>
       <Vilkarsstatus
         erOppfylt={søker.sak.paragraf_11_5?.erOppfylt}
         måVurderesManuelt={søker.sak.paragraf_11_5?.måVurderesManuelt}
       />
-    </div>
+    </Seksjonsoverskrift>
     <Paragraf_11_5 vilkårsvurdering={søker.sak.paragraf_11_5} personident={søker.personident} />
   </>
 );
 
 const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <div className={styles.blokk__header}>
-      <Heading size={"large"} level={"2"}>
-        {getText("paragrafer.11_6.heading")}
-      </Heading>
+    <Seksjonsoverskrift tekstnokkel={"paragrafer.11_6.heading"}>
       <Vilkarsstatus
         erOppfylt={søker.sak.paragraf_11_6?.erOppfylt}
         måVurderesManuelt={søker.sak.paragraf_11_6?.måVurderesManuelt}
       />
-    </div>
+    </Seksjonsoverskrift>
     <Paragraf_11_6 vilkårsvurdering={søker.sak.paragraf_11_6} personident={søker.personident} />
   </>
 );
 
 const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <div className={styles.blokk__header}>
-      <Heading size={"large"} level={"2"}>
-        {getText("paragrafer.11_12.heading")}
-      </Heading>
+    <Seksjonsoverskrift tekstnokkel={"paragrafer.11_12.heading"}>
       <Vilkarsstatus
         erOppfylt={søker.sak.paragraf_11_12?.erOppfylt}
         måVurderesManuelt={søker.sak.paragraf_11_12?.måVurderesManuelt}
       />
-    </div>
+    </Seksjonsoverskrift>
     <Paragraf_11_12 vilkårsvurdering={søker.sak.paragraf_11_12} personident={søker.personident} />
   </>
 );
 
 const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <div className={styles.blokk__header}>
-      <Heading size={"large"} level={"2"}>
-        {getText("paragrafer.11_29.heading")}
-      </Heading>
+    <Seksjonsoverskrift tekstnokkel={"paragrafer.11_29.heading"}>
       <Vilkarsstatus
         erOppfylt={søker.sak.paragraf_11_29?.erOppfylt}
         måVurderesManuelt={søker.sak.paragraf_11_29?.måVurderesManuelt}
       />
-    </div>
+    </Seksjonsoverskrift>
     <Paragraf_11_29 vilkårsvurdering={søker.sak.paragraf_11_29} personident={søker.personident} />
   </>
 );
 
 const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
-    <Heading size={"large"} level={"2"} className={styles.blokk__header}>
-      {getText("beregningstidspunkt.heading")}
-    </Heading>
+    <Seksjonsoverskrift tekstnokkel={"beregningstidspunkt.heading"} />
     <Beregningstidspunkt personident={søker.personident} />
   </>
 );
 
 const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
   const layout = useContext(RadioLayoutContext);
-  const fixShit = () => {
+  const swapRadioLayout = () => {
     if (layout) {
       layout.swapLayout();
-    } else {
-      console.error("what");
     }
   };
 
@@ -155,12 +137,15 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           <RenderWhen when={requestedPage === PAGES.BEREGNING}>
             <Beregning søker={søker} />
           </RenderWhen>
+          <RenderWhen when={requestedPage === PAGES.BEREGNINGSGRUNNLAG}>
+            <Beregningsgrunnlag inntektsgrunnlag={søker.sak.inntektsgrunnlag} />
+          </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.RESULTAT}>
             <Vedtak søker={søker} />
           </RenderWhen>
         </main>
       </section>
-      <Switch size={"small"} onClick={fixShit}>
+      <Switch size={"small"} onClick={swapRadioLayout}>
         Horizontal radios
       </Switch>
     </div>
