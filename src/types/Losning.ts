@@ -11,7 +11,7 @@ export interface Løsning {
 }
 
 export interface LøsningParagraf_11_2 {
-  erMedlem: string;
+  erMedlem: boolean;
 }
 
 export interface LøsningParagraf_11_3 {
@@ -28,11 +28,15 @@ export interface LøsningParagraf_11_5 {
 }
 
 export interface LøsningParagraf_11_6 {
-  erOppfylt: boolean;
+  harBehovForBehandling: boolean;
+  harBehovForTiltak: boolean;
+  harMulighetForAaKommeIArbeid: boolean;
 }
 
 export interface LøsningParagraf_11_12_ledd1 {
-  erOppfylt: boolean;
+  bestemmesAv: string; // enum?
+  unntak: string; // enum?
+  unntaksbegrunnelse: string;
 }
 
 export interface LøsningParagraf_11_29 {
