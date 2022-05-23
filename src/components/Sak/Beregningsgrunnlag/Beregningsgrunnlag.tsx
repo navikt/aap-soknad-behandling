@@ -33,6 +33,10 @@ const Beregningsgrunnlag = ({ inntektsgrunnlag }: BeregningsgrunnlagProps): JSX.
           <Table.Row>
             <Table.HeaderCell>År</Table.HeaderCell>
             <Table.HeaderCell>Inntekt</Table.HeaderCell>
+            <Table.HeaderCell>Justert for 6G</Table.HeaderCell>
+            <Table.HeaderCell>Inntekt justert for 6G</Table.HeaderCell>
+            <Table.HeaderCell>Antall G</Table.HeaderCell>
+            <Table.HeaderCell>Brukes</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -40,6 +44,10 @@ const Beregningsgrunnlag = ({ inntektsgrunnlag }: BeregningsgrunnlagProps): JSX.
             <Table.Row key={inntekt.år}>
               <Table.DataCell>{inntekt.år}</Table.DataCell>
               <Table.DataCell>{inntekt.beløpFørJustering}</Table.DataCell>
+              <Table.DataCell>{inntekt.erBeløpJustertFor6G ? "Ja" : "Nei"}</Table.DataCell>
+              <Table.DataCell>{inntekt.erBeløpJustertFor6G && inntekt.beløpJustertFor6G}</Table.DataCell>
+              <Table.DataCell>{inntekt.grunnlagsfaktor}</Table.DataCell>
+              <Table.DataCell>{inntekt.erBeløpJustertFor6G ? "Ja" : "Nei"}</Table.DataCell>
             </Table.Row>
           ))}
         </Table.Body>

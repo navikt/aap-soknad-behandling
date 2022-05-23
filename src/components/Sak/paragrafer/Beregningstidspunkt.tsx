@@ -84,7 +84,7 @@ const Beregningstidspunkt = ({ personident }: BeregningsdatoProps): JSX.Element 
             resetField={resetField}
             description={getText("beregningstidspunkt.grunnForDato.description")}
           >
-            <Radio value={"sykemeldingsdato"}>Sykemeldingsdato</Radio>
+            <Radio value={"sykmeldingsdato"}>Sykmeldingsdato</Radio>
             <Radio value={"søknadstidspunkt"}>Søknadstidspunkt</Radio>
             <Radio value={"medisinskOpplysning"}>Medisinsk opplysning</Radio>
             <Radio value={"tidligereAAP"}>Tidligere AAP-periode</Radio>

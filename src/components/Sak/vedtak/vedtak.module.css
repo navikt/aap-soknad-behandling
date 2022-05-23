@@ -13,6 +13,5 @@
 }
 
 .inntektstabell {
-  min-width: 15%;
-  max-width: 15%;
+  max-width: max(25%, 25vw);
 }

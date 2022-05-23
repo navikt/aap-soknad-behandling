@@ -20,7 +20,7 @@ import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";
 import { Beregningstidspunkt } from "./paragrafer/Beregningstidspunkt";
 import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { RadioLayoutContext } from "../../contexts/RadioLayout";
 import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
 import { Seksjonsoverskrift } from "./Seksjonsoverskrift/Seksjonsoverskrift";
@@ -95,11 +95,14 @@ const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
 
 const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
   const layout = useContext(RadioLayoutContext);
+  const [isTallLayout, toggleTallLayout] = useState<boolean>(false);
   const swapRadioLayout = () => {
     if (layout) {
       layout.swapLayout();
     }
   };
+
+  const cl = isTallLayout ? `${styles.sak__behandling} ${styles.tall}` : `${styles.sak__behandling}`;
 
   const [searchParams] = useSearchParams();
   const requestedPage = searchParams.get("page") || DEFAULT_PAGE;
@@ -110,15 +113,16 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           {getText("sak.heading")}
         </Heading>
       </div>
-      <Sammendrag søker={søker} />
-      <section className={styles.sak}>
+      <div className={styles.grid__box}>
+        <Sammendrag søker={søker} layoutToggle={() => toggleTallLayout(!isTallLayout)} />
+        {/*<section className={styles.sak}>*/}
         <aside className={`${styles.sak__navigasjon} box`}>
           <Heading size={"large"} level={"2"}>
             Vurderinger
           </Heading>
           <Oppgaveliste søker={søker} activePage={requestedPage} />
         </aside>
-        <main className={`${styles.sak__behandling} box radio--${layout?.layout}`}>
+        <main className={`${cl} box radio--${layout?.layout}`}>
           <RenderWhen when={requestedPage === PAGES.INNGANG}>
             <Inngangsvilkår søker={søker} />
           </RenderWhen>
@@ -144,7 +148,8 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
             <Vedtak søker={søker} />
           </RenderWhen>
         </main>
-      </section>
+      </div>
+      {/*</section>*/}
       <Switch size={"small"} onClick={swapRadioLayout}>
         Horizontal radios
       </Switch>
