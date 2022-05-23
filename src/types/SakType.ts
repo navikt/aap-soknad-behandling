@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { inntektsgrunnlagSchema, vedtakSchema } from "./Vedtak";
+import { vedtakSchema } from "./Vedtak";
 import { isValid, parseISO } from "date-fns";
 
 const vilkårsvurderingSchema = z.object({
@@ -26,6 +26,7 @@ const paragraf_11_12Schema = vilkårsvurderingSchema.extend({
   bestemmesAv: z.string().optional(), // enum her
   unntak: z.string().optional(), // enum
   unntaksbegrunnelse: z.string().optional(),
+  // manueltSattVirkningsdato: z.date(), // kanskje
 });
 const paragraf_11_29Schema = vilkårsvurderingSchema.extend({});
 
@@ -51,7 +52,6 @@ const sakSchema = z.object({
   paragraf_11_6: paragraf_11_6Schema.optional(),
   paragraf_11_12: paragraf_11_12Schema.optional(),
   paragraf_11_29: paragraf_11_29Schema.optional(),
-  inntektsgrunnlag: inntektsgrunnlagSchema.optional(), // TODO flytt definisjon av denne hvis den skal ligge her
 });
 export type SakType = z.infer<typeof sakSchema>;
 const refineDato = (dato: string) => isValid(parseISO(dato));

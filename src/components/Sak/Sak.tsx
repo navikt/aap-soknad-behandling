@@ -138,7 +138,7 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
             <Beregning søker={søker} />
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.BEREGNINGSGRUNNLAG}>
-            <Beregningsgrunnlag inntektsgrunnlag={søker.sak.inntektsgrunnlag} />
+            <Beregningsgrunnlag inntektsgrunnlag={søker.sak.vedtak?.inntektsgrunnlag} />
           </RenderWhen>
           <RenderWhen when={requestedPage === PAGES.RESULTAT}>
             <Vedtak søker={søker} />
