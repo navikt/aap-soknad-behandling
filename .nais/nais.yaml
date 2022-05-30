@@ -38,6 +38,13 @@ spec:
       enabled: true
     sidecar:
       enabled: true
+      allowAllUsers: true
+      claims:
+        groups:
+          - id: {{role.aap.saksbehandler}}
+          - id: {{role.aap.beslutter}}
+        extra:
+          - NAVident
   accessPolicy:
     outbound:
       rules:

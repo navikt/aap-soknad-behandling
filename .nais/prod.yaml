@@ -3,3 +3,11 @@ ingresses:
 env:
 - name: APP_URL
   value: "https://aap-soknad-behandling.intern.nav.no"
+
+role:
+  aap:
+    # 0000-GA-AAP_SAKSBEHANDLER
+    saksbehandler: "TODO"
+
+    #0000-GA-AAP_BESLUTTER
+    beslutter: "TODO"
