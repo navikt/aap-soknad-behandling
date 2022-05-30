@@ -39,7 +39,7 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_6
           {getText(`${tekstNokkel}.bokstav_c.heading`)}
         </Heading>
         <Label>{getText(`${tekstNokkel}.bokstav_c.legend`)}</Label>
-        <BodyShort>{vilkårsvurdering.harMulighetForAaKommeIArbeid ? "Ja" : "Nei"}</BodyShort>
+        <BodyShort>{vilkårsvurdering.harMulighetForÅKommeIArbeid ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
     </>
   );
@@ -55,7 +55,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
       // erOppfylt: datas.erOppfylt === "true",
       harBehovForBehandling: datas.harBehovForBehandling, // bokstav a
       harBehovForTiltak: datas.harBehovForTiltak, // bokstav b
-      harMulighetForAaKommeIArbeid: datas.harMulighetForAaKommeIArbeid, // bokstav c
+      harMulighetForÅKommeIArbeid: datas.harMulighetForÅKommeIArbeid, // bokstav c
     },
   });
   return (
@@ -99,7 +99,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         </Heading>
         <RadioGroupWrapper
           tekstNokkel={`${tekstNokkel}.bokstav_c`}
-          feltNokkel={"harMulighetForAaKommeIArbeid"}
+          feltNokkel={"harMulighetForÅKommeIArbeid"}
           control={control}
           legend={getText(`${tekstNokkel}.bokstav_c.legend`)}
           errors={errors}

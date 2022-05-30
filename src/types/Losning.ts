@@ -30,7 +30,7 @@ export interface LøsningParagraf_11_5 {
 export interface LøsningParagraf_11_6 {
   harBehovForBehandling: boolean;
   harBehovForTiltak: boolean;
-  harMulighetForAaKommeIArbeid: boolean;
+  harMulighetForÅKommeIArbeid: boolean;
 }
 
 export interface LøsningParagraf_11_12_ledd1 {

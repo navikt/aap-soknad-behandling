@@ -20,7 +20,7 @@ const paragraf_11_5Schema = vilkårsvurderingSchema.extend({
 const paragraf_11_6Schema = vilkårsvurderingSchema.extend({
   harBehovForBehandling: z.boolean().optional(),
   harBehovForTiltak: z.boolean().optional(),
-  harMulighetForAaKommeIArbeid: z.boolean().optional(),
+  harMulighetForÅKommeIArbeid: z.boolean().optional(),
 });
 const paragraf_11_12Schema = vilkårsvurderingSchema.extend({
   bestemmesAv: z.string().optional(), // enum her
