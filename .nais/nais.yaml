@@ -36,8 +36,6 @@ spec:
   azure:
     application:
       enabled: true
-    sidecar:
-      enabled: true
       allowAllUsers: true
       claims:
         groups:
@@ -45,6 +43,8 @@ spec:
           - id: {{role.aap.beslutter}}
         extra:
           - NAVident
+    sidecar:
+      enabled: true
   accessPolicy:
     outbound:
       rules:
