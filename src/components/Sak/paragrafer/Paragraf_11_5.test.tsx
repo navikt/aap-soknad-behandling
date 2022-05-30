@@ -8,6 +8,8 @@ const vilkårsvurdering: Paragraf_11_5Type = {
   vilkårsvurderingsid: "uuid-1-5",
   erOppfylt: false,
   måVurderesManuelt: true,
+  kravOmNedsattArbeidsevneErOppfylt: null,
+  nedsettelseSkyldesSykdomEllerSkade: null,
 };
 const nedsattArbeidsevneNokkel = "paragrafer.11_5.kravOmNedsattArbeidsevneErOppfylt";
 const skyldesSykdomSkadeNokkel = "paragrafer.11_5.nedsettelseSkyldesSykdomEllerSkade";
