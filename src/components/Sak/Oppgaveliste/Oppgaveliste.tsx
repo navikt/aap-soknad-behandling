@@ -41,14 +41,14 @@ const Oppgaveliste = ({ søker, activePage }: OppgavelisteProps): JSX.Element =>
           <Oppgavestatus paragrafer={[søker.sak.paragraf_11_12]} />
         </Link>
       )}
-      {søker.sak.paragraf_11_29 && (
-        <Link to={`?page=${PAGES.ANDRE_YTELSER}`} className={activePage === PAGES.ANDRE_YTELSER ? styles.active : ""}>
-          <div>{getText("navigasjon.11_29")}</div>
-          <Oppgavestatus paragrafer={[søker.sak.paragraf_11_29]} />
-        </Link>
-      )}
       <Link to={`?page=${PAGES.BEREGNING}`} className={activePage === PAGES.BEREGNING ? styles.active : ""}>
         {getText("navigasjon.beregning")}
+      </Link>
+      <Link
+        to={`?page=${PAGES.BEREGNINGSGRUNNLAG}`}
+        className={activePage === PAGES.BEREGNINGSGRUNNLAG ? styles.active : ""}
+      >
+        {getText("navigasjon.beregningsgrunnlag")}
       </Link>
       <Link to={`?page=${PAGES.RESULTAT}`} className={activePage === PAGES.RESULTAT ? styles.active : ""}>
         {getText("navigasjon.resultat")}

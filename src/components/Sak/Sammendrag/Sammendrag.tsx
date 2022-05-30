@@ -5,10 +5,17 @@ import { Personopplysninger } from "../Personopplysninger";
 import { SøkerType } from "../../../types/SakType";
 
 import * as styles from "./sammendrag.module.css";
+import { useState } from "react";
 
-const Sammendrag = ({ søker }: { søker: SøkerType }): JSX.Element => {
+const Sammendrag = ({ søker, layoutToggle }: { søker: SøkerType; layoutToggle?: Function }): JSX.Element => {
+  const [isCompact, toggleCompact] = useState<boolean>(false);
+  const changeLayout = () => {
+    toggleCompact(!isCompact);
+    layoutToggle && layoutToggle();
+  };
+  const cl = isCompact ? `${styles.oppsummering} ${styles.kompakt}` : `${styles.oppsummering}`;
   return (
-    <section className={`${styles.oppsummering} box`}>
+    <section className={`${cl} box`}>
       <div>
         {søker.sak.vedtak?.innvilget && <Tag variant={"success"}>Vedtak fattet</Tag>}
         {søker.sak.vedtak?.innvilget === undefined && <Tag variant={"warning"}>Ikke påbegynt</Tag>}
@@ -39,6 +46,10 @@ const Sammendrag = ({ søker }: { søker: SøkerType }): JSX.Element => {
         </div>
         <Link href={"#"}>Brukerhistorikk</Link>
       </div>
+      <Button onClick={() => changeLayout()} variant={"tertiary"} size={"small"}>
+        {isCompact && ">>"}
+        {!isCompact && "<<"}
+      </Button>
     </section>
   );
 };

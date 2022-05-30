@@ -14,11 +14,20 @@ const paragraf_11_2Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_3Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_4Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_5Schema = vilkårsvurderingSchema.extend({
-  kravOmNedsattArbeidsevneErOppfylt: z.boolean().optional(),
-  nedsettelseSkyldesSykdomEllerSkade: z.boolean().optional(),
+  kravOmNedsattArbeidsevneErOppfylt: z.boolean().nullable(),
+  nedsettelseSkyldesSykdomEllerSkade: z.boolean().nullable(),
 });
-const paragraf_11_6Schema = vilkårsvurderingSchema.extend({});
-const paragraf_11_12Schema = vilkårsvurderingSchema.extend({});
+const paragraf_11_6Schema = vilkårsvurderingSchema.extend({
+  harBehovForBehandling: z.boolean().nullable(),
+  harBehovForTiltak: z.boolean().nullable(),
+  harMulighetForÅKommeIArbeid: z.boolean().nullable(),
+});
+const paragraf_11_12Schema = vilkårsvurderingSchema.extend({
+  bestemmesAv: z.string().nullable(), // enum her
+  unntak: z.string().nullable(), // enum
+  unntaksbegrunnelse: z.string().nullable(),
+  manueltSattVirkningsdato: z.date().nullable(), // kanskje
+});
 const paragraf_11_29Schema = vilkårsvurderingSchema.extend({});
 
 export type Paragraf_11_2Type = z.infer<typeof paragraf_11_2Schema>;

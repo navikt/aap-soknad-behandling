@@ -7,9 +7,10 @@ export const useSkjema = () => {
   const {
     handleSubmit,
     control,
-    reset,
     register,
     formState: { errors },
+    watch,
+    resetField,
   } = useForm();
 
   const onSubmit = async (personident: string, løsning: any) => {
@@ -24,5 +25,5 @@ export const useSkjema = () => {
     oppdaterSenderMelding(false);
   };
 
-  return { handleSubmit, control, reset, register, errors, onSubmit, senderMelding };
+  return { handleSubmit, control, register, errors, onSubmit, senderMelding, watch, resetField };
 };

@@ -1,56 +1,68 @@
-import { SøkerType } from "../../../types/SakType";
-import { BodyShort, Heading, Table } from "@navikt/ds-react";
+import { SakType, SøkerType } from "../../../types/SakType";
+import { BodyShort, Button, Radio } from "@navikt/ds-react";
 import { formaterDato } from "../../../lib/dato";
 import * as styles from "./vedtak.module.css";
-import { InntektsgrunnlagType } from "../../../types/Vedtak";
+import { useSkjema } from "../../../hooks/useSkjema";
+import { RadioGroupWrapper } from "../../RadioGroupWrapper";
+import { Seksjonsoverskrift } from "../Seksjonsoverskrift/Seksjonsoverskrift";
+import { getText } from "../../../tekster/tekster";
+import { Løsning } from "../../../types/Losning";
 
-const Inntektsgrunnlag = ({ inntekt }: { inntekt: InntektsgrunnlagType }): JSX.Element => {
+type SkjemaProps = {
+  sak: SakType;
+  personident: string;
+};
+
+const Skjemavisning = ({ sak, personident }: SkjemaProps): JSX.Element | null => {
+  if (sak.vedtak) {
+    return null;
+  }
+
+  const løsning = (datas: any): Løsning => ({ vedtak: { innstilling: datas.resultat } });
+
+  const { control, handleSubmit, errors, onSubmit, senderMelding, resetField } = useSkjema();
   return (
-    <>
-      <Heading level={"2"} size={"medium"}>
-        Beregning av utbetaling
-      </Heading>
-      <BodyShort>Beregningsdato er {formaterDato(inntekt.beregningsdato)}</BodyShort>
-      <Heading level={"3"} size={"small"}>
-        Inntektsgrunnlag
-      </Heading>
-      <Table className={styles.inntektstabell} zebraStripes>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>År</Table.HeaderCell>
-            <Table.HeaderCell>Inntekt</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {inntekt.inntekterSiste3Kalenderår.map((inntekt) => (
-            <Table.Row key={inntekt.år}>
-              <Table.DataCell>{inntekt.år}</Table.DataCell>
-              <Table.DataCell>{inntekt.beløpFørJustering}</Table.DataCell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </>
+    <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
+      <RadioGroupWrapper
+        feltNokkel={"resultat"}
+        tekstNokkel={"resultat"}
+        errors={errors}
+        control={control}
+        resetField={resetField}
+      >
+        <Radio value={"godkjent"}>Innvilget AAP</Radio>
+        <Radio value={"avslaat"}>Avslått AAP</Radio>
+        <Radio value={"trukket"}>Søknaden er trukket av søkeren</Radio>
+      </RadioGroupWrapper>
+      <div className={styles.fortsettKnapp}>
+        <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+          {getText("paragrafer.knapper.fullfør")}
+        </Button>
+      </div>
+    </form>
   );
 };
 
-const Vedtak = ({ søker }: { søker: SøkerType }): JSX.Element => {
-  const vedtak = søker.sak.vedtak;
-  if (!vedtak) {
-    return <div>Ingen vedtak fattet enda</div>;
+const Ferdigvisning = ({ sak }: { sak: SakType }): JSX.Element | null => {
+  if (!sak.vedtak) {
+    return null;
   }
-
   return (
-    <section className={styles.vedtak__blokk}>
-      <Heading level={"2"} size={"medium"}>
-        Vedtak er {vedtak.innvilget ? "innvilget" : "ikke innvilget"}
-      </Heading>
-      <section>
-        <BodyShort>Vedtak ble innvilget {formaterDato(vedtak.vedtaksdato)}</BodyShort>
-        <BodyShort>Virkningstidspunkt er {formaterDato(vedtak.virkningsdato)}</BodyShort>
+    <>
+      <BodyShort>Vedtak ble innvilget {formaterDato(sak.vedtak.vedtaksdato)}</BodyShort>
+      <BodyShort>Virkningstidspunkt er {formaterDato(sak.vedtak.virkningsdato)}</BodyShort>
+    </>
+  );
+};
+const Vedtak = ({ søker }: { søker: SøkerType }): JSX.Element => {
+  return (
+    <>
+      <Seksjonsoverskrift tekstnokkel={"resultat.heading"} />
+      <section className={styles.vedtak__blokk}>
+        <Skjemavisning sak={søker.sak} personident={søker.personident} />
+        <Ferdigvisning sak={søker.sak} />
       </section>
-      <Inntektsgrunnlag inntekt={vedtak.inntektsgrunnlag} />
-    </section>
+    </>
   );
 };
 

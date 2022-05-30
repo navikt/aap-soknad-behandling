@@ -17,7 +17,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { handleSubmit, control, reset, errors, onSubmit, senderMelding } = useSkjema();
+  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_3_manuell: {
       erOppfylt: datas.erOppfylt === "true",
@@ -27,27 +27,17 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
       <RadioGroupWrapper
-        name={"erOppfylt"}
+        feltNokkel={"erOppfylt"}
         control={control}
-        legend={getText("paragrafer.11_3.vurdering")}
-        error={errors.erOppfylt?.message}
+        tekstNokkel={"paragrafer.11_3"}
+        errors={errors}
         rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
+        resetField={resetField}
       >
         <Radio value={"true"}>Ja</Radio>
         <Radio value={"false"}>Nei</Radio>
       </RadioGroupWrapper>
-      <div>
-        <Button
-          variant={"tertiary"}
-          type={"button"}
-          onClick={() => {
-            reset({ erOppfylt: null });
-          }}
-        >
-          Nullstill vurdering
-        </Button>
-      </div>
-      <div>
+      <div className={styles.fortsettKnapp}>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>
@@ -62,7 +52,7 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
   }
   return (
     <>
-      <Label>{getText("paragrafer.11_3.vurdering")}</Label>
+      <Label>{getText("paragrafer.11_3.legend")}</Label>
       <BodyShort>{vilkårsvurdering.erOppfylt ? "Ja" : "Nei"}</BodyShort>
     </>
   );

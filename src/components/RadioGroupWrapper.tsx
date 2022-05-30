@@ -1,25 +1,77 @@
-import { Control, Controller, FieldValues } from "react-hook-form";
+import { Control, Controller, FieldErrors, FieldValues } from "react-hook-form";
 
-import { RadioGroup } from "@navikt/ds-react";
+import { Button, RadioGroup } from "@navikt/ds-react";
+import { getText } from "../tekster/tekster";
+import { ReactElement, ReactNode } from "react";
+import { Delete } from "@navikt/ds-icons";
 
 export interface RadioProps {
-  name: string;
+  feltNokkel: string;
+  tekstNokkel: string;
   legend?: string;
-  error?: string;
+  errors: FieldErrors;
   control: Control<FieldValues>;
-  children: React.ReactChild[];
+  children: ReactElement[];
   rules?: object;
+  resetField?: Function;
+  description?: ReactNode;
 }
-export const RadioGroupWrapper = ({ children, name, legend, control, error, rules }: RadioProps) => (
-  <Controller
-    name={name}
-    control={control}
-    defaultValue={null}
-    rules={rules}
-    render={({ field: { onChange, value } }) => (
-      <RadioGroup id={name} value={value} name={name} legend={legend} error={error} onChange={onChange}>
-        {children}
-      </RadioGroup>
-    )}
-  />
+
+type NullstillProps = {
+  resetField?: Function;
+  feltNokkel: string;
+};
+
+const Nullstillknapp = ({ resetField, feltNokkel }: NullstillProps): JSX.Element | null => {
+  if (!resetField) {
+    return null;
+  }
+  return (
+    <div>
+      <Button
+        type={"button"}
+        variant={"tertiary"}
+        onClick={() => {
+          resetField(feltNokkel);
+        }}
+      >
+        <Delete />
+        Nullstill vurdering
+      </Button>
+    </div>
+  );
+};
+
+export const RadioGroupWrapper = ({
+  children,
+  feltNokkel,
+  tekstNokkel,
+  control,
+  errors,
+  rules,
+  resetField,
+  description,
+}: RadioProps): JSX.Element => (
+  <div className={"radio__group"}>
+    <Controller
+      name={feltNokkel}
+      control={control}
+      defaultValue={null}
+      rules={rules}
+      render={({ field: { onChange, value } }) => (
+        <RadioGroup
+          id={feltNokkel}
+          value={value}
+          name={feltNokkel}
+          legend={getText(`${tekstNokkel}.legend`) || getText(tekstNokkel)}
+          error={errors && errors[feltNokkel]?.message}
+          onChange={onChange}
+          description={description}
+        >
+          {children}
+        </RadioGroup>
+      )}
+    />
+    <Nullstillknapp feltNokkel={feltNokkel} resetField={resetField} />
+  </div>
 );

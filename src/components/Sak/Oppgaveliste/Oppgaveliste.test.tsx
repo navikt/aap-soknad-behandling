@@ -13,7 +13,7 @@ describe("oppgaveliste", () => {
 
   test("aktivt valg skal markeres", () => {
     renderWithRouter(<Oppgaveliste søker={listeMedSøkereOgSaker[0]} activePage={PAGES.BEREGNING} />);
-    const elem = screen.getByRole("link", { name: /Beregning/ });
+    const elem = screen.getByRole("link", { name: /Beregningstidspunkt/ });
     expect(elem).toBeVisible();
     expect(elem).toHaveClass("active");
   });

@@ -1,23 +1,46 @@
-import { Paragraf_11_6Type, VilkårsvurderingType } from "../../../types/SakType";
-import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
+import { Paragraf_11_6Type } from "../../../types/SakType";
+import { BodyShort, Button, Heading, Label, Radio } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
 import { ParagrafBlokk } from "./ParagrafBlokk";
+
+import * as styles from "./paragraf.module.css";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_6Type | undefined;
   personident: string;
 };
 
-const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: VilkårsvurderingType }): JSX.Element | null => {
+const tekstNokkel = "paragrafer.11_6";
+
+const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_6Type }): JSX.Element | null => {
   if (vilkårsvurdering.måVurderesManuelt) {
     return null;
   }
   return (
     <>
-      <Label>OPPDATERT TEKST HER</Label>
-      <BodyShort>{vilkårsvurdering.erOppfylt ? "Ja" : "Nei"}</BodyShort>
+      <ParagrafBlokk>
+        <Heading level={"3"} size={"medium"}>
+          {getText(`${tekstNokkel}.bokstav_a.heading`)}
+        </Heading>
+        <Label>{getText(`${tekstNokkel}.bokstav_a.legend`)}</Label>
+        <BodyShort>{vilkårsvurdering.harBehovForBehandling ? "Ja" : "Nei"}</BodyShort>
+      </ParagrafBlokk>
+      <ParagrafBlokk>
+        <Heading level={"3"} size={"medium"}>
+          {getText(`${tekstNokkel}.bokstav_b.heading`)}
+        </Heading>
+        <Label>{getText(`${tekstNokkel}.bokstav_b.legend`)}</Label>
+        <BodyShort>{vilkårsvurdering.harBehovForTiltak ? "Ja" : "Nei"}</BodyShort>
+      </ParagrafBlokk>
+      <ParagrafBlokk>
+        <Heading level={"3"} size={"medium"}>
+          {getText(`${tekstNokkel}.bokstav_c.heading`)}
+        </Heading>
+        <Label>{getText(`${tekstNokkel}.bokstav_c.legend`)}</Label>
+        <BodyShort>{vilkårsvurdering.harMulighetForÅKommeIArbeid ? "Ja" : "Nei"}</BodyShort>
+      </ParagrafBlokk>
     </>
   );
 };
@@ -26,36 +49,68 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { handleSubmit, control, reset, errors, onSubmit, senderMelding } = useSkjema();
+  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_6_manuell: {
-      erOppfylt: datas.erOppfylt === "true",
+      // erOppfylt: datas.erOppfylt === "true",
+      harBehovForBehandling: datas.harBehovForBehandling, // bokstav a
+      harBehovForTiltak: datas.harBehovForTiltak, // bokstav b
+      harMulighetForÅKommeIArbeid: datas.harMulighetForÅKommeIArbeid, // bokstav c
     },
   });
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
-      <RadioGroupWrapper
-        name={"erOppfylt"}
-        control={control}
-        legend={"Oppfyller medlemmet kravene i 11-6?"}
-        error={errors.erOppfylt?.message}
-        rules={{ required: getText("paragrafer.11_6.påkrevd") }}
-      >
-        <Radio value={"true"}>Ja</Radio>
-        <Radio value={"false"}>Nei</Radio>
-      </RadioGroupWrapper>
-      <div>
-        <Button
-          type={"button"}
-          variant={"tertiary"}
-          onClick={() => {
-            reset({ erOppfylt: null });
-          }}
+      <ParagrafBlokk>
+        <Heading level={"3"} size={"medium"}>
+          {getText(`${tekstNokkel}.bokstav_a.heading`)}
+        </Heading>
+        <RadioGroupWrapper
+          tekstNokkel={`${tekstNokkel}.bokstav_a`}
+          control={control}
+          feltNokkel={"harBehovForBehandling"}
+          resetField={resetField}
+          rules={{ required: getText(`${tekstNokkel}.bokstav_a.påkrevd`) }}
+          errors={errors}
         >
-          Nullstill vurdering
-        </Button>
-      </div>
-      <div>
+          <Radio value={"true"}>Ja</Radio>
+          <Radio value={"false"}>Nei</Radio>
+        </RadioGroupWrapper>
+      </ParagrafBlokk>
+      <ParagrafBlokk>
+        <Heading level={"3"} size={"medium"}>
+          {getText(`${tekstNokkel}.bokstav_b.heading`)}
+        </Heading>
+        <RadioGroupWrapper
+          tekstNokkel={`${tekstNokkel}.bokstav_b`}
+          feltNokkel={"harBehovForTiltak"}
+          control={control}
+          legend={getText(`${tekstNokkel}.bokstav_b.legend`)}
+          errors={errors}
+          rules={{ required: getText(`${tekstNokkel}.bokstav_b.påkrevd`) }}
+          resetField={resetField}
+        >
+          <Radio value={"true"}>Ja</Radio>
+          <Radio value={"false"}>Nei</Radio>
+        </RadioGroupWrapper>
+      </ParagrafBlokk>
+      <ParagrafBlokk>
+        <Heading level={"3"} size={"medium"}>
+          {getText(`${tekstNokkel}.bokstav_c.heading`)}
+        </Heading>
+        <RadioGroupWrapper
+          tekstNokkel={`${tekstNokkel}.bokstav_c`}
+          feltNokkel={"harMulighetForÅKommeIArbeid"}
+          control={control}
+          legend={getText(`${tekstNokkel}.bokstav_c.legend`)}
+          errors={errors}
+          rules={{ required: getText(`${tekstNokkel}.bokstav_c.påkrevd`) }}
+          resetField={resetField}
+        >
+          <Radio value={"true"}>Ja</Radio>
+          <Radio value={"false"}>Nei</Radio>
+        </RadioGroupWrapper>
+      </ParagrafBlokk>
+      <div className={styles.fortsettKnapp}>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>
@@ -70,10 +125,10 @@ const Paragraf_11_6 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   }
 
   return (
-    <ParagrafBlokk>
+    <>
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
-    </ParagrafBlokk>
+    </>
   );
 };
 

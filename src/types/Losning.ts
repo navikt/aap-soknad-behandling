@@ -7,10 +7,11 @@ export interface Løsning {
   løsning_11_12_ledd1_manuell?: LøsningParagraf_11_12_ledd1;
   løsning_11_29_manuell?: LøsningParagraf_11_29;
   løsningVurderingAvBeregningsdato?: LøsningVurderingAvBeregningsdato;
+  vedtak?: LøsningVedtak;
 }
 
 export interface LøsningParagraf_11_2 {
-  erMedlem: string;
+  erMedlem: boolean;
 }
 
 export interface LøsningParagraf_11_3 {
@@ -27,11 +28,15 @@ export interface LøsningParagraf_11_5 {
 }
 
 export interface LøsningParagraf_11_6 {
-  erOppfylt: boolean;
+  harBehovForBehandling: boolean;
+  harBehovForTiltak: boolean;
+  harMulighetForÅKommeIArbeid: boolean;
 }
 
 export interface LøsningParagraf_11_12_ledd1 {
-  erOppfylt: boolean;
+  bestemmesAv: string; // enum?
+  unntak: string; // enum?
+  unntaksbegrunnelse: string;
 }
 
 export interface LøsningParagraf_11_29 {
@@ -40,4 +45,8 @@ export interface LøsningParagraf_11_29 {
 
 export interface LøsningVurderingAvBeregningsdato {
   beregningsdato: Date;
+}
+
+export interface LøsningVedtak {
+  innstilling: string;
 }

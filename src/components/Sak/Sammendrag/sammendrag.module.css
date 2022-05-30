@@ -1,9 +1,30 @@
 .oppsummering {
+  grid-column: 1/-1;
+
   padding: 1rem;
   background: var(--navds-semantic-color-canvas-background-light);
   display: flex;
   flex-direction: column;
 }
+
+.oppsummering.kompakt {
+  grid-column: 1;
+  animation-name: flash-border;
+  animation-delay: 50ms;
+  animation-duration: 400ms;
+  height: auto;
+}
+
+.oppsummering.kompakt .oppsummering__personlinje {
+  display: none;
+}
+
+@keyframes flash-border {
+  0% {border: 2px solid var(--navds-semantic-color-border-muted)}
+  50% {border: 2px solid hsl(87, 100%, 70%)}
+  100% {border: 2px solid var(--navds-semantic-color-border-muted)}
+}
+
 
 .oppsummering > h2 {
   margin: .5rem 0;

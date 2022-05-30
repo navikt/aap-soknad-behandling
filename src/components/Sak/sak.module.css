@@ -33,42 +33,56 @@
   margin-top: 1rem;
 }
 
-.sak > .sak__navigasjon {
+.sak__navigasjon {
+  grid-row: 2;
   background: var(--navds-semantic-color-canvas-background-light);
   min-width: var(--nav-min-width);
   max-width: 20vw;
-  margin-right: 1rem;
+  /*margin-right: 1rem;*/
+  height: fit-content;
 }
 
-.sak > .sak__navigasjon > h2 {
+.sak__navigasjon > h2 {
   padding: 1rem;
 }
 
-.sak > .sak__navigasjon > nav {
+.sak__navigasjon > nav {
   display: flex;
   flex-direction: column;
 }
 
-.sak > .sak__navigasjon > nav svg {
+.sak__navigasjon > nav svg {
   margin-right: .5rem;
 }
 
-.sak > .sak__behandling {
+.sak__behandling {
+  grid-row: 2;
   background: var(--navds-semantic-color-canvas-background-light);
   padding: 1rem;
   flex: 1;
 }
 
-.blokk__header {
-  border-bottom: 3px solid var(--navds-semantic-color-border-muted);
-  padding: 1rem 1rem 1rem 0;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
+.sak__behandling.tall {
+  grid-row: 1 / 3;
+  animation-name: flash-border;
+  animation-delay: 50ms;
+  animation-duration: 400ms;
+}
+
+@keyframes flash-border {
+  0% {border: 2px solid var(--navds-semantic-color-border-muted)}
+  50% {border: 2px solid hsl(87, 100%, 70%)}
+  100% {border: 2px solid var(--navds-semantic-color-border-muted)}
 }
 
 .sentrer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.grid__box {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-gap: 1rem;
 }

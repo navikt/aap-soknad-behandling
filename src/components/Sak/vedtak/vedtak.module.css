@@ -13,6 +13,9 @@
 }
 
 .inntektstabell {
-  min-width: 15%;
-  max-width: 15%;
+  max-width: max(25%, 25vw);
+}
+
+.fortsettKnapp {
+  margin-top: 1.5rem;
 }
