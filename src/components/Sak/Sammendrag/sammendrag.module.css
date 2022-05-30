@@ -1,21 +1,32 @@
-.oppsummering {
+.sammendrag__wrapper {
   grid-column: 1/-1;
-
   padding: 1rem;
   background: var(--navds-semantic-color-canvas-background-light);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sammendrag__wrapper.kompakt {
+  grid-column: 1;
+}
+
+.sammendrag {
+  /*grid-column: 1/-1;*/
   display: flex;
   flex-direction: column;
 }
 
-.oppsummering.kompakt {
-  grid-column: 1;
+.sammendrag__wrapper.kompakt {
+  /*grid-column: 1;*/
   animation-name: flash-border;
   animation-delay: 50ms;
   animation-duration: 400ms;
-  height: auto;
+  /*height: auto;*/
 }
 
-.oppsummering.kompakt .oppsummering__personlinje {
+.sammendrag.kompakt .sammendrag__personlinje {
   display: none;
 }
 
@@ -25,12 +36,11 @@
   100% {border: 2px solid var(--navds-semantic-color-border-muted)}
 }
 
-
-.oppsummering > h2 {
+.sammendrag > h2 {
   margin: .5rem 0;
 }
 
-.oppsummering__personlinje {
+.sammendrag__personlinje {
   display: flex;
   flex-direction: row;
   align-items: flex-end;

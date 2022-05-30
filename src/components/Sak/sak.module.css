@@ -83,6 +83,7 @@
 
 .grid__box {
   display: grid;
-  grid-template-columns: min-content auto;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 10rem auto;
   grid-gap: 1rem;
 }
