@@ -769,7 +769,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
     skjermet: false,
   },
   {
-    personident: "06826999576",
+    personident: "12826999576",
     fødselsdato: "1969-02-06",
     sak: {
       saksid: "d4b0851d-d59e-4537-bdeb-89dbd0298cd0",

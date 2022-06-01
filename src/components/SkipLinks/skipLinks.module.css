@@ -1,0 +1,15 @@
+.skipLinks {
+  position: relative;
+  box-sizing: border-box;
+}
+.skipLinks a {
+  position: absolute;
+  transform: translateY(-100%);
+
+  padding: 6px;
+  border: 4px solid hsl(0, 0%, 100%);
+}
+
+.skipLinks a:focus-visible {
+  transform: translateY(0%);
+}

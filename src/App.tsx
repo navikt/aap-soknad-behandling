@@ -6,9 +6,11 @@ import { Heading } from "@navikt/ds-react";
 
 import Saksoversikt from "./pages/Saksoversikt/Saksoversikt";
 import { Feilviser } from "./components/Feilviser/Feilviser";
-import { AppHeader } from "./components/Header/AppHeader";
+import { AppHeader } from "./components/AppHeader/AppHeader";
 import { SakHenter } from "./components/SakHenter/SakHenter";
 import { RadioLayoutProvider } from "./contexts/RadioLayout";
+import { SkipLinkProvider } from "./contexts/SkipLinkContext";
+import { SkipLinks } from "./components/SkipLinks/SkipLinks";
 
 const Ruter = (): JSX.Element => (
   <Routes>
@@ -43,14 +45,17 @@ const App = () => {
   return (
     <StrictMode>
       <ErrorBoundary FallbackComponent={Feilviser}>
-        <AppHeader />
-        <RadioLayoutProvider>
-          <main id="main-content" className="main__content">
-            <BrowserRouter>
-              <Ruter />
-            </BrowserRouter>
-          </main>
-        </RadioLayoutProvider>
+        <SkipLinkProvider>
+          <SkipLinks />
+          <AppHeader />
+          <RadioLayoutProvider>
+            <main id="main-content" className="main__content">
+              <BrowserRouter>
+                <Ruter />
+              </BrowserRouter>
+            </main>
+          </RadioLayoutProvider>
+        </SkipLinkProvider>
       </ErrorBoundary>
     </StrictMode>
   );

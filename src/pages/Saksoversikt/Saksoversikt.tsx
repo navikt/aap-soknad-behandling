@@ -7,6 +7,7 @@ import { DATO_FORMATER, formaterDato, formaterPid } from "../../lib/dato";
 import { getText } from "../../tekster/tekster";
 
 import * as styles from "./saksoversikt.module.css";
+import { useSkipLink } from "../../hooks/useSkipLink";
 
 type ApiResponse = {
   data: any;
@@ -91,7 +92,18 @@ const VISNINGER = {
 const DEFAULT_PAGE = VISNINGER.LEDIGE;
 
 const Saksoversikt = () => {
+  const skipLinkId = "saksliste";
+  useSkipLink({
+    skipLinks: [
+      {
+        title: "Hopp til saksliste",
+        skipTo: skipLinkId,
+      },
+    ],
+  });
+
   const { data, loading, error }: ApiResponse = fetchGET("/aap-behandling/api/sak");
+
   const [searchParams, setSearchParams] = useSearchParams();
   const onsketVisning = searchParams.get("vis");
   const gyldigVisning = onsketVisning && Object.values(VISNINGER).includes(onsketVisning);
@@ -125,7 +137,7 @@ const Saksoversikt = () => {
   }
 
   return (
-    <section className={styles.saksliste__innhold}>
+    <section className={styles.saksliste__innhold} id={skipLinkId}>
       <Heading size={"xlarge"} level={"1"}>
         {getText("saksoversikt.heading")}
       </Heading>

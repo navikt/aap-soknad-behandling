@@ -6,7 +6,7 @@ import { renderWithRouter } from "../../../test/renderWithRouter";
 
 describe("Sammendrag", () => {
   test("vises i minimert visning initielt", () => {
-    renderWithRouter(<Sammendrag søker={listeMedSøkereOgSaker[0]} />);
+    renderWithRouter(<Sammendrag søker={listeMedSøkereOgSaker[0]} skipLinkId={"sammendragId"} />);
     const forventetNavn = listeMedSøkereOgSaker[0].navn || "navn";
     expect(screen.getByRole("heading", { name: (content) => content.startsWith(forventetNavn) })).toBeVisible();
   });

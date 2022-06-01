@@ -24,6 +24,7 @@ import { useContext, useState } from "react";
 import { RadioLayoutContext } from "../../contexts/RadioLayout";
 import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
 import { Seksjonsoverskrift } from "./Seksjonsoverskrift/Seksjonsoverskrift";
+import { useSkipLink } from "../../hooks/useSkipLink";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
@@ -94,6 +95,22 @@ const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
 );
 
 const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
+  const sammendragId = "sammendrag";
+  const oppgavelisteId = "oppgaveliste";
+  const vilkårId = "vilkår";
+  useSkipLink({
+    skipLinks: [
+      {
+        title: "Hopp til sammendrag",
+        skipTo: sammendragId,
+      },
+      {
+        title: "Hopp til oppgaveliste",
+        skipTo: oppgavelisteId,
+      },
+      { title: "Hopp til vilkårsvurdering", skipTo: vilkårId },
+    ],
+  });
   const layout = useContext(RadioLayoutContext);
   const [isTallLayout, toggleTallLayout] = useState<boolean>(false);
   const swapRadioLayout = () => {
@@ -114,15 +131,14 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
         </Heading>
       </div>
       <div className={styles.grid__box}>
-        <Sammendrag søker={søker} layoutToggle={() => toggleTallLayout(!isTallLayout)} />
-        {/*<section className={styles.sak}>*/}
+        <Sammendrag søker={søker} layoutToggle={() => toggleTallLayout(!isTallLayout)} skipLinkId={sammendragId} />
         <aside className={`${styles.sak__navigasjon} box`}>
           <Heading size={"large"} level={"2"}>
             Vurderinger
           </Heading>
-          <Oppgaveliste søker={søker} activePage={requestedPage} />
+          <Oppgaveliste søker={søker} activePage={requestedPage} skipLinkId={oppgavelisteId} />
         </aside>
-        <main className={`${cl} box radio--${layout?.layout}`}>
+        <main className={`${cl} box radio--${layout?.layout}`} id={vilkårId}>
           <RenderWhen when={requestedPage === PAGES.INNGANG}>
             <Inngangsvilkår søker={søker} />
           </RenderWhen>
@@ -149,7 +165,6 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           </RenderWhen>
         </main>
       </div>
-      {/*</section>*/}
       <Switch size={"small"} onClick={swapRadioLayout}>
         Horizontal radios
       </Switch>

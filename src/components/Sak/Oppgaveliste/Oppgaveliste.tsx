@@ -9,16 +9,17 @@ import { Oppgavestatus } from "./Oppgavestatus";
 type OppgavelisteProps = {
   søker: SøkerType;
   activePage: string;
+  skipLinkId: string;
 };
 
-const Oppgaveliste = ({ søker, activePage }: OppgavelisteProps): JSX.Element => {
+const Oppgaveliste = ({ søker, activePage, skipLinkId }: OppgavelisteProps): JSX.Element => {
   const inngangsparagrafer = [];
   søker.sak.paragraf_11_2 && inngangsparagrafer.push(søker.sak.paragraf_11_2);
   søker.sak.paragraf_11_3 && inngangsparagrafer.push(søker.sak.paragraf_11_3);
   søker.sak.paragraf_11_4 && inngangsparagrafer.push(søker.sak.paragraf_11_4);
 
   return (
-    <nav className={styles.oppgaveliste}>
+    <nav className={styles.oppgaveliste} id={skipLinkId}>
       <Link to={`?page=${PAGES.INNGANG}`} className={activePage === PAGES.INNGANG ? styles.active : ""}>
         <div>{getText("navigasjon.inngangsvilkaar")}</div>
         <Oppgavestatus paragrafer={inngangsparagrafer} />

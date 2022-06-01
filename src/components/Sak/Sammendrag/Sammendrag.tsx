@@ -6,7 +6,13 @@ import { SøkerType } from "../../../types/SakType";
 import * as styles from "./sammendrag.module.css";
 import { Personopplysninger } from "../Personopplysninger";
 
-const Sammendrag = ({ søker, layoutToggle }: { søker: SøkerType; layoutToggle?: Function }): JSX.Element => {
+interface SammendragProps {
+  søker: SøkerType;
+  layoutToggle?: Function;
+  skipLinkId: string;
+}
+
+const Sammendrag = ({ søker, layoutToggle, skipLinkId }: SammendragProps): JSX.Element => {
   const [isCompact, toggleCompact] = useState<boolean>(false);
   const changeLayout = () => {
     toggleCompact(!isCompact);
@@ -17,7 +23,7 @@ const Sammendrag = ({ søker, layoutToggle }: { søker: SøkerType; layoutToggle
     ? `${styles.sammendrag__wrapper} ${styles.kompakt}`
     : `${styles.sammendrag__wrapper}`;
   return (
-    <div className={`${wrapperClasses} box`} id={"sammendrag"}>
+    <div className={`${wrapperClasses} box`} id={skipLinkId}>
       <section className={`${cl}`}>
         <div>
           {søker.sak.vedtak?.innvilget && <Tag variant={"success"}>Vedtak fattet</Tag>}
