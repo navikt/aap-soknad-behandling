@@ -38,11 +38,12 @@ spec:
       enabled: true
       allowAllUsers: true
       claims:
-        groups:
-          - id: {{role.aap.saksbehandler}}
-          - id: {{role.aap.beslutter}}
         extra:
           - NAVident
+        groups:
+          {{#each roles.group as |group|}}
+          - id: "{{group}}"
+          {{/each}}
     sidecar:
       enabled: true
   accessPolicy:

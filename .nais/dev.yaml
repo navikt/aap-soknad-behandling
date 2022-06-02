@@ -10,10 +10,11 @@ env:
 - name: OPPGAVESTYRING_API_SCOPE
   value: "api://dev-gcp.aap.oppgavestyring/.default"
 
-role:
-  aap:
-    # 0000-GA-AAP_SAKSBEHANDLER
-    saksbehandler: 8bb0ee13-49cd-4e75-8c3d-a13420c8b376
+roles:
+  - name: AAP_SAKSBEHANDLER
+    ad: 0000-GA-AAP_SAKSBEHANDLER
+    group: 8bb0ee13-49cd-4e75-8c3d-a13420c8b376
 
-    #0000-GA-AAP_BESLUTTER
-    beslutter: f0f6cad5-e3c0-4308-99a2-3630ac60174a
+  - name: AAP_BESLUTTER
+    ad: 0000-GA-AAP_BESLUTTER
+    group: f0f6cad5-e3c0-4308-99a2-3630ac60174a
