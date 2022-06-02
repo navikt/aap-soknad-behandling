@@ -37,13 +37,6 @@ spec:
     application:
       enabled: true
       allowAllUsers: true
-      claims:
-        extra:
-          - NAVident
-        groups:
-          {{#each roles.group as |group|}}
-          - id: "{{group}}"
-          {{/each}}
     sidecar:
       enabled: true
   accessPolicy:
