@@ -2,6 +2,7 @@ import { VilkårsvurderingType } from "../../../types/SakType";
 import { ErrorFilled, HelptextFilled, SuccessFilled } from "@navikt/ds-icons";
 
 import * as styles from "./oppgavestatus.module.css";
+import { getText } from "../../../tekster/tekster";
 
 type OppgavestatusProps = {
   paragrafer: VilkårsvurderingType[] | undefined;
@@ -14,7 +15,7 @@ export const Oppgavestatus = ({ paragrafer }: OppgavestatusProps): JSX.Element =
     return (
       <div className={`${styles.oppgavestatus} ${styles.maa_behandles}`}>
         <HelptextFilled />
-        Vurdering trenges
+        {getText("oppgavestatus.vurderingTrenges")}
       </div>
     );
   }
@@ -22,14 +23,14 @@ export const Oppgavestatus = ({ paragrafer }: OppgavestatusProps): JSX.Element =
     return (
       <div className={`${styles.oppgavestatus} ${styles.ikke_oppfylt}`}>
         <ErrorFilled />
-        Ikke oppfylt
+        {getText("oppgavestatus.ikkeOppfylt")}
       </div>
     );
   }
   return (
     <div className={`${styles.oppgavestatus} ${styles.oppfylt}`}>
       <SuccessFilled />
-      Oppfylt
+      {getText("oppgavestatus.oppfylt")}
     </div>
   );
 };

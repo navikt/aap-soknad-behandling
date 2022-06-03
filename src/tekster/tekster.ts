@@ -169,6 +169,11 @@ const texts = {
       begrunnelseForAnnet: "Oppgi en annen grunn 😡",
     },
   },
+  oppgavestatus: {
+    vurderingTrenges: "Vurdering trenges",
+    oppfylt: "Oppfylt",
+    ikkeOppfylt: "Ikke oppfylt",
+  },
 };
 
 export const getText = (key: string): string => {
