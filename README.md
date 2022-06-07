@@ -10,3 +10,11 @@ yarn install
 yarn start
 ```
 For å få mockede endepunkter startes applikasjonen med `USE_MOCK='true'` (dette ligger i start-scriptet)..
+
+
+### Tester
+For  kjøre enhetstester bruk følgende kommando fra rot mappen:
+
+```
+yarn test
+```
