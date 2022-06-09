@@ -34,6 +34,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: true,
         kravOmNedsattArbeidsevneErOppfylt: null,
         nedsettelseSkyldesSykdomEllerSkade: null,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-1-6",
@@ -91,6 +92,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: true,
         kravOmNedsattArbeidsevneErOppfylt: null,
         nedsettelseSkyldesSykdomEllerSkade: null,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-2-6",
@@ -148,6 +150,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: true,
         kravOmNedsattArbeidsevneErOppfylt: null,
         nedsettelseSkyldesSykdomEllerSkade: null,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-3-6",
@@ -204,6 +207,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: false,
         kravOmNedsattArbeidsevneErOppfylt: true,
         nedsettelseSkyldesSykdomEllerSkade: true,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-4-6",
@@ -299,6 +303,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: true,
         kravOmNedsattArbeidsevneErOppfylt: null,
         nedsettelseSkyldesSykdomEllerSkade: null,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-5-6",
@@ -355,6 +360,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: false,
         kravOmNedsattArbeidsevneErOppfylt: true,
         nedsettelseSkyldesSykdomEllerSkade: true,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-3-6",
@@ -467,6 +473,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: false,
         kravOmNedsattArbeidsevneErOppfylt: true,
         nedsettelseSkyldesSykdomEllerSkade: false,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "uuid-3-6",
@@ -577,6 +584,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: true,
         kravOmNedsattArbeidsevneErOppfylt: false,
         nedsettelseSkyldesSykdomEllerSkade: false,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "61a7f49d-6a76-48b6-9ffd-dbe3dc2e6439",
@@ -632,6 +640,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: true,
         kravOmNedsattArbeidsevneErOppfylt: false,
         nedsettelseSkyldesSykdomEllerSkade: true,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "26aee9a3-344a-4770-b100-87d1e93c74e3",
@@ -742,6 +751,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: false,
         kravOmNedsattArbeidsevneErOppfylt: null,
         nedsettelseSkyldesSykdomEllerSkade: null,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "de629635-9397-4b75-817a-f83990d6a397",
@@ -852,6 +862,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: false,
         kravOmNedsattArbeidsevneErOppfylt: true,
         nedsettelseSkyldesSykdomEllerSkade: true,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "936e46a5-6829-46fb-8e86-80a0b1a9efeb",
@@ -907,6 +918,7 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         måVurderesManuelt: true,
         kravOmNedsattArbeidsevneErOppfylt: null,
         nedsettelseSkyldesSykdomEllerSkade: null,
+        arbeidsevneNedsattMedMinstHalvparten: null,
       },
       paragraf_11_6: {
         vilkårsvurderingsid: "84668060-b478-4fdd-9ef0-b3bbbf5ebf5f",

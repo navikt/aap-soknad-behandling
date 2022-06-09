@@ -51,27 +51,39 @@ export const RadioGroupWrapper = ({
   rules,
   resetField,
   description,
-}: RadioProps): JSX.Element => (
-  <div className={"radio__group"}>
-    <Controller
-      name={feltNokkel}
-      control={control}
-      defaultValue={null}
-      rules={rules}
-      render={({ field: { onChange, value } }) => (
-        <RadioGroup
-          id={feltNokkel}
-          value={value}
-          name={feltNokkel}
-          legend={getText(`${tekstNokkel}.legend`) || getText(tekstNokkel)}
-          error={errors && errors[feltNokkel]?.message}
-          onChange={onChange}
-          description={description}
-        >
-          {children}
-        </RadioGroup>
-      )}
-    />
-    <Nullstillknapp feltNokkel={feltNokkel} resetField={resetField} />
-  </div>
-);
+}: RadioProps): JSX.Element => {
+  const getDescription = () => {
+    if (description) {
+      return description;
+    }
+    const desc = getText(`${tekstNokkel}.description`);
+    if (desc !== `${tekstNokkel}.description`) {
+      return desc;
+    }
+    return undefined;
+  };
+  return (
+    <div className={"radio__group"}>
+      <Controller
+        name={feltNokkel}
+        control={control}
+        defaultValue={null}
+        rules={rules}
+        render={({ field: { onChange, value } }) => (
+          <RadioGroup
+            id={feltNokkel}
+            value={value}
+            name={feltNokkel}
+            legend={getText(`${tekstNokkel}.legend`) || getText(tekstNokkel)}
+            error={errors && errors[feltNokkel]?.message}
+            onChange={onChange}
+            description={getDescription()}
+          >
+            {children}
+          </RadioGroup>
+        )}
+      />
+      <Nullstillknapp feltNokkel={feltNokkel} resetField={resetField} />
+    </div>
+  );
+};

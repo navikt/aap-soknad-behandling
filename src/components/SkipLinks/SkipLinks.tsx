@@ -4,10 +4,10 @@ import { SkipLinkContext } from "../../contexts/SkipLinkContext";
 
 import * as styles from "./skipLinks.module.css";
 
-const SkipLinks = (): JSX.Element => {
+const SkipLinks = (): JSX.Element | null => {
   const skipLinkContext = useContext(SkipLinkContext);
   if (!skipLinkContext || skipLinkContext.skipLinks.length === 0) {
-    return <span>Har ingen skipLinks</span>;
+    return null;
   }
   const links = skipLinkContext.skipLinks.map((elem) => (
     <Link key={elem.title} href={`#${elem.skipTo}`}>

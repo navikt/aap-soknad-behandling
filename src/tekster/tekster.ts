@@ -93,10 +93,17 @@ const texts = {
     "11_5": {
       heading: "Nedsatt arbeidsevne og medvirkende årsak (§ 11-5)",
       kravOmNedsattArbeidsevneErOppfylt: {
-        legend: "Er arbeidsevnen nedsatt med minst 50% ?",
+        legend: "Er arbeidsevnen nedsatt?",
+        description: "Søkeren må vurderes opp mot alle yrker som personen er kvalifisert for.",
         ja: "Ja",
         nei: "Nei",
-        påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt med minst 50%.",
+        påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt.",
+      },
+      arbeidsevneNedsattMedMinstHalvparten: {
+        legend: "Er arbeidsevnen nedsatt med minst halvparten?",
+        ja: "Ja",
+        nei: "Nei",
+        påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt med minst halvparten.",
       },
       nedsettelseSkyldesSykdomEllerSkade: {
         legend: "Er søkerens arbeidsevne nedsatt på grunn av sykdom, skade eller lyte?",

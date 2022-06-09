@@ -6,6 +6,7 @@ import { useSkjema } from "../../../hooks/useSkjema";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { Løsning } from "../../../types/Losning";
 import { ParagrafBlokk } from "./ParagrafBlokk";
+import { RenderWhen } from "../../RenderWhen";
 
 import * as styles from "./paragraf.module.css";
 
@@ -43,7 +44,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering?.måVurderesManuelt) {
     return null;
   }
-  const { control, handleSubmit, errors, onSubmit, senderMelding, resetField } = useSkjema();
+  const { control, handleSubmit, errors, onSubmit, senderMelding, resetField, watch } = useSkjema();
   const løsning = (datas: any): Løsning => ({
     løsning_11_5_manuell: {
       kravOmNedsattArbeidsevneErOppfylt: datas.kravOmNedsattArbeidsevneErOppfylt,
@@ -68,6 +69,21 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           <Radio value={"true"}>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.ja`)}</Radio>
           <Radio value={"false"}>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.nei`)}</Radio>
         </RadioGroupWrapper>
+        <RenderWhen when={watch("kravOmNedsattArbeidsevneErOppfylt") === "true"}>
+          <div className={styles.innrykk}>
+            <RadioGroupWrapper
+              feltNokkel={"arbeidsevneNedsattMedMinstHalvparten"}
+              tekstNokkel={`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten`}
+              errors={errors}
+              control={control}
+              rules={{ required: getText(`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten.påkrevd`) }}
+              resetField={resetField}
+            >
+              <Radio value={"true"}>{getText(`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten.ja`)}</Radio>
+              <Radio value={"false"}>{getText(`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten.nei`)}</Radio>
+            </RadioGroupWrapper>
+          </div>
+        </RenderWhen>
       </ParagrafBlokk>
       <ParagrafBlokk>
         <Heading size={"medium"} level={"3"}>

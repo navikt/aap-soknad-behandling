@@ -15,6 +15,7 @@ const paragraf_11_3Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_4Schema = vilkårsvurderingSchema.extend({});
 const paragraf_11_5Schema = vilkårsvurderingSchema.extend({
   kravOmNedsattArbeidsevneErOppfylt: z.boolean().nullable(),
+  arbeidsevneNedsattMedMinstHalvparten: z.boolean().optional().nullable(), // TODO skal bare være nullable. Pt ikke i modell
   nedsettelseSkyldesSykdomEllerSkade: z.boolean().nullable(),
 });
 const paragraf_11_6Schema = vilkårsvurderingSchema.extend({
