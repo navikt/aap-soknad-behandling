@@ -1,4 +1,4 @@
-import {getText} from "./tekster";
+import { getText } from "./tekster";
 
 describe("Tekster", () => {
   test("gir tekst tilbake", () => {
@@ -6,7 +6,7 @@ describe("Tekster", () => {
     expect(result).toEqual("§ 11-5");
   });
 
-  test("gir nøkkel tilbake når tekst ikke finnes", ()=> {
+  test("gir nøkkel tilbake når tekst ikke finnes", () => {
     const result = getText("nøkkel.som.ikke.finnes");
     expect(result).toEqual("nøkkel.som.ikke.finnes");
   });

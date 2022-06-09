@@ -4,6 +4,7 @@ import { Button, RadioGroup } from "@navikt/ds-react";
 import { getText } from "../tekster/tekster";
 import { ReactElement, ReactNode } from "react";
 import { Delete } from "@navikt/ds-icons";
+import { Markdown } from "./Markdown/Markdown";
 
 export interface RadioProps {
   feltNokkel: string;
@@ -56,12 +57,19 @@ export const RadioGroupWrapper = ({
     if (description) {
       return description;
     }
-    const desc = getText(`${tekstNokkel}.description`);
-    if (desc !== `${tekstNokkel}.description`) {
-      return desc;
+    const markdownNokkel = `${tekstNokkel}.description.md`;
+    const markdownTekst = getText(markdownNokkel);
+    if (markdownTekst !== markdownNokkel) {
+      return <Markdown tekst={markdownTekst} />;
     }
-    return undefined;
+    const descNokkel = `${tekstNokkel}.description`;
+    const descTekst = getText(descNokkel);
+    if (descNokkel !== descTekst) {
+      return descTekst;
+    }
+    return null;
   };
+
   return (
     <div className={"radio__group"}>
       <Controller

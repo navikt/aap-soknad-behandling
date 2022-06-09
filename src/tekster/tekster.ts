@@ -1,4 +1,7 @@
 const texts = {
+  test: {
+    feltMedMarkdown: { md: "Deler av teksten er **bold**" },
+  },
   paragraf: {
     PARAGRAF_11_1: "§ 11-1",
     PARAGRAF_11_2: "§ 11-2",
@@ -94,7 +97,7 @@ const texts = {
       heading: "Nedsatt arbeidsevne og medvirkende årsak (§ 11-5)",
       kravOmNedsattArbeidsevneErOppfylt: {
         legend: "Er arbeidsevnen nedsatt?",
-        description: "Søkeren må vurderes opp mot alle yrker som personen er kvalifisert for.",
+        description: { md: "Søkeren må vurderes opp mot **alle yrker** som personen er kvalifisert for." },
         ja: "Ja",
         nei: "Nei",
         påkrevd: "Du må ta stilling til om arbeidsevnen er nedsatt.",
