@@ -1,5 +1,5 @@
 import { Paragraf_11_12Type, VilkårsvurderingType } from "../../../types/SakType";
-import { BodyShort, Button, Heading, Label, Radio, Textarea } from "@navikt/ds-react";
+import { BodyShort, Button, Label, Radio, Textarea } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
@@ -95,10 +95,10 @@ const Paragraf_11_12 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.
   }
 
   return (
-    <ParagrafBlokk>
-      <Heading level={"3"} size={"medium"}>
-        {getText(`${tekstNokkel}.virkningstidspunkt.heading`)}
-      </Heading>
+    <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText(`${tekstNokkel}.virkningstidspunkt.heading`)}>
+      {/*<Heading level={"3"} size={"medium"}>*/}
+      {/*  {getText(`${tekstNokkel}.virkningstidspunkt.heading`)}*/}
+      {/*</Heading>*/}
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
     </ParagrafBlokk>

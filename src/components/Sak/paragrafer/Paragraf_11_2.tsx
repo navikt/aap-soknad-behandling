@@ -1,9 +1,8 @@
-import { BodyShort, Button, Heading, Label, Radio } from "@navikt/ds-react";
+import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 
 import { Paragraf_11_2Type } from "../../../types/SakType";
 
 import * as styles from "./paragraf.module.css";
-import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
@@ -67,13 +66,13 @@ const Paragraf_11_2 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   }
 
   return (
-    <ParagrafBlokk>
-      <div className={styles.paragraf__heading}>
-        <Heading size={"medium"} level={"3"}>
-          {getText("paragrafer.11_2.heading")}
-        </Heading>
-        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />
-      </div>
+    <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_2.heading")}>
+      {/*<div className={styles.paragraf__heading}>*/}
+      {/*  <Heading size={"medium"} level={"3"}>*/}
+      {/*    {getText("paragrafer.11_2.heading")}*/}
+      {/*  </Heading>*/}
+      {/*  <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />*/}
+      {/*</div>*/}
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
     </ParagrafBlokk>

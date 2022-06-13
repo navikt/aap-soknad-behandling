@@ -1,4 +1,4 @@
-import { BodyShort, Button, Label, Heading, Radio } from "@navikt/ds-react";
+import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 
 import { Paragraf_11_5Type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
@@ -22,17 +22,17 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5
 
   return (
     <>
-      <ParagrafBlokk>
-        <Heading size={"medium"} level={"3"}>
-          Nedsatt arbeidsevne
-        </Heading>
+      <ParagrafBlokk heading={"Nedsatt arbeidsevne"} vilkårsvurdering={vilkårsvurdering}>
+        {/*<Heading size={"medium"} level={"3"}>*/}
+        {/*  Nedsatt arbeidsevne*/}
+        {/*</Heading>*/}
         <Label>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.legend`)}</Label>
         <BodyShort>{vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
-      <ParagrafBlokk>
-        <Heading size={"medium"} level={"3"}>
-          Sykdom, skade eller lyte
-        </Heading>
+      <ParagrafBlokk heading={"Sykdom, skade eller lyte"} vilkårsvurdering={vilkårsvurdering}>
+        {/*<Heading size={"medium"} level={"3"}>*/}
+        {/*  Sykdom, skade eller lyte*/}
+        {/*</Heading>*/}
         <Label>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.legend`)}</Label>
         <BodyShort>{vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
@@ -54,10 +54,10 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
 
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
-      <ParagrafBlokk>
-        <Heading size={"medium"} level={"3"}>
-          Nedsatt arbeidsevne
-        </Heading>
+      <ParagrafBlokk heading={"Nedsatt arbeidsevne"} vilkårsvurdering={vilkårsvurdering}>
+        {/*<Heading size={"medium"} level={"3"}>*/}
+        {/*  Nedsatt arbeidsevne*/}
+        {/*</Heading>*/}
         <RadioGroupWrapper
           feltNokkel={"kravOmNedsattArbeidsevneErOppfylt"}
           control={control}
@@ -85,10 +85,10 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           </div>
         </RenderWhen>
       </ParagrafBlokk>
-      <ParagrafBlokk>
-        <Heading size={"medium"} level={"3"}>
-          Sykdom, skade eller lyte
-        </Heading>
+      <ParagrafBlokk heading={"Sykdom, skade eller lyte"} vilkårsvurdering={vilkårsvurdering}>
+        {/*<Heading size={"medium"} level={"3"}>*/}
+        {/*  Sykdom, skade eller lyte*/}
+        {/*</Heading>*/}
         <RadioGroupWrapper
           feltNokkel={"nedsettelseSkyldesSykdomEllerSkade"}
           control={control}

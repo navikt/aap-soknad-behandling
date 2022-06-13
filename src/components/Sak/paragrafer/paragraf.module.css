@@ -1,12 +1,12 @@
-.paragraf__blokk {
+.seksjon {
   margin-top: 1rem;
 }
 
-.paragraf__blokk + .paragraf__blokk {
+.seksjon + .seksjon {
   margin-top: 2rem;
 }
 
-.paragraf__heading {
+.seksjon__heading {
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -14,7 +14,7 @@
   margin-bottom: .5rem;
 }
 
-.paragraf__sub__blokk:not(:last-of-type) {
+.seksjon__sub__blokk:not(:last-of-type) {
   margin-bottom: 1rem;
 }
 

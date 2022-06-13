@@ -21,7 +21,6 @@ import * as styles from "./paragraf.module.css";
 import { RenderWhen } from "../../RenderWhen";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { useSkjema } from "../../../hooks/useSkjema";
-import { ParagrafBlokk } from "./ParagrafBlokk";
 
 type BeregningsdatoProps = {
   personident: string;
@@ -57,9 +56,9 @@ const Beregningstidspunkt = ({ personident }: BeregningsdatoProps): JSX.Element 
   );
 
   return (
-    <div className={styles.paragraf__blokk}>
+    <div className={styles.seksjon}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ParagrafBlokk>
+        <div className={styles.seksjon}>
           <div className={styles.dato__wrapper}>
             <TextField
               {...register("beregningsdato", { required: getText("beregningstidspunkt.paakrevd") })}
@@ -74,8 +73,8 @@ const Beregningstidspunkt = ({ personident }: BeregningsdatoProps): JSX.Element 
           <RenderWhen when={visKalender}>
             <DayPicker formatters={{ formatCaption }} locale={nb} {...dayPickerProps} />
           </RenderWhen>
-        </ParagrafBlokk>
-        <ParagrafBlokk>
+        </div>
+        <div className={styles.seksjon}>
           <RadioGroupWrapper
             feltNokkel={"grunnForDato"}
             tekstNokkel={"beregningstidspunkt.grunnForDato"}
@@ -98,11 +97,11 @@ const Beregningstidspunkt = ({ personident }: BeregningsdatoProps): JSX.Element 
               </div>
             </RenderWhen>
           </RadioGroupWrapper>
-        </ParagrafBlokk>
-        <div className={styles.fortsettKnapp}>
-          <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
-            {getText("beregningstidspunkt.knapp")}
-          </Button>
+          <div className={styles.fortsettKnapp}>
+            <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+              {getText("beregningstidspunkt.knapp")}
+            </Button>
+          </div>
         </div>
       </form>
     </div>
