@@ -8,7 +8,6 @@ import Saksoversikt from "./pages/Saksoversikt/Saksoversikt";
 import { Feilviser } from "./components/Feilviser/Feilviser";
 import { AppHeader } from "./components/AppHeader/AppHeader";
 import { SakHenter } from "./components/SakHenter/SakHenter";
-import { RadioLayoutProvider } from "./contexts/RadioLayout";
 import { SkipLinkProvider } from "./contexts/SkipLinkContext";
 import { SkipLinks } from "./components/SkipLinks/SkipLinks";
 
@@ -48,13 +47,11 @@ const App = () => {
         <SkipLinkProvider>
           <SkipLinks />
           <AppHeader />
-          <RadioLayoutProvider>
-            <main id="main-content" className="main__content">
-              <BrowserRouter>
-                <Ruter />
-              </BrowserRouter>
-            </main>
-          </RadioLayoutProvider>
+          <main id="main-content" className="main__content">
+            <BrowserRouter>
+              <Ruter />
+            </BrowserRouter>
+          </main>
         </SkipLinkProvider>
       </ErrorBoundary>
     </StrictMode>

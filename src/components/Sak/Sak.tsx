@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Heading, Switch } from "@navikt/ds-react";
+
+import { Heading } from "@navikt/ds-react";
 
 import { SøkerType } from "../../types/SakType";
 import { Sammendrag } from "./Sammendrag/Sammendrag";
@@ -20,8 +22,6 @@ import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";
 import { Beregningstidspunkt } from "./paragrafer/Beregningstidspunkt";
 import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
-import { useContext, useState } from "react";
-import { RadioLayoutContext } from "../../contexts/RadioLayout";
 import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
 import { Seksjonsoverskrift } from "./Seksjonsoverskrift/Seksjonsoverskrift";
 import { useSkipLink } from "../../hooks/useSkipLink";
@@ -111,14 +111,7 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
       { title: "Hopp til vilkårsvurdering", skipTo: vilkårId },
     ],
   });
-  const layout = useContext(RadioLayoutContext);
   const [isTallLayout, toggleTallLayout] = useState<boolean>(false);
-  const swapRadioLayout = () => {
-    if (layout) {
-      layout.swapLayout();
-    }
-  };
-
   const cl = isTallLayout ? `${styles.sak__behandling} ${styles.tall}` : `${styles.sak__behandling}`;
 
   const [searchParams] = useSearchParams();
@@ -138,7 +131,7 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           </Heading>
           <Oppgaveliste søker={søker} activePage={requestedPage} skipLinkId={oppgavelisteId} />
         </aside>
-        <main className={`${cl} box radio--${layout?.layout}`} id={vilkårId}>
+        <main className={`${cl} box`} id={vilkårId}>
           <RenderWhen when={requestedPage === PAGES.INNGANG}>
             <Inngangsvilkår søker={søker} />
           </RenderWhen>
@@ -165,9 +158,6 @@ const Sak = ({ søker }: { søker: SøkerType }): JSX.Element => {
           </RenderWhen>
         </main>
       </div>
-      <Switch size={"small"} onClick={swapRadioLayout}>
-        Horizontal radios
-      </Switch>
     </div>
   );
 };
