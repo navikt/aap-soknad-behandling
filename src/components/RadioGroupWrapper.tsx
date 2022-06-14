@@ -1,47 +1,22 @@
-import { Control, Controller, FieldErrors, FieldValues } from "react-hook-form";
+import { Control, Controller, FieldErrors } from "react-hook-form";
 
-import { Button, RadioGroup } from "@navikt/ds-react";
+import { RadioGroup } from "@navikt/ds-react";
 import { getText } from "../tekster/tekster";
 import { ReactElement, ReactNode } from "react";
-import { Delete } from "@navikt/ds-icons";
 import { Markdown } from "./Markdown/Markdown";
+import { NullstillKnapp } from "./NullstillKnapp/NullstillKnapp";
 
-export interface RadioProps {
+interface RadioProps {
   feltNokkel: string;
   tekstNokkel: string;
-  legend?: string;
   errors: FieldErrors;
-  control: Control<FieldValues>;
+  control: Control;
   children: ReactElement[];
+  legend?: string;
   rules?: object;
   resetField?: Function;
   description?: ReactNode;
 }
-
-type NullstillProps = {
-  resetField?: Function;
-  feltNokkel: string;
-};
-
-const Nullstillknapp = ({ resetField, feltNokkel }: NullstillProps): JSX.Element | null => {
-  if (!resetField) {
-    return null;
-  }
-  return (
-    <div>
-      <Button
-        type={"button"}
-        variant={"tertiary"}
-        onClick={() => {
-          resetField(feltNokkel);
-        }}
-      >
-        <Delete />
-        Nullstill vurdering
-      </Button>
-    </div>
-  );
-};
 
 export const RadioGroupWrapper = ({
   children,
@@ -52,7 +27,7 @@ export const RadioGroupWrapper = ({
   rules,
   resetField,
   description,
-}: RadioProps): JSX.Element => {
+}: RadioProps) => {
   const getDescription = () => {
     if (description) {
       return description;
@@ -91,7 +66,7 @@ export const RadioGroupWrapper = ({
           </RadioGroup>
         )}
       />
-      <Nullstillknapp feltNokkel={feltNokkel} resetField={resetField} />
+      {resetField && <NullstillKnapp onClick={() => resetField(feltNokkel)} />}
     </div>
   );
 };
