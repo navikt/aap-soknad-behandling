@@ -4,10 +4,10 @@ import { Paragraf_11_2Type } from "../../../types/SakType";
 
 import * as styles from "./paragraf.module.css";
 import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
 import { ParagrafBlokk } from "./ParagrafBlokk";
+import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_2Type | undefined;
@@ -48,6 +48,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         errors={errors}
         rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
         resetField={resetField}
+        horisontal
       >
         <Radio value={"ja"}>Ja</Radio>
         <Radio value={"nei"}>Nei</Radio>

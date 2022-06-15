@@ -1,10 +1,12 @@
 import { Control, Controller, FieldErrors, FieldValues } from "react-hook-form";
 
 import { Button, RadioGroup } from "@navikt/ds-react";
-import { getText } from "../tekster/tekster";
+import { getText } from "../../tekster/tekster";
 import { ReactElement, ReactNode } from "react";
 import { Delete } from "@navikt/ds-icons";
-import { Markdown } from "./Markdown/Markdown";
+import { Markdown } from "../Markdown/Markdown";
+
+import * as styles from "./radio.module.css";
 
 export interface RadioProps {
   feltNokkel: string;
@@ -16,6 +18,7 @@ export interface RadioProps {
   rules?: object;
   resetField?: Function;
   description?: ReactNode;
+  horisontal?: Boolean;
 }
 
 type NullstillProps = {
@@ -52,6 +55,7 @@ export const RadioGroupWrapper = ({
   rules,
   resetField,
   description,
+  horisontal = false,
 }: RadioProps): JSX.Element => {
   const getDescription = () => {
     if (description) {
@@ -71,7 +75,7 @@ export const RadioGroupWrapper = ({
   };
 
   return (
-    <div className={"radio__group"}>
+    <div className={styles.radiogroup}>
       <Controller
         name={feltNokkel}
         control={control}
@@ -86,6 +90,7 @@ export const RadioGroupWrapper = ({
             error={errors && errors[feltNokkel]?.message}
             onChange={onChange}
             description={getDescription()}
+            className={horisontal ? styles.horizontal : ""}
           >
             {children}
           </RadioGroup>

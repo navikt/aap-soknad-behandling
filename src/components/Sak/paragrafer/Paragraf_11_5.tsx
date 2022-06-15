@@ -78,6 +78,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
               control={control}
               rules={{ required: getText(`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten.påkrevd`) }}
               resetField={resetField}
+              horisontal
             >
               <Radio value={"true"}>{getText(`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten.ja`)}</Radio>
               <Radio value={"false"}>{getText(`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten.nei`)}</Radio>
@@ -96,6 +97,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           errors={errors}
           rules={{ required: getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.påkrevd`) }}
           resetField={resetField}
+          horisontal
         >
           <Radio value={"true"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.ja`)}</Radio>
           <Radio value={"false"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.nei`)}</Radio>
