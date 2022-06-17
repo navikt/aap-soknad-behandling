@@ -64,7 +64,7 @@ const Paragraf_11_29 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.
   }
 
   return (
-    <ParagrafBlokk>
+    <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_29.heading")}>
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
     </ParagrafBlokk>

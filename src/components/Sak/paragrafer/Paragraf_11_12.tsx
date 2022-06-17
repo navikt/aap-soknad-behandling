@@ -1,5 +1,5 @@
 import { Paragraf_11_12Type, VilkårsvurderingType } from "../../../types/SakType";
-import { BodyShort, Button, Heading, Label, Radio, Textarea } from "@navikt/ds-react";
+import { BodyShort, Button, Label, Radio, Textarea } from "@navikt/ds-react";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
@@ -33,7 +33,6 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   const { register, handleSubmit, control, resetField, errors, onSubmit, senderMelding, watch } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_12_ledd1_manuell: {
-      // erOppfylt: datas.erOppfylt === "true",
       bestemmesAv: datas.bestemmesAv,
       unntak: datas.unntak,
       unntaksbegrunnelse: datas.unntaksbegrunnelse,
@@ -95,10 +94,7 @@ const Paragraf_11_12 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.
   }
 
   return (
-    <ParagrafBlokk>
-      <Heading level={"3"} size={"medium"}>
-        {getText(`${tekstNokkel}.virkningstidspunkt.heading`)}
-      </Heading>
+    <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText(`${tekstNokkel}.virkningstidspunkt.heading`)}>
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
     </ParagrafBlokk>

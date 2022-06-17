@@ -1,10 +1,9 @@
-import { BodyShort, Button, Heading, Label, Radio } from "@navikt/ds-react";
+import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 
 import { Paragraf_11_3Type, VilkårsvurderingType } from "../../../types/SakType";
 import * as styles from "./paragraf.module.css";
 import { getText } from "../../../tekster/tekster";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 import { useSkjema } from "../../../hooks/useSkjema";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 
@@ -63,15 +62,8 @@ const Paragraf_11_3 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (!vilkårsvurdering) {
     return <div>Fant ikke 11-3</div>;
   }
-
   return (
-    <ParagrafBlokk>
-      <div className={styles.paragraf__heading}>
-        <Heading size={"medium"} level={"3"}>
-          {getText("paragrafer.11_3.heading")}
-        </Heading>
-        <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />
-      </div>
+    <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_3.heading")}>
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
     </ParagrafBlokk>
