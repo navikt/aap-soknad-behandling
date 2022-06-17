@@ -8,8 +8,9 @@ type ParagrafBlokkProps = {
   heading: string;
 };
 
-const ParagrafBlokk = ({ vilkårsvurdering, children, heading }: ParagrafBlokkProps): JSX.Element => {
+export const ParagrafBlokk = ({ vilkårsvurdering, children, heading }: ParagrafBlokkProps) => {
   const [visParagraf, toggleVisParagraf] = useState<boolean>(!!vilkårsvurdering.måVurderesManuelt);
+
   return (
     <Accordion>
       <Accordion.Item open={visParagraf}>
@@ -27,6 +28,4 @@ const ParagrafBlokk = ({ vilkårsvurdering, children, heading }: ParagrafBlokkPr
       </Accordion.Item>
     </Accordion>
   );
-  // return <div className={styles.paragraf__blokk}>{children}</div>;
 };
-export { ParagrafBlokk };
