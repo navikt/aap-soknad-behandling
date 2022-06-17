@@ -23,16 +23,10 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5
   return (
     <>
       <ParagrafBlokk heading={"Nedsatt arbeidsevne"} vilkårsvurdering={vilkårsvurdering}>
-        {/*<Heading size={"medium"} level={"3"}>*/}
-        {/*  Nedsatt arbeidsevne*/}
-        {/*</Heading>*/}
         <Label>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.legend`)}</Label>
         <BodyShort>{vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
       <ParagrafBlokk heading={"Sykdom, skade eller lyte"} vilkårsvurdering={vilkårsvurdering}>
-        {/*<Heading size={"medium"} level={"3"}>*/}
-        {/*  Sykdom, skade eller lyte*/}
-        {/*</Heading>*/}
         <Label>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.legend`)}</Label>
         <BodyShort>{vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
@@ -55,9 +49,6 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
       <ParagrafBlokk heading={"Nedsatt arbeidsevne"} vilkårsvurdering={vilkårsvurdering}>
-        {/*<Heading size={"medium"} level={"3"}>*/}
-        {/*  Nedsatt arbeidsevne*/}
-        {/*</Heading>*/}
         <RadioGroupWrapper
           feltNokkel={"kravOmNedsattArbeidsevneErOppfylt"}
           control={control}
@@ -86,9 +77,6 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         </RenderWhen>
       </ParagrafBlokk>
       <ParagrafBlokk heading={"Sykdom, skade eller lyte"} vilkårsvurdering={vilkårsvurdering}>
-        {/*<Heading size={"medium"} level={"3"}>*/}
-        {/*  Sykdom, skade eller lyte*/}
-        {/*</Heading>*/}
         <RadioGroupWrapper
           feltNokkel={"nedsettelseSkyldesSykdomEllerSkade"}
           control={control}

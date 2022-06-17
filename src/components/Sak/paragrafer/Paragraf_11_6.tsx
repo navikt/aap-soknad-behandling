@@ -21,23 +21,14 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_6
   return (
     <>
       <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText(`${tekstNokkel}.bokstav_a.heading`)}>
-        {/*<Heading level={"3"} size={"medium"}>*/}
-        {/*  {getText(`${tekstNokkel}.bokstav_a.heading`)}*/}
-        {/*</Heading>*/}
         <Label>{getText(`${tekstNokkel}.bokstav_a.legend`)}</Label>
         <BodyShort>{vilkårsvurdering.harBehovForBehandling ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
       <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText(`${tekstNokkel}.bokstav_b.heading`)}>
-        {/*<Heading level={"3"} size={"medium"}>*/}
-        {/*  {getText(`${tekstNokkel}.bokstav_b.heading`)}*/}
-        {/*</Heading>*/}
         <Label>{getText(`${tekstNokkel}.bokstav_b.legend`)}</Label>
         <BodyShort>{vilkårsvurdering.harBehovForTiltak ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
       <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText(`${tekstNokkel}.bokstav_c.heading`)}>
-        {/*<Heading level={"3"} size={"medium"}>*/}
-        {/*  {getText(`${tekstNokkel}.bokstav_c.heading`)}*/}
-        {/*</Heading>*/}
         <Label>{getText(`${tekstNokkel}.bokstav_c.legend`)}</Label>
         <BodyShort>{vilkårsvurdering.harMulighetForÅKommeIArbeid ? "Ja" : "Nei"}</BodyShort>
       </ParagrafBlokk>
@@ -52,7 +43,6 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
   const løsning = (datas: any) => ({
     løsning_11_6_manuell: {
-      // erOppfylt: datas.erOppfylt === "true",
       harBehovForBehandling: datas.harBehovForBehandling, // bokstav a
       harBehovForTiltak: datas.harBehovForTiltak, // bokstav b
       harMulighetForÅKommeIArbeid: datas.harMulighetForÅKommeIArbeid, // bokstav c
@@ -61,9 +51,6 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
       <ParagrafBlokk heading={getText(`${tekstNokkel}.bokstav_a.heading`)} vilkårsvurdering={vilkårsvurdering}>
-        {/*<Heading level={"3"} size={"medium"}>*/}
-        {/*  {getText(`${tekstNokkel}.bokstav_a.heading`)}*/}
-        {/*</Heading>*/}
         <RadioGroupWrapper
           tekstNokkel={`${tekstNokkel}.bokstav_a`}
           control={control}
@@ -77,9 +64,6 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         </RadioGroupWrapper>
       </ParagrafBlokk>
       <ParagrafBlokk heading={getText(`${tekstNokkel}.bokstav_b.heading`)} vilkårsvurdering={vilkårsvurdering}>
-        {/*<Heading level={"3"} size={"medium"}>*/}
-        {/*  {getText(`${tekstNokkel}.bokstav_b.heading`)}*/}
-        {/*</Heading>*/}
         <RadioGroupWrapper
           tekstNokkel={`${tekstNokkel}.bokstav_b`}
           feltNokkel={"harBehovForTiltak"}
@@ -94,9 +78,6 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         </RadioGroupWrapper>
       </ParagrafBlokk>
       <ParagrafBlokk heading={getText(`${tekstNokkel}.bokstav_c.heading`)} vilkårsvurdering={vilkårsvurdering}>
-        {/*<Heading level={"3"} size={"medium"}>*/}
-        {/*  {getText(`${tekstNokkel}.bokstav_c.heading`)}*/}
-        {/*</Heading>*/}
         <RadioGroupWrapper
           tekstNokkel={`${tekstNokkel}.bokstav_c`}
           feltNokkel={"harMulighetForÅKommeIArbeid"}

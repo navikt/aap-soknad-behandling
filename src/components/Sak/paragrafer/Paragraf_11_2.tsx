@@ -67,12 +67,6 @@ const Paragraf_11_2 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
 
   return (
     <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_2.heading")}>
-      {/*<div className={styles.paragraf__heading}>*/}
-      {/*  <Heading size={"medium"} level={"3"}>*/}
-      {/*    {getText("paragrafer.11_2.heading")}*/}
-      {/*  </Heading>*/}
-      {/*  <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />*/}
-      {/*</div>*/}
       <Skjemavisning vilkårsvurdering={vilkårsvurdering} personident={personident} />
       <Ferdigvisning vilkårsvurdering={vilkårsvurdering} />
     </ParagrafBlokk>

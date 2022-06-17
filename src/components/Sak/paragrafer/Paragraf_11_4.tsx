@@ -17,12 +17,6 @@ const Paragraf_11_4 = ({ vilkårsvurdering, fødselsdato }: ParagrafProps): JSX.
   }
   return (
     <ParagrafBlokk heading={getText("paragrafer.11_4.heading")} vilkårsvurdering={vilkårsvurdering}>
-      {/*<div className={styles.paragraf__heading}>*/}
-      {/*  <Heading size={"medium"} level={"3"}>*/}
-      {/*    {getText("paragrafer.11_4.heading")}*/}
-      {/*  </Heading>*/}
-      {/*  <Vilkarsstatus erOppfylt={vilkårsvurdering.erOppfylt} måVurderesManuelt={vilkårsvurdering.måVurderesManuelt} />*/}
-      {/*</div>*/}
       <div className={styles.seksjon__sub__blokk}>
         <Label>{getText("paragrafer.11_4.vurdering")}</Label>
         <BodyShort className={styles.value}>{getText(vilkårsvurdering.erOppfylt ? "Ja" : "Nei")}</BodyShort>
