@@ -13,20 +13,6 @@ body {
   place-items: center;
 }
 
-main.radio--vertical .radio__group .navds-radio-buttons {
-  display: flex;
-  flex-direction: column;
-}
-
-main.radio--horizontal .radio__group .navds-radio-buttons {
-  display: flex;
-  flex-direction: row;
-}
-
-main.radio--horizontal .radio__group .navds-radio-buttons .navds-radio {
-  margin-left: 1rem;
-}
-
 .margin-top__medium {
   margin-top: 1rem;
 }

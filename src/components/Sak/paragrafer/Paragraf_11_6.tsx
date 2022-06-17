@@ -58,6 +58,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           resetField={resetField}
           rules={{ required: getText(`${tekstNokkel}.bokstav_a.påkrevd`) }}
           errors={errors}
+          horisontal
         >
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>
@@ -72,6 +73,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           errors={errors}
           rules={{ required: getText(`${tekstNokkel}.bokstav_b.påkrevd`) }}
           resetField={resetField}
+          horisontal
         >
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>
@@ -86,6 +88,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           errors={errors}
           rules={{ required: getText(`${tekstNokkel}.bokstav_c.påkrevd`) }}
           resetField={resetField}
+          horisontal
         >
           <Radio value={"true"}>Ja</Radio>
           <Radio value={"false"}>Nei</Radio>

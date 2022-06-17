@@ -47,6 +47,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         errors={errors}
         rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
         resetField={resetField}
+        horisontal
       >
         <Radio value={"ja"}>Ja</Radio>
         <Radio value={"nei"}>Nei</Radio>
