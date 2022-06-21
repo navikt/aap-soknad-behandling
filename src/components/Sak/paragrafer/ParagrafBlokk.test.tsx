@@ -6,8 +6,8 @@ describe("Paragrafblokk", () => {
   test("er åpen når den må vurderes manuelt", () => {
     const vilkaarsvurdering: VilkårsvurderingType = {
       vilkårsvurderingsid: "enId",
-      erOppfylt: false,
-      måVurderesManuelt: true,
+      utfall: "IKKE_VURDERT",
+      autorisajon: "ENDRE",
     };
     render(
       <ParagrafBlokk vilkårsvurdering={vilkaarsvurdering} heading={"Paragrafheading"}>
@@ -22,8 +22,8 @@ describe("Paragrafblokk", () => {
     const paragrafInnhold = "Innhold i paragraf-blokk";
     const vilkaarsvurdering: VilkårsvurderingType = {
       vilkårsvurderingsid: "enId",
-      erOppfylt: true,
-      måVurderesManuelt: false,
+      utfall: "OPPFYLT",
+      autorisajon: "ENDRE",
     };
     render(
       <ParagrafBlokk vilkårsvurdering={vilkaarsvurdering} heading={"Paragrafheading"}>

@@ -11,7 +11,7 @@ export const Oppgavestatus = ({ paragrafer }: OppgavestatusProps): JSX.Element =
   if (!paragrafer) {
     return <></>;
   }
-  if (paragrafer.some((v: VilkårsvurderingType) => v.måVurderesManuelt)) {
+  if (paragrafer.some((v: VilkårsvurderingType) => v.utfall.valueOf() === "IKKE_VURDERT")) {
     return (
       <div className={`${styles.oppgavestatus} ${styles.maa_behandles}`}>
         <HelptextFilled />
@@ -19,7 +19,7 @@ export const Oppgavestatus = ({ paragrafer }: OppgavestatusProps): JSX.Element =
       </div>
     );
   }
-  if (paragrafer.some((v: VilkårsvurderingType) => !v.erOppfylt)) {
+  if (paragrafer.some((v: VilkårsvurderingType) => v.utfall.valueOf() === "IKKE_OPPFYLT")) {
     return (
       <div className={`${styles.oppgavestatus} ${styles.ikke_oppfylt}`}>
         <ErrorFilled />

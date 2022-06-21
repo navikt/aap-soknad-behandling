@@ -1,10 +1,10 @@
 import { ErrorFilled, HelptextFilled, SuccessFilled } from "@navikt/ds-icons";
 
 import * as styles from "./vilkarsstatus.module.css";
+import { UtfallType } from "../../../types/SakType";
 
 type VilkårsstatusProps = {
-  erOppfylt?: boolean;
-  måVurderesManuelt?: boolean;
+  utfall?: UtfallType;
 };
 
 const Oppfylt = (): JSX.Element => (
@@ -28,12 +28,23 @@ const MåVurderesManuelt = (): JSX.Element => (
   </span>
 );
 
-const Vilkarsstatus = ({ erOppfylt, måVurderesManuelt }: VilkårsstatusProps): JSX.Element => (
-  <div className={styles.status}>
-    {måVurderesManuelt && <MåVurderesManuelt />}
-    {!måVurderesManuelt && erOppfylt && <Oppfylt />}
-    {!måVurderesManuelt && !erOppfylt && <IkkeOppfylt />}
-  </div>
+const IkkeRelevant = (): JSX.Element => (
+  <span className={styles.status__manuell}>
+    <HelptextFilled />
+    <span className={styles.status__beskrivelse}>Ikke relevant for denne saken</span>
+  </span>
 );
+
+const Vilkarsstatus = ({ utfall }: VilkårsstatusProps) => {
+  if (!utfall) {
+    return null;
+  }
+  return (<div className={styles.status}>
+    {utfall === "IKKE_VURDERT" && <MåVurderesManuelt />}
+    {utfall === "OPPFYLT" && <Oppfylt />}
+    {utfall === "IKKE_OPPFYLT" && <IkkeOppfylt />}
+    {utfall === "IKKE_RELEVANT" && <IkkeRelevant />}
+  </div>);
+};
 
 export { Vilkarsstatus };

@@ -15,19 +15,34 @@ type ParagrafProps = {
 const tekstNokkel = "paragrafer.11_12";
 
 const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: VilkårsvurderingType }): JSX.Element | null => {
-  if (vilkårsvurdering.måVurderesManuelt) {
+  if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisajon.valueOf() !== "LESE") {
     return null;
   }
+  const utfallstekst = (utfall: string) => {
+    switch (utfall) {
+      case "IKKE_OPPFYLT":
+        return "Nei";
+      case "OPPFYLT":
+        return "Ja";
+      case "IKKE_RELEVANT":
+        return "Ikke relevant";
+      case "IKKE_VURDERT":
+        return "Ikke vurdert enda";
+      default:
+        return utfall;
+    }
+  };
+
   return (
     <>
       <Label>OPPDATERT TEKST HER</Label>
-      <BodyShort>{vilkårsvurdering.erOppfylt ? "Ja" : "Nei"}</BodyShort>
+      <BodyShort>{utfallstekst(vilkårsvurdering.utfall)}</BodyShort>
     </>
   );
 };
 
 const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
-  if (!vilkårsvurdering?.måVurderesManuelt) {
+  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisajon.valueOf() === "LESE") {
     return null;
   }
   const { register, handleSubmit, control, resetField, errors, onSubmit, senderMelding, watch } = useSkjema();

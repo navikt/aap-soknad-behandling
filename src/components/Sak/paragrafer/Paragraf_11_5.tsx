@@ -16,26 +16,33 @@ type ParagrafProps = {
 };
 const tekstNokkel = "paragrafer.11_5";
 const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5Type }): JSX.Element | null => {
-  if (vilkårsvurdering.måVurderesManuelt) {
+  if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisajon.valueOf() !== "LESE") {
     return null;
   }
+
+  const utfallstekst = (verdi: boolean | null) => {
+    if (vilkårsvurdering.utfall === "IKKE_VURDERT") {
+      return "Ikke vurdert enda";
+    }
+    return verdi ? "Ja" : "Nei";
+  };
 
   return (
     <>
       <ParagrafBlokk heading={"Nedsatt arbeidsevne"} vilkårsvurdering={vilkårsvurdering}>
         <Label>{getText(`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt.legend`)}</Label>
-        <BodyShort>{vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt ? "Ja" : "Nei"}</BodyShort>
+        <BodyShort>{utfallstekst(vilkårsvurdering.kravOmNedsattArbeidsevneErOppfylt)}</BodyShort>
       </ParagrafBlokk>
       <ParagrafBlokk heading={"Sykdom, skade eller lyte"} vilkårsvurdering={vilkårsvurdering}>
         <Label>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.legend`)}</Label>
-        <BodyShort>{vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade ? "Ja" : "Nei"}</BodyShort>
+        <BodyShort>{utfallstekst(vilkårsvurdering.nedsettelseSkyldesSykdomEllerSkade)}</BodyShort>
       </ParagrafBlokk>
     </>
   );
 };
 
 const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
-  if (!vilkårsvurdering?.måVurderesManuelt) {
+  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisajon.valueOf() === "LESE") {
     return null;
   }
   const { control, handleSubmit, errors, onSubmit, senderMelding, resetField, watch } = useSkjema();

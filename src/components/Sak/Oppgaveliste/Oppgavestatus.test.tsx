@@ -11,17 +11,18 @@ describe("Oppgavestatus", () => {
   test("'må vurderes' overstyrer 'ikke oppfylt' og 'oppfylt' status", () => {
     const paragrafer: VilkårsvurderingType[] = [
       {
-        måVurderesManuelt: false,
-        erOppfylt: true,
+        utfall: "OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id1",
       },
       {
-        måVurderesManuelt: true,
+        utfall: "IKKE_VURDERT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id2",
       },
       {
-        måVurderesManuelt: false,
-        erOppfylt: false,
+        utfall: "IKKE_OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id3",
       },
     ];
@@ -34,18 +35,18 @@ describe("Oppgavestatus", () => {
   test("'ikke oppfylt' overstyrer 'oppfylt' status", () => {
     const paragrafer: VilkårsvurderingType[] = [
       {
-        måVurderesManuelt: false,
-        erOppfylt: true,
+        utfall: "OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id1",
       },
       {
-        måVurderesManuelt: false,
-        erOppfylt: false,
+        utfall: "IKKE_OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id2",
       },
       {
-        måVurderesManuelt: false,
-        erOppfylt: true,
+        utfall: "OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id3",
       },
     ];
@@ -58,18 +59,18 @@ describe("Oppgavestatus", () => {
   test("viser 'oppfylt' når alle vilkår er oppfylt", () => {
     const paragrafer: VilkårsvurderingType[] = [
       {
-        måVurderesManuelt: false,
-        erOppfylt: true,
+        utfall: "OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id1",
       },
       {
-        måVurderesManuelt: false,
-        erOppfylt: true,
+        utfall: "OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id2",
       },
       {
-        måVurderesManuelt: false,
-        erOppfylt: true,
+        utfall: "OPPFYLT",
+        autorisajon: "LESE",
         vilkårsvurderingsid: "id3",
       },
     ];

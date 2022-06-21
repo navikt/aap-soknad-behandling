@@ -3,10 +3,10 @@ import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 import { Paragraf_11_2Type } from "../../../types/SakType";
 
 import * as styles from "./paragraf.module.css";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
 import { useSkjema } from "../../../hooks/useSkjema";
 import { ParagrafBlokk } from "./ParagrafBlokk";
+import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_2Type | undefined;
@@ -14,14 +14,27 @@ type ParagrafProps = {
 };
 
 const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_2Type }): JSX.Element | null => {
-  if (vilkårsvurdering.måVurderesManuelt) {
+  if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisajon.valueOf() !== "LESE") {
     return null;
   }
-
+  const utfallstekst = (utfall: string) => {
+    switch (utfall) {
+      case "IKKE_OPPFYLT":
+        return "Nei";
+      case "OPPFYLT":
+        return "Ja";
+      case "IKKE_RELEVANT":
+        return "Ikke relevant";
+      case "IKKE_VURDERT":
+        return "Ikke vurdert enda";
+      default:
+        return utfall;
+    }
+  };
   return (
     <>
       <Label>{getText("paragrafer.11_2.legend")}</Label>
-      <BodyShort>{vilkårsvurdering.erOppfylt ? "Ja" : "Nei"}</BodyShort>
+      <BodyShort>{utfallstekst(vilkårsvurdering.utfall)}</BodyShort>
     </>
   );
 };
@@ -34,7 +47,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
     },
   });
 
-  if (!vilkårsvurdering?.måVurderesManuelt) {
+  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisajon.valueOf() === "LESE") {
     return null;
   }
 

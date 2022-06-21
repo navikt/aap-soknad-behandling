@@ -15,11 +15,26 @@ const Paragraf_11_4 = ({ vilkårsvurdering, fødselsdato }: ParagrafProps): JSX.
   if (!vilkårsvurdering) {
     return <div>Fant ikke 11-4</div>;
   }
+  const utfallstekst = (utfall: string) => {
+    switch (utfall) {
+      case "IKKE_OPPFYLT":
+        return "Nei";
+      case "OPPFYLT":
+        return "Ja";
+      case "IKKE_RELEVANT":
+        return "Ikke relevant";
+      case "IKKE_VURDERT":
+        return "Ikke vurdert enda";
+      default:
+        return utfall;
+    }
+  };
+
   return (
     <ParagrafBlokk heading={getText("paragrafer.11_4.heading")} vilkårsvurdering={vilkårsvurdering}>
       <div className={styles.seksjon__sub__blokk}>
         <Label>{getText("paragrafer.11_4.vurdering")}</Label>
-        <BodyShort className={styles.value}>{getText(vilkårsvurdering.erOppfylt ? "Ja" : "Nei")}</BodyShort>
+        <BodyShort className={styles.value}>{utfallstekst(vilkårsvurdering.utfall)}</BodyShort>
       </div>
       <div className={styles.rad}>
         <div className={styles.kolonne}>

@@ -3,11 +3,18 @@ import { z } from "zod";
 import { vedtakSchema } from "./Vedtak";
 import { isValid, parseISO } from "date-fns";
 
+export const autorisasjonEnum = z.enum(["LESE", "ENDRE", "GODKJENNE"]);
+export const utfallEnum = z.enum(["OPPFYLT", "IKKE_OPPFYLT", "IKKE_VURDERT", "IKKE_RELEVANT"]);
+
+export type AutorisajonType = z.infer<typeof autorisasjonEnum>;
+export type UtfallType = z.infer<typeof utfallEnum>;
+
 const vilkårsvurderingSchema = z.object({
   vilkårsvurderingsid: z.string(),
-  erOppfylt: z.boolean().optional(),
-  måVurderesManuelt: z.boolean().optional(),
+  utfall: utfallEnum,
+  autorisajon: autorisasjonEnum,
 });
+
 export type VilkårsvurderingType = z.infer<typeof vilkårsvurderingSchema>;
 
 const paragraf_11_2Schema = vilkårsvurderingSchema.extend({});

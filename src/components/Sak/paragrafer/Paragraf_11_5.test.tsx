@@ -6,8 +6,8 @@ import userEvent from "@testing-library/user-event";
 
 const vilkårsvurdering: Paragraf_11_5Type = {
   vilkårsvurderingsid: "uuid-1-5",
-  erOppfylt: false,
-  måVurderesManuelt: true,
+  utfall: "IKKE_VURDERT",
+  autorisajon: "ENDRE",
   kravOmNedsattArbeidsevneErOppfylt: null,
   nedsettelseSkyldesSykdomEllerSkade: null,
 };
@@ -30,14 +30,14 @@ describe("Paragraf 11-5", () => {
   test("viser oppsummering når vilkåret er vurdert", () => {
     const ferdigVurdertVilkår: Paragraf_11_5Type = {
       vilkårsvurderingsid: "uuid-1-5",
-      erOppfylt: true,
-      måVurderesManuelt: true,
+      utfall: "OPPFYLT",
+      autorisajon: "ENDRE",
       kravOmNedsattArbeidsevneErOppfylt: true,
       nedsettelseSkyldesSykdomEllerSkade: true,
     };
 
     render(<Paragraf_11_5 vilkårsvurdering={ferdigVurdertVilkår} personident={"12345678910"} />);
-    expect(screen.getByText(getText(nedsattArbeidsevneNokkel + ".legend"))).toBeVisible();
-    expect(screen.getByText(getText(skyldesSykdomSkadeNokkel + ".legend"))).toBeVisible();
+    expect(screen.getByRole("heading", { name: /Sykdom, skade eller lyte/ })).toBeVisible();
+    expect(screen.getByRole("heading", { name: /Nedsatt arbeidsevne/ })).toBeVisible();
   });
 });

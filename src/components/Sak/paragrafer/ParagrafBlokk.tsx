@@ -9,7 +9,7 @@ type ParagrafBlokkProps = {
 };
 
 export const ParagrafBlokk = ({ vilkårsvurdering, children, heading }: ParagrafBlokkProps) => {
-  const [visParagraf, toggleVisParagraf] = useState<boolean>(!!vilkårsvurdering.måVurderesManuelt);
+  const [visParagraf, toggleVisParagraf] = useState<boolean>(vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT");
 
   return (
     <Accordion>

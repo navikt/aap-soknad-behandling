@@ -42,10 +42,7 @@ const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
 const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Seksjonsoverskrift tekstnokkel={"paragrafer.11_5.heading"}>
-      <Vilkarsstatus
-        erOppfylt={søker.sak.paragraf_11_5?.erOppfylt}
-        måVurderesManuelt={søker.sak.paragraf_11_5?.måVurderesManuelt}
-      />
+      <Vilkarsstatus utfall={søker.sak.paragraf_11_5?.utfall} />
     </Seksjonsoverskrift>
     <Paragraf_11_5 vilkårsvurdering={søker.sak.paragraf_11_5} personident={søker.personident} />
   </>
@@ -54,10 +51,7 @@ const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
 const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Seksjonsoverskrift tekstnokkel={"paragrafer.11_6.heading"}>
-      <Vilkarsstatus
-        erOppfylt={søker.sak.paragraf_11_6?.erOppfylt}
-        måVurderesManuelt={søker.sak.paragraf_11_6?.måVurderesManuelt}
-      />
+      <Vilkarsstatus utfall={søker.sak.paragraf_11_6?.utfall} />
     </Seksjonsoverskrift>
     <Paragraf_11_6 vilkårsvurdering={søker.sak.paragraf_11_6} personident={søker.personident} />
   </>
@@ -66,10 +60,7 @@ const Bistandsbehov = ({ søker }: { søker: SøkerType }): JSX.Element => (
 const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Seksjonsoverskrift tekstnokkel={"paragrafer.11_12.heading"}>
-      <Vilkarsstatus
-        erOppfylt={søker.sak.paragraf_11_12?.erOppfylt}
-        måVurderesManuelt={søker.sak.paragraf_11_12?.måVurderesManuelt}
-      />
+      <Vilkarsstatus utfall={søker.sak.paragraf_11_12?.utfall} />
     </Seksjonsoverskrift>
     <Paragraf_11_12 vilkårsvurdering={søker.sak.paragraf_11_12} personident={søker.personident} />
   </>
@@ -78,10 +69,7 @@ const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
 const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Seksjonsoverskrift tekstnokkel={"paragrafer.11_29.heading"}>
-      <Vilkarsstatus
-        erOppfylt={søker.sak.paragraf_11_29?.erOppfylt}
-        måVurderesManuelt={søker.sak.paragraf_11_29?.måVurderesManuelt}
-      />
+      <Vilkarsstatus utfall={søker.sak.paragraf_11_29?.utfall} />
     </Seksjonsoverskrift>
     <Paragraf_11_29 vilkårsvurdering={søker.sak.paragraf_11_29} personident={søker.personident} />
   </>
