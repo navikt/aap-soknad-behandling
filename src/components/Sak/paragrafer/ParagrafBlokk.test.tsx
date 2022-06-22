@@ -7,7 +7,7 @@ describe("Paragrafblokk", () => {
     const vilkaarsvurdering: VilkårsvurderingType = {
       vilkårsvurderingsid: "enId",
       utfall: "IKKE_VURDERT",
-      autorisajon: "ENDRE",
+      autorisasjon: "ENDRE",
     };
     render(
       <ParagrafBlokk vilkårsvurdering={vilkaarsvurdering} heading={"Paragrafheading"}>
@@ -23,7 +23,7 @@ describe("Paragrafblokk", () => {
     const vilkaarsvurdering: VilkårsvurderingType = {
       vilkårsvurderingsid: "enId",
       utfall: "OPPFYLT",
-      autorisajon: "ENDRE",
+      autorisasjon: "ENDRE",
     };
     render(
       <ParagrafBlokk vilkårsvurdering={vilkaarsvurdering} heading={"Paragrafheading"}>

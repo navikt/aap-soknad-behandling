@@ -13,7 +13,7 @@ type ParagrafProps = {
 };
 
 const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: VilkårsvurderingType }): JSX.Element | null => {
-  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisajon.valueOf() === "LESE") {
+  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE") {
     return null;
   }
   const utfallstekst = (utfall: string) => {
@@ -40,7 +40,7 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
 };
 
 const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
-  if (vilkårsvurdering?.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering?.autorisajon.valueOf() !== "LESE") {
+  if (vilkårsvurdering?.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering?.autorisasjon.valueOf() !== "LESE") {
     return null;
   }
   const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();

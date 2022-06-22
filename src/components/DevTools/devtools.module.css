@@ -1,0 +1,19 @@
+.devTools > input[type=checkbox] {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+}
+
+.devTools > .toolbox {
+  position: absolute;
+  bottom: 2rem;
+  right: 0;
+  border-width: 2px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-color: hsl(0, 0%, 33%);
+  border-right: transparent;
+  border-style: solid;
+
+  padding: .5rem;
+}
