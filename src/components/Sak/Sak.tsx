@@ -25,17 +25,19 @@ import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
 import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
 import { Seksjonsoverskrift } from "./Seksjonsoverskrift/Seksjonsoverskrift";
 import { useSkipLink } from "../../hooks/useSkipLink";
+import { Inngangsvilkår2 } from "./Inngangsvilkaar/Inngangsvilkaar";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
 
 const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
   return (
-    <>
-      <Seksjonsoverskrift tekstnokkel={"paragrafer.inngangsvilkår.heading"} />
-      <Paragraf_11_2 vilkårsvurdering={søker.sak.paragraf_11_2} personident={søker.personident} />
-      <Paragraf_11_3 vilkårsvurdering={søker.sak.paragraf_11_3} personident={søker.personident} />
-      <Paragraf_11_4 vilkårsvurdering={søker.sak.paragraf_11_4} fødselsdato={søker.fødselsdato} />
-    </>
+    // <>
+    //   <Seksjonsoverskrift tekstnokkel={"paragrafer.inngangsvilkår.heading"} />
+    //   <Paragraf_11_2 vilkårsvurdering={søker.sak.paragraf_11_2} personident={søker.personident} />
+    //   <Paragraf_11_3 vilkårsvurdering={søker.sak.paragraf_11_3} personident={søker.personident} />
+    //   <Paragraf_11_4 vilkårsvurdering={søker.sak.paragraf_11_4} fødselsdato={søker.fødselsdato} />
+    // </>
+    <Inngangsvilkår2 søker={søker}/>
   );
 };
 

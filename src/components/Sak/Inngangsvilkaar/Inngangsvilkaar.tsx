@@ -1,65 +1,35 @@
 import React from "react";
-import { Button, Radio, RadioGroup, TextField } from "@navikt/ds-react";
-import { Controller, SubmitHandler, useForm, UseFormRegister } from "react-hook-form";
-import { Control } from "react-hook-form/dist/types";
+import { Button } from "@navikt/ds-react";
+import { Paragraf_11_2_new } from "../paragrafer/paragrad_11_2/Paragraf_11_2_new";
+import { SøkerType } from "../../../types/SakType";
+import { getText } from "../../../tekster/tekster";
+import { useSkjemaNew } from "../../../hooks/FormHook";
 
-type FormValues = {
+export interface Paragraf_11_2_FormFieldValues {
   erMedlem: string;
   erOppfylt: string;
-  navn: string;
-};
-
-interface PropsMyComponent {
-  register: UseFormRegister<FormValues>;
-  control: Control<FormValues>;
 }
 
-const MyComponent1 = (props: PropsMyComponent) => {
-  const { control } = props;
+interface Props {
+  søker: SøkerType;
+}
+
+export const Inngangsvilkår2 = (props: Props) => {
+  const { søker } = props;
+  const { handleSubmit, control, errors, onSubmit, isLoading } = useSkjemaNew<Paragraf_11_2_FormFieldValues>({
+    defaultValues: {
+      erMedlem: "",
+      erOppfylt: "",
+    },
+  });
 
   return (
-    <Controller
-      name="erMedlem"
-      control={control}
-      defaultValue={""}
-      render={({ field: { onChange, value } }) => (
-        <RadioGroup legend={"Er medlem?"} onChange={onChange} value={value}>
-          <Radio value={"true"}>Ja</Radio>
-          <Radio value={"false"}>Nei</Radio>
-        </RadioGroup>
-      )}
-    />
-  );
-};
+    <form onSubmit={handleSubmit((data) => onSubmit(søker.personident, data))}>
+      <Paragraf_11_2_new control={control} vilkårsvurdering={søker.sak.paragraf_11_2} errors={errors} />
 
-const MyComponent2 = (props: PropsMyComponent) => {
-  const { control } = props;
-
-  return (
-    <Controller
-      name="erOppfylt"
-      control={control}
-      defaultValue={""}
-      render={({ field: { onChange, value } }) => (
-        <RadioGroup legend={"Er oppfylt?"} onChange={onChange} value={value}>
-          <Radio value={"true"}>Ja</Radio>
-          <Radio value={"false"}>Nei</Radio>
-        </RadioGroup>
-      )}
-    />
-  );
-};
-
-export const Inngangsvilkår2 = () => {
-  const { register, handleSubmit, control } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField label={"Navn"} {...register("navn")} />
-      <MyComponent1 register={register} control={control} />
-      <MyComponent2 register={register} control={control} />
-      <Button variant={"primary"}>Fullfør</Button>
+      <Button variant={"primary"} disabled={isLoading} loading={isLoading}>
+        {getText("paragrafer.knapper.fortsett")}
+      </Button>
     </form>
   );
 };
