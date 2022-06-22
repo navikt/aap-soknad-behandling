@@ -15,7 +15,7 @@ type ParagrafProps = {
 const tekstNokkel = "paragrafer.11_6";
 
 const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_6Type }): JSX.Element | null => {
-  if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisajon.valueOf() !== "LESE") {
+  if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisasjon.valueOf() !== "LESE") {
     return null;
   }
   return (
@@ -37,7 +37,7 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_6
 };
 
 const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
-  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisajon.valueOf() === "LESE") {
+  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE") {
     return null;
   }
   const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();

@@ -23,7 +23,7 @@ const settAutorisasjon = (person: SøkerType, paragrafListe: string[]) => {
   paragrafListe.map((paragraf: string) => {
     if (paragraf in person.sak) {
       // @ts-ignore
-      person.sak[paragraf].autorisajon = "ENDRE";
+      person.sak[paragraf].autorisasjon = "ENDRE";
     }
   });
   return person;

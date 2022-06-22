@@ -7,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 const vilkårsvurdering: Paragraf_11_5Type = {
   vilkårsvurderingsid: "uuid-1-5",
   utfall: "IKKE_VURDERT",
-  autorisajon: "ENDRE",
+  autorisasjon: "ENDRE",
   kravOmNedsattArbeidsevneErOppfylt: null,
   nedsettelseSkyldesSykdomEllerSkade: null,
 };
@@ -31,7 +31,7 @@ describe("Paragraf 11-5", () => {
     const ferdigVurdertVilkår: Paragraf_11_5Type = {
       vilkårsvurderingsid: "uuid-1-5",
       utfall: "OPPFYLT",
-      autorisajon: "ENDRE",
+      autorisasjon: "ENDRE",
       kravOmNedsattArbeidsevneErOppfylt: true,
       nedsettelseSkyldesSykdomEllerSkade: true,
     };

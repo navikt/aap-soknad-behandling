@@ -7,7 +7,7 @@ describe("Paragraf 11-2", () => {
     const vilkårsvurdering: Paragraf_11_2Type = {
       vilkårsvurderingsid: "enId",
       utfall: "IKKE_VURDERT",
-      autorisajon: "LESE",
+      autorisasjon: "LESE",
     };
 
     render(<Paragraf_11_2 vilkårsvurdering={vilkårsvurdering} personident={"12345678910"} />);
@@ -21,7 +21,7 @@ describe("Paragraf 11-2", () => {
     const vilkårsvurdering: Paragraf_11_2Type = {
       vilkårsvurderingsid: "enId",
       utfall: "IKKE_VURDERT",
-      autorisajon: "ENDRE",
+      autorisasjon: "ENDRE",
     };
     render(<Paragraf_11_2 vilkårsvurdering={vilkårsvurdering} personident={"12345678910"} />);
     expect(screen.getByText(/Medlemskap i folketrygden \(§ 11-2\)/)).toBeVisible();

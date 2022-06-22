@@ -14,7 +14,7 @@ type ParagrafProps = {
 };
 
 const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_2Type }): JSX.Element | null => {
-  if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisajon.valueOf() !== "LESE") {
+  if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisasjon.valueOf() !== "LESE") {
     return null;
   }
   const utfallstekst = (utfall: string) => {
@@ -47,7 +47,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
     },
   });
 
-  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisajon.valueOf() === "LESE") {
+  if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE") {
     return null;
   }
 

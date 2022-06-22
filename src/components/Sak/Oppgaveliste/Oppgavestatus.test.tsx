@@ -12,17 +12,17 @@ describe("Oppgavestatus", () => {
     const paragrafer: VilkårsvurderingType[] = [
       {
         utfall: "OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id1",
       },
       {
         utfall: "IKKE_VURDERT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id2",
       },
       {
         utfall: "IKKE_OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id3",
       },
     ];
@@ -36,17 +36,17 @@ describe("Oppgavestatus", () => {
     const paragrafer: VilkårsvurderingType[] = [
       {
         utfall: "OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id1",
       },
       {
         utfall: "IKKE_OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id2",
       },
       {
         utfall: "OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id3",
       },
     ];
@@ -60,17 +60,17 @@ describe("Oppgavestatus", () => {
     const paragrafer: VilkårsvurderingType[] = [
       {
         utfall: "OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id1",
       },
       {
         utfall: "OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id2",
       },
       {
         utfall: "OPPFYLT",
-        autorisajon: "LESE",
+        autorisasjon: "LESE",
         vilkårsvurderingsid: "id3",
       },
     ];
