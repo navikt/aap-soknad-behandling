@@ -184,6 +184,10 @@ const texts = {
     oppfylt: "Oppfylt",
     ikkeOppfylt: "Ikke oppfylt",
   },
+  modusmelding: {
+    lese: "Du er i lesemodus",
+    kvalitetssikring: "Du er i kvalitetssikringsmodus",
+  },
 };
 
 export const getText = (key: string): string => {
