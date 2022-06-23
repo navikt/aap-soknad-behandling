@@ -4,8 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { Heading } from "@navikt/ds-react";
 
 import { SøkerType } from "../../types/SakType";
-import { Sammendrag } from "./Sammendrag/Sammendrag";
-import { Oppgaveliste } from "./Oppgaveliste/Oppgaveliste";
+import { Sammendrag } from "./Sammendrag";
+import { Oppgaveliste } from "./Oppgaveliste";
 import { getText } from "../../tekster/tekster";
 import { RenderWhen } from "../RenderWhen";
 
@@ -22,8 +22,8 @@ import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";
 import { Beregningstidspunkt } from "./paragrafer/Beregningstidspunkt";
 import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
-import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
-import { Seksjonsoverskrift } from "./Seksjonsoverskrift/Seksjonsoverskrift";
+import { Beregningsgrunnlag } from "./Beregningsgrunnlag";
+import { Seksjonsoverskrift } from "./Seksjonsoverskrift";
 import { useSkipLink } from "../../hooks/useSkipLink";
 import { Modusmelding } from "./Modusmelding";
 
