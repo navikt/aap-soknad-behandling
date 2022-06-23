@@ -11,10 +11,6 @@ import { RenderWhen } from "../RenderWhen";
 
 import * as styles from "./sak.module.css";
 import { PAGES } from "./pages";
-
-import { Paragraf_11_2 } from "./paragrafer/Paragraf_11_2";
-import { Paragraf_11_3 } from "./paragrafer/Paragraf_11_3";
-import { Paragraf_11_4 } from "./paragrafer/Paragraf_11_4";
 import { Paragraf_11_5 } from "./paragrafer/Paragraf_11_5";
 import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 import { Vedtak } from "./vedtak/Vedtak";
@@ -25,21 +21,9 @@ import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
 import { Beregningsgrunnlag } from "./Beregningsgrunnlag/Beregningsgrunnlag";
 import { Seksjonsoverskrift } from "./Seksjonsoverskrift/Seksjonsoverskrift";
 import { useSkipLink } from "../../hooks/useSkipLink";
-import { Inngangsvilkår2 } from "./Inngangsvilkaar/Inngangsvilkaar";
+import { Inngangsvilkår } from "./Inngangsvilkaar/Inngangsvilkaar";
 
 const DEFAULT_PAGE = PAGES.INNGANG;
-
-const Inngangsvilkår = ({ søker }: { søker: SøkerType }): JSX.Element => {
-  return (
-    // <>
-    //   <Seksjonsoverskrift tekstnokkel={"paragrafer.inngangsvilkår.heading"} />
-    //   <Paragraf_11_2 vilkårsvurdering={søker.sak.paragraf_11_2} personident={søker.personident} />
-    //   <Paragraf_11_3 vilkårsvurdering={søker.sak.paragraf_11_3} personident={søker.personident} />
-    //   <Paragraf_11_4 vilkårsvurdering={søker.sak.paragraf_11_4} fødselsdato={søker.fødselsdato} />
-    // </>
-    <Inngangsvilkår2 søker={søker}/>
-  );
-};
 
 const P11_5 = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>

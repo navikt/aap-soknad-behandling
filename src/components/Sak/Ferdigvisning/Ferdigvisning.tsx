@@ -1,13 +1,13 @@
 import { Paragraf_11_2Type } from "../../../types/SakType";
 import { BodyShort, Label } from "@navikt/ds-react";
-import { getText } from "../../../tekster/tekster";
 
 interface Props {
   vilkårsvurdering: Paragraf_11_2Type;
+  label: string;
 }
 
 export const Ferdigvisning = (props: Props) => {
-  const { vilkårsvurdering } = props;
+  const { vilkårsvurdering, label } = props;
 
   const utfallstekst = (utfall: string) => {
     switch (utfall) {
@@ -26,7 +26,7 @@ export const Ferdigvisning = (props: Props) => {
 
   return (
     <>
-      <Label>{getText("paragrafer.11_2.legend")}</Label>
+      <Label>{label}</Label>
       <BodyShort>{utfallstekst(vilkårsvurdering.utfall)}</BodyShort>
     </>
   );

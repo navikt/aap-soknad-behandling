@@ -1,4 +1,4 @@
-import { Control, Controller, RegisterOptions } from "react-hook-form";
+import { Control, Controller, RegisterOptions, UseFormResetField } from "react-hook-form";
 import { FieldPath, FieldValues, FieldErrors } from "react-hook-form/dist/types";
 
 import { RadioGroup } from "@navikt/ds-react";
@@ -15,8 +15,8 @@ interface RadioProps<FormFieldValues extends FieldValues> {
   control: Control<FormFieldValues>;
   children: ReactElement[];
   legend?: string;
-  rules?: RegisterOptions;
-  resetField?: Function;
+  rules?: RegisterOptions<FormFieldValues>;
+  resetField?: UseFormResetField<FormFieldValues>;
   description?: string;
   horisontal?: Boolean;
 }
