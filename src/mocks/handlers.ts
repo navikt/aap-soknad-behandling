@@ -19,20 +19,27 @@ const nayParagrafer = [
   "paragraf_11_29",
 ];
 
-const settAutorisasjon = (person: SøkerType, paragrafListe: string[]) => {
+const settAutorisasjon = (person: SøkerType, paragrafListe: string[], erGodkjenner: boolean) => {
   paragrafListe.map((paragraf: string) => {
     if (paragraf in person.sak) {
-      // @ts-ignore
-      person.sak[paragraf].autorisasjon = "ENDRE";
+      if (erGodkjenner) {
+        // @ts-ignore
+        person.sak[paragraf].autorisasjon = "GODKJENNE";
+      } else {
+        // @ts-ignore
+        person.sak[paragraf].autorisasjon = "ENDRE";
+      }
     }
   });
   return person;
 };
 
-const settNavAutorisasjon = (person: SøkerType[]) => person.map((p: SøkerType) => settAutorisasjon(p, navParagrafer));
-const settNayAutorisasjon = (person: SøkerType[]) => person.map((p: SøkerType) => settAutorisasjon(p, nayParagrafer));
+const settNavAutorisasjon = (person: SøkerType[], erGodkjenner: boolean) =>
+  person.map((p: SøkerType) => settAutorisasjon(p, navParagrafer, erGodkjenner));
+const settNayAutorisasjon = (person: SøkerType[], erGodkjenner: boolean) =>
+  person.map((p: SøkerType) => settAutorisasjon(p, nayParagrafer, erGodkjenner));
 
-export const handlers = (brukertype: Brukertype | undefined) => {
+export const handlers = (brukertype: Brukertype | undefined, erGodkjenner: boolean | undefined = false) => {
   return [
     rest.get("/aap-behandling/api/sak", (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(listeMedSøkereOgSaker), ctx.delay(400));
@@ -41,10 +48,10 @@ export const handlers = (brukertype: Brukertype | undefined) => {
       const { personid } = req.params;
       let person = listeMedSøkereOgSaker.filter((p) => p.personident === personid);
       if (brukertype === Brukertype.NAV) {
-        person = settNavAutorisasjon(person);
+        person = settNavAutorisasjon(person, erGodkjenner);
       }
       if (brukertype === Brukertype.NAY) {
-        person = settNayAutorisasjon(person);
+        person = settNayAutorisasjon(person, erGodkjenner);
       }
       return res(ctx.status(200), ctx.json(person), ctx.delay(400));
     }),

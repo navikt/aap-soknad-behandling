@@ -12,12 +12,13 @@ import { DevTools } from "./components/DevTools";
 if (process.env.USE_MOCK) {
   const { worker } = require("./mocks/browser");
   const brukertype = localStorage.getItem("brukertype"); //NAV, NAY, Kontaktsenter
+  const erGodkjenner = localStorage.getItem("erGodkjenner");
   if (brukertype === "NAV") {
-    worker.use(...handlers(Brukertype.NAV));
+    worker.use(...handlers(Brukertype.NAV, !!erGodkjenner));
   } else if (brukertype === "NAY") {
-    worker.use(...handlers(Brukertype.NAY));
+    worker.use(...handlers(Brukertype.NAY, !!erGodkjenner));
   } else {
-    worker.use(...handlers(Brukertype.NKS));
+    worker.use(...handlers(Brukertype.NKS, !!erGodkjenner));
   }
   worker.start();
 }
