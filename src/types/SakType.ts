@@ -6,7 +6,7 @@ import { isValid, parseISO } from "date-fns";
 export const autorisasjonEnum = z.enum(["LESE", "ENDRE", "GODKJENNE"]);
 export const utfallEnum = z.enum(["OPPFYLT", "IKKE_OPPFYLT", "IKKE_VURDERT", "IKKE_RELEVANT"]);
 
-export type autorisasjonType = z.infer<typeof autorisasjonEnum>;
+export type Autorisasjontype = z.infer<typeof autorisasjonEnum>;
 export type UtfallType = z.infer<typeof utfallEnum>;
 
 const vilkårsvurderingSchema = z.object({

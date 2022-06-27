@@ -1,26 +1,36 @@
 import { useState } from "react";
 
 import * as styles from "./devtools.module.css";
-import { ToggleGroup } from "@navikt/ds-react";
+import { Switch, ToggleGroup } from "@navikt/ds-react";
 import { Brukertype } from "../../mocks/handlers";
 
 const Tools = ({ show }: { show: boolean }) => {
   const valgtBrukertype = localStorage.getItem("brukertype");
+  const erGodkjenner = localStorage.getItem("erGodkjenner");
+
   if (!show) {
     return null;
   }
-  const change = (value: string) => {
+  const endreBrukertype = (value: string) => {
     localStorage.setItem("brukertype", value);
+    window.location.reload();
+  };
+
+  const settGodkjenner = (value: boolean) => {
+    localStorage.setItem("erGodkjenner", String(value));
     window.location.reload();
   };
 
   return (
     <div className={styles.toolbox}>
-      <ToggleGroup onChange={change} value={valgtBrukertype || "NKS"} label={"Brukertype"}>
+      <ToggleGroup onChange={endreBrukertype} value={valgtBrukertype || "NKS"} label={"Brukertype"}>
         <ToggleGroup.Item value={Brukertype.NAV}>NAV</ToggleGroup.Item>
         <ToggleGroup.Item value={Brukertype.NAY}>NAY</ToggleGroup.Item>
         <ToggleGroup.Item value={Brukertype.NKS}>NKS</ToggleGroup.Item>
       </ToggleGroup>
+      <Switch onChange={(event) => settGodkjenner(event.target.checked)} checked={!!erGodkjenner}>
+        Er godkjenner
+      </Switch>
     </div>
   );
 };

@@ -50,7 +50,9 @@ const Brukermeny = ({ brukerinfo }: { brukerinfo: Brukerinfo | undefined }): JSX
       <Header.UserButton name={brukerinfo.name} as={Dropdown.Toggle} />
       <Dropdown.Menu>
         <Dropdown.Menu.List>
-          <Dropdown.Menu.List.Item>Logg ut</Dropdown.Menu.List.Item>
+          <Dropdown.Menu.List.Item>
+            <Link href={"/oauth2/logout"}>Logg ut</Link>
+          </Dropdown.Menu.List.Item>
         </Dropdown.Menu.List>
       </Dropdown.Menu>
     </Dropdown>
