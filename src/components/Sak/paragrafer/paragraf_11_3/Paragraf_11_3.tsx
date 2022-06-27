@@ -24,13 +24,15 @@ export const Paragraf_11_3 = (props: Props) => {
     return <div>Kunne ikke finne vilkårsvurdering for 11-3</div>;
   }
 
-  const visSkjemaVisnig = vilkårsvurdering?.utfall !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon === "LESE";
-  const visFerdigVisning = vilkårsvurdering?.utfall === "IKKE_VURDERT" && vilkårsvurdering?.autorisasjon !== "LESE";
+  const visSkjema =
+    vilkårsvurdering?.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering?.autorisasjon.valueOf() !== "LESE";
+  const visFerdigVisning =
+    vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE";
 
   return (
     <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_3.heading")}>
       <>
-        {visSkjemaVisnig && (
+        {visSkjema && (
           <NewRadioGroupWrapper
             name={"erOppfylt"}
             tekstNokkel={"paragrafer.11_3"}
