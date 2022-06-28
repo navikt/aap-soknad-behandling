@@ -66,6 +66,15 @@ export const handlers = (brukertype: Brukertype | undefined, erGodkjenner: boole
     rest.post("/aap-behandling/api/sak/:personid/losning", (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
     }),
+    rest.post("/aap-behandling/api/sak/:personident/losning/paragraf_11_29", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/aap-behandling/api/sak/:personident/losning/paragraf_11_5", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/aap-behandling/api/sak/:personident/losning/paragraf_11_6", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
     rest.get("/aap-behandling/api/personopplysninger/:personid", (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(personopplysning), ctx.delay(523));
     }),
