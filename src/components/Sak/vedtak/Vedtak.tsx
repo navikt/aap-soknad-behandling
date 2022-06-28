@@ -2,9 +2,9 @@ import { SakType, SøkerType } from "../../../types/SakType";
 import { BodyShort, Button, Radio } from "@navikt/ds-react";
 import { formaterDato } from "../../../lib/dato";
 import * as styles from "./vedtak.module.css";
-import { useSkjema } from "../../../hooks/useSkjema";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { Seksjonsoverskrift } from "../Seksjonsoverskrift/Seksjonsoverskrift";
+import { useSkjemaDeprecated } from "../../../hooks/useSkjemaDeprecated";
+import { RadioGroupWrapperDeprecated } from "../../RadioGroupWrapper";
+import { Seksjonsoverskrift } from "../Seksjonsoverskrift";
 import { getText } from "../../../tekster/tekster";
 import { Løsning } from "../../../types/Losning";
 
@@ -20,10 +20,10 @@ const Skjemavisning = ({ sak, personident }: SkjemaProps): JSX.Element | null =>
 
   const løsning = (datas: any): Løsning => ({ vedtak: { innstilling: datas.resultat } });
 
-  const { control, handleSubmit, errors, onSubmit, senderMelding, resetField } = useSkjema();
+  const { control, handleSubmit, errors, onSubmit, senderMelding, resetField } = useSkjemaDeprecated();
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
-      <RadioGroupWrapper
+      <RadioGroupWrapperDeprecated
         feltNokkel={"resultat"}
         tekstNokkel={"resultat"}
         errors={errors}
@@ -33,7 +33,7 @@ const Skjemavisning = ({ sak, personident }: SkjemaProps): JSX.Element | null =>
         <Radio value={"godkjent"}>Innvilget AAP</Radio>
         <Radio value={"avslaat"}>Avslått AAP</Radio>
         <Radio value={"trukket"}>Søknaden er trukket av søkeren</Radio>
-      </RadioGroupWrapper>
+      </RadioGroupWrapperDeprecated>
       <div className={styles.fortsettKnapp}>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fullfør")}

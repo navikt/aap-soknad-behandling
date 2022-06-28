@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { sendLøsning } from "../components/Sak/paragrafer/SendLosning";
 import { useState } from "react";
 
-export const useSkjema = () => {
+export const useSkjemaDeprecated = () => {
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   const {
     handleSubmit,

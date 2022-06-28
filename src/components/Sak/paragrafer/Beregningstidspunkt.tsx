@@ -19,8 +19,8 @@ import { Calender } from "@navikt/ds-icons";
 
 import * as styles from "./paragraf.module.css";
 import { RenderWhen } from "../../RenderWhen";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { useSkjema } from "../../../hooks/useSkjema";
+import { RadioGroupWrapperDeprecated } from "../../RadioGroupWrapper";
+import { useSkjemaDeprecated } from "../../../hooks/useSkjemaDeprecated";
 
 type BeregningsdatoProps = {
   personident: string;
@@ -29,7 +29,7 @@ type BeregningsdatoProps = {
 const Beregningstidspunkt = ({ personident }: BeregningsdatoProps): JSX.Element => {
   const [senderMelding, oppdaterSenderMelding] = useState<boolean>(false);
   const [visKalender, settVisKalender] = useState<boolean>(false);
-  const { control, errors, register, handleSubmit, resetField, watch } = useSkjema();
+  const { control, errors, register, handleSubmit, resetField, watch } = useSkjemaDeprecated();
   const onSubmit = async () => {
     oppdaterSenderMelding(true);
     const res = await sendLøsning(personident, {
@@ -75,7 +75,7 @@ const Beregningstidspunkt = ({ personident }: BeregningsdatoProps): JSX.Element 
           </RenderWhen>
         </div>
         <div className={styles.seksjon}>
-          <RadioGroupWrapper
+          <RadioGroupWrapperDeprecated
             feltNokkel={"grunnForDato"}
             tekstNokkel={"beregningstidspunkt.grunnForDato"}
             errors={errors}
@@ -96,7 +96,7 @@ const Beregningstidspunkt = ({ personident }: BeregningsdatoProps): JSX.Element 
                 />
               </div>
             </RenderWhen>
-          </RadioGroupWrapper>
+          </RadioGroupWrapperDeprecated>
           <div className={styles.fortsettKnapp}>
             <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
               {getText("beregningstidspunkt.knapp")}
