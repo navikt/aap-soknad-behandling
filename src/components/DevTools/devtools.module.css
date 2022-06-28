@@ -1,19 +1,32 @@
-.devTools > input[type=checkbox] {
-  position: absolute;
-  bottom: 1px;
+.devTools {
+  position: fixed;
+  bottom: 10vh;
   right: 1px;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
 
-.devTools > .toolbox {
-  position: absolute;
-  bottom: 2rem;
-  right: 0;
+.toolbox {
+  overflow: hidden;
+  min-width: 250px;
+  background-color: hsl(0, 100%, 100%);
+  padding: 0.5rem;
   border-width: 2px;
-  border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   border-color: hsl(0, 0%, 33%);
   border-right: transparent;
   border-style: solid;
+}
 
-  padding: .5rem;
+.toolbox.hidden {
+  margin-right: -250px;
+  transition: margin-right 500ms ease-in;
+}
+
+.toolbox.visible {
+  margin-right: 0;
+  transition: margin-right 500ms ease-out;
 }
