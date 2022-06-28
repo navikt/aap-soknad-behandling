@@ -1,11 +1,19 @@
 import { Paragraf_11_29Type, VilkårsvurderingType } from "../../../types/SakType";
 import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
-import { useSkjema } from "../../../hooks/useSkjema";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 
 import * as styles from "./paragraf.module.css";
+import { useSkjema } from "../../../hooks/SkjemaHook";
+import { RadioGroupWrapper } from "../../RadioGroupWrapper/RadioGroupWrapper";
+
+interface paragraf_11_29FormFieldValues {
+  erOppfylt: string;
+}
+
+interface paragraf_11_29FormData {
+  erOppfylt: boolean;
+}
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_29Type | undefined;
@@ -43,17 +51,24 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (vilkårsvurdering?.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering?.autorisasjon.valueOf() !== "LESE") {
     return null;
   }
-  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
-  const løsning = (datas: any) => ({
-    løsning_11_29_manuell: {
-      erOppfylt: datas.erOppfylt === "true",
-    },
+
+  const { control, resetField, errors, onSubmit, handleSubmit, isLoading } = useSkjema<
+    paragraf_11_29FormFieldValues,
+    paragraf_11_29FormData
+  >({
+    erOppfylt: "",
   });
 
   return (
-    <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
+    <form
+      onSubmit={handleSubmit((data) =>
+        onSubmit(`/aap-behandling/api/sak/${personident}/losning/paragraf_11_29`, {
+          erOppfylt: data.erOppfylt === "true",
+        })
+      )}
+    >
       <RadioGroupWrapper
-        feltNokkel={"erOppfylt"}
+        name="erOppfylt"
         control={control}
         tekstNokkel={"paragrafer.11_29"}
         errors={errors}
@@ -65,7 +80,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         <Radio value={"false"}>Nei</Radio>
       </RadioGroupWrapper>
       <div className={styles.fortsettKnapp}>
-        <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+        <Button variant={"primary"} disabled={isLoading} loading={isLoading}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>
       </div>

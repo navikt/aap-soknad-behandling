@@ -1,11 +1,11 @@
-import { Paragraf_11_6Type } from "../../../types/SakType";
+import { Paragraf_11_6Type } from "../../../../types/SakType";
 import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { getText } from "../../../tekster/tekster";
-import { useSkjema } from "../../../hooks/useSkjema";
-import { ParagrafBlokk } from "./ParagrafBlokk";
+import { getText } from "../../../../tekster/tekster";
+import { ParagrafBlokk } from "../ParagrafBlokk";
 
-import * as styles from "./paragraf.module.css";
+import * as styles from "../paragraf.module.css";
+import { useSkjema } from "../../../../hooks/SkjemaHook";
+import { RadioGroupWrapper } from "../../../RadioGroupWrapper/RadioGroupWrapper";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_6Type | undefined;
@@ -36,25 +36,47 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_6
   );
 };
 
+interface Paragraf_11_6FormFields {
+  harBehovForBehandling: string;
+  harBehovForTiltak: string;
+  harMulighetForÅKommeIArbeid: string;
+}
+
+interface Paragraf_11_6FormData {
+  harBehovForBehandling: boolean | null;
+  harBehovForTiltak: boolean | null;
+  harMulighetForÅKommeIArbeid: boolean | null;
+}
+
 const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
   if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE") {
     return null;
   }
-  const { handleSubmit, control, resetField, errors, onSubmit, senderMelding } = useSkjema();
-  const løsning = (datas: any) => ({
-    løsning_11_6_manuell: {
-      harBehovForBehandling: datas.harBehovForBehandling, // bokstav a
-      harBehovForTiltak: datas.harBehovForTiltak, // bokstav b
-      harMulighetForÅKommeIArbeid: datas.harMulighetForÅKommeIArbeid, // bokstav c
-    },
+
+  const { control, errors, handleSubmit, resetField, onSubmit, isLoading } = useSkjema<
+    Paragraf_11_6FormFields,
+    Paragraf_11_6FormData
+  >({
+    harBehovForBehandling: "",
+    harBehovForTiltak: "",
+    harMulighetForÅKommeIArbeid: "",
   });
+
   return (
-    <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
+    <form
+      onSubmit={handleSubmit((data) =>
+        onSubmit(`/aap-behandling/api/sak/${personident}/losning/paragraf_11_6`, {
+          harMulighetForÅKommeIArbeid: data.harMulighetForÅKommeIArbeid === "true",
+          harBehovForTiltak: data.harBehovForTiltak === "true",
+          harBehovForBehandling: data.harBehovForBehandling === "true",
+        })
+      )}
+    >
       <ParagrafBlokk heading={getText(`${tekstNokkel}.bokstav_a.heading`)} vilkårsvurdering={vilkårsvurdering}>
         <RadioGroupWrapper
           tekstNokkel={`${tekstNokkel}.bokstav_a`}
+          name={"harBehovForBehandling"}
           control={control}
-          feltNokkel={"harBehovForBehandling"}
           resetField={resetField}
           rules={{ required: getText(`${tekstNokkel}.bokstav_a.påkrevd`) }}
           errors={errors}
@@ -67,7 +89,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
       <ParagrafBlokk heading={getText(`${tekstNokkel}.bokstav_b.heading`)} vilkårsvurdering={vilkårsvurdering}>
         <RadioGroupWrapper
           tekstNokkel={`${tekstNokkel}.bokstav_b`}
-          feltNokkel={"harBehovForTiltak"}
+          name={"harBehovForTiltak"}
           control={control}
           legend={getText(`${tekstNokkel}.bokstav_b.legend`)}
           errors={errors}
@@ -82,7 +104,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
       <ParagrafBlokk heading={getText(`${tekstNokkel}.bokstav_c.heading`)} vilkårsvurdering={vilkårsvurdering}>
         <RadioGroupWrapper
           tekstNokkel={`${tekstNokkel}.bokstav_c`}
-          feltNokkel={"harMulighetForÅKommeIArbeid"}
+          name={"harMulighetForÅKommeIArbeid"}
           control={control}
           legend={getText(`${tekstNokkel}.bokstav_c.legend`)}
           errors={errors}
@@ -95,7 +117,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         </RadioGroupWrapper>
       </ParagrafBlokk>
       <div className={styles.fortsettKnapp}>
-        <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+        <Button variant={"primary"} disabled={isLoading} loading={isLoading}>
           {getText("paragrafer.knapper.fortsett")}
         </Button>
       </div>

@@ -1,10 +1,10 @@
 import { BodyShort, Label } from "@navikt/ds-react";
-import { Paragraf_11_4Type } from "../../../types/SakType";
-import { finnAlder, formaterDato } from "../../../lib/dato";
+import { Paragraf_11_4Type } from "../../../../types/SakType";
+import { finnAlder, formaterDato } from "../../../../lib/dato";
 
-import * as styles from "./paragraf.module.css";
-import { getText } from "../../../tekster/tekster";
-import { ParagrafBlokk } from "./ParagrafBlokk";
+import * as styles from "../paragraf.module.css";
+import { getText } from "../../../../tekster/tekster";
+import { ParagrafBlokk } from "../ParagrafBlokk";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_4Type | undefined;

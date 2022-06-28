@@ -1,4 +1,4 @@
-import { Paragraf_11_5 } from "./Paragraf_11_5";
+import { Paragraf_11_5 } from "./paragraf_11_5/Paragraf_11_5";
 import { render, screen, waitFor } from "@testing-library/react";
 import { Paragraf_11_5Type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";

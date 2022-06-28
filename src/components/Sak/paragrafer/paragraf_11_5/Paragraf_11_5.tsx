@@ -1,14 +1,13 @@
 import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 
-import { Paragraf_11_5Type } from "../../../types/SakType";
-import { getText } from "../../../tekster/tekster";
-import { useSkjema } from "../../../hooks/useSkjema";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
-import { Løsning } from "../../../types/Losning";
-import { ParagrafBlokk } from "./ParagrafBlokk";
-import { RenderWhen } from "../../RenderWhen";
+import { Paragraf_11_5Type } from "../../../../types/SakType";
+import { getText } from "../../../../tekster/tekster";
+import { ParagrafBlokk } from "../ParagrafBlokk";
+import { RenderWhen } from "../../../RenderWhen";
 
-import * as styles from "./paragraf.module.css";
+import * as styles from "../paragraf.module.css";
+import { useSkjema } from "../../../../hooks/SkjemaHook";
+import { RadioGroupWrapper } from "../../../RadioGroupWrapper/RadioGroupWrapper";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_5Type | undefined;
@@ -41,23 +40,42 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5
   );
 };
 
-const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
+interface Paragraf_11_5FormFieldValues {
+  kravOmNedsattArbeidsevneErOppfylt: string;
+  nedsettelseSkyldesSykdomEllerSkade: string;
+  arbeidsevneNedsattMedMinstHalvparten?: string;
+}
+
+interface Paragraf_11_5FormData {
+  kravOmNedsattArbeidsevneErOppfylt: boolean;
+  nedsettelseSkyldesSykdomEllerSkade: boolean;
+}
+
+const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps) => {
   if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE") {
     return null;
   }
-  const { control, handleSubmit, errors, onSubmit, senderMelding, resetField, watch } = useSkjema();
-  const løsning = (datas: any): Løsning => ({
-    løsning_11_5_manuell: {
-      kravOmNedsattArbeidsevneErOppfylt: datas.kravOmNedsattArbeidsevneErOppfylt,
-      nedsettelseSkyldesSykdomEllerSkade: datas.nedsettelseSkyldesSykdomEllerSkade,
-    },
+  const { control, handleSubmit, errors, onSubmit, isLoading, resetField, watch } = useSkjema<
+    Paragraf_11_5FormFieldValues,
+    Paragraf_11_5FormData
+  >({
+    arbeidsevneNedsattMedMinstHalvparten: "",
+    kravOmNedsattArbeidsevneErOppfylt: "",
+    nedsettelseSkyldesSykdomEllerSkade: "",
   });
 
   return (
-    <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
+    <form
+      onSubmit={handleSubmit((data) =>
+        onSubmit(`/aap-behandling/api/sak/${personident}/losning/paragraf_11_5`, {
+          kravOmNedsattArbeidsevneErOppfylt: data.kravOmNedsattArbeidsevneErOppfylt === "true",
+          nedsettelseSkyldesSykdomEllerSkade: data.nedsettelseSkyldesSykdomEllerSkade === "true",
+        })
+      )}
+    >
       <ParagrafBlokk heading={"Nedsatt arbeidsevne"} vilkårsvurdering={vilkårsvurdering}>
         <RadioGroupWrapper
-          feltNokkel={"kravOmNedsattArbeidsevneErOppfylt"}
+          name={"kravOmNedsattArbeidsevneErOppfylt"}
           control={control}
           tekstNokkel={`${tekstNokkel}.kravOmNedsattArbeidsevneErOppfylt`}
           errors={errors}
@@ -71,7 +89,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         <RenderWhen when={watch("kravOmNedsattArbeidsevneErOppfylt") === "true"}>
           <div className={styles.innrykk}>
             <RadioGroupWrapper
-              feltNokkel={"arbeidsevneNedsattMedMinstHalvparten"}
+              name={"arbeidsevneNedsattMedMinstHalvparten"}
               tekstNokkel={`${tekstNokkel}.arbeidsevneNedsattMedMinstHalvparten`}
               errors={errors}
               control={control}
@@ -87,7 +105,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
       </ParagrafBlokk>
       <ParagrafBlokk heading={"Sykdom, skade eller lyte"} vilkårsvurdering={vilkårsvurdering}>
         <RadioGroupWrapper
-          feltNokkel={"nedsettelseSkyldesSykdomEllerSkade"}
+          name={"nedsettelseSkyldesSykdomEllerSkade"}
           control={control}
           tekstNokkel={`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade`}
           errors={errors}
@@ -99,7 +117,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           <Radio value={"false"}>{getText(`${tekstNokkel}.nedsettelseSkyldesSykdomEllerSkade.nei`)}</Radio>
         </RadioGroupWrapper>
         <div className={styles.fortsettKnapp}>
-          <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
+          <Button variant={"primary"} disabled={isLoading} loading={isLoading}>
             {getText("paragrafer.knapper.fullfør")}
           </Button>
         </div>

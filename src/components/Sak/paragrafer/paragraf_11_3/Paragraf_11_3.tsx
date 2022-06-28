@@ -3,18 +3,18 @@ import { Paragraf_11_2Type } from "../../../../types/SakType";
 import { ParagrafBlokk } from "../ParagrafBlokk";
 import { Radio } from "@navikt/ds-react";
 import { getText } from "../../../../tekster/tekster";
-import { NewRadioGroupWrapper } from "../../../RadioGroupWrapper/NewRadioGroupWrapper";
+import { RadioGroupWrapper } from "../../../RadioGroupWrapper/RadioGroupWrapper";
 
 import { Control, UseFormResetField } from "react-hook-form";
 import { FieldErrors } from "react-hook-form/dist/types";
-import { InngangsvilkårFormFieldValues } from "../../Inngangsvilkaar/Inngangsvilkaar";
+import { InngangsvilkårFormFields } from "../../Inngangsvilkaar/Inngangsvilkaar";
 import { Ferdigvisning } from "../../Ferdigvisning/Ferdigvisning";
 
 type Props = {
   vilkårsvurdering?: Paragraf_11_2Type;
-  control: Control<InngangsvilkårFormFieldValues>;
-  errors: FieldErrors<InngangsvilkårFormFieldValues>;
-  resetField: UseFormResetField<InngangsvilkårFormFieldValues>;
+  control: Control<InngangsvilkårFormFields>;
+  errors: FieldErrors<InngangsvilkårFormFields>;
+  resetField: UseFormResetField<InngangsvilkårFormFields>;
 };
 
 export const Paragraf_11_3 = (props: Props) => {
@@ -33,7 +33,7 @@ export const Paragraf_11_3 = (props: Props) => {
     <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_3.heading")}>
       <>
         {visSkjema && (
-          <NewRadioGroupWrapper
+          <RadioGroupWrapper
             name={"erOppfylt"}
             tekstNokkel={"paragrafer.11_3"}
             errors={errors}
@@ -43,7 +43,7 @@ export const Paragraf_11_3 = (props: Props) => {
           >
             <Radio value={"true"}>Ja</Radio>
             <Radio value={"false"}>Nei</Radio>
-          </NewRadioGroupWrapper>
+          </RadioGroupWrapper>
         )}
       </>
 
