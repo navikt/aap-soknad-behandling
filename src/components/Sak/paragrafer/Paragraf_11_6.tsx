@@ -1,11 +1,11 @@
-import { Paragraf_11_6Type } from "../../../../types/SakType";
+import { Paragraf_11_6Type } from "../../../types/SakType";
 import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
-import { getText } from "../../../../tekster/tekster";
-import { ParagrafBlokk } from "../ParagrafBlokk";
+import { getText } from "../../../tekster/tekster";
+import { ParagrafBlokk } from "./ParagrafBlokk";
 
-import * as styles from "../paragraf.module.css";
-import { useSkjema } from "../../../../hooks/SkjemaHook";
-import { RadioGroupWrapper } from "../../../RadioGroupWrapper/RadioGroupWrapper";
+import * as styles from "./paragraf.module.css";
+import { useSkjema } from "../../../hooks/SkjemaHook";
+import { RadioGroupWrapper } from "../../RadioGroupWrapper/RadioGroupWrapper";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_6Type | undefined;

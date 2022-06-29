@@ -11,8 +11,8 @@ import { RenderWhen } from "../RenderWhen";
 
 import * as styles from "./sak.module.css";
 import { PAGES } from "./pages";
-import { Paragraf_11_5 } from "./paragrafer/paragraf_11_5/Paragraf_11_5";
-import { Paragraf_11_6 } from "./paragrafer/paragraf_11_6/Paragraf_11_6";
+import { Paragraf_11_5 } from "./paragrafer/Paragraf_11_5";
+import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 import { Vedtak } from "./vedtak/Vedtak";
 import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";

@@ -1,14 +1,14 @@
 import React from "react";
-import { Paragraf_11_2Type } from "../../../../types/SakType";
-import { ParagrafBlokk } from "../ParagrafBlokk";
+import { Paragraf_11_2Type } from "../../../types/SakType";
+import { ParagrafBlokk } from "./ParagrafBlokk";
 import { Radio } from "@navikt/ds-react";
-import { getText } from "../../../../tekster/tekster";
-import { RadioGroupWrapper } from "../../../RadioGroupWrapper/RadioGroupWrapper";
+import { getText } from "../../../tekster/tekster";
+import { RadioGroupWrapper } from "../../RadioGroupWrapper/RadioGroupWrapper";
 
 import { Control, UseFormResetField } from "react-hook-form";
 import { FieldErrors } from "react-hook-form/dist/types";
-import { InngangsvilkårFormFields } from "../../Inngangsvilkaar/Inngangsvilkaar";
-import { Ferdigvisning } from "../../Ferdigvisning/Ferdigvisning";
+import { InngangsvilkårFormFields } from "../Inngangsvilkaar/Inngangsvilkaar";
+import { Ferdigvisning } from "../Ferdigvisning/Ferdigvisning";
 
 type Props = {
   vilkårsvurdering?: Paragraf_11_2Type;
@@ -17,11 +17,11 @@ type Props = {
   resetField: UseFormResetField<InngangsvilkårFormFields>;
 };
 
-export const Paragraf_11_3 = (props: Props) => {
+export const Paragraf_11_2 = (props: Props) => {
   const { vilkårsvurdering, control, errors, resetField } = props;
 
   if (!vilkårsvurdering) {
-    return <div>Kunne ikke finne vilkårsvurdering for 11-3</div>;
+    return <div>Kunne ikke finne vilkårsvurdering for 11-2</div>;
   }
 
   const visSkjema =
@@ -30,12 +30,12 @@ export const Paragraf_11_3 = (props: Props) => {
     vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE";
 
   return (
-    <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_3.heading")}>
+    <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_2.heading")}>
       <>
         {visSkjema && (
           <RadioGroupWrapper
-            name={"erOppfylt"}
-            tekstNokkel={"paragrafer.11_3"}
+            name={"erMedlem"}
+            tekstNokkel={"paragrafer.11_2"}
             errors={errors}
             control={control}
             rules={{ required: getText("paragrafer.inngangsvilkår.påkrevd") }}
@@ -46,10 +46,9 @@ export const Paragraf_11_3 = (props: Props) => {
           </RadioGroupWrapper>
         )}
       </>
-
       <>
         {visFerdigVisning && (
-          <Ferdigvisning vilkårsvurdering={vilkårsvurdering} label={getText("paragrafer.11_3.legend")} />
+          <Ferdigvisning vilkårsvurdering={vilkårsvurdering} label={getText("paragrafer.11_2.legend")} />
         )}
       </>
     </ParagrafBlokk>
