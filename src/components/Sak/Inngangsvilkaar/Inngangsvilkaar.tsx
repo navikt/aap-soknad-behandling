@@ -10,7 +10,6 @@ import * as styles from "../paragrafer/paragraf.module.css";
 import { Paragraf_11_4 } from "../paragrafer/Paragraf_11_4";
 import { LøsningInngansvilkår } from "../../../types/Losning";
 import { Modusmelding } from "../Modusmelding";
-import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
 import { Seksjonsoverskrift } from "../Seksjonsoverskrift";
 
 export interface InngangsvilkårFormFields {
