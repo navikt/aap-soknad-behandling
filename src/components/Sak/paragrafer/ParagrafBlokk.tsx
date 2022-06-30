@@ -1,10 +1,10 @@
-import { VilkårsvurderingType } from "../../../types/SakType";
+import { VilkårsvurderingType, VilkårsvurderingUtenAutorisasjonType } from "../../../types/SakType";
 import { useState } from "react";
 import { Accordion, Heading } from "@navikt/ds-react";
 
 type ParagrafBlokkProps = {
   children: JSX.Element | JSX.Element[];
-  vilkårsvurdering: VilkårsvurderingType;
+  vilkårsvurdering: VilkårsvurderingType | VilkårsvurderingUtenAutorisasjonType;
   heading: string;
 };
 

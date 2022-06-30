@@ -1,29 +1,29 @@
-import { Control, Controller, FieldErrors } from "react-hook-form";
+import { Control, Controller, RegisterOptions, UseFormResetField } from "react-hook-form";
+import { FieldPath, FieldValues, FieldErrors } from "react-hook-form/dist/types";
 
 import { RadioGroup } from "@navikt/ds-react";
 import { getText } from "../../tekster/tekster";
-import { ReactElement, ReactNode } from "react";
-import { Markdown } from "../Markdown/Markdown";
+import { ReactElement } from "react";
 import { NullstillKnapp } from "../NullstillKnapp/NullstillKnapp";
 
 import * as styles from "./radio.module.css";
 
-interface RadioProps {
-  feltNokkel: string;
+interface RadioProps<FormFieldValues extends FieldValues> {
+  name: FieldPath<FormFieldValues>;
   tekstNokkel: string;
-  errors: FieldErrors;
-  control: Control;
+  errors: FieldErrors<FormFieldValues>;
+  control: Control<FormFieldValues>;
   children: ReactElement[];
   legend?: string;
-  rules?: object;
-  resetField?: Function;
-  description?: ReactNode;
+  rules?: RegisterOptions<FormFieldValues>;
+  resetField?: UseFormResetField<FormFieldValues>;
+  description?: string;
   horisontal?: Boolean;
 }
 
-export const RadioGroupWrapper = ({
+export const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
   children,
-  feltNokkel,
+  name,
   tekstNokkel,
   control,
   errors,
@@ -31,47 +31,29 @@ export const RadioGroupWrapper = ({
   resetField,
   description,
   horisontal = false,
-}: RadioProps) => {
-  const getDescription = () => {
-    if (description) {
-      return description;
-    }
-    const markdownNokkel = `${tekstNokkel}.description.md`;
-    const markdownTekst = getText(markdownNokkel);
-    if (markdownTekst !== markdownNokkel) {
-      return <Markdown tekst={markdownTekst} />;
-    }
-    const descNokkel = `${tekstNokkel}.description`;
-    const descTekst = getText(descNokkel);
-    if (descNokkel !== descTekst) {
-      return descTekst;
-    }
-    return null;
-  };
-
+}: RadioProps<FormFieldValues>) => {
   return (
     <div className={styles.radiogroup}>
       <Controller
-        name={feltNokkel}
+        name={name}
         control={control}
-        defaultValue={null}
         rules={rules}
         render={({ field: { onChange, value } }) => (
           <RadioGroup
-            id={feltNokkel}
+            id={name}
             value={value}
-            name={feltNokkel}
+            name={name}
             legend={getText(`${tekstNokkel}.legend`) || getText(tekstNokkel)}
-            error={errors && errors[feltNokkel]?.message}
+            error={errors && errors[name]?.message}
             onChange={onChange}
-            description={getDescription()}
+            description={description}
             className={horisontal ? styles.horizontal : ""}
           >
             {children}
           </RadioGroup>
         )}
       />
-      {resetField && <NullstillKnapp onClick={() => resetField(feltNokkel)} />}
+      {resetField && <NullstillKnapp onClick={() => resetField(name)} />}
     </div>
   );
 };

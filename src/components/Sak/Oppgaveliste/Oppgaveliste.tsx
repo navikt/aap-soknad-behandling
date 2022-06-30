@@ -14,9 +14,9 @@ type OppgavelisteProps = {
 
 const Oppgaveliste = ({ søker, activePage, skipLinkId }: OppgavelisteProps): JSX.Element => {
   const inngangsparagrafer = [];
-  søker.sak.paragraf_11_2 && inngangsparagrafer.push(søker.sak.paragraf_11_2);
-  søker.sak.paragraf_11_3 && inngangsparagrafer.push(søker.sak.paragraf_11_3);
-  søker.sak.paragraf_11_4 && inngangsparagrafer.push(søker.sak.paragraf_11_4);
+  søker.sak.inngangsvilkår?.paragraf_11_2 && inngangsparagrafer.push(søker.sak.inngangsvilkår.paragraf_11_2);
+  søker.sak.inngangsvilkår?.paragraf_11_3 && inngangsparagrafer.push(søker.sak.inngangsvilkår.paragraf_11_3);
+  søker.sak.inngangsvilkår?.paragraf_11_4 && inngangsparagrafer.push(søker.sak.inngangsvilkår.paragraf_11_4);
 
   return (
     <nav className={styles.oppgaveliste} id={skipLinkId}>

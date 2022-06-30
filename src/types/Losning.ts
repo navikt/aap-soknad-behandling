@@ -10,16 +10,22 @@ export interface Løsning {
   vedtak?: LøsningVedtak;
 }
 
-export interface LøsningParagraf_11_2 {
+interface LøsningParagraf_11_2 {
   erMedlem: boolean;
 }
 
-export interface LøsningParagraf_11_3 {
+interface LøsningParagraf_11_3 {
   erOppfylt: boolean;
 }
 
-export interface LøsningParagraf_11_4_ledd2_ledd3 {
-  erOppfylt: boolean;
+interface LøsningParagraf_11_4_ledd2_ledd3 {
+  erOppfylt: boolean | null;
+}
+
+export interface LøsningInngansvilkår {
+  løsning_11_2: LøsningParagraf_11_2;
+  løsning_11_3: LøsningParagraf_11_3;
+  løsning_11_4: LøsningParagraf_11_4_ledd2_ledd3;
 }
 
 export interface LøsningParagraf_11_5 {

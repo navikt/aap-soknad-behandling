@@ -1,17 +1,17 @@
-import { VilkårsvurderingType } from "../../../types/SakType";
+import { VilkårsvurderingUtenAutorisasjonType } from "../../../types/SakType";
 import { ErrorFilled, HelptextFilled, SuccessFilled } from "@navikt/ds-icons";
 
 import * as styles from "./oppgavestatus.module.css";
 import { getText } from "../../../tekster/tekster";
 
 type OppgavestatusProps = {
-  paragrafer: VilkårsvurderingType[] | undefined;
+  paragrafer?: VilkårsvurderingUtenAutorisasjonType[];
 };
 export const Oppgavestatus = ({ paragrafer }: OppgavestatusProps): JSX.Element => {
   if (!paragrafer) {
     return <></>;
   }
-  if (paragrafer.some((v: VilkårsvurderingType) => v.utfall.valueOf() === "IKKE_VURDERT")) {
+  if (paragrafer.some((v) => v.utfall.valueOf() === "IKKE_VURDERT")) {
     return (
       <div className={`${styles.oppgavestatus} ${styles.maa_behandles}`}>
         <HelptextFilled />
@@ -19,7 +19,7 @@ export const Oppgavestatus = ({ paragrafer }: OppgavestatusProps): JSX.Element =
       </div>
     );
   }
-  if (paragrafer.some((v: VilkårsvurderingType) => v.utfall.valueOf() === "IKKE_OPPFYLT")) {
+  if (paragrafer.some((v) => v.utfall.valueOf() === "IKKE_OPPFYLT")) {
     return (
       <div className={`${styles.oppgavestatus} ${styles.ikke_oppfylt}`}>
         <ErrorFilled />
