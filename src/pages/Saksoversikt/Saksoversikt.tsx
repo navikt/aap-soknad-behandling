@@ -32,13 +32,10 @@ const Sakstags = ({ sak }: { sak: SakType }): JSX.Element => {
     );
   }
 
-  if (sak.paragraf_11_2 || sak.paragraf_11_3 || sak.paragraf_11_4) {
-    let p11_2_ikke_oppfylt =
-      (sak.paragraf_11_2?.utfall.valueOf() === "IKKE_OPPFYLT") ?? undefined;
-    let p11_3_ikke_oppfylt =
-      (sak.paragraf_11_3?.utfall.valueOf() === "IKKE_OPPFYLT") ?? undefined;
-    let p11_4_ikke_oppfylt =
-      (sak.paragraf_11_4?.utfall.valueOf() === "IKKE_OPPFYLT") ?? undefined;
+  if (sak.inngangsvilkår?.paragraf_11_2 || sak.inngangsvilkår?.paragraf_11_3 || sak.inngangsvilkår?.paragraf_11_4) {
+    let p11_2_ikke_oppfylt = sak.inngangsvilkår?.paragraf_11_2?.utfall.valueOf() === "IKKE_OPPFYLT" ?? undefined;
+    let p11_3_ikke_oppfylt = sak.inngangsvilkår?.paragraf_11_3?.utfall.valueOf() === "IKKE_OPPFYLT" ?? undefined;
+    let p11_4_ikke_oppfylt = sak.inngangsvilkår?.paragraf_11_4?.utfall.valueOf() === "IKKE_OPPFYLT" ?? undefined;
     if (p11_2_ikke_oppfylt || p11_3_ikke_oppfylt || p11_4_ikke_oppfylt) {
       const paragrafer = [p11_2_ikke_oppfylt && "§11-2", p11_3_ikke_oppfylt && "§11-3", p11_4_ikke_oppfylt && "§11-4"]
         .filter((v) => !!v)
