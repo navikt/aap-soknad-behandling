@@ -1,8 +1,8 @@
-import { Paragraf_11_2Type } from "../../../types/SakType";
+import { VilkårsvurderingType, VilkårsvurderingUtenAutorisasjonType } from "../../../types/SakType";
 import { BodyShort, Label } from "@navikt/ds-react";
 
 interface Props {
-  vilkårsvurdering: Paragraf_11_2Type;
+  vilkårsvurdering: VilkårsvurderingUtenAutorisasjonType | VilkårsvurderingType;
   label: string;
 }
 

@@ -1,12 +1,3 @@
-/**
- * Hva må testes?
- *
- *
- * 1. At de forskjellige feltene er synlige.
- * 2. At det fungerer å trykke på angre knappen.
- * 3. At det blir postet korrekt response til API.
- */
-
 import { render, screen } from "@testing-library/react";
 import { Inngangsvilkår } from "./Inngangsvilkaar";
 import {
@@ -20,25 +11,15 @@ import {
 } from "../../../types/SakType";
 import { InntektsgrunnlagType, VedtakType } from "../../../types/Vedtak";
 
-/**
- * 1. Test at fortsett knapp er synlig når ikke alle paragrafene er vurdert.
- * 2. Test at fortsett knapp ikke er synlig dersom alle paragrafene er vurdert.
- * 3. Test at fortsett knapp ikke er synlig dersom autorisasjon er "LESE".
- * 4. Test at korrekt tekst er synlig i de forskjellige paragrafene som er synlige. Medlemskap, Opphold, Alder.
- * 5. Test at riktig data blir sendt når man trykker på fortsett knapp.
- * 6. Test at feltene er read only når autorisasjon er LESE.
- * 7. Test at feltene er interaktive når autorisasjon er ENDRE.
- */
-
 test("at fortsett kanpp er synlig når paragrafene ikke er vurdert", () => {
-  const søker = lagSøker("GODKJENNE", "IKKE_VURDERT");
+  const søker = lagSøker("ENDRE", "IKKE_VURDERT");
   render(<Inngangsvilkår søker={søker} />);
 
   expect(screen.getByText("Fortsett")).toBeInTheDocument();
 });
 
 test("at fortsett knapp ikke er synlig dersom alle paragrafene er vurdert ", () => {
-  const søker = lagSøker("GODKJENNE", "OPPFYLT");
+  const søker = lagSøker("ENDRE", "OPPFYLT");
   render(<Inngangsvilkår søker={søker} />);
 
   expect(screen.queryByText("Fortsett")).not.toBeInTheDocument();
@@ -91,19 +72,16 @@ function lagSøker(autorisasjon: Autorisasjontype, utfall: UtfallType): SøkerTy
   const vilkårsvurdering_11_2: Paragraf_11_2Type = {
     vilkårsvurderingsid: "enId",
     utfall: utfall,
-    autorisasjon: autorisasjon,
   };
 
   const vilkårsvurdering_11_3: Paragraf_11_3Type = {
     vilkårsvurderingsid: "andreId",
     utfall: utfall,
-    autorisasjon: autorisasjon,
   };
 
   const vilkårsvurdering_11_4: Paragraf_11_4Type = {
     vilkårsvurderingsid: "tredjeId",
     utfall: utfall,
-    autorisasjon: autorisasjon,
   };
 
   const sak: SakType = {
@@ -111,9 +89,12 @@ function lagSøker(autorisasjon: Autorisasjontype, utfall: UtfallType): SøkerTy
     søknadstidspunkt: "",
     type: "",
     vedtak,
-    paragraf_11_2: vilkårsvurdering_11_2,
-    paragraf_11_3: vilkårsvurdering_11_3,
-    paragraf_11_4: vilkårsvurdering_11_4,
+    inngangsvilkår: {
+      autorisasjon: autorisasjon,
+      paragraf_11_2: vilkårsvurdering_11_2,
+      paragraf_11_3: vilkårsvurdering_11_3,
+      paragraf_11_4: vilkårsvurdering_11_4,
+    },
   };
 
   return {

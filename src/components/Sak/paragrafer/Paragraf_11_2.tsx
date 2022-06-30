@@ -1,5 +1,5 @@
 import React from "react";
-import { Paragraf_11_2Type } from "../../../types/SakType";
+import { Autorisasjontype, Paragraf_11_2Type } from "../../../types/SakType";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 import { Radio } from "@navikt/ds-react";
 import { getText } from "../../../tekster/tekster";
@@ -15,19 +15,18 @@ type Props = {
   control: Control<InngangsvilkårFormFields>;
   errors: FieldErrors<InngangsvilkårFormFields>;
   resetField: UseFormResetField<InngangsvilkårFormFields>;
+  autorisasjon?: Autorisasjontype;
 };
 
 export const Paragraf_11_2 = (props: Props) => {
-  const { vilkårsvurdering, control, errors, resetField } = props;
+  const { vilkårsvurdering, control, errors, resetField, autorisasjon } = props;
 
   if (!vilkårsvurdering) {
     return <div>Kunne ikke finne vilkårsvurdering for 11-2</div>;
   }
 
-  const visSkjema =
-    vilkårsvurdering?.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering?.autorisasjon.valueOf() !== "LESE";
-  const visFerdigVisning =
-    vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE";
+  const visSkjema = vilkårsvurdering?.utfall.valueOf() === "IKKE_VURDERT" && autorisasjon?.valueOf() !== "LESE";
+  const visFerdigVisning = vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || autorisasjon?.valueOf() === "LESE";
 
   return (
     <ParagrafBlokk vilkårsvurdering={vilkårsvurdering} heading={getText("paragrafer.11_2.heading")}>
