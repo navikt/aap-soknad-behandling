@@ -9,6 +9,9 @@ import { useSkjema } from "../../../hooks/SkjemaHook";
 import * as styles from "../paragrafer/paragraf.module.css";
 import { Paragraf_11_4 } from "../paragrafer/Paragraf_11_4";
 import { LøsningInngansvilkår } from "../../../types/Losning";
+import { Modusmelding } from "../Modusmelding";
+import { Vilkarsstatus } from "../Vilkarsstatus/Vilkarsstatus";
+import { Seksjonsoverskrift } from "../Seksjonsoverskrift";
 
 export interface InngangsvilkårFormFields {
   erMedlem: string;
@@ -37,44 +40,51 @@ export const Inngangsvilkår = (props: Props) => {
 
   const visFortsettKnapp = søker.sak.inngangsvilkår?.autorisasjon.valueOf() !== "LESE" && paragrafIkkeVurdert;
   return (
-    <form
-      onSubmit={handleSubmit((data) =>
-        onSubmit(`/aap-behandling/api/sak/${søker.personident}/losning/inngangsvilkar`, {
-          løsning_11_2: {
-            erMedlem: data.erMedlem === "true",
-          },
-          løsning_11_3: {
-            erOppfylt: data.erOppfylt === "true",
-          },
-          løsning_11_4: {
-            erOppfylt: null,
-          },
-        })
+    <>
+      <Seksjonsoverskrift tekstnokkel={"paragrafer.inngangsvilkår.heading"} />
+      {søker.sak.inngangsvilkår?.autorisasjon.valueOf() === "LESE" && (
+        <Modusmelding autorisasjon={søker.sak.inngangsvilkår.autorisasjon} />
       )}
-    >
-      <Paragraf_11_2
-        control={control}
-        vilkårsvurdering={søker.sak.inngangsvilkår?.paragraf_11_2}
-        errors={errors}
-        resetField={resetField}
-        autorisasjon={søker.sak.inngangsvilkår?.autorisasjon}
-      />
-      <Paragraf_11_3
-        control={control}
-        errors={errors}
-        resetField={resetField}
-        vilkårsvurdering={søker.sak.inngangsvilkår?.paragraf_11_3}
-        autorisasjon={søker.sak.inngangsvilkår?.autorisasjon}
-      />
-      <Paragraf_11_4 vilkårsvurdering={søker.sak.inngangsvilkår?.paragraf_11_4} fødselsdato={søker.fødselsdato} />
 
-      {visFortsettKnapp && (
-        <div className={styles.fortsettKnapp}>
-          <Button variant={"primary"} disabled={isLoading} loading={isLoading}>
-            {getText("paragrafer.knapper.fortsett")}
-          </Button>
-        </div>
-      )}
-    </form>
+      <form
+        onSubmit={handleSubmit((data) =>
+          onSubmit(`/aap-behandling/api/sak/${søker.personident}/losning/inngangsvilkar`, {
+            løsning_11_2: {
+              erMedlem: data.erMedlem === "true",
+            },
+            løsning_11_3: {
+              erOppfylt: data.erOppfylt === "true",
+            },
+            løsning_11_4: {
+              erOppfylt: null,
+            },
+          })
+        )}
+      >
+        <Paragraf_11_2
+          control={control}
+          vilkårsvurdering={søker.sak.inngangsvilkår?.paragraf_11_2}
+          errors={errors}
+          resetField={resetField}
+          autorisasjon={søker.sak.inngangsvilkår?.autorisasjon}
+        />
+        <Paragraf_11_3
+          control={control}
+          errors={errors}
+          resetField={resetField}
+          vilkårsvurdering={søker.sak.inngangsvilkår?.paragraf_11_3}
+          autorisasjon={søker.sak.inngangsvilkår?.autorisasjon}
+        />
+        <Paragraf_11_4 vilkårsvurdering={søker.sak.inngangsvilkår?.paragraf_11_4} fødselsdato={søker.fødselsdato} />
+
+        {visFortsettKnapp && (
+          <div className={styles.fortsettKnapp}>
+            <Button variant={"primary"} disabled={isLoading} loading={isLoading}>
+              {getText("paragrafer.knapper.fortsett")}
+            </Button>
+          </div>
+        )}
+      </form>
+    </>
   );
 };

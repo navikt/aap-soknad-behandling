@@ -11,6 +11,13 @@ import {
 } from "../../../types/SakType";
 import { InntektsgrunnlagType, VedtakType } from "../../../types/Vedtak";
 
+test("at overskrift er synlig", () => {
+  const søker = lagSøker("ENDRE", "IKKE_VURDERT");
+  render(<Inngangsvilkår søker={søker} />);
+
+  expect(screen.getByText("Inngangsvilkår")).toBeInTheDocument();
+});
+
 test("at fortsett kanpp er synlig når paragrafene ikke er vurdert", () => {
   const søker = lagSøker("ENDRE", "IKKE_VURDERT");
   render(<Inngangsvilkår søker={søker} />);
@@ -51,6 +58,20 @@ test("at paragraf 11-4 er synlig", () => {
   render(<Inngangsvilkår søker={søker} />);
 
   expect(screen.queryByText("Alder (§ 11-4)")).toBeInTheDocument();
+});
+
+test("at du får informasjonsmelding om at du er i lesemodus når autorisasjon er LESE", () => {
+  const søker = lagSøker("LESE", "IKKE_VURDERT");
+  render(<Inngangsvilkår søker={søker} />);
+
+  expect(screen.queryByText("Du er i lesemodus")).toBeInTheDocument();
+});
+
+test("at du ikke får informasjonsmelding om at du er i lesemodus når autorisasjon er LESE", () => {
+  const søker = lagSøker("ENDRE", "IKKE_VURDERT");
+  render(<Inngangsvilkår søker={søker} />);
+
+  expect(screen.queryByText("Du er i lesemodus")).not.toBeInTheDocument();
 });
 
 function lagSøker(autorisasjon: Autorisasjontype, utfall: UtfallType): SøkerType {
