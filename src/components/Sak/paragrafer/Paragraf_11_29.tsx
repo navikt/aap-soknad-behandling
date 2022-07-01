@@ -6,6 +6,7 @@ import { ParagrafBlokk } from "./ParagrafBlokk";
 import * as styles from "./paragraf.module.css";
 import { useSkjema } from "../../../hooks/SkjemaHook";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper/RadioGroupWrapper";
+import { utfallsTekst } from "../../../common/utfall";
 
 interface paragraf_11_29FormFieldValues {
   erOppfylt: string;
@@ -24,30 +25,16 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
   if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE") {
     return null;
   }
-  const utfallstekst = (utfall: string) => {
-    switch (utfall) {
-      case "IKKE_OPPFYLT":
-        return "Nei";
-      case "OPPFYLT":
-        return "Ja";
-      case "IKKE_RELEVANT":
-        return "Ikke relevant";
-      case "IKKE_VURDERT":
-        return "Ikke vurdert enda";
-      default:
-        return utfall;
-    }
-  };
 
   return (
     <>
       <Label>Oppfyller medlemmet kravene i 11-29?</Label>
-      <BodyShort>{utfallstekst(vilkårsvurdering.utfall)}</BodyShort>
+      <BodyShort>{utfallsTekst(vilkårsvurdering.utfall)}</BodyShort>
     </>
   );
 };
 
-const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element | null => {
+const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps) => {
   if (vilkårsvurdering?.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering?.autorisasjon.valueOf() !== "LESE") {
     return null;
   }
@@ -88,7 +75,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   );
 };
 
-const Paragraf_11_29 = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.Element => {
+const Paragraf_11_29 = ({ vilkårsvurdering, personident }: ParagrafProps) => {
   if (!vilkårsvurdering) {
     return <div>Fant ingen vurdering for 11-12</div>;
   }

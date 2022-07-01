@@ -6,6 +6,7 @@ import { useSkjemaDeprecated } from "../../../hooks/useSkjemaDeprecated";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 import { RenderWhen } from "../../RenderWhen";
 import * as styles from "./paragraf.module.css";
+import { utfallsTekst } from "../../../common/utfall";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_12Type | undefined;
@@ -18,25 +19,11 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
   if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisasjon.valueOf() !== "LESE") {
     return null;
   }
-  const utfallstekst = (utfall: string) => {
-    switch (utfall) {
-      case "IKKE_OPPFYLT":
-        return "Nei";
-      case "OPPFYLT":
-        return "Ja";
-      case "IKKE_RELEVANT":
-        return "Ikke relevant";
-      case "IKKE_VURDERT":
-        return "Ikke vurdert enda";
-      default:
-        return utfall;
-    }
-  };
 
   return (
     <>
       <Label>OPPDATERT TEKST HER</Label>
-      <BodyShort>{utfallstekst(vilkårsvurdering.utfall)}</BodyShort>
+      <BodyShort>{utfallsTekst(vilkårsvurdering.utfall)}</BodyShort>
     </>
   );
 };
