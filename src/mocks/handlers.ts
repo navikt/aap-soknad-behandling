@@ -20,7 +20,7 @@ const nayParagrafer = [
 ];
 
 const settAutorisasjon = (person: SøkerType, paragrafListe: string[], erGodkjenner: boolean) => {
-  paragrafListe.map((paragraf: string) => {
+  paragrafListe.forEach((paragraf: string) => {
     if (person.sak.inngangsvilkår && paragraf in person.sak.inngangsvilkår) {
       if (erGodkjenner) {
         // @ts-ignore
