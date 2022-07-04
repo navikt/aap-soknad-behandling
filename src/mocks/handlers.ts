@@ -20,7 +20,16 @@ const nayParagrafer = [
 ];
 
 const settAutorisasjon = (person: SøkerType, paragrafListe: string[], erGodkjenner: boolean) => {
-  paragrafListe.map((paragraf: string) => {
+  paragrafListe.forEach((paragraf: string) => {
+    if (person.sak.inngangsvilkår && paragraf in person.sak.inngangsvilkår) {
+      if (erGodkjenner) {
+        // @ts-ignore
+        person.sak.inngangsvilkår.autorisasjon = "GODKJENNE";
+      } else {
+        // @ts-ignore
+        person.sak.inngangsvilkår.autorisasjon = "ENDRE";
+      }
+    }
     if (paragraf in person.sak) {
       if (erGodkjenner) {
         // @ts-ignore
@@ -64,6 +73,18 @@ export const handlers = (brukertype: Brukertype | undefined, erGodkjenner: boole
       );
     }),
     rest.post("/aap-behandling/api/sak/:personid/losning", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/aap-behandling/api/sak/:personident/losning/inngangsvilkar", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/aap-behandling/api/sak/:personident/losning/paragraf_11_29", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/aap-behandling/api/sak/:personident/losning/paragraf_11_5", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/aap-behandling/api/sak/:personident/losning/paragraf_11_6", (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
     }),
     rest.get("/aap-behandling/api/personopplysninger/:personid", (req, res, ctx) => {

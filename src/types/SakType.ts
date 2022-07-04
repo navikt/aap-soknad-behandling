@@ -15,11 +15,25 @@ const vilkårsvurderingSchema = z.object({
   autorisasjon: autorisasjonEnum,
 });
 
-export type VilkårsvurderingType = z.infer<typeof vilkårsvurderingSchema>;
+const vilkårsvurderingSchemaUtenAutorisasjon = z.object({
+  vilkårsvurderingsid: z.string(),
+  utfall: utfallEnum,
+});
 
-const paragraf_11_2Schema = vilkårsvurderingSchema.extend({});
-const paragraf_11_3Schema = vilkårsvurderingSchema.extend({});
-const paragraf_11_4Schema = vilkårsvurderingSchema.extend({});
+export type VilkårsvurderingType = z.infer<typeof vilkårsvurderingSchema>;
+export type VilkårsvurderingUtenAutorisasjonType = z.infer<typeof vilkårsvurderingSchemaUtenAutorisasjon>;
+
+const paragraf_11_2Schema = vilkårsvurderingSchemaUtenAutorisasjon.extend({});
+const paragraf_11_3Schema = vilkårsvurderingSchemaUtenAutorisasjon.extend({});
+const paragraf_11_4Schema = vilkårsvurderingSchemaUtenAutorisasjon.extend({});
+
+const inngangsvilkårSchema = z.object({
+  autorisasjon: autorisasjonEnum,
+  paragraf_11_2: paragraf_11_2Schema.optional(),
+  paragraf_11_3: paragraf_11_3Schema.optional(),
+  paragraf_11_4: paragraf_11_4Schema.optional(),
+});
+
 const paragraf_11_5Schema = vilkårsvurderingSchema.extend({
   kravOmNedsattArbeidsevneErOppfylt: z.boolean().nullable(),
   arbeidsevneNedsattMedMinstHalvparten: z.boolean().optional().nullable(), // TODO skal bare være nullable. Pt ikke i modell
@@ -45,6 +59,7 @@ export type Paragraf_11_5Type = z.infer<typeof paragraf_11_5Schema>;
 export type Paragraf_11_6Type = z.infer<typeof paragraf_11_6Schema>;
 export type Paragraf_11_12Type = z.infer<typeof paragraf_11_12Schema>;
 export type Paragraf_11_29Type = z.infer<typeof paragraf_11_29Schema>;
+export type InngangsvilkårType = z.infer<typeof inngangsvilkårSchema>;
 
 const sakSchema = z.object({
   saksid: z.string(),
@@ -53,9 +68,7 @@ const sakSchema = z.object({
   ansvarlig: z.string().optional(), // TODO Sette opp granulert tildeling (flere personer kan "eie") aktiv / venter
   type: z.string(), // 11-5, SP-erstattning, Student, Uføre
   aktiv: z.boolean().optional(), // TODO Hva betyr egentlig dette? Tilstand? Bruke eksplisitte booleans?
-  paragraf_11_2: paragraf_11_2Schema.optional(),
-  paragraf_11_3: paragraf_11_3Schema.optional(),
-  paragraf_11_4: paragraf_11_4Schema.optional(),
+  inngangsvilkår: inngangsvilkårSchema.optional(),
   paragraf_11_5: paragraf_11_5Schema.optional(),
   paragraf_11_6: paragraf_11_6Schema.optional(),
   paragraf_11_12: paragraf_11_12Schema.optional(),

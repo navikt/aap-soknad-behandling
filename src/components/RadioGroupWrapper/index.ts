@@ -1,1 +1,1 @@
-export * from "./RadioGroupWrapper";
+export * from "./RadioGroupWrapperDeprecated";

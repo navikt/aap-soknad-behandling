@@ -13,20 +13,20 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       type: "STANDARD",
       aktiv: true,
       vedtak: null,
-      paragraf_11_2: {
-        vilkårsvurderingsid: "uuid-1-2",
+      inngangsvilkår: {
         autorisasjon: "LESE",
-        utfall: "IKKE_VURDERT",
-      },
-      paragraf_11_3: {
-        vilkårsvurderingsid: "uuid-1-3",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
-      },
-      paragraf_11_4: {
-        vilkårsvurderingsid: "uuid-1-4",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
+        paragraf_11_2: {
+          vilkårsvurderingsid: "uuid-1-2",
+          utfall: "IKKE_VURDERT",
+        },
+        paragraf_11_3: {
+          vilkårsvurderingsid: "uuid-1-3",
+          utfall: "OPPFYLT",
+        },
+        paragraf_11_4: {
+          vilkårsvurderingsid: "uuid-1-4",
+          utfall: "OPPFYLT",
+        },
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-1-5",
@@ -71,20 +71,20 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       type: "STANDARD",
       aktiv: true,
       vedtak: null,
-      paragraf_11_2: {
-        vilkårsvurderingsid: "uuid-2-2",
-        utfall: "IKKE_VURDERT",
+      inngangsvilkår: {
         autorisasjon: "LESE",
-      },
-      paragraf_11_3: {
-        vilkårsvurderingsid: "uuid-2-3",
-        utfall: "IKKE_VURDERT",
-        autorisasjon: "LESE",
-      },
-      paragraf_11_4: {
-        vilkårsvurderingsid: "uuid-2-4",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
+        paragraf_11_2: {
+          vilkårsvurderingsid: "uuid-2-2",
+          utfall: "IKKE_VURDERT",
+        },
+        paragraf_11_3: {
+          vilkårsvurderingsid: "uuid-2-3",
+          utfall: "IKKE_VURDERT",
+        },
+        paragraf_11_4: {
+          vilkårsvurderingsid: "uuid-2-4",
+          utfall: "OPPFYLT",
+        },
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-2-5",
@@ -129,20 +129,20 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       type: "STANDARD",
       aktiv: true,
       vedtak: null,
-      paragraf_11_2: {
-        vilkårsvurderingsid: "uuid-3-2",
-        utfall: "OPPFYLT",
+      inngangsvilkår: {
         autorisasjon: "LESE",
-      },
-      paragraf_11_3: {
-        vilkårsvurderingsid: "uuid-3-3",
-        utfall: "IKKE_OPPFYLT",
-        autorisasjon: "LESE",
-      },
-      paragraf_11_4: {
-        vilkårsvurderingsid: "uuid-3-4",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
+        paragraf_11_2: {
+          vilkårsvurderingsid: "uuid-3-2",
+          utfall: "OPPFYLT",
+        },
+        paragraf_11_3: {
+          vilkårsvurderingsid: "uuid-3-3",
+          utfall: "IKKE_OPPFYLT",
+        },
+        paragraf_11_4: {
+          vilkårsvurderingsid: "uuid-3-4",
+          utfall: "OPPFYLT",
+        },
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-3-5",
@@ -186,20 +186,20 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       søknadstidspunkt: "2022-05-05T04:49:23",
       type: "STANDARD",
       aktiv: true,
-      paragraf_11_2: {
-        vilkårsvurderingsid: "uuid-4-2",
-        utfall: "OPPFYLT",
+      inngangsvilkår: {
         autorisasjon: "LESE",
-      },
-      paragraf_11_3: {
-        vilkårsvurderingsid: "uuid-4-3",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
-      },
-      paragraf_11_4: {
-        vilkårsvurderingsid: "uuid-4-4",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
+        paragraf_11_2: {
+          vilkårsvurderingsid: "uuid-4-2",
+          utfall: "OPPFYLT",
+        },
+        paragraf_11_3: {
+          vilkårsvurderingsid: "uuid-4-3",
+          utfall: "OPPFYLT",
+        },
+        paragraf_11_4: {
+          vilkårsvurderingsid: "uuid-4-4",
+          utfall: "OPPFYLT",
+        },
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-4-5",
@@ -282,20 +282,20 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       type: "STANDARD",
       aktiv: true,
       vedtak: null,
-      paragraf_11_2: {
-        vilkårsvurderingsid: "uuid-5-2",
-        utfall: "OPPFYLT",
+      inngangsvilkår: {
         autorisasjon: "LESE",
-      },
-      paragraf_11_3: {
-        vilkårsvurderingsid: "uuid-5-3",
-        utfall: "IKKE_VURDERT",
-        autorisasjon: "LESE",
-      },
-      paragraf_11_4: {
-        vilkårsvurderingsid: "uuid-5-4",
-        utfall: "IKKE_VURDERT",
-        autorisasjon: "LESE",
+        paragraf_11_2: {
+          vilkårsvurderingsid: "uuid-5-2",
+          utfall: "OPPFYLT",
+        },
+        paragraf_11_3: {
+          vilkårsvurderingsid: "uuid-5-3",
+          utfall: "IKKE_VURDERT",
+        },
+        paragraf_11_4: {
+          vilkårsvurderingsid: "uuid-5-4",
+          utfall: "IKKE_VURDERT",
+        },
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-5-5",
@@ -339,20 +339,20 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       søknadstidspunkt: "2022-05-05T20:23:25",
       type: "STANDARD",
       aktiv: true,
-      paragraf_11_2: {
-        vilkårsvurderingsid: "uuid-3-2",
-        utfall: "OPPFYLT",
+      inngangsvilkår: {
         autorisasjon: "LESE",
-      },
-      paragraf_11_3: {
-        vilkårsvurderingsid: "uuid-3-3",
-        utfall: "IKKE_OPPFYLT",
-        autorisasjon: "LESE",
-      },
-      paragraf_11_4: {
-        vilkårsvurderingsid: "uuid-3-4",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
+        paragraf_11_2: {
+          vilkårsvurderingsid: "uuid-3-2",
+          utfall: "OPPFYLT",
+        },
+        paragraf_11_3: {
+          vilkårsvurderingsid: "uuid-3-3",
+          utfall: "IKKE_OPPFYLT",
+        },
+        paragraf_11_4: {
+          vilkårsvurderingsid: "uuid-3-4",
+          utfall: "OPPFYLT",
+        },
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-3-5",
@@ -452,20 +452,21 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
       søknadstidspunkt: subDays(new Date(), 38).toISOString(),
       type: "STANDARD",
       aktiv: true,
-      paragraf_11_2: {
-        vilkårsvurderingsid: "uuid-3-2",
-        utfall: "OPPFYLT",
+      inngangsvilkår: {
         autorisasjon: "LESE",
-      },
-      paragraf_11_3: {
-        vilkårsvurderingsid: "uuid-3-3",
-        utfall: "IKKE_OPPFYLT",
-        autorisasjon: "LESE",
-      },
-      paragraf_11_4: {
-        vilkårsvurderingsid: "uuid-3-4",
-        utfall: "OPPFYLT",
-        autorisasjon: "LESE",
+
+        paragraf_11_2: {
+          vilkårsvurderingsid: "uuid-3-2",
+          utfall: "OPPFYLT",
+        },
+        paragraf_11_3: {
+          vilkårsvurderingsid: "uuid-3-3",
+          utfall: "IKKE_OPPFYLT",
+        },
+        paragraf_11_4: {
+          vilkårsvurderingsid: "uuid-3-4",
+          utfall: "OPPFYLT",
+        },
       },
       paragraf_11_5: {
         vilkårsvurderingsid: "uuid-3-5",

@@ -1,11 +1,12 @@
 import { Paragraf_11_12Type, VilkårsvurderingType } from "../../../types/SakType";
 import { BodyShort, Button, Label, Radio, Textarea } from "@navikt/ds-react";
-import { RadioGroupWrapper } from "../../RadioGroupWrapper";
+import { RadioGroupWrapperDeprecated } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
-import { useSkjema } from "../../../hooks/useSkjema";
+import { useSkjemaDeprecated } from "../../../hooks/useSkjemaDeprecated";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 import { RenderWhen } from "../../RenderWhen";
 import * as styles from "./paragraf.module.css";
+import { utfallsTekst } from "../../../common/utfall";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_12Type | undefined;
@@ -18,25 +19,11 @@ const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Vilkårsvurde
   if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisasjon.valueOf() !== "LESE") {
     return null;
   }
-  const utfallstekst = (utfall: string) => {
-    switch (utfall) {
-      case "IKKE_OPPFYLT":
-        return "Nei";
-      case "OPPFYLT":
-        return "Ja";
-      case "IKKE_RELEVANT":
-        return "Ikke relevant";
-      case "IKKE_VURDERT":
-        return "Ikke vurdert enda";
-      default:
-        return utfall;
-    }
-  };
 
   return (
     <>
       <Label>OPPDATERT TEKST HER</Label>
-      <BodyShort>{utfallstekst(vilkårsvurdering.utfall)}</BodyShort>
+      <BodyShort>{utfallsTekst(vilkårsvurdering.utfall)}</BodyShort>
     </>
   );
 };
@@ -45,7 +32,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   if (vilkårsvurdering?.utfall.valueOf() !== "IKKE_VURDERT" || vilkårsvurdering?.autorisasjon.valueOf() === "LESE") {
     return null;
   }
-  const { register, handleSubmit, control, resetField, errors, onSubmit, senderMelding, watch } = useSkjema();
+  const { register, handleSubmit, control, resetField, errors, onSubmit, senderMelding, watch } = useSkjemaDeprecated();
   const løsning = (datas: any) => ({
     løsning_11_12_ledd1_manuell: {
       bestemmesAv: datas.bestemmesAv,
@@ -61,7 +48,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
 
   return (
     <form onSubmit={handleSubmit((datas) => onSubmit(personident, løsning(datas)))}>
-      <RadioGroupWrapper
+      <RadioGroupWrapperDeprecated
         feltNokkel={"bestemmesAv"}
         control={control}
         tekstNokkel={`${tekstNokkel}.virkningstidspunkt`}
@@ -75,7 +62,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
         <Radio value={"unntaksvurdering"}>Unntaksvurdering § 22-13, 7. ledd</Radio>
         <RenderWhen when={watch("bestemmesAv") === "unntaksvurdering"}>
           <div className={styles.innrykk}>
-            <RadioGroupWrapper
+            <RadioGroupWrapperDeprecated
               feltNokkel={"unntak"}
               tekstNokkel={`${tekstNokkel}.virkningstidspunkt.unntak`}
               errors={errors}
@@ -84,7 +71,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
             >
               <Radio value={"forhindret"}>Søkeren ble åpenbart forhindret fra å sende søknaden.</Radio>
               <Radio value={"mangelfull"}>NAV har gitt mangelfull eller misvisende informasjon</Radio>
-            </RadioGroupWrapper>
+            </RadioGroupWrapperDeprecated>
             <RenderWhen when={watch("unntak")}>
               <div className={"margin-top__medium"}>
                 <Textarea label={unntaksbegrunnelseLabel} {...register("unntaksbegrunnelse")} />
@@ -93,7 +80,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
           </div>
         </RenderWhen>
         <Radio value={"etterSisteLoenn"}>Dagen etter siste lønnsutbetaling</Radio>
-      </RadioGroupWrapper>
+      </RadioGroupWrapperDeprecated>
       <div className={styles.fortsettKnapp}>
         <Button variant={"primary"} disabled={senderMelding} loading={senderMelding}>
           {getText("paragrafer.knapper.fortsett")}
