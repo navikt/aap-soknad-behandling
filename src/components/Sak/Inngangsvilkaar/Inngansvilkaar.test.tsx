@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { Inngangsvilkår } from "./Inngangsvilkaar";
 import {
   Autorisasjontype,
-  Paragraf_11_2Type,
-  Paragraf_11_3Type,
-  Paragraf_11_4Type,
+  Paragraf_11_2_type,
+  Paragraf_11_3_type,
+  Paragraf_11_4_type,
   SakType,
   SøkerType,
   UtfallType,
@@ -90,17 +90,17 @@ function lagSøker(autorisasjon: Autorisasjontype, utfall: UtfallType): SøkerTy
     virkningsdato: "",
   };
 
-  const vilkårsvurdering_11_2: Paragraf_11_2Type = {
+  const vilkårsvurdering_11_2: Paragraf_11_2_type = {
     vilkårsvurderingsid: "enId",
     utfall: utfall,
   };
 
-  const vilkårsvurdering_11_3: Paragraf_11_3Type = {
+  const vilkårsvurdering_11_3: Paragraf_11_3_type = {
     vilkårsvurderingsid: "andreId",
     utfall: utfall,
   };
 
-  const vilkårsvurdering_11_4: Paragraf_11_4Type = {
+  const vilkårsvurdering_11_4: Paragraf_11_4_type = {
     vilkårsvurderingsid: "tredjeId",
     utfall: utfall,
   };

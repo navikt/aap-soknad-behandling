@@ -1,4 +1,4 @@
-import { Paragraf_11_29Type, VilkårsvurderingType } from "../../../types/SakType";
+import { Paragraf_11_29_type, VilkårsvurderingType } from "../../../types/SakType";
 import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 import { getText } from "../../../tekster/tekster";
 import { ParagrafBlokk } from "./ParagrafBlokk";
@@ -17,7 +17,7 @@ interface paragraf_11_29FormData {
 }
 
 type ParagrafProps = {
-  vilkårsvurdering: Paragraf_11_29Type | undefined;
+  vilkårsvurdering: Paragraf_11_29_type | undefined;
   personident: string;
 };
 

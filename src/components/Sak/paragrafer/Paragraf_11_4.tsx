@@ -1,5 +1,5 @@
 import { BodyShort, Label } from "@navikt/ds-react";
-import { Paragraf_11_4Type } from "../../../types/SakType";
+import { Paragraf_11_4_type } from "../../../types/SakType";
 import { finnAlder, formaterDato } from "../../../lib/dato";
 
 import * as styles from "./paragraf.module.css";
@@ -8,7 +8,7 @@ import { ParagrafBlokk } from "./ParagrafBlokk";
 import { utfallsTekst } from "../../../common/utfall";
 
 type Props = {
-  vilkårsvurdering: Paragraf_11_4Type | undefined;
+  vilkårsvurdering: Paragraf_11_4_type | undefined;
   fødselsdato: string;
 };
 

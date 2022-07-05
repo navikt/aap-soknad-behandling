@@ -1,6 +1,6 @@
 import { BodyShort, Button, Label, Radio } from "@navikt/ds-react";
 
-import { Paragraf_11_5Type } from "../../../types/SakType";
+import { Paragraf_11_5_type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 import { RenderWhen } from "../../RenderWhen";
@@ -10,11 +10,11 @@ import { useSkjema } from "../../../hooks/SkjemaHook";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper/RadioGroupWrapper";
 
 type ParagrafProps = {
-  vilkårsvurdering: Paragraf_11_5Type | undefined;
+  vilkårsvurdering: Paragraf_11_5_type | undefined;
   personident: string;
 };
 const tekstNokkel = "paragrafer.11_5";
-const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5Type }): JSX.Element | null => {
+const Ferdigvisning = ({ vilkårsvurdering }: { vilkårsvurdering: Paragraf_11_5_type }): JSX.Element | null => {
   if (vilkårsvurdering.utfall.valueOf() === "IKKE_VURDERT" && vilkårsvurdering.autorisasjon.valueOf() !== "LESE") {
     return null;
   }

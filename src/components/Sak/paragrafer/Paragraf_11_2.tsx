@@ -1,5 +1,5 @@
 import React from "react";
-import { Autorisasjontype, Paragraf_11_2Type } from "../../../types/SakType";
+import { Autorisasjontype, Paragraf_11_2_type } from "../../../types/SakType";
 import { ParagrafBlokk } from "./ParagrafBlokk";
 import { Radio } from "@navikt/ds-react";
 import { getText } from "../../../tekster/tekster";
@@ -11,7 +11,7 @@ import { InngangsvilkårFormFields } from "../Inngangsvilkaar/Inngangsvilkaar";
 import { Ferdigvisning } from "../Ferdigvisning/Ferdigvisning";
 
 type Props = {
-  vilkårsvurdering?: Paragraf_11_2Type;
+  vilkårsvurdering?: Paragraf_11_2_type;
   control: Control<InngangsvilkårFormFields>;
   errors: FieldErrors<InngangsvilkårFormFields>;
   resetField: UseFormResetField<InngangsvilkårFormFields>;

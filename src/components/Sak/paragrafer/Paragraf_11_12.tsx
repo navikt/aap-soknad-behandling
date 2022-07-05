@@ -1,4 +1,4 @@
-import { Paragraf_11_12Type, VilkårsvurderingType } from "../../../types/SakType";
+import { Paragraf_11_12_type, VilkårsvurderingType } from "../../../types/SakType";
 import { BodyShort, Button, Label, Radio, Textarea } from "@navikt/ds-react";
 import { RadioGroupWrapperDeprecated } from "../../RadioGroupWrapper";
 import { getText } from "../../../tekster/tekster";
@@ -9,7 +9,7 @@ import * as styles from "./paragraf.module.css";
 import { utfallsTekst } from "../../../common/utfall";
 
 type ParagrafProps = {
-  vilkårsvurdering: Paragraf_11_12Type | undefined;
+  vilkårsvurdering: Paragraf_11_12_type | undefined;
   personident: string;
 };
 

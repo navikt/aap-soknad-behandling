@@ -1,10 +1,10 @@
 import { Paragraf_11_5 } from "./Paragraf_11_5";
 import { render, screen, waitFor } from "@testing-library/react";
-import { Paragraf_11_5Type } from "../../../types/SakType";
+import { Paragraf_11_5_type } from "../../../types/SakType";
 import { getText } from "../../../tekster/tekster";
 import userEvent from "@testing-library/user-event";
 
-const vilkårsvurdering: Paragraf_11_5Type = {
+const vilkårsvurdering: Paragraf_11_5_type = {
   vilkårsvurderingsid: "uuid-1-5",
   utfall: "IKKE_VURDERT",
   autorisasjon: "ENDRE",
@@ -28,7 +28,7 @@ describe("Paragraf 11-5", () => {
   });
 
   test("viser oppsummering når vilkåret er vurdert", () => {
-    const ferdigVurdertVilkår: Paragraf_11_5Type = {
+    const ferdigVurdertVilkår: Paragraf_11_5_type = {
       vilkårsvurderingsid: "uuid-1-5",
       utfall: "OPPFYLT",
       autorisasjon: "ENDRE",
