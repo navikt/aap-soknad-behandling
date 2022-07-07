@@ -49,7 +49,7 @@ const texts = {
     "11_6": "§ 11-6",
     "11_12": "Varighet og virkning",
     "11_29": "§ 11-29",
-    beregning: "Beregningstidspunkt",
+    "11_19": "Beregningstidspunkt",
     beregningsgrunnlag: "Beregningsgrunnlag",
     resultat: "Resultat",
   },
@@ -156,6 +156,23 @@ const texts = {
         heading: "Varighet",
       },
     },
+    "11_19": {
+      heading: "Beregningstidspunkt",
+      label: "Fra hvilken dato har brukeren fått nedsatt arbeidsevne?",
+      knapp: "Sett dato",
+      grunnForDato: {
+        legend: "Hvorfor er beregningstidspunktet satt på denne datoen?",
+        description: "Velg hovedgrunnen",
+        begrunnelseForAnnet: "Oppgi en annen grunn 😡",
+        options: {
+          sykmeldingsdato: "Sykmeldingsdato",
+          søknadstidspunkt: "Søknadstidspunkt",
+          medisinskOpplysning: "Medisinsk opplysning",
+          tidligereAAP: "Tidligere AAP-periode",
+          noeAnnet: "Hovedgrunnen er noe annet",
+        },
+      },
+    },
     "11_29": {
       heading: "Vurdering av § 11-29",
       påkrevd: "Du må ta stilling til om søker oppfyller kravet til § 11-29 eller ikke.",
@@ -168,16 +185,6 @@ const texts = {
     godkjent: "Innvilget AAP",
     avslaatt: "Avslått AAP",
     trukket: "Søknaden er trukket av søkeren",
-  },
-  beregningstidspunkt: {
-    heading: "Beregningstidspunkt",
-    label: "Fra hvilken dato har brukeren fått nedsatt arbeidsevne?",
-    knapp: "Sett dato",
-    grunnForDato: {
-      legend: "Hvorfor er beregningstidspunktet satt på denne datoen?",
-      description: "Velg hovedgrunnen",
-      begrunnelseForAnnet: "Oppgi en annen grunn 😡",
-    },
   },
   oppgavestatus: {
     vurderingTrenges: "Vurdering trenges",

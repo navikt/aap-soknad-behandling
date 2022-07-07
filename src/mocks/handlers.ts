@@ -16,6 +16,7 @@ const nayParagrafer = [
   "paragraf_11_4",
   "paragraf_11_6",
   "paragraf_11_12",
+  "paragraf_11_19",
   "paragraf_11_29",
 ];
 

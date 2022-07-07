@@ -50,6 +50,14 @@ const paragraf_11_12_schema = vilkårsvurderingSchema.extend({
   unntaksbegrunnelse: z.string().nullable(),
   manueltSattVirkningsdato: z.date().nullable(), // kanskje
 });
+const paragraf_11_19_schema = vilkårsvurderingSchema.extend({
+  beregningsdato: z
+    .string()
+    .refine((dato: string) => refineDato(dato))
+    .nullable(),
+  grunnForDato: z.string().optional().nullable(), // TODO Ikke fra modell
+  begrunnelseForAnnet: z.string().optional().nullable(), // TODO Ikke fra modell
+});
 const paragraf_11_29_schema = vilkårsvurderingSchema.extend({});
 
 export type Paragraf_11_2_type = z.infer<typeof paragraf_11_2_schema>;
@@ -58,6 +66,7 @@ export type Paragraf_11_4_type = z.infer<typeof paragraf_11_4_schema>;
 export type Paragraf_11_5_type = z.infer<typeof paragraf_11_5_schema>;
 export type Paragraf_11_6_type = z.infer<typeof paragraf_11_6_schema>;
 export type Paragraf_11_12_type = z.infer<typeof paragraf_11_12_schema>;
+export type Paragraf_11_19_type = z.infer<typeof paragraf_11_19_schema>;
 export type Paragraf_11_29_type = z.infer<typeof paragraf_11_29_schema>;
 export type InngangsvilkårType = z.infer<typeof inngangsvilkårSchema>;
 
@@ -72,6 +81,7 @@ const sakSchema = z.object({
   paragraf_11_5: paragraf_11_5_schema.optional(),
   paragraf_11_6: paragraf_11_6_schema.optional(),
   paragraf_11_12: paragraf_11_12_schema.optional(),
+  paragraf_11_19: paragraf_11_19_schema.optional(),
   paragraf_11_29: paragraf_11_29_schema.optional(),
 });
 export type SakType = z.infer<typeof sakSchema>;

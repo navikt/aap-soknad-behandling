@@ -42,9 +42,11 @@ const Oppgaveliste = ({ søker, activePage, skipLinkId }: OppgavelisteProps): JS
           <Oppgavestatus paragrafer={[søker.sak.paragraf_11_12]} />
         </Link>
       )}
-      <Link to={`?page=${PAGES.BEREGNING}`} className={activePage === PAGES.BEREGNING ? styles.active : ""}>
-        {getText("navigasjon.beregning")}
-      </Link>
+      {søker.sak.paragraf_11_19 && (
+        <Link to={`?page=${PAGES.BEREGNING}`} className={activePage === PAGES.BEREGNING ? styles.active : ""}>
+          {getText("navigasjon.11_19")}
+        </Link>
+      )}
       <Link
         to={`?page=${PAGES.BEREGNINGSGRUNNLAG}`}
         className={activePage === PAGES.BEREGNINGSGRUNNLAG ? styles.active : ""}

@@ -53,6 +53,12 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         unntaksbegrunnelse: null,
         manueltSattVirkningsdato: null,
       },
+      paragraf_11_19: {
+        vilkårsvurderingsid: "uuid-1-19",
+        utfall: "IKKE_VURDERT",
+        autorisasjon: "LESE",
+        beregningsdato: null,
+      },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-1-29",
         utfall: "IKKE_VURDERT",
@@ -110,6 +116,12 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         unntak: null,
         unntaksbegrunnelse: null,
         manueltSattVirkningsdato: null,
+      },
+      paragraf_11_19: {
+        vilkårsvurderingsid: "uuid-1-19",
+        utfall: "IKKE_VURDERT",
+        autorisasjon: "LESE",
+        beregningsdato: null,
       },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-2-29",
@@ -169,6 +181,12 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         unntaksbegrunnelse: null,
         manueltSattVirkningsdato: null,
       },
+      paragraf_11_19: {
+        vilkårsvurderingsid: "uuid-1-19",
+        utfall: "IKKE_VURDERT",
+        autorisasjon: "LESE",
+        beregningsdato: null,
+      },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-3-29",
         utfall: "IKKE_VURDERT",
@@ -225,6 +243,14 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         unntak: null,
         unntaksbegrunnelse: null,
         manueltSattVirkningsdato: null,
+      },
+      paragraf_11_19: {
+        vilkårsvurderingsid: "uuid-1-19",
+        utfall: "OPPFYLT",
+        autorisasjon: "LESE",
+        beregningsdato: "2022-07-01T12:00:00",
+        grunnForDato: "noeAnnet",
+        begrunnelseForAnnet: "En kombinasjon av mange ting",
       },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-4-29",
@@ -322,6 +348,12 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         unntaksbegrunnelse: null,
         manueltSattVirkningsdato: null,
       },
+      paragraf_11_19: {
+        vilkårsvurderingsid: "uuid-1-19",
+        utfall: "IKKE_VURDERT",
+        autorisasjon: "LESE",
+        beregningsdato: null,
+      },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-5-29",
         utfall: "IKKE_VURDERT",
@@ -378,6 +410,13 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         unntak: null,
         unntaksbegrunnelse: null,
         manueltSattVirkningsdato: null,
+      },
+      paragraf_11_19: {
+        vilkårsvurderingsid: "uuid-1-19",
+        utfall: "OPPFYLT",
+        autorisasjon: "LESE",
+        beregningsdato: "2022-05-28T09:38:28",
+        grunnForDato: "søknadstidspunkt",
       },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-3-29",
@@ -492,6 +531,12 @@ export const listeMedSøkereOgSaker: SøkerType[] = [
         unntak: null,
         unntaksbegrunnelse: null,
         manueltSattVirkningsdato: null,
+      },
+      paragraf_11_19: {
+        vilkårsvurderingsid: "uuid-1-19",
+        utfall: "IKKE_OPPFYLT",
+        autorisasjon: "LESE",
+        beregningsdato: null,
       },
       paragraf_11_29: {
         vilkårsvurderingsid: "uuid-3-29",

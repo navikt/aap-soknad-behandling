@@ -16,7 +16,7 @@ import { Paragraf_11_6 } from "./paragrafer/Paragraf_11_6";
 import { Vedtak } from "./vedtak/Vedtak";
 import { Paragraf_11_12 } from "./paragrafer/Paragraf_11_12";
 import { Paragraf_11_29 } from "./paragrafer/Paragraf_11_29";
-import { Beregningstidspunkt } from "./paragrafer/Beregningstidspunkt";
+import { Paragraf_11_19 } from "./paragrafer/Paragraf_11_19";
 import { Vilkarsstatus } from "./Vilkarsstatus/Vilkarsstatus";
 import { Beregningsgrunnlag } from "./Beregningsgrunnlag";
 import { Seksjonsoverskrift } from "./Seksjonsoverskrift";
@@ -56,6 +56,14 @@ const Varighet = ({ søker }: { søker: SøkerType }): JSX.Element => (
   </>
 );
 
+const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
+  <>
+    <Seksjonsoverskrift tekstnokkel={"paragrafer.11_19.heading"} />
+    <Modusmelding autorisasjon={søker.sak.paragraf_11_19?.autorisasjon} />
+    <Paragraf_11_19 personident={søker.personident} vilkårsvurdering={søker.sak.paragraf_11_19} />
+  </>
+);
+
 const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
   <>
     <Seksjonsoverskrift tekstnokkel={"paragrafer.11_29.heading"}>
@@ -63,13 +71,6 @@ const AndreYtelser = ({ søker }: { søker: SøkerType }): JSX.Element => (
     </Seksjonsoverskrift>
     <Modusmelding autorisasjon={søker.sak.paragraf_11_29?.autorisasjon} />
     <Paragraf_11_29 vilkårsvurdering={søker.sak.paragraf_11_29} personident={søker.personident} />
-  </>
-);
-
-const Beregning = ({ søker }: { søker: SøkerType }): JSX.Element => (
-  <>
-    <Seksjonsoverskrift tekstnokkel={"beregningstidspunkt.heading"} />
-    <Beregningstidspunkt personident={søker.personident} />
   </>
 );
 
