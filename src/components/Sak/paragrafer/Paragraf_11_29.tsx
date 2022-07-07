@@ -77,7 +77,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps) => {
 
 const Paragraf_11_29 = ({ vilkårsvurdering, personident }: ParagrafProps) => {
   if (!vilkårsvurdering) {
-    return <div>Fant ingen vurdering for 11-12</div>;
+    return <div>Fant ingen vurdering for 11-29</div>;
   }
 
   return (
