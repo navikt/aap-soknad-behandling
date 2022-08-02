@@ -73,9 +73,7 @@ export const handlers = (brukertype: Brukertype | undefined, erGodkjenner: boole
         })
       );
     }),
-    rest.post("/aap-behandling/api/sak/:personid/losning", (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
-    }),
+
     rest.post("/aap-behandling/api/sak/:personident/losning/inngangsvilkar", (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
     }),
