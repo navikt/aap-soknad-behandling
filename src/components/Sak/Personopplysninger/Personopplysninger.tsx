@@ -6,6 +6,7 @@ import { PersonopplysningerType } from "../../../types/PersonopplysningerType";
 import * as styles from "./personopplysninger.module.css";
 import { useState } from "react";
 import { Profile } from "@navikt/ds-icons";
+import { personopplysningerUrl } from "../../../api/apiUrls";
 
 type ApiResponse = {
   data: PersonopplysningerType;
@@ -41,12 +42,16 @@ const Innhold = ({ status, data }: { status: number; data?: PersonopplysningerTy
   return <div>Server svarte med status {status}, og ga ingen data i svaret</div>;
 };
 
-const Personopplysninger = (): JSX.Element => {
+const Personopplysninger = () => {
   const [open, setOpen] = useState<boolean>(false);
   const urlParams = useMatch("/aap-behandling/sak/:personid");
   const personid = urlParams?.params.personid;
-  const url = `/aap-behandling/api/personopplysninger/${personid}`;
-  const response: ApiResponse = fetchGET(url);
+
+  if (!personid) {
+    return <div>Kunne ikke finne fødselsnummer..</div>;
+  }
+
+  const response: ApiResponse = fetchGET(personopplysningerUrl(personid));
 
   if (response.status !== -1) {
     return (

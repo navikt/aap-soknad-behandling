@@ -6,6 +6,7 @@ import { Sak } from "../Sak/Sak";
 import { søkerliste } from "../../types/SakType";
 
 import * as styles from "./sakhenter.module.css";
+import { sakUrl } from "../../api/apiUrls";
 
 type ApiResponse = {
   data: any;
@@ -13,11 +14,15 @@ type ApiResponse = {
   loading: boolean;
 };
 
-const SakHenter = (): JSX.Element => {
+const SakHenter = () => {
   const urlParams = useMatch("/aap-behandling/sak/:personid");
   const personid = urlParams?.params.personid;
-  const url = `/aap-behandling/api/sak/${personid}`;
-  const response: ApiResponse = fetchGET(url);
+
+  if (!personid) {
+    return <div>Kunne ikke finne fødselsnummer..</div>;
+  }
+
+  const response: ApiResponse = fetchGET(sakUrl(personid));
 
   if (response.error) {
     return <ErrorSummary>{response.error}</ErrorSummary>;

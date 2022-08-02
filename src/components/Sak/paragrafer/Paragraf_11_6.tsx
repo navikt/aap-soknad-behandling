@@ -6,6 +6,7 @@ import { ParagrafBlokk } from "./ParagrafBlokk";
 import * as styles from "./paragraf.module.css";
 import { useSkjema } from "../../../hooks/SkjemaHook";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper/RadioGroupWrapper";
+import { paragraf_11_6_Url } from "../../../api/apiUrls";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_6_type | undefined;
@@ -65,7 +66,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps): JSX.E
   return (
     <form
       onSubmit={handleSubmit((data) =>
-        onSubmit(`/aap-behandling/api/sak/${personident}/losning/paragraf_11_6`, {
+        onSubmit(paragraf_11_6_Url(personident), {
           harMulighetForÅKommeIArbeid: data.harMulighetForÅKommeIArbeid === "true",
           harBehovForTiltak: data.harBehovForTiltak === "true",
           harBehovForBehandling: data.harBehovForBehandling === "true",

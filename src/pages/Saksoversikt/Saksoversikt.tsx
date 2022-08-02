@@ -8,6 +8,7 @@ import { getText } from "../../tekster/tekster";
 
 import * as styles from "./saksoversikt.module.css";
 import { useSkipLink } from "../../hooks/useSkipLink";
+import { sakerUrl } from "../../api/apiUrls";
 
 type ApiResponse = {
   data: any;
@@ -99,7 +100,7 @@ const Saksoversikt = () => {
     ],
   });
 
-  const { data, loading, error }: ApiResponse = fetchGET("/aap-behandling/api/sak");
+  const { data, loading, error }: ApiResponse = fetchGET(sakerUrl());
 
   const [searchParams, setSearchParams] = useSearchParams();
   const onsketVisning = searchParams.get("vis");

@@ -61,7 +61,7 @@ const Brukermeny = ({ brukerinfo }: { brukerinfo: Brukerinfo | undefined }): JSX
 
 const AppHeader = (): JSX.Element => {
   const [brukerinfo, setBrukerinfo] = useState<Brukerinfo | undefined>();
-  const { data, error } = fetchGET("/aap-behandling/internal/userinfo");
+  const { data, error } = fetchGET("/internal/userinfo");
   useEffect(() => {
     if (data && !error && !brukerinfo) {
       setBrukerinfo(data);

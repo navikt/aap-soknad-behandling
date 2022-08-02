@@ -11,6 +11,7 @@ import { Paragraf_11_4 } from "../paragrafer/Paragraf_11_4";
 import { LøsningInngansvilkår } from "../../../types/Losning";
 import { Modusmelding } from "../Modusmelding";
 import { Seksjonsoverskrift } from "../Seksjonsoverskrift";
+import { inngangsvilkarUrl } from "../../../api/apiUrls";
 
 export interface InngangsvilkårFormFields {
   erMedlem: string;
@@ -47,7 +48,7 @@ export const Inngangsvilkår = (props: Props) => {
 
       <form
         onSubmit={handleSubmit((data) =>
-          onSubmit(`/aap-behandling/api/sak/${søker.personident}/losning/inngangsvilkar`, {
+          onSubmit(inngangsvilkarUrl(søker.personident), {
             løsning_11_2: {
               erMedlem: data.erMedlem === "true",
             },

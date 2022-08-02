@@ -8,6 +8,7 @@ import { RenderWhen } from "../../RenderWhen";
 import * as styles from "./paragraf.module.css";
 import { useSkjema } from "../../../hooks/SkjemaHook";
 import { RadioGroupWrapper } from "../../RadioGroupWrapper/RadioGroupWrapper";
+import { paragraf_11_5_Url } from "../../../api/apiUrls";
 
 type ParagrafProps = {
   vilkårsvurdering: Paragraf_11_5_type | undefined;
@@ -67,7 +68,7 @@ const Skjemavisning = ({ vilkårsvurdering, personident }: ParagrafProps) => {
   return (
     <form
       onSubmit={handleSubmit((data) =>
-        onSubmit(`/aap-behandling/api/sak/${personident}/losning/paragraf_11_5`, {
+        onSubmit(paragraf_11_5_Url(personident), {
           kravOmNedsattArbeidsevneErOppfylt: data.kravOmNedsattArbeidsevneErOppfylt === "true",
           nedsettelseSkyldesSykdomEllerSkade: data.nedsettelseSkyldesSykdomEllerSkade === "true",
         })
