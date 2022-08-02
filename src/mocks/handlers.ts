@@ -79,7 +79,16 @@ export const handlers = (brukertype: Brukertype | undefined, erGodkjenner: boole
     rest.post("/api/sak/:personident/losning/paragraf_11_6", (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
     }),
+    rest.post("/api/sak/:personident/losning/paragraf_11_12", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/api/sak/:personident/losning/paragraf_11_19", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
     rest.post("/api/sak/:personident/losning/paragraf_11_29", (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
+    }),
+    rest.post("/api/sak/:personident/losning/beregningsdato", (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ message: "OK" }), ctx.delay(500));
     }),
 
