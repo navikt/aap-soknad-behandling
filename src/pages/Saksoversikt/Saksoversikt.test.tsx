@@ -8,11 +8,12 @@ import { server } from "../../mocks/server";
 import { DATO_FORMATER, formaterDato } from "../../lib/dato";
 import { ErrorBoundary } from "react-error-boundary";
 import { Feilviser } from "../../components/Feilviser/Feilviser";
+import { sakerUrl } from "../../api/apiUrls";
 
 describe("Saksoversikt", () => {
   test("kaster exception ved parsefeil", async () => {
     server.use(
-      rest.get("/aap-behandling/api/sak", (req, res, ctx) => {
+      rest.get(sakerUrl(), (req, res, ctx) => {
         return res.once(
           ctx.status(200),
           ctx.json([
@@ -73,7 +74,7 @@ describe("Saksoversikt", () => {
 
   test("viser melding når det ikke blir returnert noen saker", async () => {
     server.use(
-      rest.get("/aap-behandling/api/sak", (req, res, ctx) => {
+      rest.get(sakerUrl(), (req, res, ctx) => {
         return res.once(ctx.status(200), ctx.json([]), ctx.delay(400));
       })
     );

@@ -6,6 +6,7 @@ import userEvent from "@testing-library/user-event";
 import { Modal } from "@navikt/ds-react";
 import { server } from "../../../mocks/server";
 import { rest } from "msw";
+import { personopplysningerUrl } from "../../../api/apiUrls";
 
 beforeEach(() => {
   if (Modal.setAppElement) {
@@ -27,7 +28,7 @@ describe("Personopplysninger", () => {
 
   test("gir beskjed om at vi ikke fant noen personer når backend gir 404", async () => {
     server.use(
-      rest.get("/aap-behandling/api/personopplysninger/12345678910", (req, res, ctx) => {
+      rest.get(personopplysningerUrl('12345678910'), (req, res, ctx) => {
         return res.once(ctx.status(404));
       })
     );
